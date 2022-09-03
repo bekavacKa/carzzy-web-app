@@ -1,5 +1,7 @@
+const port = 4000;
 const SERVER = {
-    port: 4000
+    port: port,
+    serverRunnMsg: `>>BEK<< Server is running on port: ${port} `
 };
 
 module.exports = SERVER;
