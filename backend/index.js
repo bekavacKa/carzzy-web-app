@@ -50,7 +50,7 @@ app.post('/api/login', (req, res) => {
 // ? TRIBAM BOLJU PROVJERU/VALIDACIJU NAPRAVIT
 app.post('/api/register', async (req,res) =>{
     const reqBody = req.body;
-    // console.log("Register =>", reqBody);
+    // console.log("TO Register =>", reqBody);
 
     const foundUser = Users.findOne(reqBody, async (err, data) => {
         if(err){
