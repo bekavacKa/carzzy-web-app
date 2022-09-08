@@ -1,5 +1,5 @@
-const MONGO_PASS = 'umotanubilo1911';
-const MONGODB_URL = `mongodb+srv://carzzyDB01:${MONGO_PASS}@carzzydb.v6zxhfx.mongodb.net/?retryWrites=true&w=majority`;
+const MONGO_PASS = '';
+const MONGODB_URL = ``;
 const mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -1,11 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const mongoose  = require('mongoose');
+const cors = require('cors');
 
 const serverConfig = require('./config/serverConfig');
 const dbConfig = require('./config/dbConfig');
 const Users = require('./models/userModel');
-const { port } = require('./config/serverConfig');
+
 
 // const router = express.Router();
 // console.log(dbConfig);
@@ -15,9 +16,9 @@ mongoose.connect(dbConfig.MONGODB_URL)
         .then(data => console.log("MONGODB FOR CARZZY IS CONNECTED"))
         .catch(err => console.log(`ERROR CONNECTING ON MONGODB (CARZZY) => ${err} `));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors()); 
 
 // ! VRAĆA MI I ERR I DATA NULL IAKO DOBIJEM BODY, MORAM POGLEDAT ZASTO!!! 
 // * POPRAVLJENO !
@@ -26,12 +27,12 @@ app.post('/api/login', (req, res) => {
     // console.log(reqBody);
 
     const foundUser = Users.findOne(reqBody, (err, data) => {
-        console.log("Logged", data);
+        // console.log("Logged", data);
 
         if(err){
             const errMsg = `Error while finding user => ${err} `;
             console.log(errMsg);
-            res.send(errMsg);
+            res.status(416).send(errMsg);
             return;
         }
         if(data){
