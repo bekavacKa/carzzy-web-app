@@ -1,5 +1,5 @@
 import './App.css';
-import AuthPage from './pages/AuthPage';
+import Auth from './pages/Auth/Auth';
 import axios from 'axios';
 
 axios.defaults.baseURL ='http://localhost:4000';
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <AuthPage/>
+      <Auth/>
     </div>
   );
 }

@@ -1,5 +1,7 @@
-const MONGO_PASS = '';
-const MONGODB_URL = ``;
+const dbPassAndUrl = require('./dbPassAndUrl');
+
+const MONGO_PASS = dbPassAndUrl.PASSWORD_DB;
+const MONGODB_URL = dbPassAndUrl.URL_DB;
 const mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -1,2 +1,2 @@
 /backend/node_modules/
-/backend/config/dbConfig.js
+/backend/config/dbPassAndUrl.js

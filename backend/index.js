@@ -49,27 +49,34 @@ app.post('/api/login', (req, res) => {
 });
 
 // ? TRIBAM BOLJU PROVJERU/VALIDACIJU NAPRAVIT
+// Tu stao
 app.post('/api/register', async (req,res) =>{
     const reqBody = req.body;
-    // console.log("TO Register =>", reqBody);
+    console.log("TO Register =>", reqBody);
+    const usernameTryReg = reqBody.username;
+    const emailTryReg  = reqBody.email;
+    // Users.findOne({usernameTryReg, emailTryReg}, async (err, data) =>{
+    //     console.log("daataaa",data);
+    // })
 
-    const foundUser = Users.findOne(reqBody, async (err, data) => {
-        if(err){
-            const errMsg = `Error while register user => ${err} `;
-            console.log(errMsg);
-            res.send(errMsg);
-            return;
-        }
 
-        if (data) {
-            res.send(`User >> ${data.username} << already exist!`);
-        }else{
-            const newUser = new Users(reqBody);
-            const saveNewUser = await newUser.save();
-            // console.log(saveNewUser);
-            res.send(saveNewUser || "User is not registered");
-        }
-    })
+    // const foundUser = Users.findOne(reqBody, async (err, data) => {
+    //     if(err){
+    //         const errMsg = `Error while register user => ${err} `;
+    //         console.log(errMsg);
+    //         res.send(errMsg);
+    //         return;
+    //     }
+
+    //     if (data) {
+    //         res.send(`User >> ${data.username} << already exist!`);
+    //     }else{
+    //         const newUser = new Users(reqBody);
+    //         const saveNewUser = await newUser.save();
+    //         // console.log(saveNewUser);
+    //         res.send(saveNewUser || "User is not registered");
+    //     }
+    // })
 });
 
 

@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import AuthService from "../services/AuthService";
+import AuthService from "../../services/AuthService";
+import "./login.scss";
 
-function AuthPage(){
+
+function Login(){
+    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [pass, setPass] = useState("");
     const [isValid, setIsValid] = useState(true);
@@ -11,14 +14,14 @@ function AuthPage(){
     const onSubmitForm = (e) => {
         e.preventDefault();
         // console.log(username, "==>>>", pass);
-        if(!username || !pass){
+        if(!username || !pass || !email){
             // console.log("nesto ne postoji");
             setIsValid(false);
             return;
         }
         setIsValid(true);
         
-        let body = {username, pass};
+        let body = {email, username, pass};
         AuthService.login(body)
                     .then((res) => {
                         if(res && res.status === 200){
@@ -32,29 +35,31 @@ function AuthPage(){
                     })
     }
 
-
     return(
-        <div className="auth-wrapper">
-            <h1>Test Auth</h1>
+        <div className="login-wrapper" >
+            <h2>LOGIN</h2>
 
             {apiErr ?
             <h2> something is wrong with logging in </h2>            
             :
             <form className="auth-form" onSubmit={e => onSubmitForm(e)}>
+
+                <label htmlFor="username" >Email</label>
+                <input id="username" type ="email" onChange={(e) => {setEmail(e.target.value)}} />
+
                 <label htmlFor="username" >User Name</label>
                 <input id="username" type ="text" onChange={(e) => {setUsername(e.target.value)}} />
-                {/* {username} */}
+
                 <label htmlFor="password" >Password</label>
                 <input id="password" type ="password" onChange={(e) => {setPass(e.target.value)}} />
                 {/* {pass} */}
                 {!isValid ? <p>All fields are required!!</p> : null}
-                <button type="submit" > Test Send</button>
+                <button type="submit" > LOGIN </button>
             </form> 
             }
-
 
         </div>
     )
 }
 
-export default AuthPage;
+export default Login;
