@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthService {
 
     static login(body){
-        // console.log("body service => ", body);
+        // console.log("body login service => ", body);
         return axios.post('/api/login', body);
     }
     static register(body){

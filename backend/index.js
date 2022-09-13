@@ -32,7 +32,7 @@ app.post('/api/login', (req, res) => {
         if(err){
             const errMsg = `Error while finding user => ${err} `;
             console.log(errMsg);
-            res.status(416).send(errMsg);
+            res.status(401).send(errMsg);
             return;
         }
         if(data){
@@ -49,34 +49,29 @@ app.post('/api/login', (req, res) => {
 });
 
 // ? TRIBAM BOLJU PROVJERU/VALIDACIJU NAPRAVIT
-// Tu stao
+// * POBOLJŠANO
 app.post('/api/register', async (req,res) =>{
     const reqBody = req.body;
     console.log("TO Register =>", reqBody);
-    const usernameTryReg = reqBody.username;
-    const emailTryReg  = reqBody.email;
-    // Users.findOne({usernameTryReg, emailTryReg}, async (err, data) =>{
-    //     console.log("daataaa",data);
-    // })
+    const tryUsername = reqBody.username;
 
-
-    // const foundUser = Users.findOne(reqBody, async (err, data) => {
-    //     if(err){
-    //         const errMsg = `Error while register user => ${err} `;
-    //         console.log(errMsg);
-    //         res.send(errMsg);
-    //         return;
-    //     }
-
-    //     if (data) {
-    //         res.send(`User >> ${data.username} << already exist!`);
-    //     }else{
-    //         const newUser = new Users(reqBody);
-    //         const saveNewUser = await newUser.save();
-    //         // console.log(saveNewUser);
-    //         res.send(saveNewUser || "User is not registered");
-    //     }
-    // })
+    Users.findOne({username : tryUsername}, async (err, data) =>{
+        // console.log("daataaa",data);
+        if(err){
+            const errMsg = `Error while register user => ${err} `;
+            console.log(errMsg);
+            res.send(errMsg);
+            return;
+        }
+        if(data){
+            res.status(409).send(`User >> ${data.username} << already exist!`);
+            console.log(`User >> ${data.username} << already exist!`);
+        }else{
+            const newUser = new Users(reqBody);
+            const saveNewUser = await newUser.save();
+            res.send(saveNewUser || `User >> ${data.username} << not registered.`);
+        }
+    })
 });
 
 

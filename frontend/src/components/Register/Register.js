@@ -5,31 +5,48 @@ import "./register.scss";
 
 function Register(){
 
-    const [username, setUsername] = useState("");
-    const [pass, setPass] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
+    const [userData, setUserData] = useState({
+        firstName: "",
+        lastName: "",
+        adress: "",
+        city: "",
+        username: "",
+        email: "",
+        password: "",
+    });
 
     const [isValid, setIsValid] = useState(true);
+    const [isApiFinish, setIsApiFinish] = useState(false);
     const [apiErr, setApiErr] = useState(false);
+
+    const handleInputChange = (e) => {
+        // console.log(e.target.name, e.target.value);
+        let newUserData = userData;
+        newUserData[e.target.name] = e.target.value;
+        // console.log(newUserData, "user data");
+        setUserData(newUserData);
+    }
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        // console.log("Data form ==>>>", firstName, lastName, username, email, pass, );
-        if(!username || !pass || !email){
-            // console.log("nesto ne postoji");
+
+
+
+        if(!userData.username || !userData.password || !userData.email || !userData.email.includes("@") ){
+            console.log("nesto ne postoji!!!");
             setIsValid(false);
             return;
         }
         setIsValid(true);
         
-        let body = {username, email, pass, firstName, lastName};
-        AuthService.register(body)
+        AuthService.register(userData)
                     .then((res) => {
-                        if(res && res.status === 200){
+                        if(res.status === 200){
                             console.log("REGISTER SERVICE RESPONSE =>", res);
+                            setIsApiFinish(true);
+                            setApiErr(false);
                             // TODO: SEND USER TO HOME PAGE
+                            return;
                         }
                     })
                     .catch((err) => {
@@ -42,33 +59,58 @@ function Register(){
         <div className="register-wrapper" >
             <h2>REGISTER</h2>
 
+            <form className="register-form" onSubmit={e => onSubmitForm(e)}>
 
-            {apiErr ?
-            <h2> something is wrong with logging in </h2>            
-            :
+                <label htmlFor="firstName">First Name</label>
+                <input id="firstName" 
+                        type ="text"
+                        name="firstName" 
+                        onChange={(e) => {handleInputChange(e)}} />
 
-            <form className="auth-form" onSubmit={e => onSubmitForm(e)}>
+                <label htmlFor="lastName">Last Name</label>
+                <input id="lastName" 
+                        type ="text" 
+                        name="lastName" 
+                        onChange={(e) => {handleInputChange(e)}} />
 
-                <label htmlFor="firstname">First Name</label>
-                <input id="firstname" type ="text" onInput={(e) => {setFirstName(e.target.value)}} />
+                <label htmlFor="adress">Adress</label>
+                <input id="adress" 
+                        type ="text"
+                        name="adress" 
+                        onChange={(e) => {handleInputChange(e)}} />
 
-                <label htmlFor="lastname">Last Name</label>
-                <input id="lastname" type ="text" onChange={(e) => {setLastName(e.target.value)}} />
+                <label htmlFor="city">City</label>
+                <input id="city" 
+                        type ="text"
+                        name="city"   
+                        onChange={(e) => {handleInputChange(e)}}/>
 
                 <label htmlFor="username">Username</label>
-                <input id="username" type ="text" onChange={(e) => {setUsername(e.target.value)}} />
+                <input id="username" 
+                        type ="text" 
+                        name="username" 
+                        onChange={(e) => {handleInputChange(e)}} />
 
-                <label htmlFor="email">Email</label>
-                <input id="email" type ="email" onChange={(e) => {setEmail(e.target.value)}} />
+                <label htmlFor="email">E-mail</label>
+                <input id="email" 
+                        type ="email" 
+                        name="email" 
+                        onChange={(e) => {handleInputChange(e)}} />
 
                 <label htmlFor="password">Password</label>
-                <input id="password" type ="password" onChange={(e) => {setPass(e.target.value)}} />
+                <input id="password" 
+                        type ="password" 
+                        name="password" 
+                        onChange={(e) => {handleInputChange(e)}} />
+
 
                 <button type="submit" > REGISTER </button>
-
-                {!isValid ? <p>Some fields are required!!</p> : null}
+                {/* <input type="submit" value="Register" /> */}
             </form> 
-            }
+
+            {!isValid ? <p> invalid form </p> : null}
+            {apiErr ? <p> something is wrong</p> : null}
+            {isApiFinish ? <p> successful registration </p> : null}
         </div>
     )
 }

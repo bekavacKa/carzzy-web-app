@@ -26,8 +26,6 @@ function Auth(){
             <button onClick={showRegister} > Register </button>
             {isLogin ? <Login /> : <Register />}
 
-
-
         </div>
     )
 }
