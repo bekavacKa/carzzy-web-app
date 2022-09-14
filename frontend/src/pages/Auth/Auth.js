@@ -9,22 +9,14 @@ function Auth(){
     const [isLogin, setIsLogin] = useState(true)
 
 
-    const showLogin = () => {
-        setIsLogin(true);
-    }
-
-    const showRegister = () => {
-        setIsLogin(false);
-    }
-
     return(
         
         <div className="auth-wrapper">
             <h1>Test Auth</h1>
 
-            <button onClick={showLogin} > Login </button>
-            <button onClick={showRegister} > Register </button>
-            {isLogin ? <Login /> : <Register />}
+            {/* <button onClick={showLogin} > Login </button>
+            <button onClick={showRegister} > Register </button> */}
+            {isLogin ? <Login showLoginForm={setIsLogin}/> : <Register showLoginForm={setIsLogin}/>}
 
         </div>
     )

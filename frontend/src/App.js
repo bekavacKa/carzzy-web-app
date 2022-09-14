@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Routes, Route} from "react-router-dom";
 import routeConfig from './config/routeConfig';
 import Navigation from './components/Navigation/Navigation';
+import "./assets/scss/base.scss";
 
 axios.defaults.baseURL ='http://localhost:4000';
 
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="app-wrapper">
 
-    <Navigation/>
+      <Navigation/>
 
       <Routes>
 

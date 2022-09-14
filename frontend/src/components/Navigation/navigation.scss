@@ -1,0 +1,75 @@
+@import "../../assets/scss/vars.scss";
+
+
+.nav-wrapper{
+    background-color: $secondBackground;
+    padding: 40px 20px;
+    color: $secondFontColor;
+    font-weight: 500;
+    font-size: 1.1rem;
+    a{
+        color: $secondFontColor;
+        margin-right: 20px;
+        &:hover{
+            color: $iconColor;
+            transition: $transition;
+        }
+        &.active{
+            color: $iconColor;
+        }
+    }
+    p{
+        font-size: 0.9rem;
+    }
+
+    nav{
+        @include flex(space-between, flex-start ,row );
+        .nav-links{
+            @include flex(flex-start, flex-start ,row );
+            .logo{
+                font-size: 1.3rem;
+            }
+        }
+
+        .nav-user{
+            @include flex(flex-start, center ,row );
+            .nav-user-cart{
+                .cart{
+                    color: $iconColor;
+                    font-size: 1.4rem;
+                }
+                @include flex(flex-start, flex-start ,row );
+                margin-right: 20px;
+                p{
+                    color: $secondFontColor;
+                    margin-left: 5px
+                }
+            }
+            .nav-user-search{
+                @include flex(flex-start, center, row);
+                border: 1px solid $secondFontColor;
+                border-radius: 3px;
+                color: $iconColor;
+                padding-right: 5px;
+                input[type=search]{
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    color: $iconColor;
+                    padding: 5px 0 5px 15px;
+                }
+                
+                margin-right: 20px;
+            }
+            .nav-user-profile{
+                @include flex(flex-start, flex-start, row);
+                margin-right: 20px;
+                .user-icon{
+                    color: $iconColor;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}

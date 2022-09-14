@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+// *VARS
+$firstBackground: #121212;
+$secondBackground: #252525;
+$iconColor: #f73611;
+$firstFontColor:  #ffffff;
+$secondFontColor: #a7a4a4;
+$transition:  0.5s ease-in;
+$borderFont: rgb(199, 194, 194);
+$fontF: Orbitron;
+
+// *MIXINS
+@mixin flex($justify, $align, $direction){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin btn{
+    padding: 10px 25px;
+    // box-shadow: 0px 0px 5px $firstFontColor;
+    letter-spacing: .1rem;
+    background-color: $iconColor;
+    font-size: 1rem;
+    font-family: $fontF;
+    font-weight: 500;
+    color: $firstFontColor;
+    margin: 20px;
+    border: none;
+    border-radius: 2px;
+    transition: $transition;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 1px solid $firstBackground;
+    &:hover{
+        border: 1px solid $firstFontColor;
+    }
+}

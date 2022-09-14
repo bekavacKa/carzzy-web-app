@@ -4,7 +4,7 @@ import AuthService from "../../services/AuthService";
 import "./login.scss";
 
 
-function Login(){
+function Login({showLoginForm}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isValid, setIsValid] = useState(true);

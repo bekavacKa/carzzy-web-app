@@ -1,7 +1,8 @@
+@import "../../assets/scss/vars.scss";
 .login-wrapper{
     form{
         button{
-            background-color: red;
+            @include btn;
         }
     }
 }
