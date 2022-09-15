@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import AuthService from "../../services/AuthService";
+import { ToastContainer, toast } from 'react-toastify';
 import "./login.scss";
+import { useNavigate } from "react-router-dom";
 
 
 function Login({showLoginForm}){
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isValid, setIsValid] = useState(true);
-    const [apiErr, setApiErr] = useState(false);
+    // const [apiErr, setApiErr] = useState(false);
 
     const onSubmitForm = (e) => {
         e.preventDefault();
@@ -25,13 +28,17 @@ function Login({showLoginForm}){
                     .then((res) => {
                         if(res.status === 200){
                             console.log("LOGIN SERVICE RESPONSE =>", res);
-                            // TODO: SEND USER TO HOME PAGE
                             localStorage.setItem("user", JSON.stringify(res.data))
+                            toast.success("Welcome! " + res.data.username);
+                            navigate('/');
+                        }if(res.status === 401){
+                            toast.warning("Wrong username/password!");
                         }
                     })
                     .catch((err) => {
                         console.log("LOGIN SERVICE ERR =>", err);
-                        setApiErr(true);
+                        toast.error("Something is wrong!!");
+                        // setApiErr(true);
                     })
     }
 
@@ -39,9 +46,6 @@ function Login({showLoginForm}){
         <div className="login-wrapper" >
             <h2>LOGIN</h2>
 
-            {apiErr ?
-            <h2> something is wrong with logging in </h2>            
-            :
             <form className="login-form" onSubmit={e => onSubmitForm(e)}>
 
                 <label htmlFor="username" >User Name</label>
@@ -51,10 +55,10 @@ function Login({showLoginForm}){
                 <input id="password" type ="password" onChange={(e) => {setPassword(e.target.value)}} />
                 {/* {pass} */}
                 {!isValid ? <p>All fields are required!!</p> : null}
-                <button type="submit" > LOGIN </button>
+                <button className="form-btn" type="submit" > LOGIN </button>
             </form> 
-            }
-
+            
+            <ToastContainer theme="dark" />
         </div>
     )
 }

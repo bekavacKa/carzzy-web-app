@@ -5,6 +5,7 @@ import Register from "../../components/Register/Register";
 import "./auth.scss";
 
 
+
 function Auth(){
     const [isLogin, setIsLogin] = useState(true)
 
@@ -12,12 +13,12 @@ function Auth(){
     return(
         
         <div className="auth-wrapper">
-            <h1>Test Auth</h1>
+
 
             {/* <button onClick={showLogin} > Login </button>
             <button onClick={showRegister} > Register </button> */}
             {isLogin ? <Login showLoginForm={setIsLogin}/> : <Register showLoginForm={setIsLogin}/>}
-
+            
         </div>
     )
 }

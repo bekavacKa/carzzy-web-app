@@ -1,0 +1,14 @@
+[
+    {
+       "id": 1,
+       "title": "ProductName",
+       "price": 109.95,
+       "description": "",
+       "category": "cars",
+       "image": "https://fakestoreapi.com/",
+       "rating": {
+          "rate": 3.9,
+          "count": 120
+       }
+    }
+ ]

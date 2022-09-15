@@ -11,14 +11,14 @@ $borderFont: rgb(199, 194, 194);
 $fontF: Orbitron;
 
 // *MIXINS
-@mixin flex($justify, $align, $direction){
+@mixin bek-flex($justify, $align, $direction){
     display: flex;
     flex-wrap: wrap;
     justify-content: $justify;
     align-items: $align;
     flex-direction: $direction;
 }
-@mixin btn{
+@mixin bek-btn{
     padding: 10px 25px;
     // box-shadow: 0px 0px 5px $firstFontColor;
     letter-spacing: .1rem;
@@ -37,4 +37,8 @@ $fontF: Orbitron;
     &:hover{
         border: 1px solid $firstFontColor;
     }
+}
+.container{
+    width: 80%;
+    margin: auto;
 }

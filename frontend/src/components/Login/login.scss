@@ -1,8 +1,13 @@
 @import "../../assets/scss/vars.scss";
 .login-wrapper{
+    @include bek-flex(center, center, column);
+    @extend .container;
+    .login-form{
+        @include bek-flex(center,center, column)
+    }
     form{
-        button{
-            @include btn;
+        .form-btn{
+            @include bek-btn;
         }
     }
 }

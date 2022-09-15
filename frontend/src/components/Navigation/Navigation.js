@@ -19,6 +19,10 @@ function Navigation() {
 					{routeConfig.HOME.name}
 				</NavLink>
 
+				<NavLink to={routeConfig.SHOP.url}>
+					{routeConfig.SHOP.name}
+				</NavLink>
+
 				<NavLink to={routeConfig.CONTACT.url}>
 					{routeConfig.CONTACT.name}
 				</NavLink>
@@ -26,6 +30,7 @@ function Navigation() {
 				<NavLink to={routeConfig.SIGN_IN.url}>
 					{routeConfig.SIGN_IN.name}
 				</NavLink>
+
 			</div>
 
 			<div className='nav-user' >

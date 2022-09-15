@@ -1,0 +1,5 @@
+@import "../../assets/scss/vars.scss";
+
+.auth-wrapper{
+    @include bek-flex(flex-start, center, row);
+}

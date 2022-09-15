@@ -1,0 +1,16 @@
+@import "../../assets/scss/vars.scss";
+
+.shop-wrapper{
+    // @include bek-flex(start, start, row);
+    @extend .container;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .shop-single-product{
+        .img{
+
+            width: 30%;
+        }
+    }
+    
+}

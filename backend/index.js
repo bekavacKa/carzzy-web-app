@@ -40,7 +40,7 @@ app.post('/api/login', (req, res) => {
         }
         else{
             console.log("User not found!");
-            res.send("User not found");
+            res.status(401).send("User not found");
         }
         // res.send(data ? data : "User not found" );
     })
