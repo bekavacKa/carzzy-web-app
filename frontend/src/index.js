@@ -5,6 +5,7 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import "./assets/scss/base.scss";
+import "animate.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

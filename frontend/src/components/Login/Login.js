@@ -4,6 +4,8 @@ import AuthService from "../../services/AuthService";
 import { ToastContainer, toast } from 'react-toastify';
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header/Header";
+import Register from "../Register/Register";
 
 
 function Login({showLoginForm}){
@@ -29,7 +31,7 @@ function Login({showLoginForm}){
                         if(res.status === 200){
                             console.log("LOGIN SERVICE RESPONSE =>", res);
                             localStorage.setItem("user", JSON.stringify(res.data))
-                            toast.success("Welcome! " + res.data.username);
+                            // toast.success("Welcome! " + res.data.username);
                             navigate('/');
                         }if(res.status === 401){
                             toast.warning("Wrong username/password!");
@@ -44,7 +46,9 @@ function Login({showLoginForm}){
 
     return(
         <div className="login-wrapper" >
-            <h2>LOGIN</h2>
+
+            {/* <Header pageTitle={"login"} /> */}
+
 
             <form className="login-form" onSubmit={e => onSubmitForm(e)}>
 
@@ -56,6 +60,7 @@ function Login({showLoginForm}){
                 {/* {pass} */}
                 {!isValid ? <p>All fields are required!!</p> : null}
                 <button className="form-btn" type="submit" > LOGIN </button>
+
             </form> 
             
             <ToastContainer theme="dark" />

@@ -1,10 +1,11 @@
 import React from 'react'
+import Header from '../../components/Header/Header';
 import './home.scss';
 
 function Home() {
   return (
     <div className='home-wrapper'>
-        <h2>HOME</h2>
+      <Header pageTitle={"home"} />
     </div>
   )
 }

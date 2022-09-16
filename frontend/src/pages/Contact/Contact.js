@@ -1,10 +1,12 @@
 import React from 'react';
 import './contact.scss';
+import Header from '../../components/Header/Header';
 
 function Contact() {
   return (
     <div className="contact-wrapper" >
-        <h2>CONTACT</h2>
+      <Header pageTitle={"contact"} />
+
     </div>
   )
 }

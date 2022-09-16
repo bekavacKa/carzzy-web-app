@@ -1,5 +1,15 @@
 @import "../../assets/scss/vars.scss";
 
 .auth-wrapper{
-    @include bek-flex(flex-start, center, row);
+    @include bek-flex(center, column);
+    .auth-btns{
+        @include bek-flex(center, row);
+        .auth-btn-p{
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                color: $iconColor;
+            }
+        }
+    }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './shop.scss';
 import ShopService from '../../services/ShopService';
 import ProductSingle from '../../components/ProductSingle/ProductSingle';
+import Header from '../../components/Header/Header';
 // import ProductSingle from '../../components/ProductSingle/ProductSingle';
 
 function Shop() {
@@ -11,7 +12,7 @@ function Shop() {
     useEffect(() => {
         ShopService.getProducts()
                     .then(res => {
-                        console.log(res);
+                        console.log("all data =>", res);
                         if(res.status === 200){
                             setAllProducts(res.data);
                         }
@@ -22,6 +23,8 @@ function Shop() {
     }, []);
 
   return (
+    <>
+        <Header pageTitle={"shop"} />
     <div className='shop-wrapper'>
         {
         allProducts.map((product, index) => {
@@ -31,6 +34,7 @@ function Shop() {
         })
         }
     </div>
+    </>
   )
 }
 

@@ -1,11 +1,17 @@
 @import "../../assets/scss/vars.scss";
 .login-wrapper{
-    @include bek-flex(center, center, column);
-    @extend .container;
+    @include bek-flex(center, column);
+    @include container;
     .login-form{
-        @include bek-flex(center,center, column)
+        @include bek-flex(center, column);
+        align-items: center;
     }
     form{
+        input{
+            @include input-style;
+            background-color: $secondBackground;
+            color: $firstFontColor;
+        }
         .form-btn{
             @include bek-btn;
         }

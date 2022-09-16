@@ -23,22 +23,22 @@
     }
 
     nav{
-        @include bek-flex(space-between, flex-start ,row );
+        @include bek-flex(space-between,row );
         .nav-links{
-            @include bek-flex(flex-start, flex-start ,row );
+            @include bek-flex(flex-start, row );
             .logo{
                 font-size: 1.3rem;
             }
         }
 
         .nav-user{
-            @include bek-flex(flex-start, center ,row );
+            @include bek-flex(flex-start,row );
             .nav-user-cart{
                 .cart{
                     color: $iconColor;
                     font-size: 1.4rem;
                 }
-                @include bek-flex(flex-start, flex-start ,row );
+                @include bek-flex(flex-start,row );
                 margin-right: 20px;
                 p{
                     color: $secondFontColor;
@@ -46,7 +46,7 @@
                 }
             }
             .nav-user-search{
-                @include bek-flex(flex-start, center, row);
+                @include bek-flex(flex-start, row);
                 border: 1px solid $secondFontColor;
                 border-radius: 3px;
                 color: $iconColor;
@@ -62,7 +62,7 @@
                 margin-right: 20px;
             }
             .nav-user-profile{
-                @include bek-flex(flex-start, flex-start, row);
+                @include bek-flex(flex-start, row);
                 margin-right: 20px;
                 .user-icon{
                     color: $iconColor;

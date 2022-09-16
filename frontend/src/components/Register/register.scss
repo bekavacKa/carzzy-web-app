@@ -1,6 +1,20 @@
+@import "../../assets/scss/vars.scss";
+
 .register-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    @include bek-flex(center, column);
+    @include container;
+    .register-form{
+        @include bek-flex(center, column);
+        align-items: center;
+    }
+    form{
+        input{
+            @include input-style;
+            background-color: $secondBackground;
+            color: $firstFontColor;
+        }
+        .form-register-btn{
+            @include bek-btn;
+        }
+    }
 }

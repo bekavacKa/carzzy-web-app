@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors()); 
 
+// USER API
 // ! VRAĆA MI I ERR I DATA NULL IAKO DOBIJEM BODY, MORAM POGLEDAT ZASTO!!! 
 // * POPRAVLJENO !
 app.post('/api/login', (req, res) => {
@@ -73,6 +74,9 @@ app.post('/api/register', async (req,res) =>{
         }
     })
 });
+
+// PRODUCT API
+
 
 
 

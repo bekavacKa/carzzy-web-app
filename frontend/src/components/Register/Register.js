@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import AuthService from "../../services/AuthService";
 import "./register.scss";
@@ -21,7 +21,7 @@ function Register(){
 
     const handleInputChange = (e) => {
         // console.log(e.target.name, e.target.value);
-        let newUserData = userData;
+        let newUserData = {...userData};
         newUserData[e.target.name] = e.target.value;
         // console.log(newUserData, "user data");
         setUserData(newUserData);
@@ -29,8 +29,6 @@ function Register(){
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-
-
 
         if(!userData.username || !userData.password || !userData.email || !userData.email.includes("@") ){
             console.log("nesto ne postoji!!!");
@@ -57,8 +55,9 @@ function Register(){
 
     return(
         <div className="register-wrapper" >
-            <h2>REGISTER</h2>
 
+            {/* <Header pageTitle={"Register"} /> */}
+            
             <form className="register-form" onSubmit={e => onSubmitForm(e)}>
 
                 <label htmlFor="firstName">First Name</label>
@@ -104,7 +103,7 @@ function Register(){
                         onChange={(e) => {handleInputChange(e)}} />
 
 
-                <button type="submit" > REGISTER </button>
+                <button className="form-register-btn" type="submit" > REGISTER </button>
                 {/* <input type="submit" value="Register" /> */}
             </form> 
 
