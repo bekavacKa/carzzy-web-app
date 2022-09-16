@@ -1,19 +1,24 @@
 import React from "react";
 import { useState } from "react";
-import AuthService from "../../services/AuthService";
 import { ToastContainer, toast } from 'react-toastify';
-import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import Header from "../Header/Header";
-import Register from "../Register/Register";
+import { useDispatch } from "react-redux";
+
+import AuthService from "../../services/AuthService";
+import { setUser } from "../../redux/userSlice";
+
+import "./login.scss";
+
 
 
 function Login({showLoginForm}){
-    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isValid, setIsValid] = useState(true);
     // const [apiErr, setApiErr] = useState(false);
+    
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onSubmitForm = (e) => {
         e.preventDefault();
@@ -33,6 +38,7 @@ function Login({showLoginForm}){
                             localStorage.setItem("user", JSON.stringify(res.data))
                             // toast.success("Welcome! " + res.data.username);
                             navigate('/');
+                            dispatch(setUser(res.data));
                         }if(res.status === 401){
                             toast.warning("Wrong username/password!");
                         }

@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     address : {type: String},
     city : {type: String},
     postCode : {type: Number},
+    wallet : {type: Number, default: 178},
     phoneNumber : {type: String},
     isAdmin : {type: String, required: Boolean, default: false}
 })

@@ -4,13 +4,8 @@
     h2{
         width: 100%
     }
-    // @include bek-flex(start, start, row);
     @include container;
     @include bek-flex(space-around, row);
-    gap: 20px;
-    // background-color: red;
-    // .shop-single-product{
 
-    // }
     
 }

@@ -14,9 +14,16 @@ function ProductSingle(props) {
 
       {product.hasOwnProperty('image') ? 
         <div className='product-card'>
-          {/* todo podilit info i sliku */}
-          <img src={product.image} alt={product.title}  />
-          <h2>{product.price}</h2>
+          
+          <div className='product-card-img'>
+            <img src={product.image} alt={product.title}  />
+          </div>
+
+          <div className='product-card-info'>
+            <p>Info</p>
+            <p>{product.price}</p>
+          </div>
+
         </div>
         : null
       }

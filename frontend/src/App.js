@@ -1,23 +1,26 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { Routes, Route, useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import "./assets/scss/base.scss";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Button from 'react-bootstrap/Button';
+
+import routeConfig from './config/routeConfig';
+import Navigation from './components/Navigation/Navigation';
+import Shop from './pages/Shop/Shop';
 import Home from './pages/Home/Home';
 import Auth from './pages/Auth/Auth';
 import Contact from './pages/Contact/Contact';
-import axios from 'axios';
-import routeConfig from './config/routeConfig';
-import Navigation from './components/Navigation/Navigation';
-import 'react-toastify/dist/ReactToastify.css';
-import "./assets/scss/base.scss";
-import Shop from './pages/Shop/Shop';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Button from 'react-bootstrap/Button';
+import { setUser } from "./redux/userSlice";
 
 axios.defaults.baseURL ='http://localhost:4000';
 
 function App() {
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     userExist();
@@ -27,6 +30,8 @@ function App() {
   const userExist = () => {
     if(!localStorage.hasOwnProperty('user')){
       navigate('/auth')
+    }else{
+      dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
     }
   }
   

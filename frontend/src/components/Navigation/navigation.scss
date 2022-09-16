@@ -33,20 +33,23 @@
 
         .nav-user{
             @include bek-flex(flex-start,row );
+            align-items: center;
             .nav-user-cart{
+                @include bek-flex(flex-start,row );
+                margin-right: 20px;
                 .cart{
                     color: $iconColor;
                     font-size: 1.4rem;
                 }
-                @include bek-flex(flex-start,row );
-                margin-right: 20px;
-                p{
+                .nav-user-wallet{
+                    font-size: 1rem;
                     color: $secondFontColor;
                     margin-left: 5px
                 }
             }
             .nav-user-search{
                 @include bek-flex(flex-start, row);
+                align-items: center;
                 border: 1px solid $secondFontColor;
                 border-radius: 3px;
                 color: $iconColor;
@@ -64,10 +67,25 @@
             .nav-user-profile{
                 @include bek-flex(flex-start, row);
                 margin-right: 20px;
-                .user-icon{
-                    color: $iconColor;
+                .nav-user-profile-info{
+                    @include bek-flex(flex-start,row);
+                    align-items: center;
                     cursor: pointer;
+                    transition: $transition;
+                    &:hover{
+                        color: $iconColor;
+                    }
+                    .user-icon{
+                        margin-right: 8px;
+                        color: $iconColor;
+                    }
+                    .user-icon-down{
+                        margin-left: 5px;  
+                    }
                 }
+                // .nav-user-profile-signin{
+                //         background-color: red;
+                // }
             }
         }
     }
