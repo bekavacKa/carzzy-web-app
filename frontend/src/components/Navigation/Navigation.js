@@ -1,31 +1,30 @@
 import React, { useEffect } from 'react';
 import {Link, NavLink} from "react-router-dom";
-import { FaCar, FaUser, FaCaretDown } from "react-icons/fa";
+import { FaCar, FaUser } from "react-icons/fa";
 import { MdAddShoppingCart, MdSearch } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 import routeConfig from '../../config/routeConfig';
 import "./navigation.scss";
+import Dropdown from '../Dropdown/Dropdown';
 
 function Navigation() {
 	const currentUser = useSelector((state) => state.userStore.user);
 
 	useEffect(()=> {
-		console.log("From store in nav => ", currentUser);
+		// console.log("From store in nav => ", currentUser);
 	},[currentUser]);
-
-	const userDropDown = () => {
-		// todo dropdown meni with logout btn !
-		console.log("IN MENI");
-	}
 
 	const userBtnLayout = () => {
 		return (
 		currentUser.hasOwnProperty('username') ?
-		<div className='nav-user-profile-info' onClick={userDropDown} >
+		<div className='nav-user-profile-info' >
+
 			<FaUser className='user-icon' />
 			<p> {currentUser.username} </p> 
-			<FaCaretDown className='user-icon-down' />
+			{/* <FaCaretDown className='user-icon-down' /> */}
+			<Dropdown meniElements={["logout","LOGIN"]} />
+
 		</div> :
 		<div className='nav-user-profile-signin'>
 			<NavLink to={routeConfig.SIGN_IN.url}>
@@ -56,6 +55,8 @@ function Navigation() {
 					{routeConfig.CONTACT.name}
 				</NavLink>
 
+				{/* <Dropdown /> */}
+
 			</div>
 
 			<div className='nav-user' >
@@ -63,7 +64,7 @@ function Navigation() {
 					<MdAddShoppingCart className='cart'/>
 					{
 						currentUser.hasOwnProperty('wallet') ?
-						<p className='nav-user-wallet'> {currentUser.wallet.toFixed(2) + " $"} </p> :
+						<p className={`nav-user-wallet positive` }> {currentUser.wallet.toFixed(2)} <span>$</span> </p> :
 						<p>0.00 &nbsp; $ </p>
 					}
 				</div>
@@ -72,11 +73,8 @@ function Navigation() {
 					<MdSearch/>
 				</div>
 				<div className='nav-user-profile' >
-
-
 					
 					{userBtnLayout()}
-
 
 				</div>
 			</div>

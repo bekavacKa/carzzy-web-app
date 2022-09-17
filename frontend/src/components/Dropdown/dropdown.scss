@@ -1,0 +1,32 @@
+@import "../../assets/scss/vars.scss";
+
+.dropdown-wrapper{
+    user-select: none;
+    // background-color: aquamarine;
+    .dropdown-meni{
+        .dropdown-btn{
+            font-size: 1.3rem;
+            margin: 0 5px;
+            position: relative;
+            transition: $transition;
+            &:hover{
+                color: $iconColor;
+            }
+        }
+        .dropdown-content{
+            padding: 5px;
+            background-color: $iconColor;
+            max-width: 300px;
+            position: absolute;
+            right: 39px;
+            margin-top: 5px;
+            .dropdown-item{
+                padding: 5px 10px;
+                text-transform: uppercase;
+                &:hover{
+                    color: $firstBackground;
+                }
+            }
+        }
+    }
+}

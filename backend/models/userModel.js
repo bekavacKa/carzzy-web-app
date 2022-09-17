@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
     postCode : {type: Number},
     wallet : {type: Number, default: 178},
     phoneNumber : {type: String},
-    isAdmin : {type: String, required: Boolean, default: false}
+    isAdmin : {type: String, required: Boolean, default: false},
+    isActive: {type: String, required: Boolean,  default: false}
 })
 
 const UserModel = mongoose.model('users', userSchema);

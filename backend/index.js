@@ -2,11 +2,11 @@ const express = require('express');
 // const bodyParser = require('body-parser');
 const mongoose  = require('mongoose');
 const cors = require('cors');
+const nodemailer = require("nodemailer");
 
 const serverConfig = require('./config/serverConfig');
 const dbConfig = require('./config/dbConfig');
 const Users = require('./models/userModel');
-
 
 // const router = express.Router();
 // console.log(dbConfig);
@@ -19,6 +19,7 @@ mongoose.connect(dbConfig.MONGODB_URL)
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors()); 
+
 
 // USER API
 // ! VRAĆA MI I ERR I DATA NULL IAKO DOBIJEM BODY, MORAM POGLEDAT ZASTO!!! 
@@ -70,10 +71,57 @@ app.post('/api/register', async (req,res) =>{
         }else{
             const newUser = new Users(reqBody);
             const saveNewUser = await newUser.save();
+
+            // Nodemailer
+            let testAccount = await nodemailer.createTestAccount();
+
+            let transporter = nodemailer.createTransport({
+                host: "smtp.ethereal.email",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                user: testAccount.user, // generated ethereal user
+                pass: testAccount.pass, // generated ethereal password
+                },
+            });
+
+
+            let info = await transporter.sendMail({
+                from: '"CARZZY WEB APP 👻" <bekavac@web-app.com>', // sender address
+                to: reqBody.email, // list of receivers
+                subject: "Activate your acc✔", // Subject line
+                text: "To continue registration on Carzzy APP, please confirm your e-mail", // plain text body
+                html: `
+                <h1> Activate account </h1>
+                <h3> Dear, ${reqBody.username} </h3>
+                <h3> Please click on link to activate your account, ${reqBody.username} </h3>
+                // TODO moram prominut rutu kad podignem aplikaciju
+                <a href="http://localhost:3000/user-activate/${saveNewUser._id.toString()}" target="_blank" > ACTIVATE </a>
+                `, // html body
+              });
+
+              console.log("Preview URL: ", nodemailer.getTestMessageUrl(info));
+
             res.send(saveNewUser || `User >> ${data.username} << not registered.`);
         }
     })
 });
+
+// complete  registration 
+app.post('/api/complete-registration', (req, res) => {
+
+    const userId = req.body.userId;
+
+    Users.updateOne({"_id" : userId}, {isActive: true}, (err, data) => {
+        if(err){
+            console.log(err);
+            res.status(401).send("ERROR complete-registration =>", err);
+        } else {
+            console.log("SUCCESS complete-registration");
+            res.status(201).send("SUCCESS complete registration");
+        }
+    })
+})
 
 // PRODUCT API
 

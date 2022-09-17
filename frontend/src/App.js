@@ -15,6 +15,7 @@ import Home from './pages/Home/Home';
 import Auth from './pages/Auth/Auth';
 import Contact from './pages/Contact/Contact';
 import { setUser } from "./redux/userSlice";
+import ActivateUser from './pages/ActivateUser/ActivateUser';
 
 axios.defaults.baseURL ='http://localhost:4000';
 
@@ -29,7 +30,7 @@ function App() {
   
   const userExist = () => {
     if(!localStorage.hasOwnProperty('user')){
-      navigate('/auth')
+      // navigate('/auth');
     }else{
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
     }
@@ -47,6 +48,7 @@ function App() {
         <Route path={routeConfig.SHOP.url} element={<Shop/>} />
         <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
         <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
+        <Route path="/user-activate/:id" element={<ActivateUser/>} />
         
       </Routes>
 

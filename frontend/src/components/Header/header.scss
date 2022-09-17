@@ -1,7 +1,7 @@
 @import "../../assets/scss/vars.scss";
 .header-wrapper{
-    width: 90%;
-    margin: auto;
+    width: 40%;
+    // margin: auto;
     padding: 15px 0 30px 40px;
     .header-page-title{
         font-size: 1.7rem;
@@ -12,7 +12,7 @@
         &::after{
             display: block;
             content: "";
-            width: 30%;
+            width: 80%;
             height: 2px;
             margin-top: 3px;
             background: $iconColor;
