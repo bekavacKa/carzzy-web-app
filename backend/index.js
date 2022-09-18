@@ -7,6 +7,8 @@ const nodemailer = require("nodemailer");
 const serverConfig = require('./config/serverConfig');
 const dbConfig = require('./config/dbConfig');
 const Users = require('./models/userModel');
+// const fakeProducts = require('./fakeData/products.json');
+const Products = require('./models/productModel');
 
 // const router = express.Router();
 // console.log(dbConfig);
@@ -124,10 +126,48 @@ app.post('/api/complete-registration', (req, res) => {
 })
 
 // PRODUCT API
+// all products
+// app.get('/api/all-products', (req, res) => {
+//     res.send(fakeProducts);
+// });
+app.get('/api/all-products', async (req, res) => {
 
+    Products.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
 
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("Product dont found")
+        }
+    })
+})
 
+// single product
+// app.get('api/single-product/', (req, res) => {
+//     res.send(fakeProducts);
+// });
 
+app.get("/api/single-product/:productId", (req, res) => {
+    const productId = req.params.productId;
+    Products.findOne({ _id: productId }, (err, data) => {
+        if (err) {
+            // console.log(error);
+            res.status(401).send(err)
+            return;
+        }
+
+        if (data) {
+            res.status(200).send(data);
+        } else {
+            res.status(401).send("Product dont found");
+        }
+    })
+})
 
 app.listen(serverConfig.port, err => {
     if(err){

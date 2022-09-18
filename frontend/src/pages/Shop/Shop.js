@@ -12,7 +12,7 @@ function Shop() {
     useEffect(() => {
         ShopService.getProducts()
                     .then(res => {
-                        console.log("all data =>", res);
+                        // console.log("all data =>", res);
                         if(res.status === 200){
                             setAllProducts(res.data);
                         }
@@ -29,7 +29,7 @@ function Shop() {
         {
         allProducts.map((product, index) => {
             return (
-                <ProductSingle productProps={product} key={product.id} />
+                <ProductSingle productProps={product} key={product._id} />
             )
         })
         }

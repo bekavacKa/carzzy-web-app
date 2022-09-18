@@ -16,6 +16,7 @@ import Auth from './pages/Auth/Auth';
 import Contact from './pages/Contact/Contact';
 import { setUser } from "./redux/userSlice";
 import ActivateUser from './pages/ActivateUser/ActivateUser';
+import ProductView from './pages/ProductView/ProductView';
 
 axios.defaults.baseURL ='http://localhost:4000';
 
@@ -46,6 +47,7 @@ function App() {
 
         <Route path={routeConfig.HOME.url} element={<Home/>} />
         <Route path={routeConfig.SHOP.url} element={<Shop/>} />
+        <Route path="/shop/product/:productId" element={<ProductView/>} />
         <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
         <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
         <Route path="/user-activate/:id" element={<ActivateUser/>} />
