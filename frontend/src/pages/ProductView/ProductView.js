@@ -5,7 +5,7 @@ import ProductDetails from '../../components/ProductDetails/ProductDetails'
 function ProductView() {
   return (
     <div className='product-view-wrapper' >
-        <Header pageTitle={"product viewing"} />
+        <Header pageTitle={"Details"} />
         <ProductDetails/>
     </div>
   )

@@ -2,7 +2,7 @@
 
 .product-single-wrapper{
 
-    max-width: 22%;
+    max-width: 23%;
     @include bek-flex(center,row);
     // flex: 1;
     .product-card{
@@ -12,6 +12,11 @@
         align-items: center;
         flex-direction: column;
         margin-bottom: 30px;
+        transition: 0.3s ease-in;
+        &:hover{
+            box-shadow: 0 0 3px $iconColor;
+            transform: scale(1.03);
+        }
 
         // border: 3px solid white;
         // padding: 10px;
@@ -20,6 +25,7 @@
         .product-card-img{
             width: 100%;
             height: 100%;
+            padding: 30px 10px;
             @include bek-flex(center,row);
             align-items: center;
             img{
@@ -30,10 +36,19 @@
         .product-card-info{
             margin-top: 10px;
             width: 100%;
+            @include bek-flex(center,column);
+            align-items: center;
+            padding: 15px ;
+            background-color: $iconColor;
             // background-color: red;
             border-top: 1px solid $firstFontColor;
             button{
                 @include bek-btn;
+                font-size: 0.8rem;
+                padding: 5px 15px;
+                margin: 0;
+                margin-top: 15px;
+                background-color: $secondBackground;
             }
         }
     }

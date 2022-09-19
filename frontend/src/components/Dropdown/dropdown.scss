@@ -3,11 +3,11 @@
 .dropdown-wrapper{
     user-select: none;
     // background-color: aquamarine;
+    position: relative;
     .dropdown-meni{
         .dropdown-btn{
             font-size: 1.3rem;
             margin: 0 5px;
-            position: relative;
             transition: $transition;
             &:hover{
                 color: $iconColor;
@@ -18,8 +18,9 @@
             background-color: $iconColor;
             max-width: 300px;
             position: absolute;
-            right: 39px;
+            right: 0px;
             margin-top: 5px;
+            z-index: 10;
             .dropdown-item{
                 padding: 5px 10px;
                 text-transform: uppercase;

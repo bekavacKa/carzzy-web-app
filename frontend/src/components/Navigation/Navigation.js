@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import {Link, NavLink} from "react-router-dom";
 import { FaCar, FaUser } from "react-icons/fa";
-import { MdAddShoppingCart, MdSearch } from "react-icons/md";
+import { MdSearch } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 import routeConfig from '../../config/routeConfig';
 import "./navigation.scss";
 import Dropdown from '../Dropdown/Dropdown';
+import ShopCart from '../ShopCart/ShopCart';
 
 function Navigation() {
 	const currentUser = useSelector((state) => state.userStore.user);
@@ -61,12 +62,13 @@ function Navigation() {
 
 			<div className='nav-user' >
 				<div className='nav-user-cart'>
-					<MdAddShoppingCart className='cart'/>
 					{
 						currentUser.hasOwnProperty('wallet') ?
 						<p className={`nav-user-wallet positive` }> {currentUser.wallet.toFixed(2)} <span>$</span> </p> :
 						<p>0.00 &nbsp; $ </p>
 					}
+					<ShopCart />
+					{/* <MdAddShoppingCart className='cart'/> */}
 				</div>
 				<div className='nav-user-search'>
 					<input type="search" placeholder='Search'/>

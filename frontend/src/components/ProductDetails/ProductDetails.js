@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { addToShopCart } from '../../redux/shopSlice';
 import ShopService from '../../services/ShopService';
+
+import './product-details.scss';
 
 function ProductDetails() {
     const [product, setProduct] = useState({});
@@ -8,9 +12,10 @@ function ProductDetails() {
     const [isApiFinished, setIsApiFinished] = useState(false);
 
     const params = useParams();
+    const dispatch = useDispatch();
 
     useEffect(()=> {
-        console.log(params);
+        // console.log(params);
         if(params.productId){
             ShopService.getSingleProduct(params.productId)
                         .then((res)=>{
@@ -40,22 +45,28 @@ function ProductDetails() {
         )
     };
 
+    const addToCart = () => {
+        // console.log("CARRTT", product);
+        dispatch(addToShopCart(product));
+    }
+
     const productLayout = () => {
         return (
             isApiFinished &&
-            <div>
+            <div className='product-details'>
                 <img src={product.imageUrl} alt={product.title} />
                 <h2>{product.title}</h2>
                 <h2>{product.description}</h2>
                 <h2>{product.price}</h2>
                 <h2>{product.rating}</h2>
+                <button onClick={addToCart} > ADD to cart </button>
             </div>
         )
-    }
+    };
+
 
   return (
     <div className='product-details-wrapper'>
-        {/* <h2>ProductDetails</h2> */}
         {noParamsMsgLayout()}
         {
             product.hasOwnProperty('_id') && productLayout()

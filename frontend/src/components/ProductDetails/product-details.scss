@@ -1,0 +1,20 @@
+@import "../../assets/scss/vars.scss";
+
+.product-details-wrapper{
+    @include container;
+    background-color: $secondBackground;
+    padding: 30px 0;
+    .product-details{
+        @include bek-flex(center, column);
+        align-items: center;
+        img{
+            width: 30%;
+        }
+        button{
+            &::before{
+                border: 1px solid white;
+            }
+            @include bek-btn;
+        }
+    }
+}

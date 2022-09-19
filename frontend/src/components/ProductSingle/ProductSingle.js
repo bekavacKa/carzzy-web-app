@@ -17,13 +17,14 @@ function ProductSingle(props) {
         <div className='product-card'>
           
           <div className='product-card-img'>
-            <img src={product.imageUrl} alt={product.title}  />
+            <Link to={`/shop/product/${product._id}`} >
+              <img src={product.imageUrl} alt={product.title}  />
+            </Link>
           </div>
 
           <div className='product-card-info'>
-            <p>Info</p>
             <p>{product.title}</p>
-            <p>{product.price}</p>
+            <p>{product.price} $ </p>
             <Link to={`/shop/product/${product._id}`} >
               <button>VIEW</button>
             </Link>
