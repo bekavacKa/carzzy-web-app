@@ -29,10 +29,16 @@ const shopSlice = createSlice({
                 newItem.totalPrice = newItem.price;
                 state.shopCart.push(newItem);
             }
+        },
+        deleteFromShopCart: (state, action ) =>{
+            state.shopCart.splice(action.payload, 1);
+        },
+        handleItemCountShopCart: (state, action) => {
+            state.shopCart[action.payload.index].count = action.payload.isIncrement ? state.shopCart[action.payload.index].count + 1 : state.shopCart[action.payload.index].count - 1;
         }
     }
 });
 
 
-export const {addToShopCart} =shopSlice.actions;
+export const {addToShopCart, deleteFromShopCart, handleItemCountShopCart} =shopSlice.actions;
 export default shopSlice.reducer;

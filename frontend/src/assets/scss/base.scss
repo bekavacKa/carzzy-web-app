@@ -4,6 +4,23 @@
     margin: 0;
     box-sizing: border-box;
 }
+// Firefox scrool
+*{
+    scrollbar-width: thin;
+    scrollbar-color: $iconColor $secondBackground;
+}
+//Chrome scrool
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background: $secondBackground;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: $iconColor;
+    border-radius: 20px;
+}
+
 a{
     // color: $secondFontColor;
     text-decoration: none;

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 // import { MdAddShoppingCart } from "react-icons/md";
-import {FaCartPlus, FaPlusCircle, FaMinusCircle} from "react-icons/fa";
-import { useSelector } from 'react-redux';
+import {FaCartPlus, FaPlusCircle, FaMinusCircle, FaTrash} from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFromShopCart, handleItemCountShopCart } from '../../redux/shopSlice';
 
 import "./shop-cart.scss";
 
@@ -10,6 +11,8 @@ function ShopCart() {
     const {shopCart} = useSelector(state => state.shopCartStore);
     const shopCartRef = useRef();
     const [isActiveShopCart, setIsActiveShopCart] = useState(false);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // console.log("useee eff => ", shopCart);
@@ -29,17 +32,40 @@ function ShopCart() {
     const handleShopCartView = () => {
         setIsActiveShopCart(!isActiveShopCart);
     }
+
+    const deleteItemFromShopCart = (index) => {
+        dispatch(deleteFromShopCart(index))
+    }
+
+    const handleItemCount = (index, isIncrement) => {
+        dispatch(handleItemCountShopCart({index, isIncrement}));
+    }
     
     const shopCartAllLayout = () => {
         return (
             shopCart.map((item, index) => {
                 return(
                     <div className='shop-cart-item' key={index} id={item._id} >
-                        <img src={item.imageUrl} alt={item.title} />
-                        <div className='shop-cart-item-info' >
-                            <p> {item.title} </p>
-                            <p> <FaMinusCircle className='shop-cart-item-info-icon' /> {item?.count} <FaPlusCircle className='shop-cart-item-info-icon' /> </p>
+                        
+                        <div className='shop-cart-item-img'>
+                            <img src={item.imageUrl} alt={item.title} />
                         </div>
+                        
+                        <div className='shop-cart-item-info' >
+                            <p>{item.title} </p>    
+                            <p>{item.price * item.count} $</p>
+                        </div>
+                        
+                        <div className='shop-cart-item-btns'>
+                            {item.count > 1 && 
+                                <div className='shop-cart-item-updown'>
+                                <FaPlusCircle className='shop-cart-item-updown-icon' onClick={() => handleItemCount (index, true)} /> 
+                                <p className='shop-cart-item-updown-count'>{item?.count}</p> 
+                                <FaMinusCircle className='shop-cart-item-updown-icon minus' onClick={() => handleItemCount (index, false)} /> 
+                                </div>
+                            }
+                        </div>
+                        <FaTrash className='shop-cart-item-trash' onClick={() => deleteItemFromShopCart(index)} />
                         
                     </div>
                 )

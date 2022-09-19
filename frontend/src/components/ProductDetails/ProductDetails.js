@@ -54,11 +54,17 @@ function ProductDetails() {
         return (
             isApiFinished &&
             <div className='product-details'>
-                <img src={product.imageUrl} alt={product.title} />
-                <h2>{product.title}</h2>
-                <h2>{product.description}</h2>
-                <h2>{product.price}</h2>
-                <h2>{product.rating}</h2>
+                <div className='product-details-title'>
+                    <h3>{product.title}</h3>
+                    <h4>{product.rating}</h4>
+                </div>
+                <div className='product-details-image'>
+                    <img src={product.imageUrl} alt={product.title} />
+                    <h3>PRICE: &nbsp; {product.price.toFixed(2)} &nbsp; $ </h3>
+                </div>
+                <div className='product-details-info' >
+                    <p>{product.description}</p>
+                </div>
                 <button onClick={addToCart} > ADD to cart </button>
             </div>
         )

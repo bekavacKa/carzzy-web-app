@@ -21,7 +21,7 @@ import ProductView from './pages/ProductView/ProductView';
 axios.defaults.baseURL ='http://localhost:4000';
 
 function App() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,10 +47,10 @@ function App() {
 
         <Route path={routeConfig.HOME.url} element={<Home/>} />
         <Route path={routeConfig.SHOP.url} element={<Shop/>} />
-        <Route path="/shop/product/:productId" element={<ProductView/>} />
+        <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
         <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
         <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
-        <Route path="/user-activate/:id" element={<ActivateUser/>} />
+        <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
         
       </Routes>
 

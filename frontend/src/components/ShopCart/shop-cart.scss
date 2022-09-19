@@ -13,12 +13,15 @@
             cursor: pointer;
             font-size: 1.5rem;
             color: $secondFontColor;
+            transition: $transition;
+            &:hover{
+                transform: scale(1.08);
+            }
         }
         .shop-cart-badge{
             // display: none;
             font-size: 0.6rem;
             position: absolute;
-            // left: 20px;
             right: -7px;
             top: -5px;
             background-color: $iconColor;
@@ -28,49 +31,71 @@
         }
         .shop-cart-container{
             position: absolute;
-            width: 300px;
+            width: 350px;
             max-height: 250px;
-            // top: 100%;
             top: 35px;
             background-color: $iconColor;
             border-radius: 5px;
             padding: 2px;
-            overflow: hidden;
+            overflow: scroll;
+            overflow-x: hidden;
             .shop-cart-item{
                 @include bek-flex(start, row);
                 align-items: center;
                 padding: 5px;
                 color: $firstFontColor;
-                border-bottom: 1px solid $firstFontColor;
                 transition: $transition;
+                &:not(:last-child){
+                    border-bottom: 1px solid $firstFontColor;
+                }
                 &:hover{
                     background-color: $secondBackground;
                 }
-                p{
-                    margin: 0 5px;
-                }
-                img{
-                    width: 25%;
-                    height: 60px;
+                .shop-cart-item-img{
+                    flex: 1;
+                    img{
+                        width: 90%;
+                        padding: 5px;
+                    }
                 }
                 .shop-cart-item-info{
-                    @include bek-flex(space-between, row);
-                    flex: 1;
-                    p{
-                        &:last-child{
-                            @include bek-flex(start,row);
-                            align-items: center;
+                    flex: 2;
+                    margin: 0 20px;
+                    @include bek-flex(space-evenly,column);
+                }
+                .shop-cart-item-btns{
+                    @include bek-flex(start, row);
+                    margin: 0 15px 0 5px;
+                    .shop-cart-item-updown{
+                        @include bek-flex(space-between,column);
+                        align-items: center;
+                        .shop-cart-item-updown-icon{
+                            font-size: 1rem;
+                            cursor: pointer;
+                            transition: $transition;
+                            &:hover{
+                                color: yellowgreen;
+                            }
+                            &.minus{
+                                &:hover{
+                                    color: $iconColor;
+                                }
+                            }
                         }
-                    }
-                    .shop-cart-item-info-icon{
-                        cursor: pointer;
-                        transition: $transition;
-                        margin: 0 5px;
-                        &:hover{
-                            color: yellowgreen;
+                        .shop-cart-item-updown-count{
+                            margin: 3px 0;
                         }
                     }
                 }
+                .shop-cart-item-trash{
+                    padding-right: 5px;
+                    cursor: pointer;
+                    transition: $transition;
+                    &:hover{
+                        color: $iconColor;
+                    }
+                }
+
             }
         }
         
