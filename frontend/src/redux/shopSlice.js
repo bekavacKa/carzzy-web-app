@@ -35,10 +35,13 @@ const shopSlice = createSlice({
         },
         handleItemCountShopCart: (state, action) => {
             state.shopCart[action.payload.index].count = action.payload.isIncrement ? state.shopCart[action.payload.index].count + 1 : state.shopCart[action.payload.index].count - 1;
+        },
+        setShopCart: (state, action) => {
+            state.shopCart = action.payload;
         }
     }
 });
 
 
-export const {addToShopCart, deleteFromShopCart, handleItemCountShopCart} =shopSlice.actions;
+export const {addToShopCart, deleteFromShopCart, handleItemCountShopCart, setShopCart} =shopSlice.actions;
 export default shopSlice.reducer;

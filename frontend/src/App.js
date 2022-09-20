@@ -17,6 +17,8 @@ import Contact from './pages/Contact/Contact';
 import { setUser } from "./redux/userSlice";
 import ActivateUser from './pages/ActivateUser/ActivateUser';
 import ProductView from './pages/ProductView/ProductView';
+import Order from './pages/Order/Order';
+import { setShopCart } from './redux/shopSlice';
 
 axios.defaults.baseURL ='http://localhost:4000';
 
@@ -25,15 +27,21 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    userExist();
-    
+    userLocalStorage();
+    shopCartLocalStorage();
   }, []);
   
-  const userExist = () => {
+  const userLocalStorage = () => {
     if(!localStorage.hasOwnProperty('user')){
       // navigate('/auth');
     }else{
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
+    }
+  }
+
+  const shopCartLocalStorage = () => {
+    if(localStorage.hasOwnProperty('shopCart')){
+      dispatch(setShopCart(JSON.parse(localStorage.getItem('shopCart'))));
     }
   }
   
@@ -51,6 +59,7 @@ function App() {
         <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
         <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
         <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
+        <Route path={routeConfig.ORDER.url} element={<Order/>} />
         
       </Routes>
 

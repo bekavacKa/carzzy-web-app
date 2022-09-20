@@ -26,6 +26,9 @@ const routeConfig ={
         url: '/user-activate/:id',
         completeUrl: id => `/user-activate/${id}`
     },
+    ORDER : {
+        url: '/order'
+    }
 }
 
 export default routeConfig;

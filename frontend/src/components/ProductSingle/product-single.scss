@@ -34,7 +34,7 @@
             }
         }
         .product-card-info{
-            margin-top: 10px;
+            margin: 10px 0 2px;
             width: 100%;
             @include bek-flex(center,column);
             align-items: center;
@@ -44,22 +44,32 @@
             letter-spacing: 2px;
             // background-color: red;
             border-top: 1px solid $firstFontColor;
-            .product-card-info-btn{
-                @include bek-flex(center,row);
-                align-items: center;
-                .product-card-info-btn-cart{
-                    margin-left: 10px;
-                    font-size: 1rem;
+        }
+        .product-card-btns{
+            background-color: $iconColor;
+            width: 100%;
+            .product-card-btns-view{
+                border: none;
+                width: 50%;
+                padding: 6px;
+                background-color: $iconColor;
+                // border: 1px solid $firstFontColor;
+                font-size: 1.4rem;
+                color: $firstFontColor;
+                transition: $transition;
+                cursor: pointer;
+                border-right: 1px solid $secondBackground;
+                &:hover{
+                    // border: 1px solid $firstFontColor;
+                    background-color: $secondBackground;
                 }
             }
-            button{
-                @include bek-btn;
-                font-size: 0.8rem;
-                padding: 7px 15px;
-                margin: 0;
-                margin-top: 15px;
-                background-color: $secondBackground;
+            .product-card-btns-add{
+                @extend .product-card-btns-view;
+                border-left: 1px solid $secondBackground;
+                border-right: 0;
             }
+            
         }
     }
 

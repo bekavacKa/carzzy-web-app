@@ -39,6 +39,27 @@
             padding: 2px;
             overflow: scroll;
             overflow-x: hidden;
+            .shop-cart-orderbtn{
+                text-align: center;
+                button{
+                    padding: 10px 25px;
+                    letter-spacing: .1rem;
+                    background-color: $secondBackground;
+                    font-size: .8rem;
+                    font-family: $fontF;
+                    font-weight: 500;
+                    color: $firstFontColor;
+                    border-radius: 2px;
+                    transition: $transition;
+                    margin: 5px 0;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    border: 1px solid $firstBackground;
+                    &:hover{
+                        border: 1px solid $firstFontColor;
+                    }
+                }
+            }
             .shop-cart-item{
                 @include bek-flex(start, row);
                 align-items: center;

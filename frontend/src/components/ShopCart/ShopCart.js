@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 // import { MdAddShoppingCart } from "react-icons/md";
 import {FaCartPlus, FaPlusCircle, FaMinusCircle, FaTrash} from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import routeConfig from '../../config/routeConfig';
 import { deleteFromShopCart, handleItemCountShopCart } from '../../redux/shopSlice';
 
 import "./shop-cart.scss";
@@ -22,9 +24,12 @@ function ShopCart() {
         }
         if(shopCart.length){
             shopCartRef.current.classList.add("show-badge");
+            // todo moram na unmount spremit shopcart u ls ili smislit nesto bolje
+            localStorage.setItem('shopCart', JSON.stringify(shopCart));
         }else{
             shopCartRef.current.classList.remove("show-badge");
         }
+
     }, [shopCart]);
 
     
@@ -65,6 +70,7 @@ function ShopCart() {
                                 </div>
                             }
                         </div>
+
                         <FaTrash className='shop-cart-item-trash' onClick={() => deleteItemFromShopCart(index)} />
                         
                     </div>
@@ -85,9 +91,13 @@ function ShopCart() {
                     {
                     shopCartAllLayout()
                     }
+                    <div className='shop-cart-orderbtn' >
+                        <Link to={routeConfig.ORDER.url}>
+                            <button >Order</button>
+                        </Link>
+                    </div>
                 </div> :
                 null
-
             }
         </div>
     </div>

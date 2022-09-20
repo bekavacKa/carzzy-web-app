@@ -27,11 +27,11 @@ function Shop() {
         <Header pageTitle={"shop"} />
     <div className='shop-wrapper'>
         {
-        allProducts.map((product, index) => {
-            return (
-                <ProductSingle productProps={product} key={product._id} />
-            )
-        })
+            allProducts.map((product, index) => {
+                return (
+                    <ProductSingle productProps={product} key={product._id} />
+                )
+            })
         }
     </div>
     </>

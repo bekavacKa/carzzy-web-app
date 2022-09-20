@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {FaCartPlus} from "react-icons/fa";
+import {FaCartPlus, FaRegEye} from "react-icons/fa";
 
 import { addToShopCart } from '../../redux/shopSlice';
 import './product-single.scss';
@@ -38,10 +38,17 @@ function ProductSingle(props) {
           <div className='product-card-info'>
             <p>{product.title}</p>
             <p>{product.price.toFixed(2)} $ </p>
+          </div>
+
+          <div className='product-card-btns' >
             <Link to={routeConfig.SHOP_SINGLE_PRODUCT.completeUrl(product._id)} >
-              <button>VIEW</button>
+              <button className='product-card-btns-view' >
+                <FaRegEye/>
+              </button>
             </Link>
-            <button className='product-card-info-btn' onClick={addToCart} > ADD to < FaCartPlus className='product-card-info-btn-cart' /> </button>
+            <button className='product-card-btns-add' onClick={addToCart} > 
+              < FaCartPlus /> 
+            </button>
           </div>
 
         </div>
