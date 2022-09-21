@@ -3,16 +3,19 @@
 .footer-wrapper{
     background-color: $secondBackground;
     @include bek-flex(center, column);
+    margin-top: 50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    .footer-hr{
+        margin: 0;
+        padding: 0;
+        color: $iconColor;
+        background-color: $iconColor;
+    }
     .footer-top{
         @include bek-flex(space-evenly, row);
-        padding: 50px 0;
-        &::after{
-            content: "";
-            width: 70%;
-            height: 1px;
-            margin-top: 60px;
-            background: $iconColor;
-        }
+        padding: 50px;
         p{
             margin: 0;
             padding: 6px 0;
@@ -68,38 +71,55 @@
         }
 
     }
-    .footer-main{
-        @include bek-flex(space-evenly, row);
-        h4{
-            font-size: 1.4rem;
-            text-transform: capitalize;
-        }
-        p{
-            color: $secondFontColor;
-        }
-        .footer-main-contact{
+
+    .footer-contact{
+        @include bek-flex(center, column);
+        padding: 10px;
+        .footer-contact-info{
+            display: flex;
+            justify-content: space-around;
             div{
                 @include bek-flex(space-between, column);
                 align-items: center;
+                p{
+                    margin-top: 8px;
+                }
             }
-            .footer-main-contact-icon{
-                margin-left: 15px;
+
+            .footer-contact-icon{
+                margin-bottom: 5px;
                 color: $iconColor;
                 font-size: 1.4rem;
             }
+
         }
-        &::after{
-            content: "";
-            width: 70%;
-            height: 1px;
-            margin-top: 60px;
-            background: $iconColor;
+
+    }
+
+    .footer-main{
+        @include bek-flex(space-evenly, row);
+        padding: 30px;
+        text-transform: capitalize;
+
+        h4{
+            font-size: 1.4rem;
+            &::after{
+                display: block;
+                content: "";
+                width: 30%;
+                height: 2px;
+                margin: 8px 0 15px;
+                background: $iconColor;
+            }
+        }
+        p{
+            color: $secondFontColor;
         }
 
     }
     .footer-bottom{
         @include bek-flex(center, column);
         align-items: center;
-        padding: 30px;
+        padding: 25px  0 5px;
     }
 }

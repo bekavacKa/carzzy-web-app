@@ -48,22 +48,10 @@ function Footer() {
             </div>
         </article>
 
+        <hr className='footer-hr'/>
+
+
         <article className='footer-main'>
-            <div className='footer-main-contact' >
-                <h4>Contact</h4>
-                <div className='footer-main-contact-adress'>
-                    <FaHouseUser className='footer-main-contact-icon' />
-                    <p>8. Mediteranskih igara 2, Split</p>
-                </div>
-                <div className='footer-main-contact-phone'>
-                    <FaPhoneVolume className='footer-main-contact-icon' />
-                    <p>+385 21 546 486</p>
-                </div>
-                <div className='footer-main-contact-email'>
-                    <FaMailBulk className='footer-main-contact-icon' />
-                    <p>bekavacTh@mail.com</p>
-                </div>
-            </div>
 
             <div className='footer-main-products' >
                 <h4>products</h4>
@@ -102,9 +90,31 @@ function Footer() {
             </div>
         </article>
 
+
+        <article className='footer-contact' >
+                <div className='footer-contact-info' >
+                    
+                    <div className='footer-contact-phone'>
+                        <FaPhoneVolume className='footer-contact-icon' />
+                        <p>+385 21 546 486</p>
+                    </div>
+                    <div className='footer-contact-adress'>
+                        <FaHouseUser className='footer-contact-icon' />
+                        <p>8. Mediteranskih igara 2, Split</p>
+                    </div>
+                    <div className='footer-contact-email'>
+                        <FaMailBulk className='footer-contact-icon' />
+                        <p>bekavacTh@mail.com</p>
+                    </div>
+
+                </div>
+        </article>
+
+        <hr className='footer-hr'/>
+
         <article className='footer-bottom' >
-            <h5> Kazimir Bekavac</h5>
-            <h5> &copy; 2022</h5>
+            <h6> Kazimir Bekavac</h6>
+            <p> &copy; 2022</p>
         </article>
     </footer>
   )
