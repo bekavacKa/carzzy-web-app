@@ -1,0 +1,105 @@
+@import "../../assets/scss/vars.scss";
+
+.footer-wrapper{
+    background-color: $secondBackground;
+    @include bek-flex(center, column);
+    .footer-top{
+        @include bek-flex(space-evenly, row);
+        padding: 50px 0;
+        &::after{
+            content: "";
+            width: 70%;
+            height: 1px;
+            margin-top: 60px;
+            background: $iconColor;
+        }
+        p{
+            margin: 0;
+            padding: 6px 0;
+        }
+        .footer-top-shipping{
+            @include bek-flex(space-between, row);
+            align-items: center;
+            .footer-top-shipping-image{
+                @include bek-flex(center,column);
+                background-color: $secondFontColor;
+                border-radius: 50%;
+                height: 5rem;
+                width: 5rem;
+                align-items: center;
+                .footer-icon{
+                    color: $iconColor;
+                    font-size: 2rem;
+                }
+            }
+            .footer-top-shipping-info{
+                padding-left: 20px;
+                p:last-child{
+                    color: $secondFontColor;
+                }
+            }
+        }
+        .footer-top-gift{
+            @extend .footer-top-shipping;
+            .footer-top-gift-image{
+                @extend .footer-top-shipping-image;
+            }
+            .footer-top-gift-info{
+                @extend .footer-top-shipping-info;
+            }
+        }
+        .footer-top-support{
+            @extend .footer-top-shipping;
+            .footer-top-support-image{
+                @extend .footer-top-shipping-image;
+            }
+            .footer-top-support-info{
+                @extend .footer-top-shipping-info;
+            }
+        }
+        .footer-top-payment{
+            @extend .footer-top-shipping;
+            .footer-top-payment-image{
+                @extend .footer-top-shipping-image;
+            }
+            .footer-top-payment-info{
+                @extend .footer-top-shipping-info;
+            }
+        }
+
+    }
+    .footer-main{
+        @include bek-flex(space-evenly, row);
+        h4{
+            font-size: 1.4rem;
+            text-transform: capitalize;
+        }
+        p{
+            color: $secondFontColor;
+        }
+        .footer-main-contact{
+            div{
+                @include bek-flex(space-between, column);
+                align-items: center;
+            }
+            .footer-main-contact-icon{
+                margin-left: 15px;
+                color: $iconColor;
+                font-size: 1.4rem;
+            }
+        }
+        &::after{
+            content: "";
+            width: 70%;
+            height: 1px;
+            margin-top: 60px;
+            background: $iconColor;
+        }
+
+    }
+    .footer-bottom{
+        @include bek-flex(center, column);
+        align-items: center;
+        padding: 30px;
+    }
+}

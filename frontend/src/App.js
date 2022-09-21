@@ -19,6 +19,7 @@ import ActivateUser from './pages/ActivateUser/ActivateUser';
 import ProductView from './pages/ProductView/ProductView';
 import Order from './pages/Order/Order';
 import { setShopCart } from './redux/shopSlice';
+import Footer from './components/Footer/Footer';
 
 axios.defaults.baseURL ='http://localhost:4000';
 
@@ -64,6 +65,8 @@ function App() {
       </Routes>
 
       {/* <Button>TEST BOOTSTRAP</Button> */}
+
+      <Footer/>
       
     </div>
   );
