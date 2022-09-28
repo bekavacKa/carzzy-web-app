@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {FaPlusCircle, FaMinusCircle, FaTrash} from "react-icons/fa";
 import { deleteFromShopCart, handleItemCountShopCart } from '../../../redux/shopSlice';
 
+import "../scss/order-process-step-one.scss";
+
 
 
 
@@ -27,7 +29,7 @@ function OrderProcessStepOne() {
         return shopCart.map((item, index) => {
             return (
             <tr key={index}>
-                <th scope="row" >{index +1}</th>
+                <th >{index +1}</th>
                 <td>
                     <img src={item.imageUrl} alt={item.title} />
                 </td>
@@ -35,12 +37,12 @@ function OrderProcessStepOne() {
                 <td>
                     {
                         item.count > 1 ?
-                        <FaMinusCircle onClick={() => handleItemCount (index, false)} /> :
+                        <FaMinusCircle className='minus-plus' onClick={() => handleItemCount (index, false)} /> :
                         null 
                     }
                     {item.count} 
                     
-                    <FaPlusCircle onClick={() => handleItemCount (index, true)} /> 
+                    <FaPlusCircle className='minus-plus' onClick={() => handleItemCount (index, true)} /> 
                 </td>
                 <td>{item.price * item.count}</td>
                 <td>
@@ -61,15 +63,15 @@ function OrderProcessStepOne() {
   return (
     <div className='order-process-step-one-wrapper'>
         <h2>OrderProcessStepOne</h2>
-        <table className="table table-sm order-process-step-one-table">
+        <table className="order-one-table">
             <thead>
                 <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">No. Pieces</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">  </th>
+                    <th>No.</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>No. Pieces</th>
+                    <th>Price</th>
+                    <th>  </th>
                 </tr>
             </thead>
             <tbody>

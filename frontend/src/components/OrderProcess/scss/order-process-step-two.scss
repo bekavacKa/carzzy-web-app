@@ -1,0 +1,7 @@
+@import "../../../assets/scss/vars.scss";
+
+.order-process-step-two-wrapper{
+    background-color: $secondFontColor;
+    @include bek-flex(center, column);
+    align-items: center;
+}

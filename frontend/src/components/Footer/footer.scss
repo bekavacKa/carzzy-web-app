@@ -9,7 +9,8 @@
     width: 100%;
     .footer-hr{
         margin: 0;
-        padding: 0;
+        height: .01rem;
+        border: none;
         color: $iconColor;
         background-color: $iconColor;
     }
@@ -19,6 +20,8 @@
         p{
             margin: 0;
             padding: 6px 0;
+            cursor: pointer;
+            transition: $transition;
         }
         .footer-top-shipping{
             @include bek-flex(space-between, row);
@@ -37,8 +40,17 @@
             }
             .footer-top-shipping-info{
                 padding-left: 20px;
-                p:last-child{
+                p:nth-child(even){
                     color: $secondFontColor;
+                    &:hover{
+                        color: $firstFontColor;
+                    }
+                }
+                p:nth-child(odd){
+                    color: $firstFontColor;
+                    &:hover{
+                        color: $secondFontColor;
+                    }
                 }
             }
         }
@@ -71,10 +83,50 @@
         }
 
     }
+    .footer-main{
+        @include bek-flex(space-evenly, row);
+        padding: 40px;
+        text-transform: capitalize;
+
+        h4{
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                &::after{
+                    display: block;
+                    content: "";
+                    width: 70%;
+                    height: 2px;
+                    margin: 8px 0 15px;
+                    background: $iconColor;
+                }
+            }
+            &::after{
+                display: block;
+                content: "";
+                width: 30%;
+                height: 2px;
+                margin: 8px 0 15px;
+                background: $iconColor;
+                transition: $transition;
+            }
+        }
+        p{
+            color: $secondFontColor;
+            margin-bottom: 7px;
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                color: $firstFontColor;
+            }
+        }
+
+    }
 
     .footer-contact{
         @include bek-flex(center, column);
-        padding: 10px;
+        padding: 20px 0 30px;
         .footer-contact-info{
             display: flex;
             justify-content: space-around;
@@ -96,30 +148,12 @@
 
     }
 
-    .footer-main{
-        @include bek-flex(space-evenly, row);
-        padding: 30px;
-        text-transform: capitalize;
-
-        h4{
-            font-size: 1.4rem;
-            &::after{
-                display: block;
-                content: "";
-                width: 30%;
-                height: 2px;
-                margin: 8px 0 15px;
-                background: $iconColor;
-            }
-        }
-        p{
-            color: $secondFontColor;
-        }
-
-    }
     .footer-bottom{
         @include bek-flex(center, column);
         align-items: center;
-        padding: 25px  0 5px;
+        padding: 25px  0 15px;
+        h3{
+            margin-bottom: 10px;
+        }
     }
 }

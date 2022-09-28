@@ -113,8 +113,8 @@ function Footer() {
         <hr className='footer-hr'/>
 
         <article className='footer-bottom' >
-            <h6> Kazimir Bekavac</h6>
-            <p> &copy; 2022</p>
+            <h3> &copy; Kazimir Bekavac</h3>
+            <p>  2022</p>
         </article>
     </footer>
   )
