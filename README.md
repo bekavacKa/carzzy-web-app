@@ -23,7 +23,7 @@ The design of the application is not final and after a certain degree of applica
     _ _ EXPRESS
     _ _ MONGODB
 
-### OSTALI ALATI, TEHNOLOGIJE, MODULI, KNJIŽNICE . . .
+### OTHER TOOLS, TECHNOLOGIES, MODULES, LIBRARIES. . .
     _ _ NODEMON
     _ _ POSTMAN
     _ _ MONGOOSE
