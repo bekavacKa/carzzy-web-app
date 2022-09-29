@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import OrderProcessStepOne from './components/OrderProcessStepOne';
+import OrderProcessStepThree from './components/OrderProcessStepThree';
 import OrderProcessStepTwo from './components/OrderProcessStepTwo';
 import OrderStepperFooter from './components/OrderStepperFooter';
 import './order-process.scss';
@@ -15,6 +16,8 @@ function OrderProces() {
          return <OrderProcessStepOne/>
       case 2:
         return  <OrderProcessStepTwo/>
+      case 3:
+        return  <OrderProcessStepThree/>
 
       default:
         return <p>NIJE OKEJ</p>

@@ -2,10 +2,10 @@ import axios from "axios";
 
 class ShopService{
     static getProducts(){
-        return axios.get('/api/all-products');
+        return axios.get('/api/shop/all-products');
     }
     static getSingleProduct(productId){
-        return axios.get(`/api/single-product/${productId}`);
+        return axios.get(`/api/shop/single-product/${productId}`);
     }
 }
 

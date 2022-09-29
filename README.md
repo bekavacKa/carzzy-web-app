@@ -1,4 +1,5 @@
-# ABOUT THE PROJECT => CARZZY WEB APP
+# CARZZY WEB APP
+## ABOUT THE PROJECT
 _ _ The application is designed as a web shop for the sale of auto parts and serves to improve my skills in web development.
 I planned the project as completely independent and I develop the backend and frontend independently.
 The design of the application is not final and after a certain degree of application functionality, it will be made responsive.
@@ -23,7 +24,7 @@ The design of the application is not final and after a certain degree of applica
     _ _ EXPRESS
     _ _ MONGODB
 
-### OSTALI ALATI, TEHNOLOGIJE, MODULI, KNJIŽNICE . . .
+### OTHER TOOLS, TECHNOLOGIES, MODULES, LIBRARIES. . .
     _ _ NODEMON
     _ _ POSTMAN
     _ _ MONGOOSE

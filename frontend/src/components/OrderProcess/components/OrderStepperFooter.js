@@ -27,6 +27,7 @@ function OrderStepperFooter() {
         }
         if(currentStep === 2){
             dispatch(updateStepTwoIsSubmit());
+            dispatch(handleOrderSteps(currentStep + 1));
         }
         return
     }
