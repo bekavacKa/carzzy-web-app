@@ -1,7 +1,26 @@
 @import "../../../assets/scss/vars.scss";
 
 .order-process-step-two-wrapper{
-    background-color: $secondFontColor;
+    background-color: $secondBackground;
+    text-transform: capitalize;
+    padding: 30px;
     @include bek-flex(center, column);
     align-items: center;
+    .order-two-input{
+        @include bek-flex(center, column);
+        align-items: center;
+        .order-two-input-filed{
+            margin-bottom: 10px;
+            @include input-style;
+            color: $firstBackground;
+            background-color: $secondFontColor;
+            font-weight: 600;
+            &.required-field{
+                outline: 2px solid red;
+            }
+        }
+    }
+    .order-two-check{
+        @include bek-flex(space-between, row);
+    }
 }

@@ -1,8 +1,19 @@
 @import "../../../assets/scss/vars.scss";
 
 .order-stepper-footer-wrapper{
-    @include bek-flex(space-between, row);
-    button{
+    &.space-gap{
+        @include bek-flex(space-between, row);
+    }
+    &.to-end{
+        @include bek-flex(flex-end, row);
+    }
+    .btn-steper-footer{
         @include bek-btn;
+        @include bek-flex(center, row);
+        align-items: center;
+        .stepper-arrow{
+            font-size: 1.1rem;
+            margin: 0 5px;
+        }
     }
 }

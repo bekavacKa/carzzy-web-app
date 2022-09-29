@@ -5,18 +5,24 @@ const orderProcessSlice = createSlice({
     initialState: {
         orderProcess: {
             currentStep: 1,
-            stepTwoForm: {
-                email : '',
-                firstName : '',
-                lastName : '',
-                address : '',
-                city : '',
-                postCode : '',
-                phoneNumber : '',
-                terms : false,
-                conditions : false
+            stepOne: {
+                isSubmit: false
             },
-            stepThreeForm: {
+            stepTwo: {
+                isSubmit: false,
+                form: {
+                    email : '',
+                    firstName : '',
+                    lastName : '',
+                    address : '',
+                    city : '',
+                    postCode : '',
+                    phoneNumber : '',
+                    terms : false,
+                    conditions : false
+                }
+            },
+            stepThree: {
 
             }
         },
@@ -24,10 +30,16 @@ const orderProcessSlice = createSlice({
     reducers: {
         handleOrderSteps: (state, action) => {
             state.orderProcess.currentStep = action.payload;
+        },
+        updateStepTwoForm: (state, action) => {
+            state.orderProcess.stepTwo.form =  action.payload;
+        },
+        updateStepTwoIsSubmit: (state, action) => {
+            state.orderProcess.stepTwo.isSubmit = true;
         }
     }
 });
 
-export const {handleOrderSteps} = orderProcessSlice.actions;
+export const {handleOrderSteps, updateStepTwoForm, updateStepTwoIsSubmit} = orderProcessSlice.actions;
 
 export default orderProcessSlice.reducer;

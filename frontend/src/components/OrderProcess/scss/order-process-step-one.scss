@@ -2,24 +2,26 @@
 
 .order-process-step-one-wrapper{
     background-color: $secondBackground;
-    table, thead,tbody,tr{
-        border: 1px solid $secondFontColor;
-    }
     .order-one-table{
        width: 100%;
        border-collapse: collapse;
        text-align: center;
-
+       user-select: none;
        thead{
         color: $iconColor;
+        font-size: 1.2rem;
+        background-color: $firstBackground;
         tr{
             th{
-                padding: 15px 0;
+                padding: 20px 0;
             }
         }
        }
        tbody{
         tr{
+            &:nth-child(odd){
+                background-color: gray;
+            }
             td{
                 padding: 5px 0;
                 .minus-plus{
@@ -28,6 +30,9 @@
                     &:hover{
                         color: $secondFontColor;
                     }
+                }
+                &:last-child{
+                    padding-right: 15px;
                 }
             }
         }

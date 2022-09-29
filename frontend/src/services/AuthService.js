@@ -13,6 +13,9 @@ class AuthService {
     static completeRegistration(body){
         return axios.post('/api/complete-registration', body);
     }
+    // static isUserLogged(){
+    //     return localStorage.hasOwnProperty('user');
+    // }
 }
 
 export default AuthService;

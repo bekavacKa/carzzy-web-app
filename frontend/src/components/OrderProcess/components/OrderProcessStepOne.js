@@ -14,7 +14,7 @@ function OrderProcessStepOne() {
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        console.log("shopCart => ", shopCart);
+        // console.log("shopCart => ", shopCart);
     },[shopCart]);
 
     const handleItemCount = (index, isIncrement) => {
@@ -44,7 +44,7 @@ function OrderProcessStepOne() {
                     
                     <FaPlusCircle className='minus-plus' onClick={() => handleItemCount (index, true)} /> 
                 </td>
-                <td>{item.price * item.count}</td>
+                <td>{item.price * item.count} $</td>
                 <td>
                     <FaTrash onClick={() => deleteItemFromShopCart(index)} />
                 </td>
@@ -62,7 +62,7 @@ function OrderProcessStepOne() {
 
   return (
     <div className='order-process-step-one-wrapper'>
-        <h2>OrderProcessStepOne</h2>
+        {/* <h2>OrderProcessStepOne</h2> */}
         <table className="order-one-table">
             <thead>
                 <tr>
