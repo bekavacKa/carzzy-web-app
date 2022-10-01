@@ -5,7 +5,7 @@ import "../scss/order-process-step-two.scss";
 
 function OrderProcessStepTwo() {
   const { user } = useSelector((state) => state.userStore);
-  const { form, isSubmit } = useSelector(
+  const { form, isSubmit} = useSelector(
     (state) => state.orderProcessStore.orderProcess.stepTwo
   );
 
@@ -14,7 +14,16 @@ function OrderProcessStepTwo() {
   useEffect(() => {
     // console.log("user => ", user);
     // console.log("form =>", form);
-    dispatch(updateStepTwoForm({ ...form, ...user }));
+    let userObj = {
+      email : user?.email,
+      firstName : user?.firstName,
+      lastName : user?.lastName,
+      address : user?.address,
+      city : user?.city,
+      postCode : user?.postCode,
+      phoneNumber : user?.phoneNumber
+    }
+    dispatch(updateStepTwoForm({ ...form, ...userObj }));
   }, []);
 
 //   useEffect(() => {
@@ -36,6 +45,12 @@ function OrderProcessStepTwo() {
 
   const requiredMsgLayout = (formProperty) => {
     return isSubmit && !formProperty ? ' required-field animate__animated animate__shakeX' : '';
+  }
+  const handleCheckBox = e => {
+    // console.log(e.target);
+    let newForm = {...form};
+    newForm[e.target.id] = e.target.checked;
+    dispatch(updateStepTwoForm(newForm));
   }
 
   return (
@@ -124,17 +139,19 @@ function OrderProcessStepTwo() {
             </div>
 
             <div className="order-two-check">
-            <label className="form-check-label" htmlFor="terms">
+            <label className={`form-check-label ${requiredMsgLayout(form?.terms)} `} 
+            htmlFor="terms">
                 terms
             </label>
-            <input type="checkbox" className="form-check-input" id="terms" />
+            <input type="checkbox" className="form-check-input" id="terms" onChange={e => handleCheckBox(e)} />
             </div>
 
             <div className="order-two-check">
-            <label className="form-check-label" htmlFor="conditions">
+            <label className={`form-check-label ${requiredMsgLayout(form?.conditions)} `}  
+                    htmlFor="conditions">
                 conditions
             </label>
-            <input type="checkbox" className="form-check-input" id="conditions" />
+            <input type="checkbox" className="form-check-input" id="conditions" onChange={e => handleCheckBox(e)} />
             </div>
         </form>
         </div>

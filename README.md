@@ -41,3 +41,4 @@ The design of the application is not final and after a certain degree of applica
     _ _ REDUX TOOLKIT
     _ _ SASS
     _ _ ANIMATE CSS
+    _ _ STRIPE

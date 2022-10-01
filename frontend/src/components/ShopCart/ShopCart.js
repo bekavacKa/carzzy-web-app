@@ -43,6 +43,7 @@ function ShopCart() {
     }
 
     const handleItemCount = (index, isIncrement) => {
+        //todo ne radi mi kako triba tribam provjerit
         dispatch(handleItemCountShopCart({index, isIncrement}));
     }
     
@@ -58,15 +59,15 @@ function ShopCart() {
                         
                         <div className='shop-cart-item-info' >
                             <p>{item.title} </p>    
-                            <p>{item.price * item.count} $</p>
+                            <p>{item.totalPrice} $</p>
                         </div>
                         
                         <div className='shop-cart-item-btns'>
                             {item.count > 1 && 
                                 <div className='shop-cart-item-updown'>
-                                <FaPlusCircle className='shop-cart-item-updown-icon' onClick={() => handleItemCount (index, true)} /> 
+                                <FaPlusCircle className='shop-cart-item-updown-icon' onClick={() => handleItemCount(index, true)} /> 
                                 <p className='shop-cart-item-updown-count'>{item?.count}</p> 
-                                <FaMinusCircle className='shop-cart-item-updown-icon minus' onClick={() => handleItemCount (index, false)} /> 
+                                <FaMinusCircle className='shop-cart-item-updown-icon minus' onClick={() => handleItemCount(index, false)} /> 
                                 </div>
                             }
                         </div>

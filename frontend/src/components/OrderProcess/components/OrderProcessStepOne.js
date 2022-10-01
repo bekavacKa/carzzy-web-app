@@ -44,7 +44,7 @@ function OrderProcessStepOne() {
                     
                     <FaPlusCircle className='minus-plus' onClick={() => handleItemCount (index, true)} /> 
                 </td>
-                <td>{item.price * item.count} $</td>
+                <td>{item.totalPrice} $</td>
                 <td>
                     <FaTrash onClick={() => deleteItemFromShopCart(index)} />
                 </td>

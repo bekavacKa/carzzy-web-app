@@ -22,5 +22,13 @@
     }
     .order-two-check{
         @include bek-flex(space-between, row);
+        .form-check-label{
+            &.required-field{
+                color: $iconColor;
+            }
+        }
+        .form-check-input{
+            cursor: pointer;
+        }
     }
 }

@@ -10,7 +10,7 @@ function OrderStepperFooter() {
 
     const {user} = useSelector(state => state.userStore);
     const {currentStep} = useSelector(state => state.orderProcessStore.orderProcess);
-    const { isSubmit } = useSelector((state) => state.orderProcessStore.orderProcess.stepTwo);
+    const { isSubmit, isValid } = useSelector((state) => state.orderProcessStore.orderProcess.stepTwo);
     const {shopCart} = useSelector(state => state.shopCartStore );
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ function OrderStepperFooter() {
         }
         if(currentStep === 2){
             dispatch(updateStepTwoIsSubmit());
-            dispatch(handleOrderSteps(currentStep + 1));
+            isValid && dispatch(handleOrderSteps(currentStep + 1));
         }
         return
     }
