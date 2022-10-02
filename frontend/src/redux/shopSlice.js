@@ -31,16 +31,18 @@ const shopSlice = createSlice({
             }
         },
         deleteFromShopCart: (state, action ) =>{
-            state.shopCart.splice(action.payload, 1);
+            let shopCartCopy = [...state.shopCart];
+            shopCartCopy.splice(action.payload, 1);
+            state.shopCart = shopCartCopy;
+            localStorage.setItem('shopCart', JSON.stringify(shopCartCopy));
         },
         handleItemCountShopCart: (state, action) => {
-            // state.shopCart[action.payload.index].count = action.payload.isIncrement ? state.shopCart[action.payload.index].count + 1 : state.shopCart[action.payload.index].count - 1;
             let product = state.shopCart[action.payload.index];
-            console.log("product stateee => ", product);
+            // console.log("product stateee => ", product);
             let count = action.payload.isIncrement ? product.count + 1 : product.count - 1;
-            console.log("count state => ", count);
+            // console.log("count state => ", count);
             state.shopCart[action.payload.index].count = count < 1 ? 1 : count;
-            state.cart[action.payload.index].totalPrice = product.count * product.price;
+            state.shopCart[action.payload.index].totalPrice = product.count * product.price;
         },
         setShopCart: (state, action) => {
             state.shopCart = action.payload;

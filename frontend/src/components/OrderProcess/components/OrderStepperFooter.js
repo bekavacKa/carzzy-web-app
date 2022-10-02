@@ -55,7 +55,9 @@ function OrderStepperFooter() {
         {
             currentStep > 1 && <button className='btn-steper-footer' onClick={() => handleBack(-1)} > <FaLongArrowAltLeft className='stepper-arrow'/> Back</button>
         }
-        <button className='btn-steper-footer' onClick={() => handleNext()} >Next <FaLongArrowAltRight className='stepper-arrow' /> </button>
+        {
+            currentStep < 3 && <button className='btn-steper-footer' onClick={() => handleNext()} >Next <FaLongArrowAltRight className='stepper-arrow' /> </button>
+        }
     </div>
     <ToastContainer/>
     </>

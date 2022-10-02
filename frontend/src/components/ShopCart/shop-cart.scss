@@ -3,7 +3,7 @@
 .shop-cart-wrapper{
     position: relative;
     user-select: none;
-    z-index: 20;
+    z-index: 9;
     .shop-cart{
         // &.show-badge{
         //     display: block;
@@ -39,9 +39,9 @@
             padding: 2px;
             overflow: scroll;
             overflow-x: hidden;
-            .shop-cart-orderbtn{
+            .shop-cart-footer{
                 text-align: center;
-                button{
+                .shop-cart-footer-btn{
                     padding: 10px 25px;
                     letter-spacing: .1rem;
                     background-color: $secondBackground;

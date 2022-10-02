@@ -4,4 +4,11 @@
 .order-process-step-three-wrapper{
     background-color: $secondFontColor;
     padding: 20px 50px;
+    text-align: center;
+    .btn-step-three{
+        @include bek-btn;
+        margin: 10px 0 0;
+        font-size: .8rem;
+        padding: 8px 15px;
+    }
 }

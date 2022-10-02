@@ -43,7 +43,6 @@ function ShopCart() {
     }
 
     const handleItemCount = (index, isIncrement) => {
-        //todo ne radi mi kako triba tribam provjerit
         dispatch(handleItemCountShopCart({index, isIncrement}));
     }
     
@@ -92,9 +91,9 @@ function ShopCart() {
                     {
                     shopCartAllLayout()
                     }
-                    <div className='shop-cart-orderbtn' >
+                    <div className='shop-cart-footer' >
                         <Link to={routeConfig.ORDER.url}>
-                            <button >Order</button>
+                            <button className='shop-cart-footer-btn' >Order</button>
                         </Link>
                     </div>
                 </div> :
