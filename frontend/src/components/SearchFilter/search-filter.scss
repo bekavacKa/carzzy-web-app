@@ -1,0 +1,47 @@
+@import '../../assets/scss/vars.scss';
+
+.search-filter-wrapper{
+    width: 100%;
+    margin-bottom: 30px;
+    @include bek-flex(flex-start, row);
+    align-items: center;
+    .search-filter-view{
+        @include bek-flex(flex-start, row);
+        align-items: center;
+        .search-filter-input{
+            min-height: 40px;
+            background-color: $secondBackground;
+            // border: 1px solid $secondFontColor;
+            border: none;
+            border-radius: 3px;
+            outline: none;
+            color: $firstFontColor;
+            font-size: 1rem;
+            padding: 8px 0 8px 35px;
+            position: relative;
+            &:focus{
+                outline: 1px solid $iconColor;
+            }
+        }
+        .search-filter-icon{
+            color: $iconColor;
+            font-size: 1.3rem;
+            position: relative;
+            right: 222px;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.1);
+            } 
+        }
+    }
+    .search-filter-dropdown{
+        min-height: 40px;
+        margin: 0 10px;
+        font-size: .9rem;
+        padding: 6px 10px;
+        border-radius: 3px;
+        background-color: $secondBackground;
+        @include bek-flex(space-between, row);
+        align-items: center;
+    }
+}

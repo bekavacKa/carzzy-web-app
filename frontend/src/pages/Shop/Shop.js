@@ -3,6 +3,7 @@ import './shop.scss';
 import ShopService from '../../services/ShopService';
 import ProductSingle from '../../components/ProductSingle/ProductSingle';
 import Header from '../../components/Header/Header';
+import SearchFilter from '../../components/SearchFilter/SearchFilter';
 // import ProductSingle from '../../components/ProductSingle/ProductSingle';
 
 function Shop() {
@@ -26,6 +27,7 @@ function Shop() {
     <>
         <Header pageTitle={"shop"} />
     <div className='shop-wrapper'>
+        <SearchFilter/>
         {
             allProducts.map((product, index) => {
                 return (

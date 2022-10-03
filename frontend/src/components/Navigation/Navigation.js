@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {Link, NavLink} from "react-router-dom";
 import { FaCar, FaUser } from "react-icons/fa";
-import { MdSearch } from "react-icons/md";
+// import { MdSearch } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 import routeConfig from '../../config/routeConfig';
@@ -69,10 +69,10 @@ function Navigation() {
 					<ShopCart />
 					{/* <MdAddShoppingCart className='cart'/> */}
 				</div>
-				<div className='nav-user-search'>
+				{/* <div className='nav-user-search'>
 					<input type="search" placeholder='Search'/>
 					<MdSearch/>
-				</div>
+				</div> */}
 				<div className='nav-user-profile' >
 					
 					{userBtnLayout()}

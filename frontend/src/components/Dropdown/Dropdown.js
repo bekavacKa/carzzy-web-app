@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FaCaretDown } from "react-icons/fa";
+import {useDispatch} from  'react-redux';
+import {useNavigate} from 'react-router-dom';
+import { setUser } from '../../redux/userSlice';
+import  routeConfig  from '../../config/routeConfig';
 
 import "./dropdown.scss";
 
@@ -8,6 +12,8 @@ function Dropdown(props) {
 
     const[isActiveMeni, setIsActiveMeni] = useState(false);
     const [allMeniELL, setAallMeniELL] = useState([]);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // console.log(props);
@@ -15,7 +21,12 @@ function Dropdown(props) {
     },[props])
 
     const handleMeniClick = (e) => {
-        console.log(e.target.outerText);   
+        // console.log(e.target.outerText);
+        let targetName = e.target.outerText.toLowerCase();
+        if (targetName.includes("logout")){
+            dispatch(setUser({}));
+            navigate(routeConfig.SIGN_IN.url);
+        }
         setIsActiveMeni(false);
     }
 
