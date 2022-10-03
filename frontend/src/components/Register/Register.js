@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../../redux/loaderSlice";
 import AuthService from "../../services/AuthService";
 import "./register.scss";
 
@@ -18,6 +20,8 @@ function Register(){
     const [isValid, setIsValid] = useState(true);
     const [isApiFinish, setIsApiFinish] = useState(false);
     const [apiErr, setApiErr] = useState(false);
+    
+    const dispatch = useDispatch();
 
     const handleInputChange = (e) => {
         // console.log(e.target.name, e.target.value);
@@ -36,6 +40,7 @@ function Register(){
             return;
         }
         setIsValid(true);
+        dispatch(setLoader(true));
         
         AuthService.register(userData)
                     .then((res) => {
@@ -51,6 +56,7 @@ function Register(){
                         console.log("REGISTER SERVICE ERR =>", err);
                         setApiErr(true);
                     })
+                    .finally(() => dispatch(setLoader(false)));
     }
 
     return(

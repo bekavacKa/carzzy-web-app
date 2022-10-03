@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements, PaymentElement, useElements, useStripe} from '@stripe/react-stripe-js';
-
+import { setLoader } from '../../../redux/loaderSlice';
 import '../scss/order-process-step-three.scss';
 import PaymentService from '../../../services/PaymentService';
 
@@ -52,9 +52,14 @@ function StripeElements(){
     
     const [secretKey, setSecretKey] = useState('');
     const {shopCart} = useSelector(state => state.shopCartStore);
+    const dispatch = useDispatch();
     const options = {
         clientSecret: secretKey
     };
+    
+    useEffect(() => {
+        dispatch(setLoader(true));
+    },[])
 
   useEffect(()=> {
     //   console.log("shopCart from step 3 => ", shopCart);
@@ -75,6 +80,7 @@ function StripeElements(){
                   .catch(err => {
                       console.log(err);
                   })
+                  .finally(() => dispatch(setLoader(false)) )
   },[]);
 
   return(

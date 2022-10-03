@@ -25,6 +25,7 @@ function Dropdown(props) {
         let targetName = e.target.outerText.toLowerCase();
         if (targetName.includes("logout")){
             dispatch(setUser({}));
+            localStorage.removeItem('user');
             navigate(routeConfig.SIGN_IN.url);
         }
         setIsActiveMeni(false);

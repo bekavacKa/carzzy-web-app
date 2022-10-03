@@ -31,8 +31,14 @@
                         color: $secondFontColor;
                     }
                 }
-                &:last-child{
-                    padding-right: 15px;
+                .step-one-trash{
+                    margin-right: 15px;
+                    cursor: pointer;
+                    transition: $transition;
+                    &:hover{
+                        color: $iconColor;
+                        transform: scale(1.3);
+                    }
                 }
             }
         }

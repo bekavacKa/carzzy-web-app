@@ -46,7 +46,7 @@ function OrderProcessStepOne() {
                 </td>
                 <td>{item.totalPrice} $</td>
                 <td>
-                    <FaTrash onClick={() => deleteItemFromShopCart(index)} />
+                    <FaTrash className='step-one-trash' onClick={() => deleteItemFromShopCart(index)} />
                 </td>
 
             </tr>

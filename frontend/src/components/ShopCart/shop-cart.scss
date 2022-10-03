@@ -34,11 +34,13 @@
             width: 350px;
             max-height: 250px;
             top: 35px;
+            right: 10px;
             background-color: $iconColor;
             border-radius: 5px;
             padding: 2px;
             overflow: scroll;
             overflow-x: hidden;
+            box-shadow: 2px 2px 7px 2px $firstFontColor;
             .shop-cart-footer{
                 text-align: center;
                 .shop-cart-footer-btn{

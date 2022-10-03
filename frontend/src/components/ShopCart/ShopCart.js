@@ -93,7 +93,7 @@ function ShopCart() {
                     }
                     <div className='shop-cart-footer' >
                         <Link to={routeConfig.ORDER.url}>
-                            <button className='shop-cart-footer-btn' >Order</button>
+                            <button className='shop-cart-footer-btn' onClick={e => setIsActiveShopCart(false)} >Order</button>
                         </Link>
                     </div>
                 </div> :

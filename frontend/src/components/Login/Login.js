@@ -8,6 +8,8 @@ import AuthService from "../../services/AuthService";
 import { setUser } from "../../redux/userSlice";
 
 import "./login.scss";
+import { setLoader } from "../../redux/loaderSlice";
+import routeConfig from "../../config/routeConfig";
 
 
 
@@ -29,6 +31,7 @@ function Login({showLoginForm}){
             return;
         }
         setIsValid(true);
+        dispatch(setLoader(true));
         
         let body = { username, password};
         AuthService.login(body)
@@ -37,8 +40,8 @@ function Login({showLoginForm}){
                             console.log("LOGIN SERVICE RESPONSE =>", res);
                             localStorage.setItem("user", JSON.stringify(res.data))
                             // toast.success("Welcome! " + res.data.username);
-                            navigate('/');
                             dispatch(setUser(res.data));
+                            navigate(`${res.data.isAdmin.includes('true') ? routeConfig.DASHBOARD.url : routeConfig.HOME.url}`);
                         }if(res.status === 401){
                             toast.warning("Wrong username/password!");
                         }
@@ -48,6 +51,7 @@ function Login({showLoginForm}){
                         toast.error("Something is wrong!!");
                         // setApiErr(true);
                     })
+                    .finally(() => dispatch(setLoader(false)))
     }
 
     return(

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Routes, Route, useNavigate} from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Routes, Route, useNavigate, Navigate} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import "./assets/scss/base.scss";
@@ -20,17 +20,33 @@ import ProductView from './pages/ProductView/ProductView';
 import Order from './pages/Order/Order';
 import { setShopCart } from './redux/shopSlice';
 import Footer from './components/Footer/Footer';
+import Loader from './components/Loader/Loader';
+import Dashboard from './pages/Dashboard/Dashboard';
+import BackToTop from './components/BackToTop/BackToTop';
 
 axios.defaults.baseURL ='http://localhost:4000';
 
 function App() {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [toTopBtnShow, setToTopBtnShow] = useState(false)
 
   useEffect(() => {
     userLocalStorage();
     shopCartLocalStorage();
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+  },[])
+
+  const listenToScroll = () => {
+		if(window.scrollY > 400){
+			setToTopBtnShow(true);
+		}else{
+      setToTopBtnShow(false);
+    }
+	}
   
   const userLocalStorage = () => {
     if(!localStorage.hasOwnProperty('user')){
@@ -49,6 +65,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <Loader />
 
       <Navigation/>
 
@@ -61,8 +78,19 @@ function App() {
         <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
         <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
         <Route path={routeConfig.ORDER.url} element={<Order/>} />
+
+        {/* admin routes */}
+
+        <Route path={routeConfig.DASHBOARD.url} 
+        element={<AdminProtect>
+                  <Dashboard/>
+                </AdminProtect>} />
         
       </Routes>
+
+      {
+        toTopBtnShow && <BackToTop />
+      }
 
       {/* <Button>TEST BOOTSTRAP</Button> */}
 
@@ -70,6 +98,20 @@ function App() {
       
     </div>
   );
+}
+
+function AdminProtect({children}){
+  const {user} = useSelector(state => state.userStore);
+
+  if(!user.isAdmin){
+   return <Navigate to= {routeConfig.SHOP.url} />
+  }
+  return (
+    <>
+      <h1>ADMIN SECTION</h1>
+      {children}
+    </>
+  )
 }
 
 export default App;
