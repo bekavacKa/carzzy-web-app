@@ -23,13 +23,20 @@ import Footer from './components/Footer/Footer';
 import Loader from './components/Loader/Loader';
 import Dashboard from './pages/Dashboard/Dashboard';
 import BackToTop from './components/BackToTop/BackToTop';
+import AllProducts from './adminComponents/AllProducts/AllProducts';
+import AllUsers from './adminComponents/AllUsers/AllUsers';
+import AllEmails from './adminComponents/AllEmails/AllEmails';
+import Stats from './adminComponents/Stats/Stats';
+
 
 axios.defaults.baseURL ='http://localhost:4000';
 
 function App() {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [toTopBtnShow, setToTopBtnShow] = useState(false)
+  const [toTopBtnShow, setToTopBtnShow] = useState(false);
+  const [isCheckUser, setIsCheckUser] = useState(false);
+
 
   useEffect(() => {
     userLocalStorage();
@@ -54,6 +61,7 @@ function App() {
     }else{
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
     }
+    setIsCheckUser(true);
   }
 
   const shopCartLocalStorage = () => {
@@ -69,24 +77,29 @@ function App() {
 
       <Navigation/>
 
-      <Routes>
+      {
+        isCheckUser &&
+        <Routes>
 
-        <Route path={routeConfig.HOME.url} element={<Home/>} />
-        <Route path={routeConfig.SHOP.url} element={<Shop/>} />
-        <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
-        <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
-        <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
-        <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
-        <Route path={routeConfig.ORDER.url} element={<Order/>} />
+          <Route path={routeConfig.HOME.url} element={<Home/>} />
+          <Route path={routeConfig.SHOP.url} element={<Shop/>} />
+          <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
+          <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
+          <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
+          <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
+          <Route path={routeConfig.ORDER.url} element={<Order/>} />
 
-        {/* admin routes */}
+          {/* admin routes */}
 
-        <Route path={routeConfig.DASHBOARD.url} 
-        element={<AdminProtect>
-                  <Dashboard/>
-                </AdminProtect>} />
-        
-      </Routes>
+          <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >
+            <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
+            <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
+            <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} />
+            <Route path={routeConfig.ADMIN_STATS.url} element={<Stats/>} />
+          </Route>
+          
+        </Routes>
+      }
 
       {
         toTopBtnShow && <BackToTop />

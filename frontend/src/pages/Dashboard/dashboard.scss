@@ -2,4 +2,13 @@
 
 .dashboard-wrapper{
     background-color: $iconColor;
+    padding: 50px 0;
+    .dashboard-view{
+        @include bek-flex(flex-start, row);
+        height: 100vh;
+        .dashboard-details{
+            background-color: $secondFontColor;
+            width: 70%;
+        }
+    }
 }

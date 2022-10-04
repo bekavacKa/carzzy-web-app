@@ -1,0 +1,27 @@
+@import '../../assets/scss/vars.scss';
+
+.sidebar-wrapper{
+    background-color: $secondBackground;
+    padding: 20px 0px;
+    width: 30%;
+    ul{
+        list-style: none;
+        .sidebar-titles{
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: $transition;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            &:hover{
+                background-color: $secondFontColor;
+            }
+            .sidebar-titles-links{
+                text-decoration: none;
+                color: $firstFontColor;
+                &.active{
+                    color: $iconColor;
+                }
+            }
+        }
+    }
+}

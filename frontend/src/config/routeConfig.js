@@ -31,7 +31,19 @@ const routeConfig ={
     },
     DASHBOARD : {
         url: '/dashboard'
-    }
+    },
+    ADMIN_USERS : {
+        url: 'all-users'
+    },
+    ADMIN_PRODUCTS : {
+        url: 'all-products'
+    },
+    ADMIN_EMAILS : {
+        url: 'all-emails'
+    },
+    ADMIN_STATS : {
+        url: 'stats'
+    },
 }
 
 export default routeConfig;
