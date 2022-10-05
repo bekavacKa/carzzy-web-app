@@ -13,6 +13,9 @@ class AuthService {
     static completeRegistration(body){
         return axios.post('/api/user/complete-registration', body);
     }
+    static getAllUsers(){
+        return axios.get('/api/user/all-users');
+    }
 }
 
 export default AuthService;

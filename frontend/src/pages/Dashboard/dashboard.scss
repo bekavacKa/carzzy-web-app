@@ -1,8 +1,6 @@
 @import '../../assets/scss/vars.scss';
 
 .dashboard-wrapper{
-    background-color: $iconColor;
-    padding: 50px 0;
     .dashboard-view{
         @include bek-flex(flex-start, row);
         height: 100vh;

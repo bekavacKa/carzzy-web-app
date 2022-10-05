@@ -28,6 +28,9 @@ function Dropdown(props) {
             localStorage.removeItem('user');
             navigate(routeConfig.SIGN_IN.url);
         }
+        if (targetName.includes("dashboard")){
+            navigate(routeConfig.DASHBOARD.url);
+        }
         setIsActiveMeni(false);
     }
 

@@ -1,0 +1,9 @@
+@import '../../assets/scss/vars.scss';
+
+.stats-wrapper{
+    color: $iconColor;
+    padding: 50px 0;
+    @include bek-flex(center, row);
+    align-items: center;
+    gap: 20px;
+}

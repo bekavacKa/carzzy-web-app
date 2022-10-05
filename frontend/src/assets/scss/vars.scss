@@ -51,21 +51,24 @@ $fontF: Orbitron;
     // padding: 50px 0;
 }
 @mixin bek-table {
-    // border: 2px solid red;
-    width: 100%;
+    border: 2px solid red;
     text-align: center;
-    // table,th,td{
-    //     border: 2px green;
-    // }
-    // thead{
-    //     color: $iconColor;
-    //     font-size: 1.2rem;
-    //     border-bottom: 1px solid $iconColor;
-    //     tr{
-    //         margin-bottom: 10px;
-    //         th{
-    //             margin-bottom: 10px;
-    //         }
-    //     }
-    // }
+    border-collapse: collapse;
+    img{
+        width: 15%;
+    }
+    table,th,td{
+        border: 2px solid $firstBackground;
+    }
+    thead{
+        color: $iconColor;
+        font-size: 1.2rem;
+        border-bottom: 1px solid $iconColor;
+        tr{
+            margin-bottom: 10px;
+            th{
+                margin-bottom: 10px;
+            }
+        }
+    }
 }

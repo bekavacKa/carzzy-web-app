@@ -27,6 +27,7 @@ import AllProducts from './adminComponents/AllProducts/AllProducts';
 import AllUsers from './adminComponents/AllUsers/AllUsers';
 import AllEmails from './adminComponents/AllEmails/AllEmails';
 import Stats from './adminComponents/Stats/Stats';
+import Header from './components/Header/Header';
 
 
 axios.defaults.baseURL ='http://localhost:4000';
@@ -92,10 +93,10 @@ function App() {
           {/* admin routes */}
 
           <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >
+            <Route index element={<Stats/>} />
             <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
             <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
             <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} />
-            <Route path={routeConfig.ADMIN_STATS.url} element={<Stats/>} />
           </Route>
           
         </Routes>
@@ -121,7 +122,7 @@ function AdminProtect({children}){
   }
   return (
     <>
-      <h1>ADMIN SECTION</h1>
+      <Header pageTitle={"Dashboard"} />
       {children}
     </>
   )

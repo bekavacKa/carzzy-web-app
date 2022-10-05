@@ -1,0 +1,13 @@
+@import '../../assets/scss/vars.scss';
+
+.stats-box-wrapper{
+    color: black;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    height: 200px;
+    width: 40%;
+    background-color: green;
+    @include bek-flex(center, column);
+    align-items: center;
+}

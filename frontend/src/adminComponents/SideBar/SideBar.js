@@ -21,7 +21,7 @@ function SideBar() {
 
   return (
     <div className='sidebar-wrapper'>
-        <ul>
+        <ul className='sidebar-ul'>
             {sideBarTitles()}
         </ul>
     </div>

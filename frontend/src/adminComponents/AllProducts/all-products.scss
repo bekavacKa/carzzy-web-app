@@ -1,0 +1,10 @@
+@import '../../assets/scss/vars.scss';
+
+.all-products-wrapper{
+    .all-products-table{
+        margin: 0 auto;
+        width: 90%;
+        // background-color: green;
+        @include bek-table;
+    }
+}

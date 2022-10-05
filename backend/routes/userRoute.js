@@ -110,4 +110,21 @@ routes.post('/complete-registration', (req, res) => {
     })
 });
 
+// get all users 
+routes.get('/all-users', async (req, res) => {
+
+    Users.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("USERS dont found")
+        }
+    })
+});
+
 module.exports = routes;

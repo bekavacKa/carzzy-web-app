@@ -3,6 +3,11 @@ import { FaBuffer, FaMailBulk, FaProductHunt, FaUsersCog, FaWater } from 'react-
 
 export const ADMIN_SIDEBAR_CONFIG = [
     {
+        name : "stats",
+        url : "",
+        icon : <FaWater/>
+    },
+    {
         name : "users",
         url : "all-users",
         icon : <FaUsersCog/>
@@ -17,9 +22,4 @@ export const ADMIN_SIDEBAR_CONFIG = [
         url : "all-emails",
         icon : <FaMailBulk/>
     },
-    {
-        name : "stats",
-        url : "stats",
-        icon : <FaWater/>
-    }
 ]

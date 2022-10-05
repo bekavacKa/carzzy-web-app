@@ -11,7 +11,7 @@ function BackToTop() {
 
   return (
     <div className='back-to-top-wrapper' >
-        <BsFillArrowUpSquareFill className='back-to-top-btn' onClick={e => toTop()}/>
+        <BsFillArrowUpSquareFill className='back-to-top-btn animate__animated animate__backInDown' onClick={e => toTop()}/>
     </div>
   )
 }

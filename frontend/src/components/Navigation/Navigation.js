@@ -24,7 +24,7 @@ function Navigation() {
 			<FaUser className='user-icon' />
 			<p> {currentUser.username} </p> 
 			{/* <FaCaretDown className='user-icon-down' /> */}
-			<Dropdown meniElements={["settings","Logout"]} />
+			<Dropdown meniElements={[`${ currentUser?.isAdmin === 'true' ? 'dashboard' : 'account'}`,"Logout"]} />
 
 		</div> :
 		<div className='nav-user-profile-signin'>
