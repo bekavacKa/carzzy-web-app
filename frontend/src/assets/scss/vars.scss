@@ -51,14 +51,19 @@ $fontF: Orbitron;
     // padding: 50px 0;
 }
 @mixin bek-table {
-    border: 2px solid red;
     text-align: center;
     border-collapse: collapse;
     img{
-        width: 15%;
+        width: 70px;
     }
     table,th,td{
         border: 2px solid $firstBackground;
+    }
+    tr{
+        &:nth-child(odd){
+
+            background-color: $firstFontColor;
+        }
     }
     thead{
         color: $iconColor;

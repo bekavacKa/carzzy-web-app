@@ -1,0 +1,30 @@
+@import '../../assets/scss/vars.scss';
+
+.all-users-wrapper{
+    .all-users-table{
+        margin: 0 auto;
+        width: 90%;
+        // background-color: green;
+        @include bek-table;
+        font-size: 1.4rem;
+        color: $firstBackground;
+        font-weight: 500;
+        .all-users-btns{
+            .all-users-edit{
+                color: $firstBackground;
+                font-size: 1.8rem;
+                margin: 20px 0;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.25);
+                }
+            }
+            .all-users-delete{
+                @extend .all-users-edit;
+                margin-left: 15px;
+                color: red;
+            }
+
+        }
+    }
+}

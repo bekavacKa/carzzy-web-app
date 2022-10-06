@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import ShopService from '../../services/ShopService';
 import './all-products.scss';
 
@@ -21,7 +22,7 @@ function AllProducts() {
     return products.map((product, index) => {
       return (
         <tr key={index}>
-          <th scope="row">{index + 1}</th>
+          <th scope="row">{index + 1}.</th>
           <td>
             <img src={product.imageUrl} alt={product.title} />
           </td>
@@ -29,6 +30,10 @@ function AllProducts() {
           <td>{product.category}</td>
           <td>{product.rating}</td>
           <td>{product.price}</td>
+          <td className='all-products-btns'>
+            <FaRegEdit className='all-products-edit' title='EDIT'/>
+            <FaTrashAlt className='all-products-delete' title='DELETE' />
+          </td>
         </tr>
       )
     })
@@ -38,7 +43,7 @@ function AllProducts() {
     <div className='all-products-wrapper' >
       <h2>AllProducts</h2>
       {
-        products.length && 
+        products?.length && 
         <table className="all-products-table">
         <thead>
           <tr>

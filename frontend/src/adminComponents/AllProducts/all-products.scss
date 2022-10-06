@@ -6,5 +6,25 @@
         width: 90%;
         // background-color: green;
         @include bek-table;
+        font-size: 1.4rem;
+        color: $firstBackground;
+        font-weight: 500;
+        .all-products-btns{
+            .all-products-edit{
+                color: $firstBackground;
+                font-size: 1.8rem;
+                margin: 20px 0;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.25);
+                }
+            }
+            .all-products-delete{
+                @extend .all-products-edit;
+                margin-left: 15px;
+                color: red;
+            }
+
+        }
     }
 }
