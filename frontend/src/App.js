@@ -90,6 +90,8 @@ function App() {
           <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
           <Route path={routeConfig.ORDER.url} element={<Order/>} />
 
+          {/* todo only user routes */}
+
           {/* admin routes */}
 
           <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >

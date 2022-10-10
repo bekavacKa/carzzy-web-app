@@ -20,10 +20,10 @@ function AllUsers() {
         <tr key={index}>
           <th scope="row">{index + 1}.</th>
           <td>{user.username}</td>
+          <td>{user.isAdmin === 'true' ? 'admin' : 'user'}</td>
           <td>{user.email}</td>
+          <td>{user.isActive === 'true' ? 'active' : 'not active'}</td>
           <td>{user.wallet}</td>
-          <td>{user.isActive}</td>
-          <td>{user.isAdmin}</td>
           <td className='all-users-btns'>
             <FaRegEdit className='all-users-edit' title='EDIT'/>
             <FaTrashAlt className='all-users-delete' title='DELETE' />
@@ -35,8 +35,6 @@ function AllUsers() {
 
   return (
     <div className='all-users-wrapper'>
-      <h2>AllUsers</h2>
-
       {
         users?.length && 
         <table className="all-users-table">
@@ -44,10 +42,11 @@ function AllUsers() {
           <tr>
             <th scope="col">NO.</th>
             <th scope="col">username</th>
+            <th scope="col">role</th>
             <th scope="col">email</th>
-            <th scope="col">wallet</th>
             <th scope="col">Active ?</th>
-            <th scope="col">Admin ?</th>
+            <th scope="col">wallet</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

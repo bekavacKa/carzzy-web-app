@@ -18,12 +18,13 @@ routes.post('/login', validateUser, (req, res) => {
             res.status(401).send(errMsg);
             return;
         }
-        if(data){
-            res.send(data);
-        }
-        else{
+
+        if (!data){
             console.log("User not found!");
-            res.status(401).send("User not found");
+            res.status(201).send("User not found");
+        }else{
+            let isUserActivate = data.isActive === 'true';
+            res.status(isUserActivate ? 200 : 210 ).send(isUserActivate ? data : "Please activate your account!");
         }
     })
 });

@@ -7,6 +7,14 @@ class ShopService{
     static getSingleProduct(productId){
         return axios.get(`/api/shop/single-product/${productId}`);
     }
+    static getSearchedProducts(searchTerm){
+        // console.log(searchTerm);
+        return axios.get(`/api/shop/products/search/${searchTerm}`);
+    }
+    static getFilteredProducts(price){
+        // console.log(price);
+        return axios.get(`/api/shop/filtered-products/${price}`)
+    }
 }
 
 export default ShopService;

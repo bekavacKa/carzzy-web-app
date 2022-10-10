@@ -55,14 +55,17 @@ $fontF: Orbitron;
     border-collapse: collapse;
     img{
         width: 70px;
+        padding: 10px 0;
     }
-    table,th,td{
-        border: 2px solid $firstBackground;
-    }
+    // table,th,td{
+    //     border: 2px solid $firstBackground;
+    // }
     tr{
         &:nth-child(odd){
-
             background-color: $firstFontColor;
+        }
+        &:nth-child(even){
+            background-color: $secondFontColor;
         }
     }
     thead{
@@ -72,6 +75,8 @@ $fontF: Orbitron;
         tr{
             margin-bottom: 10px;
             th{
+                padding: 15px 0;
+                text-transform: uppercase;
                 margin-bottom: 10px;
             }
         }

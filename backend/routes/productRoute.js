@@ -36,4 +36,32 @@ routes.get("/single-product/:productId", (req, res) => {
     })
 })
 
+routes.get('/products/search/:searchTerm', (req, res) => {
+    const searchTerm = req.params.searchTerm;
+    Products.find({ title: { $regex: searchTerm, "$options": "i" } }, (error, data) => {
+        if (error) {
+            console.log(error);
+            res.send(error);
+        }
+        console.log("searched =>", data);
+        res.send(data);
+    })
+})
+
+// TODO vraca mi prazan arrayn moram nac bolju metodu
+routes.get('/filtered-products/:price', (req, res) => {
+    const price = req.params.price;
+    console.log("price =>>", price);
+    Products.find({ price: { $lt: price } }, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        }
+        if(data){
+            console.log("sss",data);
+            res.send(data);
+        }
+    })
+})
+
 module.exports = routes;

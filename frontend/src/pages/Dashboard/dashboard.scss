@@ -5,7 +5,7 @@
     .dashboard-view{
         @include bek-flex(flex-start, row);
         .dashboard-details{
-            background-color: $secondFontColor;
+            // background-color: $secondFontColor;
             width: 80%;
         }
     }

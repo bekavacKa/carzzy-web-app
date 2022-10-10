@@ -41,7 +41,6 @@ function AllProducts() {
 
   return (
     <div className='all-products-wrapper' >
-      <h2>AllProducts</h2>
       {
         products?.length && 
         <table className="all-products-table">
@@ -53,6 +52,7 @@ function AllProducts() {
             <th scope="col">category</th>
             <th scope="col">rating</th>
             <th scope="col">price</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

@@ -3,16 +3,15 @@
 .all-users-wrapper{
     .all-users-table{
         margin: 0 auto;
-        width: 90%;
+        width: 100%;
         // background-color: green;
         @include bek-table;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: $firstBackground;
-        font-weight: 500;
         .all-users-btns{
             .all-users-edit{
                 color: $firstBackground;
-                font-size: 1.8rem;
+                font-size: 1.4rem;
                 margin: 20px 0;
                 cursor: pointer;
                 &:hover{

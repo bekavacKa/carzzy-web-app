@@ -34,7 +34,7 @@
             } 
         }
     }
-    .search-filter-dropdown{
+    .search-filter-sort-select{
         min-height: 40px;
         margin: 0 10px;
         font-size: .9rem;
@@ -43,5 +43,40 @@
         background-color: $secondBackground;
         @include bek-flex(space-between, row);
         align-items: center;
+        .search-filter-sort-select-btn{
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 3px;
+            margin-left: 10px;
+            background-color: $secondFontColor;
+            border: none;
+            outline: none;
+            border-radius: 3px;
+        }
+    }
+    .search-filter-price{
+        min-height: 40px;
+        min-width: 260px;
+        margin: 0 10px;
+        font-size: .9rem;
+        padding: 6px 10px;
+        border-radius: 3px;
+        background-color: $secondBackground;
+        @include bek-flex(space-between, row);
+        align-items: center;
+        .search-filter-price-label{
+            margin-right: 10px;
+        }
+        .search-filter-price-input{
+            cursor: pointer;
+            background-color: red;
+            margin-left: 10px;
+            background-color: $secondFontColor;
+            border: none;
+            outline: none;
+            appearance: none;
+            height: 8px; 
+            border-radius: 3px;
+        }
     }
 }

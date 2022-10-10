@@ -42,13 +42,17 @@ function Login({showLoginForm}){
                             // toast.success("Welcome! " + res.data.username);
                             dispatch(setUser(res.data));
                             navigate(`${res.data.isAdmin.includes('true') ? routeConfig.DASHBOARD.url : routeConfig.HOME.url}`);
-                        }if(res.status === 401){
+                        }if(res.status === 201){
                             toast.warning("Wrong username/password!");
+                        }
+                        if(res.status === 210){
+                            toast.warning(res.data);
                         }
                     })
                     .catch((err) => {
                         console.log("LOGIN SERVICE ERR =>", err);
                         toast.error("Something is wrong!!");
+                        console.log(err.status);
                         // setApiErr(true);
                     })
                     .finally(() => dispatch(setLoader(false)))
