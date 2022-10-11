@@ -28,6 +28,7 @@ import AllUsers from './adminComponents/AllUsers/AllUsers';
 import AllEmails from './adminComponents/AllEmails/AllEmails';
 import Stats from './adminComponents/Stats/Stats';
 import Header from './components/Header/Header';
+import UserAccount from './pages/UserAccount/UserAccount';
 
 
 axios.defaults.baseURL ='http://localhost:4000';
@@ -73,46 +74,49 @@ function App() {
   
 
   return (
-    <div className="app-wrapper">
-      <Loader />
+    <>
+      <div className="app-wrapper">
+        <Loader />
 
-      <Navigation/>
+        <Navigation/>
 
-      {
-        isCheckUser &&
-        <Routes>
+        {
+          isCheckUser &&
+          <Routes>
 
-          <Route path={routeConfig.HOME.url} element={<Home/>} />
-          <Route path={routeConfig.SHOP.url} element={<Shop/>} />
-          <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
-          <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
-          <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
-          <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
-          <Route path={routeConfig.ORDER.url} element={<Order/>} />
+            <Route path={routeConfig.HOME.url} element={<Home/>} />
+            <Route path={routeConfig.SHOP.url} element={<Shop/>} />
+            <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
+            <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
+            <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
+            <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
+            <Route path={routeConfig.ORDER.url} element={<Order/>} />
 
-          {/* todo only user routes */}
+            {/* todo only user routes */}
+            <Route path={routeConfig.USER_ACCOUNT.url} element={<UserAccount/>} />
 
-          {/* admin routes */}
+            {/* admin routes */}
 
-          <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >
-            <Route index element={<Stats/>} />
-            <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
-            <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
-            <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} />
-          </Route>
-          
-        </Routes>
-      }
+            <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >
+              <Route index element={<Stats/>} />
+              <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
+              <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
+              <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} />
+            </Route>
+            
+          </Routes>
+        }
 
-      {
-        toTopBtnShow && <BackToTop />
-      }
+        {
+          toTopBtnShow && <BackToTop />
+        }
 
-      {/* <Button>TEST BOOTSTRAP</Button> */}
+        {/* <Button>TEST BOOTSTRAP</Button> */}
 
+        
+      </div>
       <Footer/>
-      
-    </div>
+    </>
   );
 }
 

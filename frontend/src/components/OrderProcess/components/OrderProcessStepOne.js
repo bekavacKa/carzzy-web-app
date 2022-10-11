@@ -34,17 +34,21 @@ function OrderProcessStepOne() {
                     <img src={item.imageUrl} alt={item.title} />
                 </td>
                 <td>{item.title}</td>
-                <td>
+                <td className='order-table-counter'>
                     {
                         item.count > 1 ?
                         <FaMinusCircle className='minus-plus' onClick={() => handleItemCount (index, false)} /> :
                         null 
                     }
-                    {item.count} 
+                    <div className='order-table-counter-num'> {item.count}  </div>
+                    
                     
                     <FaPlusCircle className='minus-plus' onClick={() => handleItemCount (index, true)} /> 
                 </td>
-                <td>{item.totalPrice} $</td>
+                <td>
+                    <p className='order-table-price'> {item.totalPrice} $ </p>
+                    
+                </td>
                 <td>
                     <FaTrash className='step-one-trash' onClick={() => deleteItemFromShopCart(index)} />
                 </td>

@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { setLoader } from '../../redux/loaderSlice';
 import ShopService from '../../services/ShopService';
 import './all-products.scss';
 
 function AllProducts() {
+  
+  const dispatch = useDispatch();
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    dispatch(setLoader(true))
     ShopService.getProducts()
               .then((res) => {
                 // console.log(res);
@@ -16,6 +21,7 @@ function AllProducts() {
               .catch((err) => {
                 console.log(err);
               })
+              .finally(() => dispatch(setLoader(false)));
   }, []);
 
   const productsLayout = () => {

@@ -36,12 +36,14 @@ function Login({showLoginForm}){
         let body = { username, password};
         AuthService.login(body)
                     .then((res) => {
+                        console.log(res.data);
                         if(res.status === 200){
                             console.log("LOGIN SERVICE RESPONSE =>", res);
-                            localStorage.setItem("user", JSON.stringify(res.data))
+                            localStorage.setItem("user", JSON.stringify(res.data.userData));
+                            localStorage.setItem("token", JSON.stringify(res.data.token));
                             // toast.success("Welcome! " + res.data.username);
-                            dispatch(setUser(res.data));
-                            navigate(`${res.data.isAdmin.includes('true') ? routeConfig.DASHBOARD.url : routeConfig.HOME.url}`);
+                            dispatch(setUser(res.data.userData));
+                            navigate(`${res.data.userData.isAdmin.includes('true') ? routeConfig.DASHBOARD.url : routeConfig.HOME.url}`);
                         }if(res.status === 201){
                             toast.warning("Wrong username/password!");
                         }

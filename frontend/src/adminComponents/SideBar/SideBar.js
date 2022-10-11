@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import { ADMIN_SIDEBAR_CONFIG } from '../../config/adminSideBarConfig';
 import './side-bar.scss';
 
 function SideBar() {
 
+  const {user} = useSelector(state => state.userStore);
+
+  useEffect(() => {
+    // console.log(user);
+  },[])
+
   const sideBarTitles = () => {
     return (
       ADMIN_SIDEBAR_CONFIG.map((title, index) => {
         return (
-          <li className='sidebar-titles'  key={index}> 
-            <NavLink className='sidebar-titles-links' to={title.url} >
-              {title.icon} &nbsp; {title.name}
-            </NavLink>
-          </li>
+          <NavLink className='sidebar-meni-titles' to={title.url} key={index} >
+            {title.icon} &nbsp; {title.name}
+          </NavLink>
         )
       })
     )
@@ -21,9 +26,13 @@ function SideBar() {
 
   return (
     <div className='sidebar-wrapper'>
-        <ul className='sidebar-ul'>
+        <div className='sidebar-main-title'> 
+          <h3> ADMIN </h3> 
+          <h4> {user?.username} </h4>
+        </div>
+        <div className='sidebar-meni'>
             {sideBarTitles()}
-        </ul>
+        </div>
     </div>
   )
 }

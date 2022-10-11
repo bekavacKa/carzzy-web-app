@@ -26,6 +26,11 @@ const routeConfig ={
         url: '/user-activate/:id',
         completeUrl: id => `/user-activate/${id}`
     },
+    USER_ACCOUNT : {
+        name: 'user acount',
+        url : '/user-account/:userId',
+        completeUrl : userId => `/user-account/${userId}`
+    },
     ORDER : {
         url: '/order'
     },

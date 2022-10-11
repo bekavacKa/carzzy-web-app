@@ -75,6 +75,7 @@ function Shop() {
     }
 
     // SORT
+    // ? mozda bolje napravit call backendu pa da tamo odradim sort 
     useEffect(() => {
         if (sort === "low") {
             sortedProducts = [...allProducts];

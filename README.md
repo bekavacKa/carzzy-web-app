@@ -42,3 +42,5 @@ The design of the application is not final and after a certain degree of applica
     *** SASS ***
     *** ANIMATE CSS ***
     *** STRIPE ***
+    *** JWT (JSON WEB TOKEN) ***
+

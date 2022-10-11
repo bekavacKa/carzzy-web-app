@@ -2,25 +2,31 @@
 
 .sidebar-wrapper{
     background-color: $secondBackground;
-    padding: 20px 0px;
-    width: 20%;
-    .sidebar-ul{
-        list-style: none;
-        .sidebar-titles{
+    // padding: 20px 0px;
+    width: 25%;
+    .sidebar-main-title{
+        // background-color: $secondFontColor;
+        padding: 10px;
+        text-align: center;
+        h4{
+            color: $iconColor;
+        }
+    }
+    .sidebar-meni{
+        @include bek-flex(flex-start, column);
+        .sidebar-meni-titles{
             cursor: pointer;
             font-size: 1.3rem;
             transition: $transition;
             text-transform: uppercase;
             padding: 10px 20px;
+            text-decoration: none;
+            color: $firstFontColor;
             &:hover{
                 background-color: $secondFontColor;
             }
-            .sidebar-titles-links{
-                text-decoration: none;
-                color: $firstFontColor;
-                &.active{
-                    color: $iconColor;
-                }
+            &.active{
+                color: $iconColor;
             }
         }
     }

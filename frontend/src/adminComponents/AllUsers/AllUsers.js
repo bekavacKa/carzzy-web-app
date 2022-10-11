@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { setLoader } from '../../redux/loaderSlice';
 import AuthService from '../../services/AuthService';
 import './all-users.scss';
 
 function AllUsers() {
 
+  const dispatch = useDispatch();
   const [users, setUsers] = useState();
 
   useEffect(() => {
+    dispatch(setLoader(true))
     AuthService.getAllUsers()
                 .then((res) => setUsers(res.data))
                 .catch((err) => console.log(err))
+                .finally(() => dispatch(setLoader(false)));
   }, [])
   
 

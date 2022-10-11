@@ -16,6 +16,14 @@ class AuthService {
     static getAllUsers(){
         return axios.get('/api/user/all-users');
     }
+    // * test headers
+    static getMyData(userId){
+        return axios.get(`/api/user/get-my-data/${userId}`, {
+            headers: {
+                "Authorization" : localStorage.getItem('token')
+            }
+        });
+    }
 }
 
 export default AuthService;

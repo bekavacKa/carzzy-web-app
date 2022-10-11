@@ -1,13 +1,13 @@
 @import '../../assets/scss/vars.scss';
 
 .stats-box-wrapper{
-    color: black;
+    color: $iconColor;
     font-size: 1.4rem;
     text-transform: uppercase;
     font-weight: 700;
     height: 200px;
-    width: 40%;
-    background-color: green;
+    width: 45%;
+    background-color: $secondBackground;
     @include bek-flex(center, column);
     align-items: center;
 }

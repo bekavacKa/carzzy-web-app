@@ -1,12 +1,16 @@
 @import '../../assets/scss/vars.scss';
 
 .dashboard-wrapper{
-    padding: 0 30px;
     .dashboard-view{
+        padding: 0 10px;
         @include bek-flex(flex-start, row);
         .dashboard-details{
-            // background-color: $secondFontColor;
-            width: 80%;
+            .dashboard-details-title{
+                background-color: $secondBackground;
+                height: 64px;
+            }
+            background-color: $secondFontColor;
+            width: 75%;
         }
     }
 }

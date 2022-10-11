@@ -9,6 +9,7 @@ function Dashboard() {
         <div className='dashboard-view'>
           <SideBar/>
           <div className='dashboard-details'>
+            <div className='dashboard-details-title'></div>
             <Outlet />
           </div>
         </div>

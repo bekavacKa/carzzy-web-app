@@ -1,10 +1,15 @@
 const express = require('express');
 const nodemailer = require("nodemailer");
+const jwt = require('jsonwebtoken');
 
 
 const Users = require('../models/userModel');
+// AUTH VALIDATION MIDDLE
+const { authValidation, validateUser } = require('../services/validationService');
 
 const routes = express.Router();
+
+
 
 // LOGIN
 routes.post('/login', validateUser, (req, res) => {
@@ -24,20 +29,13 @@ routes.post('/login', validateUser, (req, res) => {
             res.status(201).send("User not found");
         }else{
             let isUserActivate = data.isActive === 'true';
-            res.status(isUserActivate ? 200 : 210 ).send(isUserActivate ? data : "Please activate your account!");
+            let token = jwt.sign({...data}, 'shhhhh');
+            res.status(isUserActivate ? 200 : 210 ).send(isUserActivate ? {token, userData : data} : "Please activate your account!");
         }
     })
 });
 
-function validateUser(req, res, next){
-    // console.log("=>>>", req.body);
-    let reqBody = req.body;
-    if(!reqBody.username || !reqBody.password){
-        res.send("Not valid username or password");
-        return;
-    }
-    next();
-}
+
 
 // REGISTER
 routes.post('/register', async (req,res) =>{
@@ -124,6 +122,31 @@ routes.get('/all-users', async (req, res) => {
             res.send(data)
         } else {
             res.send("USERS dont found")
+        }
+    })
+});
+
+// current user details with authorization token from headers
+
+routes.get('/get-my-data/:userId', authValidation, (req, res) => {
+
+    const decoded = jwt.verify(JSON.parse(req.headers.authorization), 'shhhhh');
+    console.log("dekodirano => ",decoded);
+
+    const id = decoded._doc._id;
+    console.log("from details", id);
+    console.log("token => ", req.headers.authorization);
+
+    Users.findOne({ "_id": id },(err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("USER dont found")
         }
     })
 });
