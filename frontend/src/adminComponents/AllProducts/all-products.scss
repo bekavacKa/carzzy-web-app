@@ -2,12 +2,19 @@
 
 .all-products-wrapper{
     .all-products-table{
+        box-shadow: 2px 2px 5px 3px $firstBackground;
         margin: 0 auto;
         width: 100%;
         // background-color: green;
         @include bek-table;
         font-size: 1.2rem;
         color: $firstBackground;
+        .all-products-table-add-btn{
+            @include bek-btn;
+            margin: 0;
+            padding: 5px 7px;
+            font-size: 1rem;
+        }
         .all-products-btns{
             .all-products-edit{
                 color: $firstBackground;

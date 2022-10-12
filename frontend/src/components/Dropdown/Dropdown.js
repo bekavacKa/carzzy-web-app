@@ -54,7 +54,7 @@ function Dropdown(props) {
                         allMeniELL.map((el, index) => {
                             return (
                                 <div className='dropdown-item' key={index} onClick={e => handleMeniClick(e)} >
-                                    {el}
+                                   <p>{el}</p> 
                                 </div>
                             )
                         })

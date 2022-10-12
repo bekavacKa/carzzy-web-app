@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import routeConfig from '../../config/routeConfig';
 import { setLoader } from '../../redux/loaderSlice';
 import ShopService from '../../services/ShopService';
 import './all-products.scss';
@@ -58,7 +60,9 @@ function AllProducts() {
             <th scope="col">category</th>
             <th scope="col">rating</th>
             <th scope="col">price</th>
-            <th></th>
+            <th>
+              {/* <Link className='all-products-table-add-btn' to={routeConfig.ADMIN_PRODUCT_MANAGE.url} > ADD NEW </Link> */}
+            </th>
           </tr>
         </thead>
         <tbody>

@@ -22,4 +22,9 @@ export const ADMIN_SIDEBAR_CONFIG = [
         url : "all-emails",
         icon : <FaMailBulk/>
     },
+    {
+        name : "add products",
+        url : "product-manage",
+        icon : <FaProductHunt/>
+    },
 ]

@@ -64,4 +64,29 @@ routes.get('/filtered-products/:price', (req, res) => {
     })
 })
 
+
+// * moze bolje ima bolja mongoosova metoda
+
+routes.post('/add-new-product', (req,res) => {
+    console.log(req.body);
+    const reqBody=req.body;
+	Products.findOne(reqBody, async (err, data) => {
+		// console.log(data);
+		if (err) {
+			const errorMsg = `Error on register user: ${err}`;
+			console.log(errorMsg);
+			res.send(errorMsg);
+			return;
+		}
+
+		if (data) res.send(`Product already exist`);
+		else {
+			const newProduct = new Products(reqBody);
+			const saveNewProduct = await newProduct.save();
+			console.log("Saved product",saveNewProduct);
+			res.send(saveNewProduct || 'Product not saved');
+		}
+	});
+})
+
 module.exports = routes;

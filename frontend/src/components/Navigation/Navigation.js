@@ -12,6 +12,9 @@ import ShopCart from '../ShopCart/ShopCart';
 function Navigation() {
 	const currentUser = useSelector((state) => state.userStore.user);
 
+	const adminMeni = ['dashboard', 'account', 'logout'];
+	const userMeni = [ 'account', 'logout'];
+
 	useEffect(()=> {
 		// console.log("From store in nav => ", currentUser);
 	},[currentUser]);
@@ -24,7 +27,11 @@ function Navigation() {
 			<FaUser className='user-icon' />
 			<p> {currentUser.username} </p> 
 			{/* <FaCaretDown className='user-icon-down' /> */}
-			<Dropdown meniElements={[`${ currentUser?.isAdmin === 'true' ? 'dashboard' : 'account'}`, "ACCOUNT","Logout"]} />
+			{
+				currentUser?.isAdmin === 'true' ? 
+				<Dropdown meniElements={adminMeni} /> :
+				<Dropdown meniElements={userMeni} />
+			}
 
 		</div> :
 		<div className='nav-user-profile-signin'>

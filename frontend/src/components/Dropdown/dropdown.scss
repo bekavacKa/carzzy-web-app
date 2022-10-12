@@ -16,9 +16,10 @@
             }
         }
         .dropdown-content{
-            padding: 5px;
+            // padding: 5px;
+            box-shadow: 0px 0px 5px 2px $secondFontColor;
             background-color: $iconColor;
-            max-width: 300px;
+            width: 200px;
             position: absolute;
             right: -16px;
             margin-top: 5px;
@@ -26,8 +27,14 @@
             .dropdown-item{
                 padding: 5px 10px;
                 text-transform: uppercase;
+                transition: $transition;
+                p{
+                    width: 100%;
+                    font-size: 1rem;
+                }
                 &:hover{
                     color: $firstBackground;
+                    background-color: $firstFontColor;
                 }
             }
         }

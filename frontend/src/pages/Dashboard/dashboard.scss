@@ -5,12 +5,13 @@
         padding: 0 10px;
         @include bek-flex(flex-start, row);
         .dashboard-details{
-            .dashboard-details-title{
-                background-color: $secondBackground;
-                height: 64px;
-            }
             background-color: $secondFontColor;
             width: 75%;
+            padding: 50px 30px;
+            // .dashboard-details-title{
+            //     background-color: $secondBackground;
+            //     height: 64px;
+            // }
         }
     }
 }
