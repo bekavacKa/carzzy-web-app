@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addToShopCart } from '../../redux/shopSlice';
 import ShopService from '../../services/ShopService';
+import RatingStars from '../RatingStars/RatingStars';
 
 import './product-details.scss';
 
@@ -56,7 +57,7 @@ function ProductDetails() {
             <div className='product-details'>
                 <div className='product-details-title'>
                     <h3>{product.title}</h3>
-                    <h4>{product.rating}</h4>
+                    <RatingStars rating={product.rating} />
                 </div>
                 <div className='product-details-image'>
                     <img src={product.imageUrl} alt={product.title} />
