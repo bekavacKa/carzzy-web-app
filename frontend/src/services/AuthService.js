@@ -17,12 +17,16 @@ class AuthService {
         return axios.get('/api/user/all-users');
     }
     // * test headers
+    // static getMyData(userId){
+    //     return axios.get(`/api/user/get-my-data/${userId}`, {
+    //         headers: {
+    //             "Authorization" : localStorage.getItem('token')
+    //         }
+    //     });
+    // }
+    //  * interceptors bolje nego da stavljam svuda headers
     static getMyData(userId){
-        return axios.get(`/api/user/get-my-data/${userId}`, {
-            headers: {
-                "Authorization" : localStorage.getItem('token')
-            }
-        });
+        return axios.get(`/api/user/get-my-data/${userId}`);
     }
 }
 

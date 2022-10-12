@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header/Header';
 import AuthService from '../../services/AuthService';
 import {setLoader} from '../../redux/loaderSlice';
+
+import './user-account.scss';
 
 function UserAccount() {
 
@@ -10,12 +12,17 @@ function UserAccount() {
     const dispatch = useDispatch();
 
     const [userDetails, setUserDetails] = useState({})
+    const [showEdit, setShowEdit] = useState(false);
+
+    useEffect(() => {
+        getUserDetails();
+    },[])
 
     const getUserDetails = () => {
         dispatch(setLoader(true))
         AuthService.getMyData(user?._id)
                     .then((res) => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         setUserDetails(res.data);
                     })
                     .catch((err) => {
@@ -26,25 +33,83 @@ function UserAccount() {
                     })
     }
 
+    const editUser = () => {
+        setShowEdit(!showEdit);
+    }
+
     const userDetailsLayout = () => {
         return(
-            <div>
-                <p>{userDetails?.firstName}</p>
-                <p>{userDetails?.lastName}</p>
-                <p>{userDetails?.email}</p>
+            <div className='user-account-data' >
+                <div className='user-account-data-details'>
+                    <p>First Name:</p>
+                    {
+                        !showEdit ? 
+                        <p className="user-account-data-details-user " >{userDetails?.firstName}</p>
+                        :
+                        <input type='text'
+                                defaultValue={userDetails?.firstName}
+                                className="user-account-data-details-user input"
+                                />
+                    }
+                </div>
+                <div className='user-account-data-details'>
+                    <p>Last Name:</p>
+                    {
+                        !showEdit ?
+                        <p className="user-account-data-details-user" >{userDetails?.lastName}</p>
+                        :
+                        <input type='text'
+                                defaultValue={userDetails?.lastName}
+                                className="user-account-data-details-user input"
+                                />
+                    }
+                </div>
+                <div className='user-account-data-details'>
+                    <p>email:</p>
+                    {
+                        !showEdit ?
+                        <p className="user-account-data-details-user" >{userDetails?.email}</p>
+                        :
+                        <input type='email'
+                                defaultValue={userDetails?.email}
+                                className="user-account-data-details-user input"
+                                />
+                    }
+                </div>
+                <div className='user-account-data-details'>
+                    <p>username:</p>
+                    {
+                        !showEdit ?
+                        <p className="user-account-data-details-user" >{userDetails?.username}</p>
+                        :
+                        <input type='text'
+                                defaultValue={userDetails?.username}
+                                className="user-account-data-details-user input"
+                                />
+                    }
+                </div>
+                
             </div>
         )
     }
 
+
+
   return (
-    <div>
+    <>
         <Header pageTitle="Your Account" />
-        {
-            userDetails &&
-            userDetailsLayout()
-        }
-        <button onClick={getUserDetails}>GET ACC DETAILS</button>
-    </div>
+        <div className='user-account-wrapper'>
+            {
+                userDetails &&
+                userDetailsLayout()
+            }
+            <button className='user-account-edit-btn' onClick={editUser} >
+                {
+                    showEdit ? "SAVE" : "EDIT"
+                }
+            </button>
+        </div>
+    </>
   )
 }
 

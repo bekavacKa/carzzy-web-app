@@ -1,0 +1,45 @@
+@import '../../assets/scss/vars.scss';
+
+.user-account-wrapper{
+    @include container;
+    @include bek-flex(center, column);
+    align-items: center;
+    background-color: $secondBackground;
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    .user-account-data{
+        min-width: 70%;
+        padding: 7px;
+        // background-color: red;
+        .user-account-data-details{
+            @include bek-flex(space-between, row);
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: $firstBackground;
+            padding: 10px;
+            border-radius: 10px;
+            .user-account-data-details-user{
+                font-size: 1rem;
+                text-align: center;
+                width: 200px;
+                height: 35px;
+                @include bek-flex(center, column);
+                // color: $iconColor;
+                &.input{
+                    @include input-style;
+                    font-size: 1rem;
+                    text-align: center;
+                    border: none;
+                    background-color: $secondFontColor;
+                    color: $firstBackground;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .user-account-edit-btn{
+        @include bek-btn;
+        margin: 0;
+        width: 150px;
+    }
+}

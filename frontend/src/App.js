@@ -29,9 +29,20 @@ import AllEmails from './adminComponents/AllEmails/AllEmails';
 import Stats from './adminComponents/Stats/Stats';
 import Header from './components/Header/Header';
 import UserAccount from './pages/UserAccount/UserAccount';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 
 axios.defaults.baseURL ='http://localhost:4000';
+
+axios.interceptors.request.use(function (config) {
+    // console.log("inter =>", config);
+    if(localStorage.hasOwnProperty('token')){
+      config.headers.Authorization = localStorage.getItem('token');
+    }
+    return config;
+  }, function (err) {
+    return Promise.reject(err);
+});
 
 function App() {
   // const navigate = useNavigate();
@@ -91,6 +102,7 @@ function App() {
             <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
             <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
             <Route path={routeConfig.ORDER.url} element={<Order/>} />
+            <Route path='*' element={<ErrorPage/>} />
 
             {/* todo only user routes */}
             <Route path={routeConfig.USER_ACCOUNT.url} element={<UserAccount/>} />
