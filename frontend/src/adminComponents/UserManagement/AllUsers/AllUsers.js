@@ -1,22 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { setLoader } from '../../redux/loaderSlice';
-import AuthService from '../../services/AuthService';
+import { setLoader } from '../../../redux/loaderSlice';
+import AuthService from '../../../services/AuthService';
+import DeleteUser from '../DeleteUser/DeleteUser';
 import './all-users.scss';
+
+
 
 function AllUsers() {
 
   const dispatch = useDispatch();
   const [users, setUsers] = useState();
 
+  const [deleteUserModal, setDeleteUserModal] = useState(false);
+  const [updateUserModal, setUpdateUserModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({});
+
+
   useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const getAllUsers = () => {
     dispatch(setLoader(true))
     AuthService.getAllUsers()
                 .then((res) => setUsers(res.data))
                 .catch((err) => console.log(err))
                 .finally(() => dispatch(setLoader(false)));
-  }, [])
+  }
+
+  const deleteUser = (user) => {
+    console.log("user", user);
+    setDeleteUserModal(true);
+    setSelectedUser(user);
+  }
   
 
   const usersLayout = () => {
@@ -30,8 +48,8 @@ function AllUsers() {
           <td>{user.isActive === 'true' ? 'active' : 'not active'}</td>
           <td>{user.wallet}</td>
           <td className='all-users-btns'>
-            <FaRegEdit className='all-users-edit' title='EDIT'/>
-            <FaTrashAlt className='all-users-delete' title='DELETE' />
+            <FaRegEdit className='all-users-edit' title='EDIT'  />
+            <FaTrashAlt className='all-users-delete' title='DELETE' onClick={e => deleteUser(user)} />
           </td>
         </tr>
       )
@@ -59,6 +77,13 @@ function AllUsers() {
         </tbody>
       </table>
       }
+      {
+        deleteUserModal && <DeleteUser showModal={setDeleteUserModal} selectedUser={selectedUser} updateDb={getAllUsers} />
+      }
+      
+
+
+
     </div>
   )
 }

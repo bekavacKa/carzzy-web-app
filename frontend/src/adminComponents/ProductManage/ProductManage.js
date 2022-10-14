@@ -15,7 +15,7 @@ function ProductManage() {
     description: "",
     price: "",
     imageUrl: "",
-		rating: rand.toFixed(2),
+		rating: rand.toFixed(1),
 	});
 
   // const [isValid, setIsValid] = useState(true);

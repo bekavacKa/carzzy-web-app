@@ -131,11 +131,11 @@ routes.get('/all-users', async (req, res) => {
 routes.get('/get-my-data/:userId', authValidation, (req, res) => {
 
     const decoded = jwt.verify(JSON.parse(req.headers.authorization), 'shhhhh');
-    console.log("dekodirano => ",decoded);
+    // console.log("dekodirano => ",decoded);
 
     const id = decoded._doc._id;
-    console.log("from details", id);
-    console.log("token => ", req.headers.authorization);
+    // console.log("from details", id);
+    // console.log("token => ", req.headers.authorization);
 
     Users.findOne({ "_id": id },(err, data) => {
         if (err) {
@@ -150,5 +150,15 @@ routes.get('/get-my-data/:userId', authValidation, (req, res) => {
         }
     })
 });
+
+// admin del user
+
+routes.delete('/delete-selected-user/:userId', async (req,res) => {
+    const userParamId = req.params.userId;
+    await Users.deleteOne({ _id: userParamId }, (error) => {
+        if (error) throw error;
+        res.send("User deleted");
+    });
+})
 
 module.exports = routes;
