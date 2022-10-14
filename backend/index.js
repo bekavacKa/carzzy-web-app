@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const serverConfig = require('./config/serverConfig');
 const dbConfig = require('./config/dbConfig');
+const adminRoute = require('./routes/adminRoute');
 const userRoute = require('./routes/userRoute');
 const productRoute = require('./routes/productRoute');
 const paymentRoute = require('./routes/paymentRoute');
@@ -25,7 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors()); 
 
- 
+// ADMIN ROUTES 
+app.use('/api/admin', adminRoute);
+
 // USER ROUTES
 app.use('/api/user', userRoute);
 

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import routeConfig from '../../../config/routeConfig';
 import { setLoader } from '../../../redux/loaderSlice';
 import ShopService from '../../../services/ShopService';
+import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import './all-products.scss';
 
 function AllProducts() {
@@ -13,18 +14,31 @@ function AllProducts() {
 
   const [products, setProducts] = useState([]);
 
+  const [deleteProductModal, setDeleteProductModal] = useState(false);
+  const [updateProductModal, setUpdateProductModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState({});
+
   useEffect(() => {
-    dispatch(setLoader(true))
-    ShopService.getProducts()
-              .then((res) => {
-                // console.log(res);
-                setProducts(res.data);
-              })
-              .catch((err) => {
-                console.log(err);
-              })
-              .finally(() => dispatch(setLoader(false)));
+    getAllProducts();
   }, []);
+
+  const getAllProducts = () => {
+    dispatch(setLoader(true));
+    ShopService.getProducts()
+                .then((res) => {
+                  // console.log(res);
+                  setProducts(res.data);
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
+                .finally(() => dispatch(setLoader(false)));
+  };
+
+  const deleteProduct = (product) => {
+    setDeleteProductModal(true);
+    setSelectedProduct(product);
+  }
 
   const productsLayout = () => {
     return products.map((product, index) => {
@@ -40,7 +54,7 @@ function AllProducts() {
           <td>{product.price}</td>
           <td className='all-products-btns'>
             <FaRegEdit className='all-products-edit' title='EDIT'/>
-            <FaTrashAlt className='all-products-delete' title='DELETE' />
+            <FaTrashAlt className='all-products-delete' title='DELETE' onClick={e => deleteProduct(product)} />
           </td>
         </tr>
       )
@@ -69,6 +83,9 @@ function AllProducts() {
           {productsLayout()}
         </tbody>
       </table>
+      }
+      {
+        deleteProductModal && <DeleteProduct showModal={setDeleteProductModal} selectedProduct={selectedProduct} updateDb={getAllProducts} />
       }
     </div>
   )

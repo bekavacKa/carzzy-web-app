@@ -87,6 +87,8 @@ routes.post('/add-new-product', (req,res) => {
 			res.send(saveNewProduct || 'Product not saved');
 		}
 	});
-})
+});
+
+
 
 module.exports = routes;

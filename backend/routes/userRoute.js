@@ -151,14 +151,6 @@ routes.get('/get-my-data/:userId', authValidation, (req, res) => {
     })
 });
 
-// admin del user
 
-routes.delete('/delete-selected-user/:userId', async (req,res) => {
-    const userParamId = req.params.userId;
-    await Users.deleteOne({ _id: userParamId }, (error) => {
-        if (error) throw error;
-        res.send("User deleted");
-    });
-})
 
 module.exports = routes;

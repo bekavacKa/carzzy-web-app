@@ -2,7 +2,10 @@ import axios from "axios";
 
 class AdminService{
     static deleteSelectedUser(userId){
-        return axios.delete(`/api/user/delete-selected-user/${userId}`);
+        return axios.delete(`/api/admin/delete-selected-user/${userId}`);
+    }
+    static deleteSelectedProduct(productId){
+        return axios.delete(`/api/admin/delete-selected-product/${productId}`);
     }
 }
 

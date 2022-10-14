@@ -31,7 +31,7 @@ function AllUsers() {
   }
 
   const deleteUser = (user) => {
-    console.log("user", user);
+    // console.log("user", user);
     setDeleteUserModal(true);
     setSelectedUser(user);
   }
