@@ -40,10 +40,16 @@ $fontF: Orbitron;
     border: 1px solid $secondFontColor;
     border-radius: 3px;
     color: $iconColor;
-    background-color: transparent;
+    background-color: $secondBackground;
     outline: none;
-    color: $iconColor;
+    color: $firstFontColor;
+    font-weight: 600;
+    font-size: 1.1rem;
     padding: 5px 10px;
+    &:focus{
+        background-color: $secondFontColor;
+        color: black;
+    }
 }
 @mixin container{
     width: 80%;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { setLoader } from '../../redux/loaderSlice';
-import ShopService from '../../services/ShopService';
-import './product-manage.scss';
+import { setLoader } from '../../../redux/loaderSlice';
+import ShopService from '../../../services/ShopService';
+import './add-new-product.scss';
 
-function ProductManage() {
+function AddNewProduct() {
   const dispatch = useDispatch();
   const productCategory = ['rims', 'tires', 'exhaust', 'other' ];
   let rand = Math.random()*(5-1)+1
@@ -94,4 +94,4 @@ function ProductManage() {
   )
 }
 
-export default ProductManage
+export default AddNewProduct

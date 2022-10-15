@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setLoader } from '../../../redux/loaderSlice';
 import AuthService from '../../../services/AuthService';
 import DeleteUser from '../DeleteUser/DeleteUser';
+import EditUser from '../EditUser/EditUser';
 import './all-users.scss';
 
 
@@ -14,7 +15,7 @@ function AllUsers() {
   const [users, setUsers] = useState();
 
   const [deleteUserModal, setDeleteUserModal] = useState(false);
-  const [updateUserModal, setUpdateUserModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState({});
 
 
@@ -29,6 +30,12 @@ function AllUsers() {
                 .catch((err) => console.log(err))
                 .finally(() => dispatch(setLoader(false)));
   }
+
+  const editUser = (user) => {
+    console.log("user", user);
+    setEditUserModal(true);
+    setSelectedUser(user);
+  } 
 
   const deleteUser = (user) => {
     // console.log("user", user);
@@ -48,7 +55,7 @@ function AllUsers() {
           <td>{user.isActive === 'true' ? 'active' : 'not active'}</td>
           <td>{user.wallet}</td>
           <td className='all-users-btns'>
-            <FaRegEdit className='all-users-edit' title='EDIT'  />
+            <FaRegEdit className='all-users-edit' title='EDIT' onClick={e => editUser(user)} />
             <FaTrashAlt className='all-users-delete' title='DELETE' onClick={e => deleteUser(user)} />
           </td>
         </tr>
@@ -79,6 +86,9 @@ function AllUsers() {
       }
       {
         deleteUserModal && <DeleteUser showModal={setDeleteUserModal} selectedUser={selectedUser} updateDb={getAllUsers} />
+      }
+      {
+        editUserModal && <EditUser showModal={setEditUserModal} selectedUser={selectedUser} updateDb={getAllUsers} />
       }
       
 
