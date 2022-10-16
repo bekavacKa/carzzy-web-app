@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import ModalStyle from '../../../assets/ModalStyle'
 import { setLoader } from '../../../redux/loaderSlice';
 import AdminService from '../../../services/AdminService';
@@ -10,6 +11,11 @@ function EditUser({showModal, selectedUser, updateDb}) {
 
   
   const dispatch = useDispatch();
+  const [selectedUserData, setSelectedUserData] = useState({});
+
+  useEffect(() => {
+    setSelectedUserData({...selectedUserData, ...selectedUser});
+  }, [selectedUser])
 
 
   const cancelEdit = () => {
@@ -17,11 +23,26 @@ function EditUser({showModal, selectedUser, updateDb}) {
   }
 
   const confirmEdit = () => {
-
+    console.log(selectedUser);
+    console.log(selectedUserData);
+    dispatch(setLoader(true));
+    AdminService.editSelectedUSer(selectedUserData)
+                .then((res) => {
+                  // console.log((res.data));
+                  showModal(false);
+                  updateDb();
+                  toast.success("Successfully edited! ");
+                })
+                .catch((err) => {
+                  // console.log(err);
+                  toast.success("Failed edited! ");
+                })
+                .finally(() => dispatch(setLoader(false)));
   }
 
   const handleInputChange = (e) => {
-
+    console.log(e.target.value);
+    selectedUserData[e.target.id]= e.target.value;
   }
 
   return (
@@ -71,13 +92,6 @@ function EditUser({showModal, selectedUser, updateDb}) {
                   defaultValue={selectedUser?.email}
                   onChange={(e) => {handleInputChange(e)}} />
 
-          <label htmlFor="password">Password</label>
-          <input id="password" 
-                  type ="password" 
-                  name="password" 
-                  className='edit-user-admin-input'
-                  defaultValue={selectedUser?.password}
-                  onChange={(e) => {handleInputChange(e)}} />
         </div>
         
 

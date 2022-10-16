@@ -20,6 +20,24 @@ routes.delete('/delete-selected-user/:userId', (req,res) => {
     });
 });
 
+// admin edit user
+routes.put('/edit-selected-user', (req,res) => {
+    let id = req.body._id;
+    let reqBody = req.body;
+    Users.updateOne({ "_id": id }, {
+        $set: 
+            reqBody
+    }, (err, data) => {
+        if (err) {
+            // console.log(err);
+            const errorMsg = `Error on updating user: ${err}`;
+            res.send(errorMsg);
+        } else {
+            res.send(data);
+        }
+    })
+})
+
 // admin del product
 routes.delete('/delete-selected-product/:productId', (req,res) => {
     const productParamId = req.params.productId;
