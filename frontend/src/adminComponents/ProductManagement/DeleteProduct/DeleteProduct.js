@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ModalStyle from '../../../assets/ModalStyle';
@@ -38,12 +38,23 @@ function DeleteProduct({showModal, selectedProduct, updateDb}) {
     <>
         {
         selectedProduct && 
-        <ReactModal isOpen={true} ariaHideApp={false} style={ModalStyle} >
-            <h2> DELETE </h2>
+        <Modal isOpen={true} ariaHideApp={false} style={ModalStyle} >
+
+        <div className='modal-wrapper'>
+          <div className='modal-header'>
+            <h2 className='modal-header-title' >Delete product</h2>
             <h3>{selectedProduct.title}</h3>
-            <button onClick={confirmDelete}> confirm </button>
-            <button onClick={cancelDelete}> cancel </button>
-        </ReactModal>
+          </div>
+        
+
+          <div className='modal-footer'>
+            <button className='modal-footer-btn' onClick={cancelDelete}> cancel </button>
+            <button className='modal-footer-btn confirm-btn' onClick={confirmDelete}> confirm </button>
+          </div>
+
+         </div>
+
+        </Modal>
         }
     </>
   )

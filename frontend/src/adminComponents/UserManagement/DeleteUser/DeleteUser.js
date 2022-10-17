@@ -43,10 +43,21 @@ function DeleteUser({showModal, selectedUser, updateDb}) {
       {
         selectedUser && 
         <Modal isOpen={true} ariaHideApp={false} style={ModalStyle} >
-          <h2> DELETE </h2>
-          <h3>{selectedUser.username}</h3>
-          <button onClick={confirmDelete}> confirm </button>
-          <button onClick={cancelDelete}> cancel </button>
+
+        <div className='modal-wrapper'>
+
+          <div className='modal-header'>
+            <h2 className='modal-header-title' >Delete user</h2>
+            <h3>{selectedUser.username}</h3>
+          </div>
+
+          <div className='modal-footer'>
+            <button className='modal-footer-btn' onClick={cancelDelete}> cancel </button>
+            <button className='modal-footer-btn confirm-btn' onClick={confirmDelete}> confirm </button>
+          </div>
+
+         </div>
+
         </Modal>
       }
     </>

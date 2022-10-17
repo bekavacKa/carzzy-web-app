@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import ModalStyle from '../../../assets/ModalStyle';
 import { setLoader } from '../../../redux/loaderSlice';
-import ShopService from '../../../services/ShopService';
+import AdminService from '../../../services/AdminService';
 import './add-new-product.scss';
 
-function AddNewProduct() {
+function AddNewProduct({showModal,  updateDb}) {
   const dispatch = useDispatch();
   const productCategory = ['rims', 'tires', 'exhaust', 'other' ];
   let rand = Math.random()*(5-1)+1
@@ -34,16 +36,23 @@ function AddNewProduct() {
   }
   
   const handleSubmitForm = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setIsSubmit(true);
     if(!newProduct.title || !newProduct.description || !newProduct.price || !newProduct.imageUrl){
       // console.log("Nesto fali");
       return;
     }
+    if(!newProduct.imageUrl.includes('https://')){
+      // console.log('nema');
+      newProduct.imageUrl = 'https://content.myconnectsuite.com/api/documents/30b67cc6055e4da88c40802e6ed33bc4.jpeg';
+    }
     dispatch(setLoader(true));
-    ShopService.addNewProduct(newProduct)
+    AdminService.addNewProduct(newProduct)
                 .then(res => {
-                  toast.success("successfully");
                   // console.log(res.data);
+                  showModal(false);
+                  updateDb();
+                  toast.success("product successfully added! ");
                 })
                 .catch(err => {
                   toast.error("ERORR");
@@ -51,17 +60,32 @@ function AddNewProduct() {
                 })
                 .finally(() => dispatch(setLoader(false)));
     // console.log("PROSA");
+    showModal(false);
+  }
+  
+  const cancelAdd = () => {
+    showModal(false);
   }
 
   const requiredMsgLayout = (formProperty) => {
     return isSubmit && !formProperty ? ' required animate__animated animate__shakeX' : '';
   }
+
   
   return (
     <>
+
+
+    <Modal isOpen={true} ariaHideApp={false} style={ModalStyle} >
+
+      <div className='modal-wrapper'>
+
+        <div className='modal-header'>
+          <h2 className='modal-header-title' >Add new product</h2>
+        </div>
+
         <div className='product-manage-wrapper'>
-          <h3>ADD NEW PRODUCT</h3>
-            <form className='product-manage-add' onSubmit={handleSubmitForm}>
+            <div className='product-manage-add'>
               
               <label htmlFor='title' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.title)}`} >Title</label>
               <input className='product-manage-add-fields-inputs' type="text" id='title'  name='title' onChange={(e) => {handleInputChange(e)}}/>
@@ -81,15 +105,26 @@ function AddNewProduct() {
               </select>
 
               <label htmlFor='price' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.price)}`}>Price USD $</label>
-              <input className='product-manage-add-fields-inputs' type="text" id='price' name='price' onChange={(e) => {handleInputChange(e)}} />
+              <input className='product-manage-add-fields-inputs' type="number" id='price' name='price' onChange={(e) => {handleInputChange(e)}} />
 
               <label htmlFor='imageUrl' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.imageUrl)}`}>Image URL</label>
               <input className='product-manage-add-fields-inputs' type="text" id='imageUrl' name='imageUrl' onChange={(e) => {handleInputChange(e)}} />
 
-              <button className='product-manage-add-btn' onClick={e => setIsSubmit(true)} >ADD PRODUCT</button>
 
-            </form>
+            </div>
         </div>
+
+        <div className='modal-footer'>
+          <button className='modal-footer-btn' onClick={cancelAdd}> cancel </button>
+          <button className='modal-footer-btn confirm-btn' onClick={handleSubmitForm}  > confirm </button>
+        </div>
+
+      </div>
+
+    </Modal>
+
+
+        
     </>
   )
 }

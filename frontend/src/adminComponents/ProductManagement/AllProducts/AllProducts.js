@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import routeConfig from '../../../config/routeConfig';
 import { setLoader } from '../../../redux/loaderSlice';
 import ShopService from '../../../services/ShopService';
+import AddNewProduct from '../AddNewProduct/AddNewProduct';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
+import EditProduct from '../EditProduct/EditProduct';
 import './all-products.scss';
 
 function AllProducts() {
@@ -14,8 +14,10 @@ function AllProducts() {
 
   const [products, setProducts] = useState([]);
 
+  const [addProductModal, setAddProductModal] = useState(false);
   const [deleteProductModal, setDeleteProductModal] = useState(false);
-  const [updateProductModal, setUpdateProductModal] = useState(false);
+  const [editProductModal, setEditProductModal] = useState(false);
+
   const [selectedProduct, setSelectedProduct] = useState({});
 
   useEffect(() => {
@@ -40,6 +42,15 @@ function AllProducts() {
     setSelectedProduct(product);
   }
 
+  const editProduct = (product) => {
+    setEditProductModal(true);
+    setSelectedProduct(product);
+  }
+
+  const addProduct = () => {
+    setAddProductModal(true);
+  }
+
   const productsLayout = () => {
     return products.map((product, index) => {
       return (
@@ -53,7 +64,7 @@ function AllProducts() {
           <td>{product.rating}</td>
           <td>{product.price}</td>
           <td className='all-products-btns'>
-            <FaRegEdit className='all-products-edit' title='EDIT'/>
+            <FaRegEdit className='all-products-edit' onClick={e => editProduct(product)} title='EDIT'/>
             <FaTrashAlt className='all-products-delete' title='DELETE' onClick={e => deleteProduct(product)} />
           </td>
         </tr>
@@ -75,7 +86,7 @@ function AllProducts() {
             <th scope="col">rating</th>
             <th scope="col">price</th>
             <th>
-              {/* <Link className='all-products-table-add-btn' to={routeConfig.ADMIN_PRODUCT_MANAGE.url} > ADD NEW </Link> */}
+              <button className='all-products-table-add-btn' onClick={e => addProduct()}> ADD NEW </button>
             </th>
           </tr>
         </thead>
@@ -86,6 +97,12 @@ function AllProducts() {
       }
       {
         deleteProductModal && <DeleteProduct showModal={setDeleteProductModal} selectedProduct={selectedProduct} updateDb={getAllProducts} />
+      }
+      {
+        addProductModal && <AddNewProduct showModal={setAddProductModal}  updateDb={getAllProducts}/>
+      }
+      {
+        editProductModal && <EditProduct showModal={setEditProductModal} selectedProduct={selectedProduct} updateDb={getAllProducts}  />
       }
     </div>
   )

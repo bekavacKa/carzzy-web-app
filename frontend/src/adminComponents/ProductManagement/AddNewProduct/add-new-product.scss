@@ -1,23 +1,20 @@
 @import '../../../assets/scss/vars.scss';
 
 .product-manage-wrapper{
-    box-shadow: 2px 2px 5px 3px $firstBackground;
-    // background-color: $secondBackground;
-    padding: 50px 30px;
     .product-manage-add{
-        width: 80%;
         margin: 0 auto;
         @include bek-flex(center, column);
         .product-manage-add-fields{
             margin-bottom: 5px;
             font-size: 1.1rem;
-            color: $firstBackground;
+            color: $firstFontColor;
             font-weight: 500;
             &.required{
                 color: $iconColor;
             }
         }
         .product-manage-add-fields-inputs{
+            @include input-style;
             border: 1px solid $firstBackground;
             border-radius: 4px;
             background-color: $secondBackground;

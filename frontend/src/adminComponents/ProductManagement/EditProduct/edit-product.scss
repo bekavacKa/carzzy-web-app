@@ -1,0 +1,17 @@
+@import '../../../assets/scss/vars.scss';
+
+.edit-product-admin{
+    @include bek-flex(space-between, row);
+    font-size: 1.2rem;
+    // background-color: green;
+    .edit-product-admin-data{
+        @include bek-flex(flex-start,column);
+        flex: 1;
+        margin: 0 10px;
+        .edit-product-admin-input{
+            @include input-style;
+            margin-bottom: 16px;
+        }
+    }
+
+}

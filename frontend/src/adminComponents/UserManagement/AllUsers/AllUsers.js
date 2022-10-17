@@ -52,7 +52,7 @@ function AllUsers() {
           <td>{user.username}</td>
           <td>{user.isAdmin === 'true' ? 'admin' : 'user'}</td>
           <td>{user.email}</td>
-          <td>{user.isActive === 'true' ? 'active' : 'not active'}</td>
+          <td>{user.isActive === 'true' ? 'activated' : 'not activated'}</td>
           <td>{user.wallet}</td>
           <td className='all-users-btns'>
             <FaRegEdit className='all-users-edit' title='EDIT' onClick={e => editUser(user)} />
@@ -74,7 +74,7 @@ function AllUsers() {
             <th scope="col">username</th>
             <th scope="col">role</th>
             <th scope="col">email</th>
-            <th scope="col">Active ?</th>
+            <th scope="col">activated ?</th>
             <th scope="col">wallet</th>
             <th></th>
           </tr>

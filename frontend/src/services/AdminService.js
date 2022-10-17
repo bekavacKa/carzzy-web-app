@@ -7,8 +7,14 @@ class AdminService{
     static editSelectedUSer(body){
         return axios.put('/api/admin/edit-selected-user', body);
     }
+    static addNewProduct(body){
+        return axios.post('/api/admin/add-new-product', body);
+    }
     static deleteSelectedProduct(productId){
         return axios.delete(`/api/admin/delete-selected-product/${productId}`);
+    }
+    static editSelectedProduct(body){
+        return axios.put('/api/admin/edit-selected-product', body);
     }
 }
 

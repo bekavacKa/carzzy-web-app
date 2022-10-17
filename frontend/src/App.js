@@ -30,7 +30,6 @@ import Stats from './adminComponents/Stats/Stats';
 import Header from './components/Header/Header';
 import UserAccount from './pages/UserAccount/UserAccount';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import AddNewProduct from './adminComponents/ProductManagement/AddNewProduct/AddNewProduct';
 
 
 axios.defaults.baseURL ='http://localhost:4000';
@@ -111,7 +110,6 @@ function App() {
             {/* admin routes */}
 
             <Route path={routeConfig.DASHBOARD.url} element={<AdminProtect> <Dashboard/> </AdminProtect>} >
-              <Route path={routeConfig.ADMIN_PRODUCT_MANAGE.url} element={<AddNewProduct/>} />
               <Route index element={<Stats/>} />
               <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
               <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />

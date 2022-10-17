@@ -48,95 +48,98 @@ function EditUser({showModal, selectedUser, updateDb}) {
 
   return (
     <>
-    <Modal isOpen={true} ariaHideApp={false} style={ModalStyle}>
-      <div className='modal-wrapper'>
-        
-        <div className='edit-user-admin'>
-          {/* <h2>EDIT USER</h2>
-          <h3>{selectedUser.username}</h3> */}
-          <div className='edit-user-admin-data'>
-            <label htmlFor="firstName">First Name</label>
-              <input id="firstName" 
-                      type ="text"
-                      name="firstName" 
+      <Modal isOpen={true} ariaHideApp={false} style={ModalStyle}>
+        <div className='modal-wrapper'>
+
+          <div className='modal-header'>
+            <h2 className='modal-header-title' >Edit user</h2>
+            <h3>{selectedUser.username}</h3>
+          </div>
+          
+          <div className='edit-user-admin'>
+            <div className='edit-user-admin-data'>
+              <label htmlFor="firstName">First Name</label>
+                <input id="firstName" 
+                        type ="text"
+                        name="firstName" 
+                        className='edit-user-admin-input'
+                        defaultValue={selectedUser?.firstName}
+                        onChange={(e) => {handleInputChange(e)}} />
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="lastName">Last Name</label>
+              <input id="lastName" 
+                      type ="text" 
+                      name="lastName" 
                       className='edit-user-admin-input'
-                      defaultValue={selectedUser?.firstName}
+                      defaultValue={selectedUser?.lastName}
                       onChange={(e) => {handleInputChange(e)}} />
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="city">City</label>
+              <input id="city" 
+                      type ="text"
+                      name="city"   
+                      className='edit-user-admin-input'
+                      defaultValue={selectedUser?.city}
+                      onChange={(e) => {handleInputChange(e)}}/>
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="username">Username</label>
+              <input id="username" 
+                      type ="text" 
+                      name="username" 
+                      className='edit-user-admin-input'
+                      defaultValue={selectedUser?.username}
+                      onChange={(e) => {handleInputChange(e)}} />
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="email">E-mail</label>
+              <input id="email" 
+                      type ="email" 
+                      name="email" 
+                      className='edit-user-admin-input'
+                      defaultValue={selectedUser?.email}
+                      onChange={(e) => {handleInputChange(e)}} />
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="isAdmin">Role</label>
+              <select id="isAdmin" 
+                      name="isAdmin" 
+                      className='edit-user-admin-input'
+                      defaultValue={selectedUser?.isAdmin}
+                      onChange={(e) => {handleInputChange(e)}} >
+                <option value='true' >admin</option>
+                <option value='false' >user</option>
+              </select>
+            </div>
+
+            <div className='edit-user-admin-data'>
+              <label htmlFor="isActive">activity state</label>
+              <select id="isActive" 
+                      name="isActive" 
+                      className='edit-user-admin-input'
+                      defaultValue={selectedUser?.isActive}
+                      onChange={(e) => {handleInputChange(e)}} >
+                <option value='true' >activated</option>
+                <option value='false' >not activated</option>
+              </select>
+            </div>
+
           </div>
 
-          <div className='edit-user-admin-data'>
-            <label htmlFor="lastName">Last Name</label>
-            <input id="lastName" 
-                    type ="text" 
-                    name="lastName" 
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.lastName}
-                    onChange={(e) => {handleInputChange(e)}} />
-          </div>
-
-          <div className='edit-user-admin-data'>
-            <label htmlFor="city">City</label>
-            <input id="city" 
-                    type ="text"
-                    name="city"   
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.city}
-                    onChange={(e) => {handleInputChange(e)}}/>
-          </div>
-
-          <div className='edit-user-admin-data'>
-            <label htmlFor="username">Username</label>
-            <input id="username" 
-                    type ="text" 
-                    name="username" 
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.username}
-                    onChange={(e) => {handleInputChange(e)}} />
-          </div>
-
-          <div className='edit-user-admin-data'>
-            <label htmlFor="email">E-mail</label>
-            <input id="email" 
-                    type ="email" 
-                    name="email" 
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.email}
-                    onChange={(e) => {handleInputChange(e)}} />
-          </div>
-
-          <div className='edit-user-admin-data'>
-            <label htmlFor="isAdmin">Role</label>
-            <select id="isAdmin" 
-                    name="isAdmin" 
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.isAdmin}
-                    onChange={(e) => {handleInputChange(e)}} >
-              <option value='true' >admin</option>
-              <option value='false' >user</option>
-            </select>
-          </div>
-
-          <div className='edit-user-admin-data'>
-            <label htmlFor="isActive">activity state</label>
-            <select id="isActive" 
-                    name="isActive" 
-                    className='edit-user-admin-input'
-                    defaultValue={selectedUser?.isActive}
-                    onChange={(e) => {handleInputChange(e)}} >
-              <option value='true' >activated</option>
-              <option value='false' >not activated</option>
-            </select>
+          <div className='modal-footer'>
+            <button className='modal-footer-btn' onClick={cancelEdit}> cancel </button>
+            <button className='modal-footer-btn confirm-btn' onClick={confirmEdit}> confirm </button>
           </div>
 
         </div>
-
-        <div className='modal-footer'>
-          <button className='modal-footer-btn' onClick={cancelEdit}> cancel </button>
-          <button className='modal-footer-btn confirm-btn' onClick={confirmEdit}> confirm </button>
-        </div>
-
-      </div>
-    </Modal>
+      </Modal>
     </>
   )
 }

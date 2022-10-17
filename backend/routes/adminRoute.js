@@ -30,13 +30,36 @@ routes.put('/edit-selected-user', (req,res) => {
     }, (err, data) => {
         if (err) {
             // console.log(err);
-            const errorMsg = `Error on updating user: ${err}`;
+            const errorMsg = `Error on editing user: ${err}`;
             res.send(errorMsg);
         } else {
             res.send(data);
         }
     })
-})
+});
+
+// admin add product
+// * moze bolje ima bolja mongoosova metoda
+routes.post('/add-new-product', (req,res) => {
+    console.log(req.body);
+    const reqBody=req.body;
+	Products.findOne(reqBody, async (err, data) => {
+		// console.log(data);
+		if (err) {
+			const errorMsg = `Error on adding product: ${err}`;
+			console.log(errorMsg);
+			res.send(errorMsg);
+			return;
+		}
+		if (data) res.send(`Product already exist`);
+		else {
+			const newProduct = new Products(reqBody);
+			const saveNewProduct = await newProduct.save();
+			console.log("Saved product",saveNewProduct);
+			res.send(saveNewProduct || 'Product not saved');
+		}
+	});
+});
 
 // admin del product
 routes.delete('/delete-selected-product/:productId', (req,res) => {
@@ -46,5 +69,23 @@ routes.delete('/delete-selected-product/:productId', (req,res) => {
         await res.send("Product deleted");
     });
 });
+
+// admin edit product
+routes.put('/edit-selected-product' ,(req,res) => {
+    let id = req.body._id;
+    let reqBody = req.body;
+    Products.updateOne({ "_id": id }, {
+        $set: 
+            reqBody
+    }, (err, data) => {
+        if (err) {
+            // console.log(err);
+            const errorMsg = `Error on editing product: ${err}`;
+            res.send(errorMsg);
+        } else {
+            res.send(data);
+        }
+    })
+})
 
 module.exports = routes;

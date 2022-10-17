@@ -15,10 +15,6 @@ class ShopService{
         // console.log(price);
         return axios.get(`/api/shop/filtered-products/${price}`)
     }
-    static addNewProduct(body){
-        // console.log(body);
-        return axios.post('/api/shop/add-new-product', body);
-    }
 }
 
 export default ShopService;

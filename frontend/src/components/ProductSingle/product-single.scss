@@ -27,7 +27,10 @@
             height: 100%;
             padding: 30px 10px;
             @include bek-flex(center,row);
-            align-items: center;
+            a{
+                @include bek-flex(center,row);
+                align-items: center;
+            }
             img{
                 width: 95%;
                 margin: 0 auto;
@@ -44,6 +47,7 @@
             letter-spacing: 2px;
             // background-color: red;
             border-top: 1px solid $firstFontColor;
+            text-transform: capitalize;
         }
         .product-card-btns{
             background-color: $iconColor;

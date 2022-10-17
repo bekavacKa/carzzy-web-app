@@ -3,11 +3,30 @@
 .modal-wrapper{
     // background-color: green;
     padding: 20px;
+    .modal-header{
+        text-align: center;
+        margin-bottom: 10px;
+        .modal-header-title{
+            color: $iconColor;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            &::after{
+                display: block;
+                content: "";
+                width: 70%;
+                height: 2px;
+                background: $iconColor;
+                margin: 0 auto;
+                margin-top: 5px;
+            }
+        }
+    }
     .modal-footer{
         @include bek-flex(space-between, row);
 
         .modal-footer-btn{
             @include bek-btn;
+            margin: 10px 0 0 0;
             &.confirm-btn{
                 background-color: yellowgreen;
             }

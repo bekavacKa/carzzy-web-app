@@ -33,14 +33,14 @@ function Shop() {
                     .then(res => {
                         // console.log("all data =>", res);
                         if(res.status === 200){
-                            setAllProducts(res.data);
+                            setAllProducts(res.data.reverse());
                         }
                     })
                     .catch(err => {
                         console.log(err);
                     })
                     .finally(() => dispatch(setLoader(false)))
-    } 
+    }
 
     // Search
     useEffect(() => {

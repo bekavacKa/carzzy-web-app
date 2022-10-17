@@ -1,10 +1,9 @@
 @import "../../assets/scss/vars.scss";
 
 .shop-wrapper{
+    @include container;
+    @include bek-flex(space-between, row);
     h2{
         width: 100%
     }
-    @include container;
-    @include bek-flex(space-between, row);
-    
 }
