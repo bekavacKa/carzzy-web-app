@@ -86,9 +86,10 @@ routes.post('/register', async (req,res) =>{
                 `, // html body
               });
 
-              console.log("Preview URL: ", nodemailer.getTestMessageUrl(info));
+            //   console.log("Preview URL: ", nodemailer.getTestMessageUrl(info));
+              let acctivationLink = nodemailer.getTestMessageUrl(info);
 
-            res.send(saveNewUser || `User >> ${data.username} << not registered.`);
+            res.send({saveNewUser, acctivationLink } || `User >> ${data.username} << not registered.`);
         }
     })
 });
@@ -103,7 +104,7 @@ routes.post('/complete-registration', (req, res) => {
             console.log(err);
             res.status(401).send("ERROR complete-registration =>", err);
         } else {
-            console.log("SUCCESS complete-registration");
+            // console.log("SUCCESS complete-registration");
             res.status(201).send("SUCCESS complete registration");
         }
     })

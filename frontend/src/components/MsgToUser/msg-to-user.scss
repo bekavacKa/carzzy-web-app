@@ -1,0 +1,41 @@
+@import '../../assets/scss/vars.scss';
+
+.msg-to-user-wrapper{
+    margin: 20px auto;
+    background-color: greenyellow;
+    width: 400px;
+    padding: 20px;
+    color: black;
+    box-shadow: 0px 0px 5px 2px $firstFontColor;
+    @include bek-flex(center, column);
+    p{
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .msg-to-user-title{
+        text-align: center;
+        &::after{
+            display: block;
+            content: "";
+            width: 70%;
+            height: 2px;
+            margin: 3px auto;
+            margin-bottom: 10px;
+            background: $iconColor;
+        }
+    }
+    .second-part{
+        @include bek-flex(center, column);
+        .second-part-btn{
+            @include bek-btn;
+            margin: 5px auto;
+            a{
+                color: $firstFontColor;
+            }
+        }
+    }
+}

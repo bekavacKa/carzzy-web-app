@@ -12,9 +12,8 @@
         .order-two-input-filed{
             margin-bottom: 10px;
             @include input-style;
-            color: $firstBackground;
-            background-color: $secondFontColor;
-            font-weight: 600;
+            background-color: #1a1919;
+            width: 400px;
             &.required-field{
                 outline: 2px solid red;
             }
