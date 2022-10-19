@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
 import { setLoader } from "../../redux/loaderSlice";
 import AuthService from "../../services/AuthService";
 import MsgToUser from "../MsgToUser/MsgToUser";
@@ -18,10 +19,9 @@ function Register(){
         password: "",
     });
 
-    const [isValid, setIsValid] = useState(true);
+    const [isSubmited, setIsSubmited] = useState(false);
     const [isSuccesReg, setSuccesReg] = useState(false);
     const [userLinkAcctivate, setUserLinkAcctivate] = useState('');
-    const [apiErr, setApiErr] = useState(false);
     
     const dispatch = useDispatch();
 
@@ -36,12 +36,13 @@ function Register(){
     const onSubmitForm = (e) => {
         e.preventDefault();
 
+        setIsSubmited(true);
+
         if(!userData.username || !userData.password || !userData.email || !userData.email.includes("@") ){
-            console.log("nesto ne postoji!!!");
-            setIsValid(false);
+            // console.log("nesto ne postoji!!!");
+            toast.info("There are required fields!");
             return;
         }
-        setIsValid(true);
         dispatch(setLoader(true));
         
         AuthService.register(userData)
@@ -50,14 +51,12 @@ function Register(){
                             console.log("REGISTER SERVICE RESPONSE =>", res);
                             setUserLinkAcctivate(res.data.acctivationLink)
                             setSuccesReg(true);
-                            setApiErr(false);
-                            // TODO: SEND USER TO HOME PAGE
                             return;
                         }
                     })
                     .catch((err) => {
                         console.log("REGISTER SERVICE ERR =>", err);
-                        setApiErr(true);
+                        toast.info("Something is wrong, try again later");
                     })
                     .finally(() => dispatch(setLoader(false)));
     }
@@ -72,43 +71,50 @@ function Register(){
                 <form className="register-form" onSubmit={e => onSubmitForm(e)}>
 
                     <label htmlFor="firstName">First Name</label>
-                    <input id="firstName" 
+                    <input  className="register-form-input"
+                            id="firstName" 
                             type ="text"
                             name="firstName" 
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="lastName">Last Name</label>
-                    <input id="lastName" 
+                    <input  className="register-form-input" 
+                            id="lastName" 
                             type ="text" 
                             name="lastName" 
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="adress">Adress</label>
-                    <input id="adress" 
+                    <input  className="register-form-input"
+                            id="adress" 
                             type ="text"
                             name="adress" 
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="city">City</label>
-                    <input id="city" 
+                    <input  className="register-form-input"
+                            id="city" 
                             type ="text"
                             name="city"   
                             onChange={(e) => {handleInputChange(e)}}/>
 
                     <label htmlFor="username">Username</label>
-                    <input id="username" 
+                    <input  className={`register-form-input ${!userData.username && isSubmited && 'required animate__animated animate__shakeX'} `}
+                            id="username" 
                             type ="text" 
                             name="username" 
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="email">E-mail</label>
-                    <input id="email" 
+                    <input  className={`register-form-input ${!userData.email && isSubmited && 'required animate__animated animate__shakeX'} `}
+                            id="email" 
                             type ="email" 
                             name="email" 
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="password">Password</label>
-                    <input id="password" 
+                    <input  className={`register-form-input ${!userData.password && isSubmited && 'required animate__animated animate__shakeX'} `}
+                            id="password" 
                             type ="password" 
                             name="password" 
                             onChange={(e) => {handleInputChange(e)}} />
@@ -119,9 +125,6 @@ function Register(){
                 </form> 
             }
             
-
-            {!isValid ? <p> invalid form </p> : null}
-            {apiErr ? <p> something is wrong</p> : null}
             {
                 isSuccesReg &&
                 <MsgToUser  msgTitle="Successful registration"
@@ -131,6 +134,8 @@ function Register(){
                             msgLink={userLinkAcctivate}
                 />
             }
+
+            <ToastContainer theme="dark" />
         </div>
     )
 }

@@ -44,13 +44,6 @@ function Auth(){
                             secondPart="As admin: username: admin, password: admin" 
                             thirdPart="As user: username: user, password: user" 
                 />
-                // :
-                // <MsgToUser  msgTitle="Register info"
-                //             firstPart="To sign up, you must first activate your account by clicking on the link we sent you in your email."  
-                //             secondPart="If you registered with a fake email, click on the button to visit the link to activate your account" 
-                //             thirdPart="Your role is user, to log in and view admin options, see login info" 
-                //             msgLink="https://www.nicepng.com/png/detail/334-3342222_car-auto-parts-png.png"
-                // />
             }
         </div>
     )

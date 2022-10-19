@@ -72,6 +72,7 @@ routes.post('/register', async (req,res) =>{
             });
 
 
+            // TODO moram prominut rutu kad podignem aplikaciju
             let info = await transporter.sendMail({
                 from: '"CARZZY WEB APP 👻" <bekavac@web-app.com>', // sender address
                 to: reqBody.email, // list of receivers
@@ -79,9 +80,8 @@ routes.post('/register', async (req,res) =>{
                 text: "To continue registration on Carzzy APP, please confirm your e-mail", // plain text body
                 html: `
                 <h1> Activate account </h1>
-                <h3> Dear, ${reqBody.username} </h3>
+                <h2> Dear, ${reqBody.username} </h2>
                 <h3> Please click on link to activate your account, ${reqBody.username} </h3>
-                // TODO moram prominut rutu kad podignem aplikaciju
                 <a href="http://localhost:3000/user-activate/${saveNewUser._id.toString()}" target="_blank" > ACTIVATE </a>
                 `, // html body
               });

@@ -7,10 +7,17 @@
         align-items: center;
     }
     form{
-        input{
+        font-size: 1.2rem;
+        .login-form-input{
             @include input-style;
+            margin-bottom: 15px;
+            width: 300px;
             background-color: $secondBackground;
             color: $firstFontColor;
+            text-align: center;
+            &.required{
+                border: 1px solid $iconColor;
+            }
         }
         .form-btn{
             @include bek-btn;

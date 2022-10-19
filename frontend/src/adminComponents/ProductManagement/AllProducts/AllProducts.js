@@ -86,7 +86,7 @@ function AllProducts() {
             <th scope="col">rating</th>
             <th scope="col">price</th>
             <th>
-              <button className='all-products-table-add-btn' onClick={e => addProduct()}> ADD NEW </button>
+              <button className='all-products-table-add-btn animate__animated animate__rubberBand' onClick={e => addProduct()}> ADD NEW </button>
             </th>
           </tr>
         </thead>

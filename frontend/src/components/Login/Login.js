@@ -16,8 +16,7 @@ import routeConfig from "../../config/routeConfig";
 function Login({showLoginForm}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [isValid, setIsValid] = useState(true);
-    // const [apiErr, setApiErr] = useState(false);
+    const [isSubmited, setIsSubmited] = useState(false);
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -25,19 +24,18 @@ function Login({showLoginForm}){
 
     const onSubmitForm = (e) => {
         e.preventDefault();
+        setIsSubmited(true);
         // console.log(username, "==>>>", pass);
         if(!username || !password){
-            // console.log("nesto ne postoji");
-            setIsValid(false);
+            toast.info("All fields required!");
             return;
         }
-        setIsValid(true);
         dispatch(setLoader(true));
         
         let body = { username, password};
         AuthService.login(body)
                     .then((res) => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if(res.status === 200){
                             console.log("LOGIN SERVICE RESPONSE =>", res);
                             localStorage.setItem("user", JSON.stringify(res.data.userData));
@@ -46,7 +44,7 @@ function Login({showLoginForm}){
                             dispatch(setUser(res.data.userData));
                             navigate(`${res.data.userData.isAdmin.includes('true') ? routeConfig.DASHBOARD.url : routeConfig.HOME.url}`);
                         }if(res.status === 201){
-                            toast.warning("Wrong username/password!");
+                            toast.warning("Wrong username or password!");
                         }
                         if(res.status === 210){
                             toast.warning(res.data);
@@ -71,12 +69,11 @@ function Login({showLoginForm}){
                 <form className="login-form" onSubmit={e => onSubmitForm(e)}>
 
                     <label htmlFor="username" >User Name</label>
-                    <input id="username" type ="text" onChange={(e) => {setUsername(e.target.value)}} />
+                    <input className={`login-form-input ${!username && isSubmited && 'required animate__animated animate__shakeX'} `} id="username" type ="text" onChange={(e) => {setUsername(e.target.value)}} />
 
                     <label htmlFor="password" >Password</label>
-                    <input id="password" type ="password" onChange={(e) => {setPassword(e.target.value)}} />
+                    <input className={`login-form-input ${!password && isSubmited && 'required animate__animated animate__shakeX'} `} id="password" type ="password" onChange={(e) => {setPassword(e.target.value)}} />
                     {/* {pass} */}
-                    {!isValid ? <p>All fields are required!!</p> : null}
                     <button className="form-btn" type="submit" > LOGIN </button>
 
                 </form> 
