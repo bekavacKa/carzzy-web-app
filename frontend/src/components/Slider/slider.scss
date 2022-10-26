@@ -1,0 +1,44 @@
+@import '../../assets/scss/vars.scss';
+
+.slider-wrapper{
+    // background-color: blue;
+    height: 100%;
+    position: relative;
+    .slider-holder{
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-size: cover;
+    }
+    .slider-arrow{
+        position: absolute;
+        color: $iconColor;
+        font-size: 2rem;
+        cursor: pointer;
+
+        &.left{
+            top: 50%;
+            transform: translate(0, 50%);
+            left: 40px;
+        }
+        &.right{
+            top: 50%;
+            transform: translate(0, 50%);
+            right: 40px;
+        }
+    }
+    .slider-nav{
+        @include bek-flex(center, row);
+        // position: absolute;
+        // transform: translate(0, 50%);
+        bottom: 50px;
+        .slider-nav-dot{
+            cursor: pointer;
+
+            &.active-dot{
+                color: $iconColor;
+            }
+        }
+    }
+}

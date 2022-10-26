@@ -74,7 +74,7 @@ routes.post('/register', async (req,res) =>{
 
             // TODO moram prominut rutu kad podignem aplikaciju
             let info = await transporter.sendMail({
-                from: '"CARZZY WEB APP 👻" <bekavac@web-app.com>', // sender address
+                from: '"CARZZY WEB APP 👻" <bekavac@web-app.com>', // TODO istrazit zasto ne moze gmail biti sender address
                 to: reqBody.email, // list of receivers
                 subject: "Activate your acc✔", // Subject line
                 text: "To continue registration on Carzzy APP, please confirm your e-mail", // plain text body
