@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
+import Categories from '../../components/Categories/Categories';
 import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
 import { setLoader } from '../../redux/loaderSlice';
@@ -44,6 +45,8 @@ function Home() {
           <Slider slides={products} dots={true} speed={2000}  />
         }
       </div>
+
+      <Categories/>
 
     </div>
   )

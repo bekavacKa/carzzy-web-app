@@ -15,6 +15,9 @@ class ShopService{
         // console.log(price);
         return axios.get(`/api/shop/filtered-products/${price}`)
     }
+    static getCategories(){
+        return axios.get('/api/shop/all-products-categories');
+    }
 }
 
 export default ShopService;

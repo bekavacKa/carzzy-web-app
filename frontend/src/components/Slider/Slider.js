@@ -11,11 +11,11 @@ function Slider({slides, dots, speed}) {
         console.log(slides[currentImgIndex]);
     },[slides]);
     
-    useEffect(() => {
-        speed && slideAutomatic(speed);
-        console.log("aloooo");
-        console.log(currentImgIndex);
-    },[currentImgIndex]);
+    // useEffect(() => {
+    //     speed && slideAutomatic(speed);
+    //     console.log("aloooo");
+    //     console.log(currentImgIndex);
+    // },[currentImgIndex]);
 
     //Todo baguje mi na klik dot kad mi je upaljen automatski jer postavljam dva razlicita indexa
     const slideAutomatic = (speed) => {
@@ -52,8 +52,15 @@ function Slider({slides, dots, speed}) {
                 <div className='slider-arrow right' onClick={slideNext}>
                     <FaAngleRight />
                 </div>
+
                 <div className='slider-holder' style={{backgroundImage: `url(${slides[currentImgIndex]?.imageUrl})`}}>
 
+                    <div className='slider-content'>
+                        <h2 className='slider-content-title'>Car Part Shop</h2>
+                        <h3 className='slider-content-subtitle'>Great Savings - Free Delivery</h3>
+                        <button className='slider-content-btn'>Shop Now</button>
+                    </div>
+                    
                 </div>
 
                 {
