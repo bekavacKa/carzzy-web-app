@@ -38,6 +38,10 @@ app.use('/api/shop', productRoute);
 //PAYMENT
 app.use('/api/payment', paymentRoute);
 
+app.get("/", (req, res) => {
+    res.send("Test backend(NODEJS) for CARZZY WEB APP - Bekavac");
+});
+
 
 app.listen(serverConfig.port, err => {
     if(err){
