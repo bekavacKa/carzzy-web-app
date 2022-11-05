@@ -67,7 +67,7 @@ routes.get('/filtered-products/:price', (req, res) => {
 });
 
 
-routes.get('/products-categories', (req, res) => {
+routes.get('/products-categories', async (req, res) => {
 
     Categories.find((err, data) => {
         if (err) {
@@ -83,7 +83,7 @@ routes.get('/products-categories', (req, res) => {
     })
 });
 
-routes.get('/banners', (req, res) => {
+routes.get('/banners', async (req, res) => {
 
     Banners.find((err, data)  =>  {
         if (err) {

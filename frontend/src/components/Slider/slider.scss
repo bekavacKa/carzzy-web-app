@@ -29,8 +29,8 @@
         .slider-content{
             @include bek-flex(center,column);
             align-items: center;
-            transition: $transition;
             background-color: #1212128f;
+            transition: transform 1s;
             margin: 80px;
             padding: 50px;
             text-align: center;
