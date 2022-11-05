@@ -53,12 +53,12 @@ function Slider({slides, dots, speed}) {
                     <FaAngleRight />
                 </div>
 
-                <div className='slider-holder' style={{backgroundImage: `url(${slides[currentImgIndex]?.imageUrl})`}}>
+                <div className={`slider-holder ${slides[currentImgIndex]?.infoPosition}`} style={{backgroundImage: `url(${slides[currentImgIndex]?.imageUrl})`}}>
 
                     <div className='slider-content'>
-                        <h2 className='slider-content-title'>Car Part Shop</h2>
-                        <h3 className='slider-content-subtitle'>Great Savings - Free Delivery</h3>
-                        <button className='slider-content-btn'>Shop Now</button>
+                        <h2 className='slider-content-title'>{slides[currentImgIndex]?.title}</h2>
+                        <h3 className='slider-content-subtitle'>{slides[currentImgIndex]?.subtitle}</h3>
+                        <button className='slider-content-btn'>{slides[currentImgIndex]?.buttonText}</button>
                     </div>
                     
                 </div>

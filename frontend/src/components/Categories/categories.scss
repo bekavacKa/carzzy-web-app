@@ -1,0 +1,32 @@
+@import '../../assets/scss/vars.scss';
+
+.categories-wrapper{
+    background-color: $secondBackground;
+    @include bek-flex(space-between, row);
+    margin: 10px 0;
+    .categories-card{
+        @include bek-flex(flex-start, row);
+        align-items: center;
+        flex: 1;
+        padding: 10px 50px;
+        cursor: pointer;
+        transition: $transition;
+        font-weight: 600;
+        &:hover{
+            background-color: $secondFontColor;
+            color: $firstBackground;
+        }
+        .categories-card-img{
+            // background-color: $secondFontColor;
+            img{
+                height: 100px;
+                width: 100%;
+            }
+        }
+        .categories-card-title{
+            margin-left: 30px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+    }
+}

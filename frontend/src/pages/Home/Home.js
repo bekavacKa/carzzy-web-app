@@ -10,23 +10,23 @@ import './home.scss';
 function Home() {
 
   const dispatch = useDispatch();
-  const [products, setProducts] = useState([]);
+  const [banners, setBanners] = useState([]);
 
   useEffect(() => {
-    getAllProducts();
+    getAllBaners();
   },[]);
 
   useEffect(() => {
-    console.log(products.length);
-  },[products])
+    console.log(banners.length);
+  },[banners])
 
-  const getAllProducts = () => {
+  const getAllBaners = () => {
     dispatch(setLoader(true));
-    ShopService.getProducts()
+    ShopService.getBanners()
                 .then(res => {
                     console.log("all data =>", res);
                     if(res.status === 200){
-                        setProducts(res.data.reverse());
+                        setBanners(res.data.reverse());
                     }
                 })
                 .catch(err => {
@@ -41,8 +41,8 @@ function Home() {
 
       <div className='home-slider' >
         {
-          products && 
-          <Slider slides={products} dots={true} speed={2000}  />
+          banners && 
+          <Slider slides={banners} dots={true} speed={2000}  />
         }
       </div>
 

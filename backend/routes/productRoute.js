@@ -1,5 +1,7 @@
 const express = require('express');
 const Products = require('../models/productModel');
+const Categories = require('../models/categoryModel');
+const Banners = require('../models/bannerModel');
 
 const routes = express.Router();
 
@@ -34,7 +36,7 @@ routes.get("/single-product/:productId", (req, res) => {
             res.status(401).send("Product dont found");
         }
     })
-})
+});
 
 routes.get('/products/search/:searchTerm', (req, res) => {
     const searchTerm = req.params.searchTerm;
@@ -46,7 +48,7 @@ routes.get('/products/search/:searchTerm', (req, res) => {
         console.log("searched =>", data);
         res.send(data);
     })
-})
+});
 
 // TODO vraca mi prazan arrayn moram nac bolju metodu
 routes.get('/filtered-products/:price', (req, res) => {
@@ -62,6 +64,42 @@ routes.get('/filtered-products/:price', (req, res) => {
             res.send(data);
         }
     })
+});
+
+
+routes.get('/products-categories', (req, res) => {
+
+    Categories.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("categories dont found")
+        }
+    })
+});
+
+routes.get('/banners', (req, res) => {
+
+    Banners.find((err, data)  =>  {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("banners dont found")
+        }
+    })
 })
+
+
+
 
 module.exports = routes;
