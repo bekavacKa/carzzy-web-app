@@ -97,6 +97,29 @@ routes.get('/banners', async (req, res) => {
             res.send("banners dont found")
         }
     })
+});
+
+routes.get('/random-banners/:num', (req, res) => {
+    let bannerNum = req.params.num;
+    Banners.find((err, data) => {
+        if(err){
+            console.log( "Random Banners Err => ", err);
+            res.send("error, try again later");
+            return;
+        }
+        if(data){
+            let dataCopy = [...data];
+            let randomBanners = [];
+            for (let i = 0; i < bannerNum; i++){
+                let rand = Math.floor(Math.random() * dataCopy.length);
+                randomBanners.push(dataCopy[rand]);
+                dataCopy.splice(rand,1);
+            }
+            res.send(randomBanners);
+        } else {
+            res.send("no banners found");
+        }
+    })
 })
 
 

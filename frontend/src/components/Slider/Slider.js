@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { FaAngleLeft, FaAngleRight, FaCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import routeConfig from '../../config/routeConfig';
 import './slider.scss';
 
 function Slider({slides, dots, speed}) {
 
     const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
-    useEffect(() => {
-        console.log(slides.length);
-        console.log(slides[currentImgIndex]);
-    },[slides]);
+    // useEffect(() => {
+    //     console.log(slides.length);
+    //     console.log(slides[currentImgIndex]);
+    // },[slides]);
     
     // useEffect(() => {
     //     speed && slideAutomatic(speed);
@@ -57,8 +59,8 @@ function Slider({slides, dots, speed}) {
 
                     <div className='slider-content move'>
                         <h2 className='slider-content-title'>{slides[currentImgIndex]?.title}</h2>
-                        <h3 className='slider-content-subtitle'>{slides[currentImgIndex]?.subtitle}</h3>
-                        <button className='slider-content-btn'>{slides[currentImgIndex]?.buttonText}</button>
+                        {/* <h3 className='slider-content-subtitle'>{slides[currentImgIndex]?.subtitle}</h3> */}
+                        <Link className='slider-content-btn' to={routeConfig.SHOP.url}>{slides[currentImgIndex]?.buttonText}</Link>
                     </div>
                     
                 </div>

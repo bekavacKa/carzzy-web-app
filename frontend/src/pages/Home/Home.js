@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
+import BannersCta from '../../components/BannersCta/BannersCta';
 import Categories from '../../components/Categories/Categories';
 import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
@@ -16,15 +17,15 @@ function Home() {
     getAllBaners();
   },[]);
 
-  useEffect(() => {
-    console.log(banners.length);
-  },[banners])
+  // useEffect(() => {
+  //   console.log(banners.length);
+  // },[banners])
 
   const getAllBaners = () => {
     dispatch(setLoader(true));
     ShopService.getBanners()
                 .then(res => {
-                    console.log("all data =>", res);
+                    // console.log("all data =>", res);
                     if(res.status === 200){
                         setBanners(res.data.reverse());
                     }
@@ -37,15 +38,16 @@ function Home() {
 
   return (
     <div className='home-wrapper'>
-      <Header pageTitle={"home"} />
+      {/* <Header pageTitle={"home"} /> */}
 
       <div className='home-slider' >
         {
-          banners && 
+          banners.length > 0 && 
           <Slider slides={banners} dots={true} speed={2000}  />
         }
       </div>
 
+      <BannersCta />
       <Categories/>
 
     </div>

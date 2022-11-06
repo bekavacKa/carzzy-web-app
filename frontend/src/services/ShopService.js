@@ -21,6 +21,9 @@ class ShopService{
     static getBanners(){
         return axios.get('/api/shop/banners');
     }
+    static getRandomBanners(num){
+        return axios.get(`/api/shop/random-banners/${num}`);
+    }
 }
 
 export default ShopService;

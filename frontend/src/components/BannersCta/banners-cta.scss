@@ -1,0 +1,62 @@
+@import '../../assets/scss/vars.scss';
+
+.banners-cta-wrapper{
+    @include bek-flex(space-evenly, row);
+    gap: 8px;
+    margin: 10px 0;
+    .banners-cta-poster{
+        flex: 1;
+        @include bek-flex(center, column);
+        align-items: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: $transition;
+        background-size: cover;
+        height: 250px;
+        width: 100%;
+        padding: 60px;
+        // box-shadow: 1px 1px 1px 1px $iconColor;
+        .banners-cta-poster-holder{
+            text-align: center;
+            .banners-cta-poster-title{
+                margin-bottom: 30px;
+                font-size: 1.5rem;
+            }
+            .banners-cta-poster-subtitle{
+                padding: 10px;
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            .banners-cta-poster-btn{
+                @include bek-btn;
+                font-size: .8rem;
+                margin: 5px 0 0 0;
+                padding: 5px 8px;
+            }
+        }
+        &:nth-child(1){
+            @include bek-flex(flex-start,row);
+            align-items: flex-end;
+            .banners-cta-poster-subtitle{
+                display: none;
+            }
+        }
+        &:nth-child(2){
+            @include bek-flex(center,row);
+            align-items: center;
+            .banners-cta-poster-title{
+                display: none;
+            }
+            .banners-cta-poster-btn{
+                display: none;
+            }
+        }
+        &:nth-child(3){
+            @include bek-flex(flex-end,row);
+            align-items: flex-end;
+            .banners-cta-poster-subtitle{
+                display: none;
+            }
+        }
+    }
+}
