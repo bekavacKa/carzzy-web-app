@@ -16,46 +16,73 @@
         width: 100%;
         padding: 60px;
         // box-shadow: 1px 1px 1px 1px $iconColor;
-        .banners-cta-poster-holder{
-            text-align: center;
-            .banners-cta-poster-title{
-                margin-bottom: 30px;
-                font-size: 1.5rem;
-            }
-            .banners-cta-poster-subtitle{
-                padding: 10px;
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-            .banners-cta-poster-btn{
-                @include bek-btn;
-                font-size: .8rem;
-                margin: 5px 0 0 0;
-                padding: 5px 8px;
-            }
-        }
-        &:nth-child(1){
-            @include bek-flex(flex-start,row);
-            align-items: flex-end;
-            .banners-cta-poster-subtitle{
-                display: none;
-            }
-        }
-        &:nth-child(2){
-            @include bek-flex(center,row);
-            align-items: center;
-            .banners-cta-poster-title{
-                display: none;
-            }
-            .banners-cta-poster-btn{
-                display: none;
+        &.single-banner{
+            height: 500px;
+            @include bek-flex(center, row);
+            .banners-cta-poster-holder{
+                text-align: center;
+                .banners-cta-poster-title{
+                    margin-bottom: 50px;
+                    font-size: 3rem;
+                    text-transform: uppercase;
+                    text-shadow: 2px 2px 3px $iconColor;
+                }
+                .banners-cta-poster-subtitle{
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    letter-spacing: 5px;
+                    margin-bottom: 50px;
+                    padding: 0 50px;
+                    line-height: 2rem;
+                    text-shadow: 2px 2px 3px $iconColor;
+                }
+                .banners-cta-poster-btn{
+                    @include bek-btn;
+                }
             }
         }
-        &:nth-child(3){
-            @include bek-flex(flex-end,row);
-            align-items: flex-end;
-            .banners-cta-poster-subtitle{
-                display: none;
+        &.more-banners{
+            .banners-cta-poster-holder{
+                text-align: center;
+                .banners-cta-poster-title{
+                    margin-bottom: 30px;
+                    font-size: 1.5rem;
+                }
+                .banners-cta-poster-subtitle{
+                    padding: 10px;
+                    font-size: 1rem;
+                    letter-spacing: 2px;
+                }
+                .banners-cta-poster-btn{
+                    @include bek-btn;
+                    font-size: .8rem;
+                    margin: 5px 0 0 0;
+                    padding: 5px 8px;
+                }
+            }
+            &:nth-child(1){
+                @include bek-flex(flex-start,row);
+                align-items: flex-end;
+                .banners-cta-poster-subtitle{
+                    display: none;
+                }
+            }
+            &:nth-child(2){
+                @include bek-flex(center,row);
+                align-items: center;
+                .banners-cta-poster-title{
+                    display: none;
+                }
+                .banners-cta-poster-btn{
+                    display: none;
+                }
+            }
+            &:nth-child(3){
+                @include bek-flex(flex-end,row);
+                align-items: flex-end;
+                .banners-cta-poster-subtitle{
+                    display: none;
+                }
             }
         }
     }
