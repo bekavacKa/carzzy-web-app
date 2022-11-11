@@ -32,8 +32,8 @@ import UserAccount from './pages/UserAccount/UserAccount';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 
-// axios.defaults.baseURL ='http://localhost:4000';
-axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
+axios.defaults.baseURL ='http://localhost:4000';
+// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
 
 axios.interceptors.request.use(function (config) {
     // console.log("inter =>", config);

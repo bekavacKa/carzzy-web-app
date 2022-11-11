@@ -21,6 +21,29 @@ routes.get('/all-products', async (req, res) => {
     })
 });
 
+routes.get('/random-products/:num', (req, res) => {
+    let productsNum = req.params.num;
+    Products.find((err, data) => {
+        if(err){
+            console.log( "Random Products Err => ", err);
+            res.send("error, try again later");
+            return;
+        }
+        if(data){
+            let dataCopy = [...data];
+            let randomProducts = [];
+            for (let i = 0; i < productsNum; i++){
+                let rand = Math.floor(Math.random() * dataCopy.length);
+                randomProducts.push(dataCopy[rand]);
+                dataCopy.splice(rand,1);
+            }
+            res.send(randomProducts);
+        } else {
+            res.send("no products found");
+        }
+    })
+});
+
 routes.get("/single-product/:productId", (req, res) => {
     const productId = req.params.productId;
     Products.findOne({ _id: productId }, (err, data) => {
@@ -120,7 +143,7 @@ routes.get('/random-banners/:num', (req, res) => {
             res.send("no banners found");
         }
     })
-})
+});
 
 
 

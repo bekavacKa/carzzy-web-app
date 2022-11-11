@@ -1,80 +1,73 @@
 @import "../../assets/scss/vars.scss";
 
-.product-single-wrapper{
-
-    max-width: 23%;
-    @include bek-flex(center,row);
-    // flex: 1;
-    .product-card{
-        background-color: $secondBackground;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 30px;
-        transition: 0.3s ease-in;
-        &:hover{
-            box-shadow: 0 0 3px $iconColor;
-            transform: scale(1.03);
-        }
-
-        // border: 3px solid white;
-        // padding: 10px;
-        border-radius: 5px;
-        // max-width: 90%;
-        .product-card-img{
-            width: 100%;
-            height: 100%;
-            padding: 30px 10px;
-            @include bek-flex(center,row);
-            a{
-                @include bek-flex(center,row);
-                align-items: center;
-            }
-            img{
-                width: 95%;
-                margin: 0 auto;
-            }
-        }
-        .product-card-info{
-            margin: 10px 0 2px;
-            width: 100%;
-            @include bek-flex(center,column);
-            align-items: center;
-            padding: 15px 0;
-            background-color: $iconColor;
-            font-weight: 600;
-            letter-spacing: 2px;
-            // background-color: red;
-            border-top: 1px solid $firstFontColor;
-            text-transform: capitalize;
-        }
-        .product-card-btns{
-            background-color: $iconColor;
-            width: 100%;
-            .product-card-btns-view{
-                border: none;
-                width: 50%;
-                padding: 6px;
-                background-color: $iconColor;
-                // border: 1px solid $firstFontColor;
-                font-size: 1.4rem;
-                color: $firstFontColor;
-                transition: $transition;
-                cursor: pointer;
-                border-right: 1px solid $secondBackground;
-                &:hover{
-                    // border: 1px solid $firstFontColor;
-                    background-color: $secondBackground;
-                }
-            }
-            .product-card-btns-add{
-                @extend .product-card-btns-view;
-                border-left: 1px solid $secondBackground;
-                border-right: 0;
-            }
-            
-        }
+.product-card{
+    background-color: $secondBackground;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    transition: 0.3s ease-in;
+    &:hover{
+        box-shadow: 0 0 3px $iconColor;
+        transform: scale(1.03);
     }
 
+    // border: 3px solid white;
+    // padding: 10px;
+    border-radius: 5px;
+    // max-width: 90%;
+    .product-card-img{
+        width: 100%;
+        height: 100%;
+        padding: 30px 10px;
+        @include bek-flex(center,row);
+        a{
+            @include bek-flex(center,row);
+            align-items: center;
+        }
+        img{
+            width: 95%;
+            margin: 0 auto;
+        }
+    }
+    .product-card-info{
+        margin: 10px 0 2px;
+        width: 100%;
+        @include bek-flex(center,column);
+        align-items: center;
+        padding: 15px 0;
+        background-color: $iconColor;
+        font-weight: 600;
+        letter-spacing: 2px;
+        // background-color: red;
+        border-top: 1px solid $firstFontColor;
+        text-transform: capitalize;
+    }
+    .product-card-btns{
+        background-color: $iconColor;
+        width: 100%;
+        .product-card-btns-view{
+            border: none;
+            width: 50%;
+            padding: 6px;
+            background-color: $iconColor;
+            // border: 1px solid $firstFontColor;
+            font-size: 1.4rem;
+            color: $firstFontColor;
+            transition: $transition;
+            cursor: pointer;
+            border-right: 1px solid $secondBackground;
+            &:hover{
+                // border: 1px solid $firstFontColor;
+                background-color: $secondBackground;
+            }
+        }
+        .product-card-btns-add{
+            @extend .product-card-btns-view;
+            border-left: 1px solid $secondBackground;
+            border-right: 0;
+        }
+        
+    }
 }

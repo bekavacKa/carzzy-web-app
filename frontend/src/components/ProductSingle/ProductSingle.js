@@ -25,9 +25,8 @@ function ProductSingle(props) {
   }
 
   return (
-    <div className='product-single-wrapper'>
-
-      {product.hasOwnProperty('imageUrl') ? 
+    <>
+    { product && product.hasOwnProperty('imageUrl') ? 
         <div className='product-card'>
 
           <div className='product-card-img'>
@@ -58,8 +57,7 @@ function ProductSingle(props) {
         </div>
         : null
       }
-
-    </div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import BannersCta from '../../components/BannersCta/BannersCta';
+import CardSlider from '../../components/CardSlider/CardSlider';
 import Categories from '../../components/Categories/Categories';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
@@ -47,14 +48,11 @@ function Home() {
         }
       </div>
 
-      <Categories/>
-      <BannersCta numBanners={3} />
-      <BannersCta numBanners={1} />
-      <Categories/>
-      <BannersCta numBanners={1} />
-      <BannersCta numBanners={2} />
       <BannersCta numBanners={3} />
       <Categories/>
+      <CardSlider sliderTitle={'Special Products'} numProducts={4} />
+      <BannersCta numBanners={1} />
+      <CardSlider sliderTitle={'Featured Products'} numProducts={6} />
 
     </div>
   )

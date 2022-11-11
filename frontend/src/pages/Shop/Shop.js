@@ -120,13 +120,15 @@ function Shop() {
         <Header pageTitle={"shop"} />
     <div className='shop-wrapper'>
         <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm}/>
-        {
-            allProducts.map((product) => {
-                return (
-                    <ProductSingle productProps={product} key={product._id} />
-                )
-            })
-        }
+        <div className='shop-cards-holder' >
+            {
+                allProducts.map((product) => {
+                    return (
+                        <ProductSingle productProps={product} key={product._id} />
+                    )
+                })
+            }
+        </div>
     </div>
     </>
   )

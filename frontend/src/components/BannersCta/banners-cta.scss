@@ -49,7 +49,7 @@
                     font-size: 1.5rem;
                 }
                 .banners-cta-poster-subtitle{
-                    padding: 10px;
+                    padding: 0 10px;
                     font-size: 1rem;
                     letter-spacing: 2px;
                 }
@@ -68,7 +68,7 @@
                 }
             }
             &:nth-child(2){
-                @include bek-flex(center,row);
+                @include bek-flex(center,column);
                 align-items: center;
                 .banners-cta-poster-title{
                     display: none;

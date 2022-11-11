@@ -4,6 +4,9 @@ class ShopService{
     static getProducts(){
         return axios.get('/api/shop/all-products');
     }
+    static getRandomProducts(num){
+        return axios.get(`/api/shop/random-products/${num}`)
+    }
     static getSingleProduct(productId){
         return axios.get(`/api/shop/single-product/${productId}`);
     }

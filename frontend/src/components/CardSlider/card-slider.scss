@@ -1,0 +1,35 @@
+@import '../../assets/scss/vars.scss';
+
+.card-slider-wrapper{
+    // background-color: chocolate;
+    padding: 30px;
+    .card-slider-header{
+        margin-bottom: 20px;
+        @include bek-flex(space-between, row);
+        .card-slider-header-title{
+            font-size: 1.7rem;
+        }
+        .card-slider-header-btns{
+            .arrow{
+                font-size: 2.3rem;
+                background-color: darkblue;
+                margin-left: 10px;
+                padding: 5px;
+                cursor: pointer;
+                transition: $transition;
+                &:hover{
+                    transform: scale(1.03);
+                }
+            }
+        }
+    }
+    .card-slider-holder{
+        flex: 1;
+        @include bek-flex(space-between, row);
+        gap: 5px;
+        flex-wrap: nowrap;
+        & > div {
+            max-width: 324px;
+        }
+    }
+}
