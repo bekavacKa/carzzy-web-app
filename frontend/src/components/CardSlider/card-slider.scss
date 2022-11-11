@@ -29,7 +29,7 @@
     .card-slider-holder{
         flex: 1;
         @include bek-flex(space-between, row);
-        gap: 5px;
+        gap: 10px;
         flex-wrap: nowrap;
         overflow-x: scroll;
         scroll-behavior: smooth;

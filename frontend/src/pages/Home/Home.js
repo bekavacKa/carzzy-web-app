@@ -50,7 +50,7 @@ function Home() {
 
       <BannersCta numBanners={3} />
       <Categories/>
-      <CardSlider sliderTitle={'Special Products'} numProducts={10} myId={"one"} key={12345}/>
+      <CardSlider sliderTitle={'Special Products'} numProducts={10} myId={"one"} cardWidth={500} key={12345}/>
       <BannersCta numBanners={1} />
       <CardSlider sliderTitle={'Featured Products'} numProducts={10} myId={"two"} key={6789} />
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { setLoader } from '../../redux/loaderSlice';
@@ -11,8 +11,11 @@ function CardSlider({sliderTitle, numProducts, myId}) {
     const dispatch = useDispatch();
     const [randomProducts, setRandomProducts] = useState([]);
 
+    const sliderHolder = useRef();
+
     useEffect(() => {
         getProducts()
+        myId && sliderHolder.current.classList.add(myId);
     },[])
 
     const getProducts = () => {
@@ -33,7 +36,6 @@ function CardSlider({sliderTitle, numProducts, myId}) {
         let slider = document.querySelector('.card-slider-holder');
         slider.scrollLeft = slider.scrollLeft - 500;
         console.log(slider.scrollLeft);
-        console.log(slider);
     };
 
     const goNext = () => {
@@ -41,7 +43,6 @@ function CardSlider({sliderTitle, numProducts, myId}) {
         let slider = document.querySelector('.card-slider-holder');
         slider.scrollLeft = slider.scrollLeft + 500;
         console.log(slider.scrollLeft);
-        console.log(slider);
     };
 
 
@@ -59,7 +60,7 @@ function CardSlider({sliderTitle, numProducts, myId}) {
             
         </div>
 
-        <div className={`card-slider-holder ${myId}`}  >
+        <div ref={sliderHolder} className='card-slider-holder' >
             {
                 randomProducts && numProducts && 
                 randomProducts.map(product => {
