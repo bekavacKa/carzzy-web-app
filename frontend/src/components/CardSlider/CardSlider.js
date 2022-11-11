@@ -6,7 +6,7 @@ import ShopService from '../../services/ShopService';
 import ProductSingle from '../ProductSingle/ProductSingle';
 import './card-slider.scss';
 
-function CardSlider({sliderTitle, numProducts}) {
+function CardSlider({sliderTitle, numProducts, myId}) {
 
     const dispatch = useDispatch();
     const [randomProducts, setRandomProducts] = useState([]);
@@ -26,7 +26,24 @@ function CardSlider({sliderTitle, numProducts}) {
                     })
                     .catch(err => console.log(err))
                     .finally(() => dispatch(setLoader(false)))
-    }
+    };
+
+    const goPrev = () => {
+        console.log("prev");
+        let slider = document.querySelector('.card-slider-holder');
+        slider.scrollLeft = slider.scrollLeft - 500;
+        console.log(slider.scrollLeft);
+        console.log(slider);
+    };
+
+    const goNext = () => {
+        console.log("next");
+        let slider = document.querySelector('.card-slider-holder');
+        slider.scrollLeft = slider.scrollLeft + 500;
+        console.log(slider.scrollLeft);
+        console.log(slider);
+    };
+
 
   return (
     <div className='card-slider-wrapper'>
@@ -36,12 +53,13 @@ function CardSlider({sliderTitle, numProducts}) {
                 {sliderTitle}
             </h2>
             <div className='card-slider-header-btns'>
-                <FaAngleLeft className='arrow' />
-                <FaAngleRight className='arrow' />
+                <FaAngleLeft className='arrow' onClick={goPrev} />
+                <FaAngleRight className='arrow' onClick={goNext} />
             </div>
+            
         </div>
 
-        <div className='card-slider-holder' >
+        <div className={`card-slider-holder ${myId}`}  >
             {
                 randomProducts && numProducts && 
                 randomProducts.map(product => {
@@ -51,6 +69,7 @@ function CardSlider({sliderTitle, numProducts}) {
                 })
             }
         </div>
+
     </div>
   )
 }
