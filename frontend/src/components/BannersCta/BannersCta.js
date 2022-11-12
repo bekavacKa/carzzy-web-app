@@ -14,9 +14,12 @@ function BannersCta({numBanners}) {
 
     useEffect(() => {
         // console.log(numBanners);
-        numBanners && numBanners === 1 ? 
-        getSingleBanner() :
-        getMoreBanners();
+        if(numBanners && numBanners === 1){
+            return getSingleBanner();
+        }
+        if(numBanners && numBanners > 1){
+            return getMoreBanners();
+        }
     },[numBanners]);
 
     // useEffect(() => {

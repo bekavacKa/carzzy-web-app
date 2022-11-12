@@ -58,4 +58,45 @@
         //     }
         // }
     }
+    .card-slider-holder-image{
+        flex: 1;
+        @include bek-flex(space-between, row);
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        padding: 5px 0;
+        // scrollbar-width: none;
+        .card-slider-holder-image-container{
+            max-width: 500px;
+            min-width: 500px;
+            box-shadow: 0 0 4px 3px $secondBackground;
+            .card-slider-holder-image-slide{
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: $transition;
+                background-size: cover;
+                height: 250px;
+            }
+            .card-slider-holder-image-badge{
+                margin-top: -15px;
+                height: 50px;
+                width: 200px;
+                background-color: $iconColor;
+                @include bek-flex(center, column);
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            .card-slider-holder-image-title{
+                font-size: 1.5rem;
+                letter-spacing: .1rem;
+                padding: 0 15px 15px;
+            }
+            
+        }
+        &::-webkit-scrollbar{
+            display: none;
+            height: 10px;
+        }
+    }
 }

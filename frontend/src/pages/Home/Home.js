@@ -12,10 +12,12 @@ import './home.scss';
 function Home() {
 
   const dispatch = useDispatch();
+  const [randomProducts, setRandomProducts] = useState([]);
   const [banners, setBanners] = useState([]);
 
   useEffect(() => {
     getAllBaners();
+    getProducts();
   },[]);
 
   // useEffect(() => {
@@ -35,7 +37,20 @@ function Home() {
                     console.log(err);
                 })
                 .finally(() => dispatch(setLoader(false)))
-  }
+  };
+
+  const getProducts = () => {
+    dispatch(setLoader(true));
+    ShopService.getRandomProducts(15)
+                .then(res => {
+                    if(res.status === 200){
+                        // console.log(res.data);
+                        setRandomProducts(res.data)
+                    }
+                })
+                .catch(err => console.log(err))
+                .finally(() => dispatch(setLoader(false)))
+};
 
   return (
     <div className='home-wrapper'>
@@ -50,9 +65,11 @@ function Home() {
 
       <BannersCta numBanners={3} />
       <Categories/>
-      <CardSlider sliderTitle={'Special Products'} numProducts={10} myId={"one"} cardWidth={500} key={12345}/>
+      <CardSlider sliderTitle={'Special Products'} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} myId={"one"}/>
       <BannersCta numBanners={1} />
-      <CardSlider sliderTitle={'Featured Products'} numProducts={10} myId={"two"} key={6789} />
+      <CardSlider sliderTitle={'Featured Products'} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} myId={"two"} />
+
+      <CardSlider sliderTitle={'Latest Blog'} sliderArrow={true} cardSliderItems={banners} myId={"three"}  />
 
     </div>
   )

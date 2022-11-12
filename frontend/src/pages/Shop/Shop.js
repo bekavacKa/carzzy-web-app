@@ -118,18 +118,18 @@ function Shop() {
   return (
     <>
         <Header pageTitle={"shop"} />
-    <div className='shop-wrapper'>
-        <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm}/>
-        <div className='shop-cards-holder' >
-            {
-                allProducts.map((product) => {
-                    return (
-                        <ProductSingle productProps={product} key={product._id} />
-                    )
-                })
-            }
+        <div className='shop-wrapper'>
+            <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm}/>
+            <div className='shop-cards-holder' >
+                {
+                    allProducts.map((product) => {
+                        return (
+                            <ProductSingle productProps={product} key={product._id} />
+                        )
+                    })
+                }
+            </div>
         </div>
-    </div>
     </>
   )
 }
