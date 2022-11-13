@@ -124,7 +124,7 @@ function Shop() {
                 {
                     allProducts.map((product) => {
                         return (
-                            <ProductSingle productProps={product} key={product._id} />
+                            <ProductSingle productProps={product} cardInfo={true} key={product._id} />
                         )
                     })
                 }

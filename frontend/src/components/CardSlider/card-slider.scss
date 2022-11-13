@@ -13,6 +13,7 @@
             align-items: center;
             h2{
                 font-size: 1.4rem;
+                text-transform: capitalize
             }
             span{
                 @include bek-flex(flex-start, row);
@@ -80,6 +81,12 @@
             max-width: 500px;
             min-width: 500px;
             box-shadow: 0 0 4px 3px $secondBackground;
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                box-shadow: 0 0 5px 2px $firstFontColor;
+                transform: scale(1.01);
+            }
             .card-slider-holder-image-slide{
                 background-position: center;
                 background-repeat: no-repeat;
@@ -89,17 +96,29 @@
             }
             .card-slider-holder-image-badge{
                 margin-top: -15px;
-                height: 50px;
-                width: 200px;
+                height: 45px;
+                width: 180px;
                 background-color: $iconColor;
                 @include bek-flex(center, column);
                 align-items: center;
                 margin-bottom: 15px;
+                letter-spacing: .15rem;
+                box-shadow: 1px 1px 4px 2px $secondBackground;
             }
             .card-slider-holder-image-title{
-                font-size: 1.5rem;
-                letter-spacing: .1rem;
+                font-size: 1.3rem;
+                letter-spacing: .15rem;
                 padding: 0 15px 15px;
+                text-transform: capitalize;
+            }
+            .card-slider-holder-image-publisher{
+                @include bek-flex(space-between, row);
+                padding: 0 15px 15px;
+                .publisher-name{
+                    color: $iconColor;
+                    font-style: italic;
+                    letter-spacing: .15rem;
+                }
             }
             
         }

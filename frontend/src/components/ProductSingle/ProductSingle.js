@@ -8,7 +8,7 @@ import './product-single.scss';
 import routeConfig from '../../config/routeConfig';
 import RatingStars from '../RatingStars/RatingStars';
 
-function ProductSingle(props) {
+function ProductSingle(props, {cardInfo}) {
   const dispatch = useDispatch();
 
 
@@ -22,7 +22,7 @@ function ProductSingle(props) {
     const addToCart = () => {
       // console.log("CARRTT", product);
       dispatch(addToShopCart(product));
-  }
+    }
 
   return (
     <>
@@ -42,7 +42,6 @@ function ProductSingle(props) {
             <p>{product.price.toFixed(2)} $ </p>
           </div>
 
-
           <div className='product-card-btns' >
             <Link to={routeConfig.SHOP_SINGLE_PRODUCT.completeUrl(product._id)} >
               <button className='product-card-btns-view' >
@@ -53,6 +52,7 @@ function ProductSingle(props) {
               < FaCartPlus /> 
             </button>
           </div>
+
 
         </div>
         : null

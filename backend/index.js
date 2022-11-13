@@ -8,6 +8,7 @@ const adminRoute = require('./routes/adminRoute');
 const userRoute = require('./routes/userRoute');
 const productRoute = require('./routes/productRoute');
 const paymentRoute = require('./routes/paymentRoute');
+const blogRoute = require('./routes/blogRoute');
 
 // const Products = require('./models/productModel');
 // const nodemailer = require("nodemailer");
@@ -37,6 +38,9 @@ app.use('/api/shop', productRoute);
 
 //PAYMENT
 app.use('/api/payment', paymentRoute);
+
+// BLOG
+app.use('/api/blog', blogRoute);
 
 app.get("/", (req, res) => {
     res.send("Test backend(NODEJS) for CARZZY WEB APP - Bekavac");

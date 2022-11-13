@@ -7,6 +7,7 @@ import Categories from '../../components/Categories/Categories';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
 import { setLoader } from '../../redux/loaderSlice';
+import BlogService from '../../services/BlogService';
 import ShopService from '../../services/ShopService';
 import './home.scss';
 
@@ -14,16 +15,16 @@ function Home() {
 
   const dispatch = useDispatch();
   const [randomProducts, setRandomProducts] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
   const [banners, setBanners] = useState([]);
+  const [latestBlogs, setLatestBlogs] = useState([]);
 
   useEffect(() => {
     getAllBaners();
-    getProducts();
+    getRandProducts();
+    getFeaturedProducts();
+    getLatestBlogs();
   },[]);
-
-  // useEffect(() => {
-  //   console.log(banners.length);
-  // },[banners])
 
   const getAllBaners = () => {
     dispatch(setLoader(true));
@@ -40,7 +41,7 @@ function Home() {
                 .finally(() => dispatch(setLoader(false)))
   };
 
-  const getProducts = () => {
+  const getRandProducts = () => {
     dispatch(setLoader(true));
     ShopService.getRandomProducts(15)
                 .then(res => {
@@ -51,7 +52,33 @@ function Home() {
                 })
                 .catch(err => console.log(err))
                 .finally(() => dispatch(setLoader(false)))
-};
+  };
+
+  // Todo zaminut sa featured products kad im dodam property
+  const getFeaturedProducts = () => {
+    dispatch(setLoader(true));
+    ShopService.getRandomProducts(10)
+                .then(res => {
+                    if(res.status === 200){
+                        // console.log(res.data);
+                        setFeaturedProducts(res.data)
+                    }
+                })
+                .catch(err => console.log(err))
+                .finally(() => dispatch(setLoader(false)))
+  }
+
+  const getLatestBlogs = () => {
+    dispatch(setLoader(true))
+    BlogService.getBlogs()
+                .then(res => {
+                  if(res.status === 200){
+                    setLatestBlogs(res.data.reverse())
+                  }
+                })
+                .catch(err => console.log(err))
+                .finally(() => dispatch(setLoader(false)))
+  }
 
   return (
     <div className='home-wrapper'>
@@ -66,11 +93,11 @@ function Home() {
 
       <BannersCta numBanners={3} />
       <Categories/>
-      <CardSlider sliderTitle={'Special Products'} sliderIcon={<FaSchlix/>} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
+      <CardSlider sliderTitle={'Special Products'} cardInfo={true} sliderIcon={<FaSchlix/>} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
       <BannersCta numBanners={1} />
-      <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaConnectdevelop />} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
+      <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaConnectdevelop />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
 
-      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBlogger/>} sliderArrow={true} cardSliderItems={banners} />
+      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBlogger/>} sliderArrow={true} cardSliderItems={latestBlogs} />
 
     </div>
   )

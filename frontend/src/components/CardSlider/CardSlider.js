@@ -4,12 +4,10 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import ProductSingle from '../ProductSingle/ProductSingle';
 import './card-slider.scss';
 
-function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, sliderIcon}) {
+function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, sliderIcon, cardInfo}) {
 
-    // const dispatch = useDispatch();
     const sliderId = useId();
 
-    // const sliderHolder = useRef();
     // POPRAVIT BUG NA STRELICAMA !!!!!!!!!!
     // * DONE
     const [sliderItems, setSliderItems] = useState([]);
@@ -20,20 +18,14 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
             setSliderItems(cardSliderItems)
         }
     },[cardSliderItems]);
-    
-    // useEffect(() => {
-    //     console.log(sliderItems);
-    // },[sliderItems]);
 
     const goPrev = () => {
-        // console.log("prev");
         let slider = document.getElementById(sliderId);
         slider.scrollLeft = slider.scrollLeft - 500;
         // console.log(slider.scrollLeft);
     };
 
     const goNext = () => {
-        // console.log("next");
         let slider = document.getElementById(sliderId);
         slider.scrollLeft = slider.scrollLeft + 500;
         // console.log(slider.scrollLeft);
@@ -71,7 +63,7 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
                         {
                             sliderItems.map(product => {
                                 return(
-                                    <ProductSingle productProps={product} key={product._id} />
+                                    <ProductSingle productProps={product} cardInfo={cardInfo} key={product._id} />
                                 )
                             })
                         }
@@ -114,19 +106,27 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
                         {
                             sliderItems.map((item, index) => {
                                 return(
-                                    <div className='card-slider-holder-image-container' key={index}>
+                                    <div title='COMING SOON :D' className='card-slider-holder-image-container' key={index}>
                                         <div className='card-slider-holder-image-slide' 
                                             style={{backgroundImage: ` url(${item.imageUrl})`}}  >
 
                                         </div>
                                         <div className='card-slider-holder-image-badge'>
                                             <p>
-                                                02/04/2022
+                                                {item.publishDate}
                                             </p>
                                         </div>
                                         <div className='card-slider-holder-image-title'>
                                             <p>
                                                 {item.title}
+                                            </p>
+                                        </div>
+                                        <div className='card-slider-holder-image-publisher'>
+                                            <p>
+                                                Posted by
+                                            </p>
+                                            <p className='publisher-name'>
+                                                {item.publisher}
                                             </p>
                                         </div>
                                     </div>
