@@ -1,0 +1,32 @@
+@import '../../assets/scss/vars.scss';
+
+.subscribe-me-wrapper{
+    @include bek-flex(center, column);
+    padding: 70px;
+    align-items: center;
+    .subscribe-me-icon{
+        color: $iconColor;
+        font-size: 8rem;
+    }
+    .subscribe-me-info{
+        text-align: center;
+        h2{
+            margin-bottom: 20px;
+        }
+        p{
+            margin-bottom: 20px;
+            color: $secondFontColor;
+        }
+    }
+    .subscribe-me-email{
+        .subscribe-me-email-input{
+            @include input-style;
+            width: 25rem;
+            height: 50px
+        }
+    }
+    .subscribe-me-btn{
+        @include bek-btn;
+        text-transform: capitalize;
+    }
+}

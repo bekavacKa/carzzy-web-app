@@ -30,9 +30,7 @@ function ProductSingle(props, {cardInfo}) {
         <div className='product-card'>
 
           <div className='product-card-img'>
-            <Link to={routeConfig.SHOP_SINGLE_PRODUCT.completeUrl(product._id)} >
               <img src={product.imageUrl} alt={product.title}  />
-            </Link>
           </div>
 
           <RatingStars rating={product.rating} />

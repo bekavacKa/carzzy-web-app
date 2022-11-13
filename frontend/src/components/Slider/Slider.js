@@ -44,11 +44,20 @@ function Slider({slides, dots, speed}) {
         setCurrentImgIndex(index);
     }
 
+    const handleKeyPress = (e) => {
+        if(e.key === "ArrowRight"){
+            return slideNext();
+        }
+        if(e.key === "ArrowLeft"){
+            return slidePrevious();
+        }
+    }
+
     const sliderLayout = () => {
         return (
             slides.length &&
             <>
-                <div className='slider-arrow left' onClick={slidePrevious}>
+                <div className='slider-arrow left' onClick={slidePrevious} >
                     <FaAngleLeft/>
                 </div>
                 <div className='slider-arrow right' onClick={slideNext}>
@@ -87,7 +96,7 @@ function Slider({slides, dots, speed}) {
     }
 
   return (
-    <div className='slider-wrapper'>
+    <div className='slider-wrapper' tabIndex={0}  onKeyDown={handleKeyPress}>
         {
             sliderLayout()
         }

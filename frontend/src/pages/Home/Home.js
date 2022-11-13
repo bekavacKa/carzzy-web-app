@@ -6,6 +6,7 @@ import CardSlider from '../../components/CardSlider/CardSlider';
 import Categories from '../../components/Categories/Categories';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
+import SubscribeMe from '../../components/SubscribeMe/SubscribeMe';
 import { setLoader } from '../../redux/loaderSlice';
 import BlogService from '../../services/BlogService';
 import ShopService from '../../services/ShopService';
@@ -96,6 +97,7 @@ function Home() {
       <CardSlider sliderTitle={'Special Products'} cardInfo={true} sliderIcon={<FaSchlix/>} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
       <BannersCta numBanners={1} />
       <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaConnectdevelop />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
+      <SubscribeMe />
 
       <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBlogger/>} sliderArrow={true} cardSliderItems={latestBlogs} />
 
