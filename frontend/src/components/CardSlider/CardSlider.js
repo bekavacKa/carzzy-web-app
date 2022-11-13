@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useId } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import ProductSingle from '../ProductSingle/ProductSingle';
 import './card-slider.scss';
 
-function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow}) {
+function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, sliderIcon}) {
 
     // const dispatch = useDispatch();
+    const sliderId = useId();
 
     // const sliderHolder = useRef();
-    // TODO POPRAVIT BUG NA STRELICAMA !!!!!!!!!!
+    // POPRAVIT BUG NA STRELICAMA !!!!!!!!!!
+    // * DONE
     const [sliderItems, setSliderItems] = useState([]);
 
     useEffect(() => {
+        // console.log(sliderId);
         if(cardSliderItems){
             setSliderItems(cardSliderItems)
         }
@@ -22,17 +26,17 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow})
     // },[sliderItems]);
 
     const goPrev = () => {
-        console.log("prev");
-        let slider = document.querySelector('.card-slider-holder');
+        // console.log("prev");
+        let slider = document.getElementById(sliderId);
         slider.scrollLeft = slider.scrollLeft - 500;
-        console.log(slider.scrollLeft);
+        // console.log(slider.scrollLeft);
     };
 
     const goNext = () => {
-        console.log("next");
-        let slider = document.querySelector('.card-slider-holder');
+        // console.log("next");
+        let slider = document.getElementById(sliderId);
         slider.scrollLeft = slider.scrollLeft + 500;
-        console.log(slider.scrollLeft);
+        // console.log(slider.scrollLeft);
     };
 
     const sliderCardLayout = () => {
@@ -43,9 +47,16 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow})
                     <div className='card-slider-header' >
                         {
                             sliderTitle &&
-                            <h2 className='card-slider-header-title'>
-                                {sliderTitle}
-                            </h2>
+                            <div className='card-slider-header-title'>
+                                <span>
+                                    {
+                                        sliderIcon && sliderIcon
+                                    }
+                                </span>
+                                <h2>
+                                    {sliderTitle}
+                                </h2>
+                            </div>
                         }
                         {
                             sliderArrow &&
@@ -56,7 +67,7 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow})
                         }
                     </div>
 
-                    <div className='card-slider-holder' >
+                    <div className='card-slider-holder' id={sliderId} >
                         {
                             sliderItems.map(product => {
                                 return(
@@ -78,9 +89,16 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow})
                 <div className='card-slider-header' >
                     {
                         sliderTitle &&
-                        <h2 className='card-slider-header-title'>
-                            {sliderTitle}
-                        </h2>
+                        <div className='card-slider-header-title'>
+                            <span>
+                                {
+                                    sliderIcon && sliderIcon
+                                }
+                            </span>
+                            <h2>
+                                {sliderTitle}
+                            </h2>
+                        </div>
                     }
                     {
                         sliderArrow &&
@@ -91,7 +109,7 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow})
                     }
                 </div>
 
-                <div className='card-slider-holder-image' >
+                <div className='card-slider-holder-image' id={sliderId} >
 
                         {
                             sliderItems.map((item, index) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { FaBlogger, FaConnectdevelop, FaSchlix, } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import BannersCta from '../../components/BannersCta/BannersCta';
 import CardSlider from '../../components/CardSlider/CardSlider';
@@ -65,11 +66,11 @@ function Home() {
 
       <BannersCta numBanners={3} />
       <Categories/>
-      <CardSlider sliderTitle={'Special Products'} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} myId={"one"}/>
+      <CardSlider sliderTitle={'Special Products'} sliderIcon={<FaSchlix/>} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
       <BannersCta numBanners={1} />
-      <CardSlider sliderTitle={'Featured Products'} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} myId={"two"} />
+      <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaConnectdevelop />} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
 
-      <CardSlider sliderTitle={'Latest Blog'} sliderArrow={true} cardSliderItems={banners} myId={"three"}  />
+      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBlogger/>} sliderArrow={true} cardSliderItems={banners} />
 
     </div>
   )
