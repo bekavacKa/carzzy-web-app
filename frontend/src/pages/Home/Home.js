@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { FaBlogger, FaConnectdevelop, FaSchlix, } from 'react-icons/fa';
+import { FaBimobject, FaFoursquare, FaSchlix, } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import BannersCta from '../../components/BannersCta/BannersCta';
 import CardSlider from '../../components/CardSlider/CardSlider';
 import Categories from '../../components/Categories/Categories';
+import ImpressionsUser from '../../components/ImpressionsUser/ImpressionsUser';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
 import SubscribeMe from '../../components/SubscribeMe/SubscribeMe';
@@ -88,7 +89,7 @@ function Home() {
       <div className='home-slider' >
         {
           banners.length > 0 && 
-          <Slider slides={banners} dots={true} speed={2000}  />
+          <Slider slides={banners} bannerSlider={true} dots={true} speed={2000}  />
         }
       </div>
 
@@ -96,10 +97,11 @@ function Home() {
       <Categories/>
       <CardSlider sliderTitle={'Special Products'} cardInfo={true} sliderIcon={<FaSchlix/>} sliderArrow={true} cardSliderItems={randomProducts} sliderTypeCard={true} />
       <BannersCta numBanners={1} />
-      <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaConnectdevelop />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
+      <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaFoursquare />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
+      <ImpressionsUser />
       <SubscribeMe />
 
-      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBlogger/>} sliderArrow={true} cardSliderItems={latestBlogs} />
+      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBimobject />} sliderArrow={true} cardSliderItems={latestBlogs} />
 
     </div>
   )

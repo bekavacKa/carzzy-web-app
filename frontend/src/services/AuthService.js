@@ -28,6 +28,9 @@ class AuthService {
     static getMyData(userId){
         return axios.get(`/api/user/get-my-data/${userId}`);
     }
+    static getImpressions(){
+        return axios.get('/api/user/impressions');
+    }
 }
 
 export default AuthService;

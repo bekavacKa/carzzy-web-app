@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 
 const Users = require('../models/userModel');
+const Impressions = require('../models/userImpression');
 // AUTH VALIDATION MIDDLE
 const { authValidation, validateUser } = require('../services/validationService');
 
@@ -152,6 +153,22 @@ routes.get('/get-my-data/:userId', authValidation, (req, res) => {
     })
 });
 
+// user impressions
+
+routes.get('/impressions', async (req, res) => {
+    Impressions.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("No impressions found")
+        }
+    })
+});
 
 
 module.exports = routes;

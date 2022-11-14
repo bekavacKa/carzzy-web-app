@@ -1,32 +1,44 @@
 @import '../../assets/scss/vars.scss';
 
 .subscribe-me-wrapper{
+    // background-color: darkblue;
     @include bek-flex(center, column);
-    padding: 70px;
+    padding: 50px;
     align-items: center;
     .subscribe-me-icon{
         color: $iconColor;
-        font-size: 8rem;
+        font-size: 6rem;
     }
     .subscribe-me-info{
         text-align: center;
-        h2{
+        h3{
             margin-bottom: 20px;
+            font-size: 1.4rem;
+            letter-spacing: .15rem;
         }
         p{
             margin-bottom: 20px;
             color: $secondFontColor;
+            font-size: .8rem;
+            letter-spacing: .1rem
         }
     }
     .subscribe-me-email{
+        margin-bottom: 10px;
         .subscribe-me-email-input{
             @include input-style;
             width: 25rem;
-            height: 50px
+            height: 50px;
+            padding-left: 30px;
+            background-color: transparent;
+            &::placeholder{
+                font-weight: 400;
+            }
         }
     }
     .subscribe-me-btn{
         @include bek-btn;
         text-transform: capitalize;
+        padding: 15px 40px;
     }
 }

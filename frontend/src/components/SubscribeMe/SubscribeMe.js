@@ -10,10 +10,10 @@ function SubscribeMe() {
             <GoMailRead />
         </div>
         <div className='subscribe-me-info'>
-            <h2>
+            <h3>
                 Sign up now to recive emails for <br/>
                 exclusive offers
-            </h2>
+            </h3>
             <p>
                 Sign up to recive the latest offers and discounts from Carzzy Auto Parts
             </p>

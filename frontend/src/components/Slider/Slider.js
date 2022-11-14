@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { FaAngleLeft, FaAngleRight, FaCircle } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaCircle, FaConnectdevelop } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import routeConfig from '../../config/routeConfig';
 import './slider.scss';
 
-function Slider({slides, dots, speed}) {
+function Slider({slides, dots, speed, bannerSlider, impressionsSlider}) {
 
     const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
@@ -89,18 +89,79 @@ function Slider({slides, dots, speed}) {
 
                     </div>
                 }
-                
-
             </>
+        )
+    };
+
+    const impressionsSliderLayout = () => {
+        return (
+            slides.length &&
+            <div className='slider-impression'>
+
+                <div className='slider-impression-title'>
+                    <span className='slider-impression-title-icon'>
+                        <FaConnectdevelop />
+                    </span>
+                    <h2>
+                        What our clients say
+                    </h2>
+                </div>
+                
+                {
+                    dots && 
+                    <div className='slider-impression-nav'>
+                        {
+                            slides.map((img, index) => {
+                                return(
+                                    <div className={`slider-impression-nav-dot ${currentImgIndex === index && 'active-dot'}`} key={index} onClick={() => slideSpecific(index)}>
+                                        <FaCircle /> 
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </div>
+                }
+
+                <div className='slider-impression-holder'>
+                    <div className='slider-impression-holder-image' style={{backgroundImage: `url(${slides[currentImgIndex]?.imageUrl})`}}>
+                    </div>
+
+                    <div className='slider-impression-holder-text'>
+                        <q> 
+                            {
+                                slides[currentImgIndex]?.userText
+                            }
+                        </q>
+                        <h3>
+                            {
+                                slides[currentImgIndex]?.name
+                            }
+                        </h3>
+                    </div>
+                </div>
+            </div>
         )
     }
 
   return (
-    <div className='slider-wrapper' tabIndex={0}  onKeyDown={handleKeyPress}>
+    <> 
         {
-            sliderLayout()
+            slides.length > 0 ?
+            <div className='slider-wrapper' tabIndex={0}  onKeyDown={handleKeyPress}>
+                {
+                    bannerSlider &&
+                    sliderLayout()
+                }
+                {
+                    impressionsSlider &&
+                    impressionsSliderLayout()
+                }
+            </div>
+            :
+            null
         }
-    </div>
+    </>
   )
 }
 

@@ -92,3 +92,15 @@ $fontF: Orbitron;
         }
     }
 }
+
+@mixin bek-rotate($duration, $time, $type) {
+    animation: rotation $duration $time $type;
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
