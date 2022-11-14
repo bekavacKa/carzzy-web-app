@@ -4,6 +4,7 @@
     // background-color: chocolate;
     user-select: none;
     padding: 30px;
+    position: relative;
     .card-slider-header{
         margin-bottom: 20px;
         @include bek-flex(space-between, row);
@@ -120,6 +121,63 @@
                 }
             }
             
+        }
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    .card-slider-sponsors-arrow{
+        position: absolute;
+        color: $iconColor;
+        font-size: 2rem;
+        cursor: pointer;
+        background-color: $secondBackground;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        @include bek-flex(center,column);
+        align-items: center;
+        // opacity: .9;
+        box-shadow: 0 0 2px 2px $secondFontColor;
+        transition: $transition;
+        &:hover{
+            opacity: .8;
+        }
+        &.left{
+            top: 30%;
+            transform: translate(0, 50%);
+            left: 15px;
+        }
+        &.right{
+            top: 30%;
+            transform: translate(0, 50%);
+            right: 15px;
+        }
+    }
+    .card-slider-sponsors-holder{
+        flex: 1;
+        @include bek-flex(space-between, row);
+        // gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        border-radius: 15px;
+        margin: 0 10px;
+        img{
+            width: 30%;
+        }
+        .card-slider-sponsors-holder-img{
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: $transition;
+            background-size: cover;
+            // &:hover{
+            //     transform: scale(1.02);
+            // }
         }
         &::-webkit-scrollbar{
             display: none;

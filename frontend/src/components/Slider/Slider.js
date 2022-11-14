@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import routeConfig from '../../config/routeConfig';
 import './slider.scss';
 
-function Slider({slides, dots, speed, bannerSlider, impressionsSlider}) {
+function Slider({slides, dots, speed, bannerSlider, impressionsSlider, sponsorsSlider}) {
 
     const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
@@ -69,7 +69,10 @@ function Slider({slides, dots, speed, bannerSlider, impressionsSlider}) {
                     <div className='slider-content move'>
                         <h2 className='slider-content-title'>{slides[currentImgIndex]?.title}</h2>
                         {/* <h3 className='slider-content-subtitle'>{slides[currentImgIndex]?.subtitle}</h3> */}
-                        <Link className='slider-content-btn' to={routeConfig.SHOP.url}>{slides[currentImgIndex]?.buttonText}</Link>
+                        {   
+                            slides[currentImgIndex]?.buttonText &&
+                            <Link className='slider-content-btn' to={routeConfig.SHOP.url}>{slides[currentImgIndex]?.buttonText}</Link>
+                        }
                     </div>
                     
                 </div>
@@ -142,7 +145,7 @@ function Slider({slides, dots, speed, bannerSlider, impressionsSlider}) {
                 </div>
             </div>
         )
-    }
+    };
 
   return (
     <> 

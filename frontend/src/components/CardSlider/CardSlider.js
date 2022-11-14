@@ -4,7 +4,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import ProductSingle from '../ProductSingle/ProductSingle';
 import './card-slider.scss';
 
-function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, sliderIcon, cardInfo}) {
+function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, sliderIcon, cardInfo, sliderTypeBlog, sliderTypeSponsor}) {
 
     const sliderId = useId();
 
@@ -139,6 +139,54 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
             :
             null
         )
+    };
+
+    const sliderTypeSponsorLayout = () => {
+        return (
+            sliderItems.length > 0 ?
+            <div className='card-slider-wrapper'>
+                
+                <div className='card-slider-header' >
+                    {
+                        sliderTitle &&
+                        <div className='card-slider-header-title'>
+                            <span>
+                                {
+                                    sliderIcon && sliderIcon
+                                }
+                            </span>
+                            <h2>
+                                {sliderTitle}
+                            </h2>
+                        </div>
+                    }
+                </div>
+                {
+                    sliderArrow &&
+                    <>
+                        <div className='card-slider-sponsors-arrow left'>
+                            <FaAngleLeft className='arrow' onClick={goPrev} />
+                        </div>
+                        <div className='card-slider-sponsors-arrow right'>
+                            <FaAngleRight className='arrow' onClick={goNext} />
+                        </div>
+                    </>
+                }
+
+                <div className='card-slider-sponsors-holder' id={sliderId} >
+                        {
+                            sliderItems.map((item, index) => {
+                                return(
+                                    <img src={item.imageUrl} className='card-slider-sponsors-holder-img' key={index} alt={item.title} />
+                                )
+                            })
+                        }
+                </div>
+
+            </div>  
+            :
+            null
+        )
     }
 
 
@@ -148,7 +196,18 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
             sliderTypeCard && sliderItems.length > 0 ? 
             sliderCardLayout()
             :
+            null
+        }
+        {
+            sliderTypeBlog && sliderItems.length > 0 ?
             sliderImageLayout()
+            :null
+        }
+        {
+            sliderTypeSponsor && sliderItems.length > 0 ?
+            sliderTypeSponsorLayout()
+            :
+            null
         }
 
     </>

@@ -2,6 +2,7 @@ const express = require('express');
 const Products = require('../models/productModel');
 const Categories = require('../models/categoryModel');
 const Banners = require('../models/bannerModel');
+const Sponsors = require('../models/sponsorModel'); 
 
 const routes = express.Router();
 
@@ -144,6 +145,23 @@ routes.get('/random-banners/:num', (req, res) => {
         }
     })
 });
+
+// sponsors
+routes.get('/all-sponsors', async (req, res) => {
+    Sponsors.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("Sponsors dont found")
+        }
+    })
+});
+
 
 
 

@@ -7,6 +7,7 @@ import Categories from '../../components/Categories/Categories';
 import ImpressionsUser from '../../components/ImpressionsUser/ImpressionsUser';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
+import SponsorsSlider from '../../components/SponsorsSlider/SponsorsSlider';
 import SubscribeMe from '../../components/SubscribeMe/SubscribeMe';
 import { setLoader } from '../../redux/loaderSlice';
 import BlogService from '../../services/BlogService';
@@ -100,8 +101,8 @@ function Home() {
       <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaFoursquare />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
       <ImpressionsUser />
       <SubscribeMe />
-
-      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBimobject />} sliderArrow={true} cardSliderItems={latestBlogs} />
+      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBimobject />} sliderArrow={true} cardSliderItems={latestBlogs} sliderTypeBlog={true} />
+      <SponsorsSlider />
 
     </div>
   )
