@@ -8,6 +8,11 @@ const routeConfig ={
         name: 'Shop',
         url: '/shop'
     },
+    // SHOP_CATEGORY: {
+    //     name: 'Shop Category',
+    //     url: '/shop/category/:catName',
+    //     completeUrl: catName => `/shop/category/${catName}`
+    // },
     SHOP_SINGLE_PRODUCT: {
         name: 'Single product',
         url: '/shop/product/:productId',

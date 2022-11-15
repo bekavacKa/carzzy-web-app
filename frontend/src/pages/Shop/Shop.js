@@ -6,16 +6,20 @@ import Header from '../../components/Header/Header';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
 import { useDispatch } from 'react-redux';
 import { setLoader } from '../../redux/loaderSlice';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 // import ProductSingle from '../../components/ProductSingle/ProductSingle';
 
-function Shop() {
+function Shop(props) {
+
+    // const location = useLocation();
+    // const { from } = props.location.state;
     // ? iako radi mogo bi odradit refaktornig za filter/search/sort jer moze jednostavnije
 
     const [allProducts, setAllProducts] = useState([]);
     const [filterPrice, setFilterPrice] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [sort, setSort] = useState("");
+    const [checkedCategory, setCheckedCategory] = useState("");
     let sortedProducts;
     // let filteredProducts;
     let searchedProducts;
@@ -25,7 +29,25 @@ function Shop() {
     
     useEffect(() => {
         getAllProducts();
+        // console.log(props.location.state);
     }, []);
+
+    useEffect(() => {
+        checkedCategory && getProductsWithCategory(checkedCategory);
+    },[checkedCategory]);
+
+    const getProductsWithCategory = (name) => {
+        dispatch(setLoader(true));
+        let nameLower = name.toLowerCase();
+        ShopService.getProductsWithSpecificCategory(nameLower)
+                    .then(res => {
+                        if(res.status === 200){
+                            setAllProducts(res.data);
+                        }
+                    })
+                    .catch(err => console.log(err))
+                    .finally(() => dispatch(setLoader(false)));
+    }
 
     const getAllProducts = () => {
         dispatch(setLoader(true));
@@ -119,7 +141,7 @@ function Shop() {
     <>
         <Header pageTitle={"shop"} />
         <div className='shop-wrapper'>
-            <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm}/>
+            <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm} setCheckedCategory={setCheckedCategory}/>
             <div className='shop-cards-holder' >
                 {
                     allProducts.map((product) => {

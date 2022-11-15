@@ -30,6 +30,9 @@ class ShopService{
     static getSponsors(){
         return axios.get('/api/shop/all-sponsors');
     }
+    static getProductsWithSpecificCategory(catName){
+        return axios.get(`/api/shop/products-category/${catName}`);
+    }
 }
 
 export default ShopService;

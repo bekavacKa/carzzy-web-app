@@ -146,6 +146,25 @@ routes.get('/random-banners/:num', (req, res) => {
     })
 });
 
+routes.get('/products-category/:catName', async (req, res) => {
+
+    const catName = req.params.catName;
+
+    Products.find({"category" : catName}, (err, data) => {
+        // console.log("categggg =>",data);
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("Category dont found")
+        }
+    })
+});
+
 // sponsors
 routes.get('/all-sponsors', async (req, res) => {
     Sponsors.find((err, data) => {

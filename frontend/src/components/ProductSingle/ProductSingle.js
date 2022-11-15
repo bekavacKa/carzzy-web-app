@@ -38,6 +38,7 @@ function ProductSingle(props, {cardInfo}) {
           <div className='product-card-info'>
             <p>{product.title}</p>
             <p>{product.price.toFixed(2)} $ </p>
+            {product.category}
           </div>
 
           <div className='product-card-btns' >
