@@ -74,6 +74,7 @@ routes.post('/register', async (req,res) =>{
 
 
             // TODO moram prominut rutu kad podignem aplikaciju
+            // * DONE
             let info = await transporter.sendMail({
                 from: '"CARZZY WEB APP 👻" <bekavac@web-app.com>', // TODO istrazit zasto ne moze gmail biti sender address
                 to: reqBody.email, // list of receivers
@@ -83,7 +84,7 @@ routes.post('/register', async (req,res) =>{
                 <h1> Activate account </h1>
                 <h2> Dear, ${reqBody.username} </h2>
                 <h3> Please click on link to activate your account, ${reqBody.username} </h3>
-                <a href="http://localhost:3000/user-activate/${saveNewUser._id.toString()}" target="_blank" > ACTIVATE </a>
+                <a href="https://mern-carzzy-bekavac-ka.netlify.app/user-activate/${saveNewUser._id.toString()}" target="_blank" > ACTIVATE </a>
                 `, // html body
               });
 
