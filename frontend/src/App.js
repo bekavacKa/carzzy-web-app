@@ -33,8 +33,8 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AllSubscriptions from './adminComponents/SubscriptionsManagment/AllSubscriptions/AllSubscriptions';
 
 
-axios.defaults.baseURL ='http://localhost:4000';
-// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
+// axios.defaults.baseURL ='http://localhost:4000';
+axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
 
 axios.interceptors.request.use(function (config) {
     // console.log("inter =>", config);
