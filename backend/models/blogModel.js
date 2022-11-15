@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
     imageUrl : {type: String, required: Boolean},
     publisher : {type: String, required: Boolean},
     blogText : {type: String},
-    publishDate : {type: String},
+    publishDate : {type: Date, default: Date.now},
     isVisible: {type: String, required: Boolean, default: false}
 })
 

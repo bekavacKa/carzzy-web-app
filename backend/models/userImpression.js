@@ -4,7 +4,7 @@ const impressionSchema = new mongoose.Schema({
     name : {type: String, required: Boolean},
     imageUrl : {type: String, required: Boolean},
     userText : {type: String, required: Boolean},
-    // publishDate : {type: String},
+    // publishDate : {type: Date, default: Date.now},
     // isVisible: {type: String, required: Boolean, default: false}
 })
 

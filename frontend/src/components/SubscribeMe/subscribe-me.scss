@@ -24,8 +24,10 @@
         }
     }
     .subscribe-me-email{
-        margin-bottom: 10px;
+        @include bek-flex(center, column);
+        align-items: center;
         .subscribe-me-email-input{
+            margin-bottom: 10px;
             @include input-style;
             width: 25rem;
             height: 50px;
@@ -34,11 +36,18 @@
             &::placeholder{
                 font-weight: 400;
             }
+            &:focus{
+                background-color: $secondBackground;
+                color: $firstFontColor;
+            }
+            &.required{
+                border: 1px solid $iconColor;
+            }
         }
-    }
-    .subscribe-me-btn{
-        @include bek-btn;
-        text-transform: capitalize;
-        padding: 15px 40px;
+        .subscribe-me-btn{
+            @include bek-btn;
+            text-transform: capitalize;
+            padding: 15px 40px;
+        }
     }
 }

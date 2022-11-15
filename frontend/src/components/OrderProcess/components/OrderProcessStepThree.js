@@ -23,7 +23,7 @@ function OrderProcessStepThree(secretKey) {
         const paymentResponse = await stripe.confirmPayment({
             elements,
             confirmParams: {
-            return_url: "http://localhost:3000/order",
+            return_url: "https://mern-carzzy-bekavac-ka.netlify.app/order",
             },
         });
 

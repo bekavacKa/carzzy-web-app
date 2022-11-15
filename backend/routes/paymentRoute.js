@@ -9,7 +9,7 @@ routes.post('/init-payment', async (req,res) => {
 
     const payment = await stripeLib.paymentIntents.create({
         // ! amount moram provjerit u stripe-u dokumentaciji jer mi u placanju dođe 100 puta manja cijena nego sta posaljem 
-        amount: req.body.amount * 100,
+        amount: req.body.amount ,
         currency: 'usd',
         automatic_payment_methods: {
             enabled: true

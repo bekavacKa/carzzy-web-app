@@ -11,8 +11,9 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 function Shop(props) {
 
-    // const location = useLocation();
+    const location = useLocation();
     // const { from } = props.location.state;
+    // const catName = location.state?.catName;
     // ? iako radi mogo bi odradit refaktornig za filter/search/sort jer moze jednostavnije
 
     const [allProducts, setAllProducts] = useState([]);
@@ -27,9 +28,12 @@ function Shop(props) {
     const [query, setQuery] = useSearchParams();
     const dispatch = useDispatch();
     
+    // ? na mozilli mi radi a na chromu nece moram provjerit zasto
     useEffect(() => {
+        location.state?.catName ? 
+        setCheckedCategory(location.state?.catName) && getProductsWithCategory(location.state?.catName) 
+        :
         getAllProducts();
-        // console.log(props.location.state);
     }, []);
 
     useEffect(() => {
@@ -116,22 +120,22 @@ function Shop(props) {
 
     // FILTER
     // TODO VRACA MI BACKEND PRAZAN ARRAY moram popravit
-    useEffect(() => {
-        // if (filterPrice !=='' && filterPrice!=='0') {
-        //     ShopService.getFilteredProducts(filterPrice)
-        //         .then(res => {
-        //             console.log("filterr", res.data);
-        //             if ( res.data && res.status === 200) {
-        //                 filteredProducts = res.data;
-        //             }
-        //             setAllProducts(filteredProducts);
-        //         })
-        //         .catch(err => console.log(err))
-        // }else{
-        //     // console.log("u elsu ");
-        //     getAllProducts();
-        // }
-    }, [filterPrice]);
+    // useEffect(() => {
+    //     if (filterPrice !=='' && filterPrice!=='0') {
+    //         ShopService.getFilteredProducts(filterPrice)
+    //             .then(res => {
+    //                 console.log("filterr", res.data);
+    //                 if ( res.data && res.status === 200) {
+    //                     filteredProducts = res.data;
+    //                 }
+    //                 setAllProducts(filteredProducts);
+    //             })
+    //             .catch(err => console.log(err))
+    //     }else{
+    //         // console.log("u elsu ");
+    //         getAllProducts();
+    //     }
+    // }, [filterPrice]);
 
 
 

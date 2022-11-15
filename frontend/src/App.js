@@ -25,15 +25,16 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import BackToTop from './components/BackToTop/BackToTop';
 import AllProducts from './adminComponents/ProductManagement/AllProducts/AllProducts';
 import AllUsers from './adminComponents/UserManagement/AllUsers/AllUsers';
-import AllEmails from './adminComponents/AllEmails/AllEmails';
+// import AllEmails from './adminComponents/AllEmails/AllEmails';
 import Stats from './adminComponents/Stats/Stats';
 import Header from './components/Header/Header';
 import UserAccount from './pages/UserAccount/UserAccount';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import AllSubscriptions from './adminComponents/SubscriptionsManagment/AllSubscriptions/AllSubscriptions';
 
 
-// axios.defaults.baseURL ='http://localhost:4000';
-axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
+axios.defaults.baseURL ='http://localhost:4000';
+// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
 
 axios.interceptors.request.use(function (config) {
     // console.log("inter =>", config);
@@ -114,7 +115,8 @@ function App() {
               <Route index element={<Stats/>} />
               <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
               <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
-              <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} />
+              <Route path={routeConfig.ADMIN_SUBS.url} element={<AllSubscriptions />} />
+              {/* <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} /> */}
             </Route>
             
           </Routes>

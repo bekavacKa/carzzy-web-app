@@ -48,6 +48,9 @@ const routeConfig ={
     ADMIN_PRODUCTS : {
         url: 'all-products'
     },
+    ADMIN_SUBS : {
+        url: 'all-subs'
+    },
     ADMIN_EMAILS : {
         url: 'all-emails'
     },

@@ -31,6 +31,12 @@ class AuthService {
     static getImpressions(){
         return axios.get('/api/user/impressions');
     }
+    static userSubscription(body){
+        return axios.post('/api/user/add-subscription', body)
+    }
+    static getAllSubscriptions(){
+        return axios.get('/api/user/all-subscriptions')
+    }
 }
 
 export default AuthService;

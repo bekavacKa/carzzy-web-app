@@ -68,11 +68,11 @@ function Navigation() {
 
 			<div className='nav-user' >
 				<div className='nav-user-cart'>
-					{
+					{/* {
 						currentUser.hasOwnProperty('wallet') ?
 						<p className={`nav-user-wallet positive` }> {currentUser.wallet.toFixed(2)} <span>$</span> </p> :
 						<p>0.00 &nbsp; $ </p>
-					}
+					} */}
 					<ShopCart />
 					{/* <MdAddShoppingCart className='cart'/> */}
 				</div>

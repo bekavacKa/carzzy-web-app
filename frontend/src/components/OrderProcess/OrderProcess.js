@@ -46,7 +46,6 @@ function OrderProces() {
 
   return (
     <div className='order-proces-wrapper'>
-        OrderProces
         {orderProcessStepsLayout()}
         {
           !paymentMsg && <OrderStepperFooter/>

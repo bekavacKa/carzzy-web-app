@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const Users = require('../models/userModel');
 const Impressions = require('../models/userImpression');
+const Subscriptions = require('../models/subscribeModel');
 // AUTH VALIDATION MIDDLE
 const { authValidation, validateUser } = require('../services/validationService');
 
@@ -171,5 +172,44 @@ routes.get('/impressions', async (req, res) => {
     })
 });
 
+// add subscription
+
+routes.post('/add-subscription', (req,res) => {
+    // console.log("=AAA", req.body);
+    const reqBody=req.body;
+	Subscriptions.findOne(reqBody, async (err, data) => {
+		// console.log(data);
+		if (err) {
+			const errorMsg = `Subscription error: ${err}`;
+			console.log(errorMsg);
+			res.send(errorMsg);
+			return;
+		}
+		if (data) res.status(208).send(`${data.email} is already subscribed`);
+		else {
+			const newSubscription = new Subscriptions(reqBody);
+			const saveNewSubscription = await newSubscription.save();
+			console.log("Successful subscription", saveNewSubscription);
+			res.send(saveNewSubscription || 'Failed subscription');
+		}
+	});
+});
+
+// all subscriptions
+
+routes.get('/all-subscriptions', async (req, res) => {
+    Subscriptions.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("No subscriptions found")
+        }
+    })
+});
 
 module.exports = routes;
