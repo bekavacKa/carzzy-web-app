@@ -150,7 +150,7 @@ function Slider({slides, dots, speed, bannerSlider, impressionsSlider, sponsorsS
   return (
     <> 
         {
-            slides.length > 0 ?
+            slides && slides.length > 0 ?
             <div className='slider-wrapper' tabIndex={0}  onKeyDown={handleKeyPress}>
                 {
                     bannerSlider &&

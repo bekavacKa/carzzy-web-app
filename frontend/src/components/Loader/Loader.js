@@ -9,7 +9,7 @@ function Loader() {
     {
       loading && 
         <div className='loader-wrapper'>
-            <h1>Loading . . .</h1>
+            <div className='loader'></div>
         </div>
     }
     </>

@@ -32,9 +32,15 @@ function ImpressionsUser() {
     }
 
   return (
-    <div className='impressions-user-wrapper' >
-        <Slider slides={impressions} impressionsSlider={true} dots={true} speed={5000}  />
-    </div>
+    <>
+    {
+        impressions && impressions.length > 0 ?
+        <div className='impressions-user-wrapper' >
+            <Slider slides={impressions} impressionsSlider={true} dots={true} speed={5000}  />
+        </div>
+        :null
+    }
+    </>
   )
 }
 

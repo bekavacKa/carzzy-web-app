@@ -145,16 +145,24 @@ function Shop(props) {
     <>
         <Header pageTitle={"shop"} />
         <div className='shop-wrapper'>
-            <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm} setCheckedCategory={setCheckedCategory}/>
-            <div className='shop-cards-holder' >
-                {
-                    allProducts.map((product) => {
-                        return (
-                            <ProductSingle productProps={product} cardInfo={true} key={product._id} />
-                        )
-                    })
-                }
-            </div>
+            {
+                allProducts && allProducts.length > 0 ?
+                <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm} setCheckedCategory={setCheckedCategory}/>
+                : null
+            }
+            {
+                allProducts && allProducts.length > 0 ?
+                <div className='shop-cards-holder' >
+                    {
+                        allProducts.map((product) => {
+                            return (
+                                <ProductSingle productProps={product} cardInfo={true} key={product._id} />
+                            )
+                        })
+                    }
+                </div>
+                : null
+            }
         </div>
     </>
   )

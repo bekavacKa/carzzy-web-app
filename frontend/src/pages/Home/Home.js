@@ -74,12 +74,12 @@ function Home() {
     <div className='home-wrapper'>
       {/* <Header pageTitle={"home"} /> */}
 
-      <div className='home-slider' >
         {
           banners.length > 0 && 
-          <Slider slides={banners} bannerSlider={true} dots={true} speed={2000}  />
+          <div className='home-slider' >
+              <Slider slides={banners} bannerSlider={true} dots={true} speed={2000}  />
+          </div>
         }
-      </div>
 
       <BannersCta numBanners={3} />
       <Categories/>
