@@ -165,12 +165,14 @@
         border-radius: 15px;
         margin: 0 10px;
         img{
-            width: 30%;
+            width: 25%;
         }
         .card-slider-sponsors-holder-img{
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             height: 200px;
+            // min-width: 200px;
+            max-width: 300px;
             background-position: center;
             background-repeat: no-repeat;
             transition: $transition;

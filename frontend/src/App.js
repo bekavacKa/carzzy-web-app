@@ -32,10 +32,11 @@ import UserAccount from './pages/UserAccount/UserAccount';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AllSubscriptions from './adminComponents/SubscriptionsManagment/AllSubscriptions/AllSubscriptions';
 import AboutUs from './pages/AboutUs/AboutUs';
+import Cookie from './components/Cookie/Cookie';
 
 
-axios.defaults.baseURL ='http://localhost:4000';
-// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
+// axios.defaults.baseURL ='http://localhost:4000';
+axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
 
 axios.interceptors.request.use(function (config) {
     // console.log("inter =>", config);
@@ -91,6 +92,11 @@ function App() {
     <>
       <div className="app-wrapper">
         <Loader />
+        {
+          // ? mogu napravit da se ponovo prikaziva ako odbije, al necu za sada
+          !localStorage.hasOwnProperty('Cookie') &&
+          <Cookie />
+        }
 
         <Navigation/>
 
