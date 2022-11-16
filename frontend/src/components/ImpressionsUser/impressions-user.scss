@@ -4,3 +4,15 @@
     background-color: $secondBackground;
     padding: 50px;
 }
+@include media("<=phone"){
+    .impressions-user-wrapper{
+        // background-color: rgba(248, 4, 4, 0.6);
+        padding: 20px 10px;
+    }
+}
+@include media(">phone", "<=tablet"){
+    .impressions-user-wrapper{
+        // background-color: rgba(253, 252, 252, 0.6);
+        padding: 20px 10px;
+    }
+}

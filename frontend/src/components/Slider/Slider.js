@@ -102,9 +102,9 @@ function Slider({slides, dots, speed, bannerSlider, impressionsSlider, sponsorsS
             <div className='slider-impression'>
 
                 <div className='slider-impression-title'>
-                    <span className='slider-impression-title-icon'>
+                    {/* <span className='slider-impression-title-icon'>
                         <FaQuestion />
-                    </span>
+                    </span> */}
                     <h2>
                         What our clients say
                     </h2>

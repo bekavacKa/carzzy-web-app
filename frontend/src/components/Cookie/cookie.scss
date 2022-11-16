@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 
 .cookie-wrapper{
@@ -66,5 +67,110 @@
                 background-color: yellowgreen;
             }
         }
+    }
+}
+
+@include media("<=phone"){
+    .cookie-wrapper{
+        // background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(255, 0, 0, 0.6);
+        font-size: 1rem;
+        .cookie-content{
+            width: 95%;
+            padding: 10px;
+            .cookie-content-header{
+                h3{
+                    text-align: center;
+                    margin: 0;
+                }
+                .cookie-logo{
+                    font-size: 2rem;
+                    margin-bottom: 10px;
+                }
+            }
+            .cookie-content-text{
+                padding: 15px;
+                .cookie-content-text-{
+                    margin: 2px 0;
+                    &.one{
+                        line-height: normal;
+                    }
+                    &.two{
+                        font-size: 1rem;
+                        line-height: normal;
+                    }
+                    &.three{
+                        line-height: normal;
+                    }
+                }
+            }
+            .cookie-content-btns{
+                margin-top: 15px;
+                width: 90%;
+                button{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+    }
+}
+@include media(">phone", "<=tablet"){
+    .cookie-wrapper{
+        // background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+        .cookie-content{
+            width: 95%;
+            padding: 10px;
+            .cookie-content-header{
+                h3{
+                    text-align: center;
+                    margin: 0;
+                }
+                .cookie-logo{
+                    font-size: 2rem;
+                    margin-bottom: 10px;
+                }
+            }
+            .cookie-content-text{
+                padding: 15px;
+                .cookie-content-text-{
+                    margin: 2px 0;
+                    &.one{
+                        line-height: normal;
+                    }
+                    &.two{
+                        font-size: 1rem;
+                        line-height: normal;
+                    }
+                    &.three{
+                        line-height: normal;
+                    }
+                }
+            }
+            .cookie-content-btns{
+                margin-top: 15px;
+                width: 90%;
+                button{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+    }
+}
+@include media(">=tablet", "<desktop"){
+    .cookie-wrapper{
+        // background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 255, 0.6);
+        .cookie-content{
+            width: 70%;
+        }
+    }
+}
+
+@include media(">=desktop"){
+    .cookie-wrapper{
+        // background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(172, 255, 47, 0.6);
     }
 }

@@ -101,16 +101,18 @@
         @include bek-flex(space-between, row);
         align-items: center;
         .slider-impression-title{
-            @include bek-flex(flex-start, row);
+            @include bek-flex(space-between, column);
             align-items: center;
             text-align: center;
             text-transform: capitalize;
-            margin-right: 20px;
+            h2{
+                margin-right: 20px;
+            }
             .slider-impression-title-icon{
                 @include bek-flex(center, center);
                 color: $iconColor;
                 font-size: 3rem;
-                margin-right: 10px;
+                margin: 15px;
                 // @include bek-rotate(5s, infinite, linear);
             }
         }
@@ -160,4 +162,96 @@
             }
         }
     }
+}
+
+@include media("<=phone"){
+    .slider-wrapper{
+        // background-color: rgba(248, 4, 4, 0.6);
+        .slider-impression{
+            @include bek-flex(space-between, column);
+            .slider-impression-title{
+                h2{
+                    margin-bottom: 15px;
+                }
+            }
+            .slider-impression-nav{
+                margin: 10px 20px;
+                @include bek-flex(center, row);
+                align-items: center;
+                .slider-impression-nav-dot{
+                    font-size: .8rem;
+                    margin: 5px;
+                }
+            }
+            .slider-impression-holder{
+                @include bek-flex(space-between, column);
+                align-items: center;
+                .slider-impression-holder-image{
+                    transition: .3s ease-out;
+                    padding: 0px;
+                    height: 120px;
+                    width: 120px;
+                    margin: 0 20px;
+                }
+                .slider-impression-holder-text{
+                    text-align: center;
+                    padding: 20px;
+                    q{
+                        line-height: 1rem;
+                    }
+                    h3{
+                        letter-spacing: normal;
+                    }
+                }
+            }
+        }
+    }
+}
+@include media(">phone", "<=tablet"){
+    .slider-wrapper{
+        // background-color: rgba(255, 255, 255, 0.6);
+        .slider-impression{
+            @include bek-flex(space-between, column);
+            .slider-impression-title{
+                h2{
+                    margin-bottom: 15px;
+                }
+            }
+            .slider-impression-nav{
+                margin: 10px 20px;
+                @include bek-flex(center, row);
+                align-items: center;
+                .slider-impression-nav-dot{
+                    font-size: .8rem;
+                    margin: 5px;
+                }
+            }
+            .slider-impression-holder{
+                @include bek-flex(space-between, column);
+                align-items: center;
+                .slider-impression-holder-image{
+                    transition: .3s ease-out;
+                    padding: 0px;
+                    height: 120px;
+                    width: 120px;
+                    margin: 0 20px;
+                }
+                .slider-impression-holder-text{
+                    text-align: center;
+                    padding: 20px;
+                    q{
+                        line-height: 1rem;
+                    }
+                    h3{
+                        letter-spacing: normal;
+                    }
+                }
+            }
+        }
+    }
+}
+@include media(">=tablet", "<desktop"){
+}
+
+@include media(">=desktop"){
 }
