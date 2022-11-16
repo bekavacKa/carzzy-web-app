@@ -52,6 +52,7 @@ function SearchFilter({setSort, filterPrice, setFilterPrice, setSearchTerm, sear
             <p>Category</p>
             <select className='search-filter-sort-select-btn'
                     onChange={e => {setCheckedCategory(e.target.value)}}>
+                      {/* TODO moram nac nacin da mi nije nista checkirano inicijalno */}
                       <option ></option>
                     {
                       categories.map((item, index) => {
@@ -67,7 +68,6 @@ function SearchFilter({setSort, filterPrice, setFilterPrice, setSearchTerm, sear
             <p>Sort</p>
             <select className='search-filter-sort-select-btn'
                     onChange={e => {setSort(e.target.value)}}>
-                      <option ></option>
               <option value="latest">latest</option>
               <option value="high">highest price</option>
               <option value="low">lowest price</option>

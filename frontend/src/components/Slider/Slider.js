@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaAngleLeft, FaAngleRight, FaCircle, FaConnectdevelop } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaCircle, FaQuestion } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import routeConfig from '../../config/routeConfig';
 import './slider.scss';
@@ -103,7 +103,7 @@ function Slider({slides, dots, speed, bannerSlider, impressionsSlider, sponsorsS
 
                 <div className='slider-impression-title'>
                     <span className='slider-impression-title-icon'>
-                        <FaConnectdevelop />
+                        <FaQuestion />
                     </span>
                     <h2>
                         What our clients say

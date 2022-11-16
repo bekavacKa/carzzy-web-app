@@ -1,0 +1,6 @@
+@import '../../assets/scss/vars.scss';
+
+.about-us-wrapper{
+    // background-color: darkslategray;
+    @include container;
+}

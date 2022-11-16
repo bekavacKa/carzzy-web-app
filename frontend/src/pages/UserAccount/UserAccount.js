@@ -5,14 +5,16 @@ import AuthService from '../../services/AuthService';
 import {setLoader} from '../../redux/loaderSlice';
 
 import './user-account.scss';
+import MyModal from '../../components/MyModal/MyModal';
+import { ToastContainer } from 'react-toastify';
 
 function UserAccount() {
 
     const {user} = useSelector(state => state.userStore);
     const dispatch = useDispatch();
 
-    const [userDetails, setUserDetails] = useState({})
-    const [showEdit, setShowEdit] = useState(false);
+    const [userDetails, setUserDetails] = useState({});
+    const [editUserModal, setEditUserModal] = useState(false);
 
     useEffect(() => {
         getUserDetails();
@@ -34,60 +36,43 @@ function UserAccount() {
     }
 
     const editUser = () => {
-        setShowEdit(!showEdit);
+        setEditUserModal(true);
+        // setShowEdit(!showEdit);
     }
 
     const userDetailsLayout = () => {
         return(
             <div className='user-account-data' >
+
                 <div className='user-account-data-details'>
-                    <p>First Name:</p>
-                    {
-                        !showEdit ? 
-                        <p className="user-account-data-details-user " >{userDetails?.firstName}</p>
-                        :
-                        <input type='text'
-                                defaultValue={userDetails?.firstName}
-                                className="user-account-data-details-user input"
-                                />
-                    }
+                    <h4>username:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.username}</h3>
                 </div>
                 <div className='user-account-data-details'>
-                    <p>Last Name:</p>
-                    {
-                        !showEdit ?
-                        <p className="user-account-data-details-user" >{userDetails?.lastName}</p>
-                        :
-                        <input type='text'
-                                defaultValue={userDetails?.lastName}
-                                className="user-account-data-details-user input"
-                                />
-                    }
+                    <h4>email:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.email}</h3>
                 </div>
                 <div className='user-account-data-details'>
-                    <p>email:</p>
-                    {
-                        !showEdit ?
-                        <p className="user-account-data-details-user" >{userDetails?.email}</p>
-                        :
-                        <input type='email'
-                                defaultValue={userDetails?.email}
-                                className="user-account-data-details-user input"
-                                />
-                    }
+                    <h4>First Name:</h4>
+                    <h3 className="user-account-data-details-user " >{userDetails?.firstName}</h3>
                 </div>
                 <div className='user-account-data-details'>
-                    <p>username:</p>
-                    {
-                        !showEdit ?
-                        <p className="user-account-data-details-user" >{userDetails?.username}</p>
-                        :
-                        <input type='text'
-                                defaultValue={userDetails?.username}
-                                className="user-account-data-details-user input"
-                                />
-                    }
+                    <h4>Last Name:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.lastName}</h3>
                 </div>
+                <div className='user-account-data-details'>
+                    <h4>City:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.city}</h3>
+                </div>
+                <div className='user-account-data-details'>
+                    <h4>address:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.address}</h3>
+                </div>
+                <div className='user-account-data-details'>
+                    <h4>Phone Number:</h4>
+                    <h3 className="user-account-data-details-user" >{userDetails?.phoneNumber}</h3>
+                </div>
+                <ToastContainer theme="dark" />
                 
             </div>
         )
@@ -103,12 +88,14 @@ function UserAccount() {
                 userDetails &&
                 userDetailsLayout()
             }
-            <button className='user-account-edit-btn' onClick={editUser} >
-                {
-                    showEdit ? "SAVE" : "EDIT"
-                }
+            <button className='user-account-edit-btn' onClick={e => editUser(user)} >
+                EDIT
             </button>
         </div>
+        {
+            editUserModal && <MyModal showModal={setEditUserModal} selectedUser={userDetails} updateDb={getUserDetails} />
+        }
+
     </>
   )
 }

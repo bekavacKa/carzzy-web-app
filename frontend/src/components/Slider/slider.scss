@@ -111,7 +111,7 @@
                 color: $iconColor;
                 font-size: 3rem;
                 margin-right: 10px;
-                @include bek-rotate(5s, infinite, linear);
+                // @include bek-rotate(5s, infinite, linear);
             }
         }
         .slider-impression-nav{

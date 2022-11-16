@@ -3,10 +3,10 @@
 
 .nav-wrapper{
     background-color: $secondBackground;
-    padding: 30px 20px;
+    padding: 25px 50px;
     color: $secondFontColor;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     a{
         color: $secondFontColor;
         margin-right: 20px;
@@ -26,8 +26,12 @@
         @include bek-flex(space-between,row );
         .nav-links{
             @include bek-flex(flex-start, row );
+            // @include bek-flex(center, column );
+            align-items: center;
             .logo{
-                font-size: 1.3rem;
+                font-size: 2rem;
+                color: $iconColor;
+                @include bek-rotate(15s, infinite, linear);
             }
         }
 

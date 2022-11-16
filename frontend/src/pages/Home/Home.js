@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaBimobject, FaFoursquare, FaSchlix, } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import BannersCta from '../../components/BannersCta/BannersCta';
+import Blog from '../../components/Blog/Blog';
 import CardSlider from '../../components/CardSlider/CardSlider';
 import Categories from '../../components/Categories/Categories';
 import ImpressionsUser from '../../components/ImpressionsUser/ImpressionsUser';
@@ -10,7 +11,6 @@ import Slider from '../../components/Slider/Slider';
 import SponsorsSlider from '../../components/SponsorsSlider/SponsorsSlider';
 import SubscribeMe from '../../components/SubscribeMe/SubscribeMe';
 import { setLoader } from '../../redux/loaderSlice';
-import BlogService from '../../services/BlogService';
 import ShopService from '../../services/ShopService';
 import './home.scss';
 
@@ -20,13 +20,11 @@ function Home() {
   const [randomProducts, setRandomProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [banners, setBanners] = useState([]);
-  const [latestBlogs, setLatestBlogs] = useState([]);
 
   useEffect(() => {
     getAllBaners();
     getRandProducts();
     getFeaturedProducts();
-    getLatestBlogs();
   },[]);
 
   const getAllBaners = () => {
@@ -71,17 +69,6 @@ function Home() {
                 .finally(() => dispatch(setLoader(false)))
   }
 
-  const getLatestBlogs = () => {
-    dispatch(setLoader(true))
-    BlogService.getBlogs()
-                .then(res => {
-                  if(res.status === 200){
-                    setLatestBlogs(res.data.reverse())
-                  }
-                })
-                .catch(err => console.log(err))
-                .finally(() => dispatch(setLoader(false)))
-  }
 
   return (
     <div className='home-wrapper'>
@@ -101,7 +88,7 @@ function Home() {
       <CardSlider sliderTitle={'Featured Products'} sliderIcon={<FaFoursquare />} sliderArrow={true} cardSliderItems={featuredProducts} sliderTypeCard={true} />
       <ImpressionsUser />
       <SubscribeMe />
-      <CardSlider sliderTitle={'Latest Blog'} sliderIcon={<FaBimobject />} sliderArrow={true} cardSliderItems={latestBlogs} sliderTypeBlog={true} />
+      <Blog />
       <SponsorsSlider />
 
     </div>

@@ -106,14 +106,14 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
                         {
                             sliderItems.map((item, index) => {
                                 return(
-                                    <div title='COMING SOON :D' className='card-slider-holder-image-container' key={index}>
+                                    <div title='BLOG POST COMING SOON :D' className='card-slider-holder-image-container' key={index}>
                                         <div className='card-slider-holder-image-slide' 
                                             style={{backgroundImage: ` url(${item.imageUrl})`}}  >
 
                                         </div>
                                         <div className='card-slider-holder-image-badge'>
                                             <p>
-                                                {item.publishDate}
+                                                {item.publishDate.slice(0,10)}
                                             </p>
                                         </div>
                                         <div className='card-slider-holder-image-title'>
@@ -121,14 +121,17 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
                                                 {item.title}
                                             </p>
                                         </div>
-                                        <div className='card-slider-holder-image-publisher'>
-                                            <p>
-                                                Posted by
-                                            </p>
-                                            <p className='publisher-name'>
-                                                {item.publisher}
-                                            </p>
-                                        </div>
+                                        {
+                                            item.publisher && 
+                                            <div className='card-slider-holder-image-publisher'>
+                                                <p>
+                                                    Posted by
+                                                </p>
+                                                <p className='publisher-name'>
+                                                    {item.publisher}
+                                                </p>
+                                            </div>
+                                        }
                                     </div>
                                 )
                             })

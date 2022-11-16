@@ -8,6 +8,10 @@ const routeConfig ={
         name: 'Shop',
         url: '/shop'
     },
+    ABOUT_US: {
+        name: 'About Us',
+        url: '/about-us'
+    },
     // SHOP_CATEGORY: {
     //     name: 'Shop Category',
     //     url: '/shop/category/:catName',

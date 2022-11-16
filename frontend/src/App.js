@@ -31,6 +31,7 @@ import Header from './components/Header/Header';
 import UserAccount from './pages/UserAccount/UserAccount';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AllSubscriptions from './adminComponents/SubscriptionsManagment/AllSubscriptions/AllSubscriptions';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 
 // axios.defaults.baseURL ='http://localhost:4000';
@@ -101,6 +102,7 @@ function App() {
             <Route path={routeConfig.SHOP.url} element={<Shop/>} />
             <Route path={routeConfig.SHOP_SINGLE_PRODUCT.url} element={<ProductView/>} />
             <Route path={routeConfig.CONTACT.url} element={<Contact/>} />
+            <Route path={routeConfig.ABOUT_US.url} element={<AboutUs />} />
             <Route path={routeConfig.SIGN_IN.url} element={<Auth/>} />
             <Route path={routeConfig.USER_ACTIVATE.url} element={<ActivateUser/>} />
             <Route path={routeConfig.ORDER.url} element={<Order/>} />

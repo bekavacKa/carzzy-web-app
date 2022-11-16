@@ -4,8 +4,7 @@
     @include container;
     @include bek-flex(center, column);
     align-items: center;
-    background-color: $secondBackground;
-    padding: 20px 50px;
+    padding: 0 50px 20px;
     font-size: 1.2rem;
     .user-account-data{
         min-width: 70%;
@@ -15,13 +14,14 @@
             @include bek-flex(space-between, row);
             align-items: center;
             margin-bottom: 20px;
-            background-color: $firstBackground;
-            padding: 10px;
-            border-radius: 10px;
+            background-color: $secondBackground;
+            padding: 10px 40px;
+            h4{
+                text-transform: capitalize;
+            }
             .user-account-data-details-user{
-                font-size: 1rem;
+                // font-size: 1rem;
                 text-align: center;
-                width: 200px;
                 height: 35px;
                 @include bek-flex(center, column);
                 // color: $iconColor;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {Link, NavLink} from "react-router-dom";
-import { FaCar, FaUser } from "react-icons/fa";
+import { FaCar, FaConnectdevelop, FaUser } from "react-icons/fa";
 // import { MdSearch } from "react-icons/md";
 import { useSelector } from "react-redux";
 
@@ -48,7 +48,7 @@ function Navigation() {
         <nav>
 			<div className='nav-links'>
 				<Link className='logo' to={routeConfig.HOME.url}>
-					<FaCar/>
+					<FaConnectdevelop />
 				</Link>
 
 				<NavLink  to={routeConfig.HOME.url}>
@@ -59,9 +59,13 @@ function Navigation() {
 					{routeConfig.SHOP.name}
 				</NavLink>
 
-				<NavLink to={routeConfig.CONTACT.url}>
-					{routeConfig.CONTACT.name}
+				<NavLink to={routeConfig.ABOUT_US.url}>
+					{routeConfig.ABOUT_US.name}
 				</NavLink>
+
+				{/* <NavLink to={routeConfig.CONTACT.url}>
+					{routeConfig.CONTACT.name}
+				</NavLink> */}
 
 
 			</div>

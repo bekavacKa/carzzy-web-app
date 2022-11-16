@@ -37,6 +37,9 @@ class AuthService {
     static getAllSubscriptions(){
         return axios.get('/api/user/all-subscriptions')
     }
+    static editOwnData(body){
+        return axios.put('/api/user/edit-own-data', body);
+    }
 }
 
 export default AuthService;

@@ -4,6 +4,24 @@
     @include bek-flex(space-between, row);
     font-size: 1.2rem;
     // background-color: green;
+    .edit-user-admin-data-locked{
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+        user-select: none;
+        .edit-user-admin-data-locked-info{
+            letter-spacing: .1rem;
+            margin-bottom: 10px;
+        }
+        .edit-user-admin-data-locked-name{
+            background-color: $secondBackground;
+            padding: 10px;
+            margin-bottom: 10px;
+            &:hover{
+                cursor: not-allowed;
+            }
+        }
+    }
     .edit-user-admin-data{
         @include bek-flex(flex-start,column);
         flex: 1;

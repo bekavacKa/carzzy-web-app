@@ -113,6 +113,29 @@ routes.post('/complete-registration', (req, res) => {
     })
 });
 
+// edit-own-data
+
+routes.put('/edit-own-data', (req,res) => {
+    let id = req.body._id;
+    let reqBody = req.body;
+    Users.updateOne({ "_id": id }, {
+        $set: 
+            reqBody
+    }, (err, data) => {
+        if(data){
+            res.status(204).send(data);
+            return;
+        }
+        if (err) {
+            // console.log(err);
+            const errorMsg = `Error on editing user: ${err}`;
+            res.send(errorMsg);
+        } else {
+            res.send(data);
+        }
+    })
+});
+
 // get all users 
 routes.get('/all-users', async (req, res) => {
 
@@ -132,7 +155,7 @@ routes.get('/all-users', async (req, res) => {
 
 // current user details with authorization token from headers
 
-routes.get('/get-my-data/:userId', authValidation, (req, res) => {
+routes.get('/get-my-data/:userId', (req, res) => {
 
     const decoded = jwt.verify(JSON.parse(req.headers.authorization), 'shhhhh');
     // console.log("dekodirano => ",decoded);
