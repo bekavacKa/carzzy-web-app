@@ -158,3 +158,147 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .footer-wrapper{
+        @include bek-flex(center, column);
+        margin-top: 25px;
+        .footer-top{
+            @include bek-flex(space-evenly, row);
+            padding: 25px 10px;
+            p{
+                margin: 0;
+                padding: 6px 0;
+                cursor: pointer;
+                transition: $transition;
+            }
+            .footer-top-shipping{
+                @include bek-flex(space-between, row);
+                align-items: center;
+                .footer-top-shipping-image{
+                    @include bek-flex(center,column);
+                    height: 4rem;
+                    width: 4rem;
+                    .footer-icon{
+                        color: $iconColor;
+                        font-size: 1.7rem;
+                    }
+                }
+                .footer-top-shipping-info{
+                    display: none;
+                }
+            }
+    
+        }
+        .footer-main{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            padding: 20px 15px;
+            text-align: center;
+            h4{
+                margin-top: 20px;
+                &::after{
+                    width: 100%;
+                    height: 1px;
+                }
+            }
+            p{
+                color: $secondFontColor;
+                margin-bottom: 7px;
+            }
+        }
+        .footer-contact{
+            .footer-contact-info{
+                @include bek-flex(space-between, column);
+                div{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .footer-wrapper{
+        @include bek-flex(center, column);
+        margin-top: 25px;
+        .footer-top{
+            @include bek-flex(space-evenly, row);
+            padding: 25px 10px;
+            p{
+                margin: 0;
+                padding: 6px 0;
+                cursor: pointer;
+                transition: $transition;
+            }
+            .footer-top-shipping{
+                @include bek-flex(space-between, row);
+                align-items: center;
+                .footer-top-shipping-image{
+                    @include bek-flex(center,column);
+                    height: 4rem;
+                    width: 4rem;
+                    .footer-icon{
+                        color: $iconColor;
+                        font-size: 1.7rem;
+                    }
+                }
+                .footer-top-shipping-info{
+                    display: none;
+                }
+            }
+            .footer-top-gift{
+                @extend .footer-top-shipping;
+                .footer-top-gift-image{
+                    @extend .footer-top-shipping-image;
+                }
+                .footer-top-gift-info{
+                    @extend .footer-top-shipping-info;
+                }
+            }
+            .footer-top-support{
+                @extend .footer-top-shipping;
+                .footer-top-support-image{
+                    @extend .footer-top-shipping-image;
+                }
+                .footer-top-support-info{
+                    @extend .footer-top-shipping-info;
+                }
+            }
+            .footer-top-payment{
+                @extend .footer-top-shipping;
+                .footer-top-payment-image{
+                    @extend .footer-top-shipping-image;
+                }
+                .footer-top-payment-info{
+                    @extend .footer-top-shipping-info;
+                }
+            }
+        }
+        .footer-main{
+            @include bek-flex(space-between, row);
+            align-items: center;
+            padding: 20px 15px;
+            text-align: center;
+            h4{
+                margin-top: 20px;
+                &::after{
+                    width: 100%;
+                    height: 1px;
+                }
+            }
+            p{
+                color: $secondFontColor;
+                margin-bottom: 7px;
+            }
+        }
+        .footer-contact{
+            .footer-contact-info{
+                @include bek-flex(space-between, column);
+                div{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

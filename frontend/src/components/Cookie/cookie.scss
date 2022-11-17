@@ -20,6 +20,7 @@
         background-color: $firstBackground;
         @include bek-flex(space-between, column);
         align-items: center;
+        box-shadow: 0 0 2px 1px $firstFontColor;
         .cookie-content-header{
             @include bek-flex(center, column);
             align-items: center;
@@ -73,7 +74,7 @@
 @include media("<=phone"){
     .cookie-wrapper{
         // background-color: rgba(0, 0, 0, 0.9);
-        background-color: rgba(255, 0, 0, 0.6);
+        // background-color: rgba(255, 0, 0, 0.6);
         font-size: 1rem;
         .cookie-content{
             width: 95%;
@@ -106,7 +107,7 @@
             }
             .cookie-content-btns{
                 margin-top: 15px;
-                width: 90%;
+                width: 100%;
                 button{
                     @include bek-btn-responsive;
                 }
@@ -117,7 +118,7 @@
 @include media(">phone", "<=tablet"){
     .cookie-wrapper{
         // background-color: rgba(0, 0, 0, 0.9);
-        background-color: rgba(255, 255, 255, 0.6);
+        // background-color: rgba(255, 255, 255, 0.6);
         font-size: 1rem;
         .cookie-content{
             width: 95%;
@@ -161,16 +162,9 @@
 @include media(">=tablet", "<desktop"){
     .cookie-wrapper{
         // background-color: rgba(0, 0, 0, 0.9);
-        background-color: rgba(0, 0, 255, 0.6);
+        // background-color: rgba(0, 0, 255, 0.6);
         .cookie-content{
-            width: 70%;
+            width: 90%;
         }
-    }
-}
-
-@include media(">=desktop"){
-    .cookie-wrapper{
-        // background-color: rgba(0, 0, 0, 0.9);
-        background-color: rgba(172, 255, 47, 0.6);
     }
 }

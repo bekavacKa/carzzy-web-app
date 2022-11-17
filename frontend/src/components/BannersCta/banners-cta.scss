@@ -87,3 +87,109 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .banners-cta-wrapper{
+        .banners-cta-poster{
+            height: 300px;
+            width: 100%;
+            padding: 20px;
+            &.single-banner{
+                .banners-cta-poster-holder{
+                    .banners-cta-poster-title{
+                        margin-bottom: 20px;
+                        font-size: 2rem;
+                        text-transform: uppercase;
+                        text-shadow: 2px 2px 3px $iconColor;
+                    }
+                    .banners-cta-poster-subtitle{
+                        font-size: 1rem;
+                        letter-spacing: 0px;
+                        margin-bottom: 30px;
+                        padding: 0px;
+                        line-height: 1.6rem;
+                        text-align: justify;
+                    }
+                    .banners-cta-poster-btn{
+                        @include bek-btn-responsive;
+                    }
+                }
+            }
+            &.more-banners{
+                flex-wrap: wrap;
+                padding: 25px;
+                .banners-cta-poster-holder{
+                    width: 100%;
+                    .banners-cta-poster-title{
+                        margin-bottom: 20px;
+                    }
+                }
+                &:nth-child(1){
+                    @include bek-flex(center,column);
+                    align-items: center;
+                }
+                &:nth-child(2){
+                    .banners-cta-poster-title{
+                        display: block;
+                    }
+                }
+                &:nth-child(3){
+                    @include bek-flex(center,column);
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .banners-cta-wrapper{
+        .banners-cta-poster{
+            height: 300px;
+            width: 100%;
+            padding: 20px;
+            &.single-banner{
+                height: 100%;
+                .banners-cta-poster-holder{
+                    .banners-cta-poster-title{
+                        margin-bottom: 20px;
+                        font-size: 2rem;
+                        text-transform: uppercase;
+                        text-shadow: 2px 2px 3px $iconColor;
+                    }
+                    .banners-cta-poster-subtitle{
+                        font-size: 1rem;
+                        letter-spacing: 0px;
+                        margin-bottom: 30px;
+                        padding: 0px;
+                        line-height: 1.6rem;
+                        text-align: justify;
+                    }
+                }
+            }
+            &.more-banners{
+                flex-wrap: wrap;
+                padding: 55px;
+                .banners-cta-poster-holder{
+                    width: 100%;
+                    .banners-cta-poster-title{
+                        margin-bottom: 20px;
+                    }
+                }
+                &:nth-child(1){
+                    @include bek-flex(center,column);
+                    align-items: center;
+                }
+                &:nth-child(2){
+                    .banners-cta-poster-title{
+                        display: block;
+                    }
+                }
+                &:nth-child(3){
+                    @include bek-flex(center,column);
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
