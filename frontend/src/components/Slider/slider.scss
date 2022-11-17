@@ -98,6 +98,7 @@
     }
     .slider-impression{
         // background-color: red;
+        user-select: none;
         @include bek-flex(space-between, row);
         align-items: center;
         .slider-impression-title{
@@ -167,6 +168,51 @@
 @include media("<=phone"){
     .slider-wrapper{
         // background-color: rgba(248, 4, 4, 0.6);
+        .slider-holder{
+            @include bek-flex(flex-start,row);
+            // align-items: flex-start;
+            &.left-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            &.center-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            &.right-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            .slider-content{
+                margin-top: 15px;
+                padding: 15px;
+                min-width: 100%;
+                border-radius: 0px;
+                .slider-content-title{
+                    font-size: 2rem;
+                }
+                .slider-content-btn{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+        .slider-arrow{
+            position: absolute;
+            color: $iconColor;
+            font-size: 2.5rem;
+            &:hover{
+                color: #a5270e;
+            }
+            &.left{
+                left: 20px;
+            }
+            &.right{
+                right: 20px;
+            }
+        }
+        .slider-nav{
+            bottom: 25px;
+        }
         .slider-impression{
             @include bek-flex(space-between, column);
             .slider-impression-title{
@@ -210,6 +256,51 @@
 @include media(">phone", "<=tablet"){
     .slider-wrapper{
         // background-color: rgba(255, 255, 255, 0.6);
+        .slider-holder{
+            @include bek-flex(flex-start,row);
+            // align-items: flex-start;
+            &.left-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            &.center-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            &.right-position{
+                @include bek-flex(center,row);
+                align-items: flex-start;
+            }
+            .slider-content{
+                margin-top: 20px;
+                padding: 15px;
+                min-width: 100%;
+                border-radius: 0px;
+                .slider-content-title{
+                    font-size: 2rem;
+                }
+                .slider-content-btn{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+        .slider-arrow{
+            position: absolute;
+            color: $iconColor;
+            font-size: 2.5rem;
+            &:hover{
+                color: #a5270e;
+            }
+            &.left{
+                left: 20px;
+            }
+            &.right{
+                right: 20px;
+            }
+        }
+        .slider-nav{
+            bottom: 25px;
+        }
         .slider-impression{
             @include bek-flex(space-between, column);
             .slider-impression-title{
@@ -250,8 +341,8 @@
         }
     }
 }
-@include media(">=tablet", "<desktop"){
-}
+// @include media(">=tablet", "<desktop"){
+// }
 
-@include media(">=desktop"){
-}
+// @include media(">=desktop"){
+// }

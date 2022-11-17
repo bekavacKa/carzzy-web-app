@@ -186,3 +186,115 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .card-slider-wrapper{
+        padding: 30px;
+        .card-slider-header{
+            margin-bottom: 20px;
+            @include bek-flex(space-between, row);
+            align-items: center;
+            .card-slider-header-btns{
+                display: none;
+            }
+        }
+        .card-slider-holder{
+            & > div {
+                max-width: 200px;
+                min-width: 200px;
+            }
+        }
+        .card-slider-holder-image{
+            .card-slider-holder-image-container{
+                max-width: 400px;
+                min-width: 400px;
+                &:hover{
+                    box-shadow: 0 0 5px 2px $firstFontColor;
+                    transform: scale(1.01);
+                }
+                .card-slider-holder-image-slide{
+                    height: 200px;
+                }
+                .card-slider-holder-image-badge{
+                    height: 40px;
+                    width: 160px;
+                }
+                .card-slider-holder-image-title{
+                    font-size: 1.1rem;
+                }
+                .card-slider-holder-image-publisher{
+                    font-size: .9rem;
+                }
+            }
+        }
+        .card-slider-sponsors-arrow{
+            height: 55px;
+            width: 55px;
+        }
+        .card-slider-sponsors-holder{
+            img{
+                width: 80%;
+            }
+            .card-slider-sponsors-holder-img{
+                padding: 30px;
+                height: 150px;
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .card-slider-wrapper{
+        padding: 30px;
+        .card-slider-header{
+            margin-bottom: 20px;
+            @include bek-flex(space-between, row);
+            align-items: center;
+            .card-slider-header-btns{
+                display: none;
+            }
+        }
+        .card-slider-holder{
+            & > div {
+                max-width: 200px;
+                min-width: 200px;
+            }
+        }
+        .card-slider-holder-image{
+            .card-slider-holder-image-container{
+                max-width: 400px;
+                min-width: 400px;
+                &:hover{
+                    box-shadow: 0 0 5px 2px $firstFontColor;
+                    transform: scale(1.01);
+                }
+                .card-slider-holder-image-slide{
+                    height: 200px;
+                }
+                .card-slider-holder-image-badge{
+                    height: 40px;
+                    width: 160px;
+                }
+                .card-slider-holder-image-title{
+                    font-size: 1.1rem;
+                }
+                .card-slider-holder-image-publisher{
+                    font-size: .9rem;
+                }
+            }
+        }
+        .card-slider-sponsors-arrow{
+            height: 55px;
+            width: 55px;
+        }
+        .card-slider-sponsors-holder{
+            img{
+                width: 80%;
+            }
+            .card-slider-sponsors-holder-img{
+                padding: 30px;
+                height: 150px;
+            }
+        }
+    }
+}

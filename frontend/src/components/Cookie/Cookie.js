@@ -35,10 +35,10 @@ function Cookie() {
 
                     <div className='cookie-content-text'>
                         <p className='cookie-content-text- one'>
-                            I use this cookie modal to inform my site visitors that the site is still under development and this is not the final version!!
+                            I use this cookie as a notification that the website is still under development
                         </p>
                         <p className='cookie-content-text- two'>
-                            I would also like to say that the responsiveness has not been done yet, as you can see if you browse on a smartphone. So I would ask you to turn on PC VIEW or watch it via computer.
+                            The current design is not final, and the responsive design has not yet been completed. So I would ask you to turn on PC VIEW or watch it on PC.
                         </p>
                         <p className='cookie-content-text- three'>
                             And of course, do you accept the conditions? <span>&#128514;</span> <br/> (no conditions exist)

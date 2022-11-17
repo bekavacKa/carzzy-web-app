@@ -31,3 +31,39 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .categories-wrapper{
+        .categories-card{
+            padding: 10px 5px;
+            font-weight: 500;
+            .categories-card-img{
+                width: 100%;
+                img{
+                    height: 80px;
+                }
+            }
+            .categories-card-title{
+                display: none;
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .categories-wrapper{
+        .categories-card{
+            padding: 10px 5px;
+            font-weight: 500;
+            .categories-card-img{
+                width: 100%;
+                img{
+                    height: 80px;
+                }
+            }
+            .categories-card-title{
+                display: none;
+            }
+        }
+    }
+}
