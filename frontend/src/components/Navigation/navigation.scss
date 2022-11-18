@@ -1,4 +1,5 @@
 @import "../../assets/scss/vars.scss";
+@import "../../assets/scss/include-media.scss";
 
 
 .nav-wrapper{
@@ -22,9 +23,9 @@
         font-size: 0.9rem;
     }
 
-    nav{
+    .main-nav{
         @include bek-flex(space-between,row );
-        .nav-links{
+        .main-nav-links{
             @include bek-flex(flex-start, row );
             // @include bek-flex(center, column );
             align-items: center;
@@ -35,10 +36,10 @@
             }
         }
 
-        .nav-user{
+        .main-nav-user{
             @include bek-flex(flex-start,row );
             align-items: center;
-            .nav-user-cart{
+            .main-nav-user-cart{
                 @include bek-flex(flex-start,row );
                 align-items: center;
                 margin-right: 20px;
@@ -46,7 +47,7 @@
                     color: $iconColor;
                     font-size: 1.4rem;
                 }
-                .nav-user-wallet{
+                .main-nav-user-wallet{
                     font-size: 1rem;
                     color: $secondFontColor;
                     margin-left: 5px;
@@ -58,7 +59,7 @@
                     color: yellowgreen;
                 }
             }
-            .nav-user-search{
+            .main-nav-user-search{
                 @include bek-flex(flex-start, row);
                 align-items: center;
                 border: 1px solid $secondFontColor;
@@ -75,10 +76,10 @@
                 
                 margin-right: 20px;
             }
-            .nav-user-profile{
+            .main-nav-user-profile{
                 @include bek-flex(flex-start, row);
                 margin-right: 20px;
-                .nav-user-profile-info{
+                .main-nav-user-profile-info{
                     @include bek-flex(flex-start,row);
                     align-items: center;
                     cursor: pointer;
@@ -91,11 +92,87 @@
                         margin-left: 5px;  
                     }
                 }
-                // .nav-user-profile-signin{
+                // .main-nav-user-profile-signin{
                 //         background-color: red;
                 // }
             }
         }
     }
+    .responsive-nav{
+        display: none;
+    }
+}
 
+.responsive-meni{
+    @include bek-flex(center, column);
+    align-items: center;
+    display: none;
+    background-color: $secondFontColor;
+    padding: 8px 0;
+    .responsive-meni{
+        @include bek-flex(center, column);
+        align-items: center;
+        color: black;
+        font-weight: 500;
+        margin-bottom: 7px;
+        &.active{
+            color: $iconColor;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .nav-wrapper{
+        background-color: $secondBackground;
+        padding: 15px 20px;
+        color: $secondFontColor;
+        font-weight: 500;
+        font-size: 1.3rem;
+        // display: none;
+
+        a{
+            color: $secondFontColor;
+            margin-right: 20px;
+            &:hover{
+                color: $iconColor;
+                transition: $transition;
+            }
+            &.active{
+                color: $iconColor;
+            }
+        }
+        p{
+            font-size: 0.9rem;
+        }
+        .main-nav{
+            display: none;
+        }
+    }
+    .responsive-nav{
+        @include bek-flex(space-between, row);
+        .responsive-nav-title{
+            @include bek-flex(flex-start, row);
+            align-items: center;
+            .logo{
+                @include bek-flex(flex-start, row);
+                align-items: center;
+                font-size: 2rem;
+                color: $iconColor;
+                margin: 0;
+                @include bek-rotate(15s, infinite, linear);
+            }
+            .title{
+                font-size: 1rem;
+                margin: 0 10px;
+            }
+        }
+        .responsive-nav-btn{
+            border: 1px solid white;
+            width: 50px;
+            border-radius: 5px;
+            @include bek-flex(center, column);
+            align-items: center;
+            font-size: 1.6rem;
+        }
+    }
 }
