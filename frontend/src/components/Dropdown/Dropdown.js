@@ -25,20 +25,20 @@ function Dropdown(props) {
 
     const handleMeniClick = (e) => {
         // console.log(e.target.outerText);
+        setIsActiveMeni(false);
         let targetName = e.target.outerText.toLowerCase();
         if (targetName.includes("logout")){
             dispatch(setUser({}));
             localStorage.removeItem('user');
             localStorage.removeItem('token');
-            navigate(routeConfig.SIGN_IN.url);
+            return navigate(routeConfig.SIGN_IN.url);
         }
         if (targetName.includes("dashboard")){
-            navigate(routeConfig.DASHBOARD.url);
+            return navigate(routeConfig.DASHBOARD.url);
         }
         if (targetName.includes("account")){
-            navigate(routeConfig.USER_ACCOUNT.completeUrl(user?._id));
+            return navigate(routeConfig.USER_ACCOUNT.completeUrl(user?._id));
         }
-        setIsActiveMeni(false);
     }
 
   return (

@@ -90,6 +90,8 @@
 
 @include media("<=phone"){
     .banners-cta-wrapper{
+        gap: 1px;
+        @include bek-flex(flex-start, column);
         .banners-cta-poster{
             height: 300px;
             width: 100%;
@@ -125,15 +127,18 @@
                     }
                 }
                 &:nth-child(1){
+                    padding: 30px 10px;
                     @include bek-flex(center,column);
                     align-items: center;
                 }
                 &:nth-child(2){
-                    .banners-cta-poster-title{
-                        display: block;
+                    padding: 20px 10px;
+                    .banners-cta-poster-subtitle{
+                        font-size: .9rem;
                     }
                 }
                 &:nth-child(3){
+                    padding: 30px 10px;
                     @include bek-flex(center,column);
                     align-items: center;
                 }
@@ -144,15 +149,17 @@
 
 @include media(">phone", "<=tablet"){
     .banners-cta-wrapper{
+        gap: 1px;
+        @include bek-flex(flex-start, column);
         .banners-cta-poster{
-            height: 300px;
+            height: 150px;
             width: 100%;
             padding: 20px;
             &.single-banner{
                 height: 100%;
                 .banners-cta-poster-holder{
                     .banners-cta-poster-title{
-                        margin-bottom: 20px;
+                        margin-bottom: 10px;
                         font-size: 2rem;
                         text-transform: uppercase;
                         text-shadow: 2px 2px 3px $iconColor;
@@ -177,15 +184,18 @@
                     }
                 }
                 &:nth-child(1){
+                    padding: 45px 10px;
                     @include bek-flex(center,column);
                     align-items: center;
                 }
                 &:nth-child(2){
-                    .banners-cta-poster-title{
-                        display: block;
+                    padding: 45px 10px;
+                    .banners-cta-poster-subtitle{
+                        font-size: .9rem;
                     }
                 }
                 &:nth-child(3){
+                    padding: 45px 10px;
                     @include bek-flex(center,column);
                     align-items: center;
                 }

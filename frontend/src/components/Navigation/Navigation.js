@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import {Link, NavLink} from "react-router-dom";
-import { FaCar, FaConnectdevelop, FaEquals, FaUser } from "react-icons/fa";
+import {Link, NavLink, useNavigate} from "react-router-dom";
+import { FaCar, FaCaretDown, FaConnectdevelop, FaEquals, FaUser } from "react-icons/fa";
 // import { MdSearch } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import routeConfig from '../../config/routeConfig';
 import "./navigation.scss";
 import Dropdown from '../Dropdown/Dropdown';
 import ShopCart from '../ShopCart/ShopCart';
+import { setUser } from '../../redux/userSlice';
 
 function Navigation() {
 	const currentUser = useSelector((state) => state.userStore.user);
+	const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 	const adminMeni = ['dashboard', 'account', 'logout'];
 	const userMeni = [ 'account', 'logout'];
 
 	const [hambMeni, setHambMeni] = useState(false);
+	const [userDropdown, setUserDropdown] = useState(true);
 
 	useEffect(()=> {
 		// console.log("From store in nav => ", currentUser);
@@ -45,23 +49,43 @@ function Navigation() {
 		</div>
 		)
 	};
+
+	const handleUserDropdownClick = () => {
+		setUserDropdown(!userDropdown);
+	}
+	const handleDropdownMeniClick = (e) => {
+		setUserDropdown(false);
+		setHambMeni(false);
+		let targetName = e.target.outerText.toLowerCase();
+        if (targetName.includes("logout")){
+            dispatch(setUser({}));
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            return navigate(routeConfig.SIGN_IN.url);
+        }
+        if (targetName.includes("dashboard")){
+            return navigate(routeConfig.DASHBOARD.url);
+        }
+        if (targetName.includes("account")){
+            return navigate(routeConfig.USER_ACCOUNT.completeUrl(currentUser?._id));
+        }
+	}
 	
 	const userBtnResponsiveLayout = () => {
 		return (
 			currentUser.hasOwnProperty('username') ?
 			<div className='responsive-meni-links user-profile' >
 	
-				<p className='user-profile-name' > {currentUser.username} </p> 
-				{/* <FaCaretDown className='user-icon-down' /> */}
-				{
-					currentUser?.isAdmin === 'true' ? 
-					<Dropdown meniElements={adminMeni} /> :
-					<Dropdown meniElements={userMeni} />
-				}
+				<div className='user-profile-name' onClick={handleUserDropdownClick} > 
+					<p>
+						{currentUser.username} 
+					</p>
+					<FaCaretDown className='user-profile-name-btn'  />
+				</div> 
 	
 			</div> 
 			:
-			<NavLink className='responsive-meni-links'  to={routeConfig.SIGN_IN.url}>
+			<NavLink className='responsive-meni-links' onClick={handleLinkClick}  to={routeConfig.SIGN_IN.url}>
 				{routeConfig.SIGN_IN.name}
 			</NavLink>
 		)
@@ -128,14 +152,14 @@ function Navigation() {
 
 			<nav className='responsive-nav'>
 
-				<div className='responsive-nav-title'>
-					<Link className='logo' to={routeConfig.HOME.url}>
+				<Link className='responsive-nav-title' to={routeConfig.HOME.url}>
+					<div className='logo' >
 						<FaConnectdevelop />
-					</Link>
+					</div>
 					<h3 className='title'>
 						CARZZY
 					</h3>
-				</div>
+				</Link>
 
 				<div className='responsive-nav-btn' onClick={handleHambClick}>
 					{
@@ -154,9 +178,6 @@ function Navigation() {
 		{
 			hambMeni && 
 			<div className='responsive-meni'>
-					{
-						userBtnResponsiveLayout()
-					}
 					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.HOME.url}>
 						{routeConfig.HOME.name}
 					</NavLink>
@@ -168,12 +189,35 @@ function Navigation() {
 					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.ABOUT_US.url}>
 						{routeConfig.ABOUT_US.name}
 					</NavLink>
-
-
+					{
+						userBtnResponsiveLayout()
+					}
 			</div>
 		}
 
-	
+		{
+			hambMeni && userDropdown && 
+			<div className='responsive-meni user-dropdown'>
+				{
+					currentUser?.isAdmin === 'true' ? 
+					adminMeni.map((el, index) => {
+						return(
+							<div className='responsive-meni-links user-dropdown-links' key={index} onClick={e => handleDropdownMeniClick(e)} >
+								<p>{el}</p> 
+							</div>
+						)
+					}) 
+					:
+					userMeni.map((el, index) => {
+						return(
+							<div className='responsive-meni-links user-dropdown-links' key={index} onClick={e => handleDropdownMeniClick(e)} >
+								<p>{el}</p> 
+							</div>
+						)
+					}) 
+				}
+			</div>
+		}
 	</>
   )
 }
