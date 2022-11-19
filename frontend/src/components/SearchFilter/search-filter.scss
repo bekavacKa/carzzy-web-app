@@ -81,3 +81,21 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .search-filter-wrapper{
+        .search-filter-sort-select{
+            margin: 10px;
+            margin-left: 0;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .search-filter-wrapper{
+        .search-filter-sort-select{
+            margin: 10px;
+            margin-left: 0;
+        }
+    }
+}
