@@ -45,6 +45,27 @@ function Navigation() {
 		</div>
 		)
 	};
+	
+	const userBtnResponsiveLayout = () => {
+		return (
+			currentUser.hasOwnProperty('username') ?
+			<div className='responsive-meni-links user-profile' >
+	
+				<p className='user-profile-name' > {currentUser.username} </p> 
+				{/* <FaCaretDown className='user-icon-down' /> */}
+				{
+					currentUser?.isAdmin === 'true' ? 
+					<Dropdown meniElements={adminMeni} /> :
+					<Dropdown meniElements={userMeni} />
+				}
+	
+			</div> 
+			:
+			<NavLink className='responsive-meni-links'  to={routeConfig.SIGN_IN.url}>
+				{routeConfig.SIGN_IN.name}
+			</NavLink>
+		)
+	}
 
 	const handleHambClick = () => {
 		setHambMeni(!hambMeni);
@@ -133,17 +154,22 @@ function Navigation() {
 		{
 			hambMeni && 
 			<div className='responsive-meni'>
-					<NavLink className='responsive-meni' onClick={handleLinkClick} to={routeConfig.HOME.url}>
+					{
+						userBtnResponsiveLayout()
+					}
+					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.HOME.url}>
 						{routeConfig.HOME.name}
 					</NavLink>
 
-					<NavLink className='responsive-meni' onClick={handleLinkClick} to={routeConfig.SHOP.url}>
+					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.SHOP.url}>
 						{routeConfig.SHOP.name}
 					</NavLink>
 
-					<NavLink className='responsive-meni' onClick={handleLinkClick} to={routeConfig.ABOUT_US.url}>
+					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.ABOUT_US.url}>
 						{routeConfig.ABOUT_US.name}
 					</NavLink>
+
+
 			</div>
 		}
 

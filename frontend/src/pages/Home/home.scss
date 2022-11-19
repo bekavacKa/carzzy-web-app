@@ -7,3 +7,19 @@
         margin: 0 auto;
     }
 }
+
+@include media("<=phone"){
+    .home-wrapper{
+        .home-slider{
+            height: 300px;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .home-wrapper{
+        .home-slider{
+            height: 300px;
+        }
+    }
+}

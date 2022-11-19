@@ -99,57 +99,8 @@
         }
     }
     .responsive-nav{
+        // @include bek-flex(space-between, row);
         display: none;
-    }
-}
-
-.responsive-meni{
-    @include bek-flex(center, column);
-    align-items: center;
-    display: none;
-    background-color: $secondFontColor;
-    padding: 8px 0;
-    .responsive-meni{
-        @include bek-flex(center, column);
-        align-items: center;
-        color: black;
-        font-weight: 500;
-        margin-bottom: 7px;
-        &.active{
-            color: $iconColor;
-        }
-    }
-}
-
-@include media(">phone", "<=tablet"){
-    .nav-wrapper{
-        background-color: $secondBackground;
-        padding: 15px 20px;
-        color: $secondFontColor;
-        font-weight: 500;
-        font-size: 1.3rem;
-        // display: none;
-
-        a{
-            color: $secondFontColor;
-            margin-right: 20px;
-            &:hover{
-                color: $iconColor;
-                transition: $transition;
-            }
-            &.active{
-                color: $iconColor;
-            }
-        }
-        p{
-            font-size: 0.9rem;
-        }
-        .main-nav{
-            display: none;
-        }
-    }
-    .responsive-nav{
-        @include bek-flex(space-between, row);
         .responsive-nav-title{
             @include bek-flex(flex-start, row);
             align-items: center;
@@ -174,5 +125,84 @@
             align-items: center;
             font-size: 1.6rem;
         }
+    }
+}
+
+.responsive-meni{
+    // @include bek-flex(center, column);
+    // align-items: center;
+    display: none;
+    background-color: $secondFontColor;
+    // padding: 10px;
+    .responsive-meni-links{
+        @include bek-flex(center, column);
+        align-items: center;
+        color: black;
+        font-weight: 500;
+        font-size: 1.1rem;
+        width: 100%;
+        padding: 10px 0;
+        &.active{
+            color: $iconColor;
+        }
+        &.user-profile{
+            background-color: $secondBackground;
+            padding: 20px 10px;
+            @include bek-flex (center, row);
+            align-items: center;
+            color: $secondFontColor;
+            .user-profile-name{
+                margin-left: 15px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@include media("<=phone"){
+    .nav-wrapper{
+        padding: 15px 20px;
+        .main-nav{
+            display: none;
+        }
+        .responsive-nav{
+            @include bek-flex(space-between, row);
+        }
+    }
+    .responsive-meni{
+        @include bek-flex(center, column);
+        align-items: center;
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .nav-wrapper{
+        padding: 15px 20px;
+        .main-nav{
+            display: none;
+        }
+        .responsive-nav{
+            @include bek-flex(space-between, row);
+        }
+    }
+    .responsive-meni{
+        @include bek-flex(center, column);
+        align-items: center;
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .nav-wrapper{
+        padding: 15px 20px;
+        .main-nav{
+            display: none;
+        }
+        .responsive-nav{
+            @include bek-flex(space-between, row);
+        }
+    }
+    .responsive-meni{
+        @include bek-flex(center, column);
+        align-items: center;
     }
 }
