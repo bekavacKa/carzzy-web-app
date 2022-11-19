@@ -1,4 +1,5 @@
 @import "../../assets/scss/vars.scss";
+@import "../../assets/scss/include-media.scss";
 
 .shop-wrapper{
     @include container;
@@ -10,5 +11,30 @@
     }
     h2{
         width: 100%
+    }
+}
+@include media("<=phone"){
+    .shop-wrapper{
+        width: 90%;
+        .shop-cards-holder{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            & > div {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .shop-wrapper{
+        width: 90%;
+        .shop-cards-holder{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            & > div {
+                max-width: 100%;
+            }
+        }
     }
 }

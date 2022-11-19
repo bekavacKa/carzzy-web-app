@@ -118,7 +118,7 @@
             }
         }
         .responsive-nav-btn{
-            border: 1px solid white;
+            border: 1px solid $secondFontColor;
             width: 50px;
             border-radius: 5px;
             @include bek-flex(center, column);
@@ -154,8 +154,23 @@
             .user-profile-name{
                 margin-left: 15px;
                 font-weight: 600;
+                @include bek-flex(center, row);
+                align-items: center;
+                p{
+                    margin-right: 5px;
+                }
+                .user-profile-name-btn{
+                    font-size: 1.5rem;
+                }
             }
         }
+        &.user-dropdown-links{
+            color: $secondFontColor;
+        }
+    }
+    &.user-dropdown{
+        text-transform: uppercase;
+        background-color: $secondBackground;
     }
 }
 

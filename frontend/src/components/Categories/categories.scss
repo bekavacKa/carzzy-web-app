@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .categories-wrapper{
     background-color: $secondBackground;
@@ -37,6 +38,7 @@
         .categories-card{
             padding: 10px 5px;
             font-weight: 500;
+            background-color: $secondFontColor;
             .categories-card-img{
                 width: 100%;
                 img{
@@ -55,6 +57,7 @@
         .categories-card{
             padding: 10px 5px;
             font-weight: 500;
+            background-color: $secondFontColor;
             .categories-card-img{
                 width: 100%;
                 img{
