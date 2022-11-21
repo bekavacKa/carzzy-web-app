@@ -38,7 +38,8 @@ function Cookie() {
                             I use this cookie as a notification that the website is still under development
                         </p>
                         <p className='cookie-content-text- two'>
-                            The current design is not final, and the responsive design has not yet been completed. So I would ask you to turn on PC VIEW or watch it on PC.
+                            Important Notice ! <br/>
+                            The current design and functionality is not final, and responsive design is not yet complete for some components.
                         </p>
                         <p className='cookie-content-text- three'>
                             And of course, do you accept the conditions? <span>&#128514;</span> <br/> (no conditions exist)

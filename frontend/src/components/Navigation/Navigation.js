@@ -21,11 +21,24 @@ function Navigation() {
 	const userMeni = [ 'account', 'logout'];
 
 	const [hambMeni, setHambMeni] = useState(false);
-	const [userDropdown, setUserDropdown] = useState(true);
+	const [userDropdown, setUserDropdown] = useState(false);
+	const [stickyNav, setStickyNav] = useState(false);
 
 	useEffect(()=> {
 		// console.log("From store in nav => ", currentUser);
 	},[currentUser]);
+
+	useEffect(() => {
+		window.addEventListener("scroll", listenToScroll);
+	  },[])
+	
+	const listenToScroll = () => {
+		if(window.scrollY > 300){
+			setStickyNav(true);
+		}else{
+			setStickyNav(false);
+		}
+	}
 
 	const userBtnLayout = () => {
 		return (
@@ -50,9 +63,6 @@ function Navigation() {
 		)
 	};
 
-	const handleUserDropdownClick = () => {
-		setUserDropdown(!userDropdown);
-	}
 	const handleDropdownMeniClick = (e) => {
 		setUserDropdown(false);
 		setHambMeni(false);
@@ -90,18 +100,23 @@ function Navigation() {
 			</NavLink>
 		)
 	}
-
+	
 	const handleHambClick = () => {
 		setHambMeni(!hambMeni);
 	}
-
+	
 	const handleLinkClick = () => {
 		setHambMeni(false);
 	}
+	
+	const handleUserDropdownClick = () => {
+		setUserDropdown(!userDropdown);
+	}
 
   return (
-	<>
-		<div className='nav-wrapper'>
+	<div className={`nav-wrapper ${stickyNav ? "sticky-nav animate__animated animate__fadeInDown" : null} ${hambMeni && "bg-disabled"}`}>
+
+		<div className='nav-content'>
 			
 			<nav className='main-nav'>
 				<div className='main-nav-links'>
@@ -164,7 +179,7 @@ function Navigation() {
 				<div className='responsive-nav-btn' onClick={handleHambClick}>
 					{
 						!hambMeni ? 
-						<GiHamburgerMenu className='btn-hamb' />
+						<GiHamburgerMenu  />
 						:
 						<IoClose /> 
 					}
@@ -177,7 +192,7 @@ function Navigation() {
 
 		{
 			hambMeni && 
-			<div className='responsive-meni'>
+			<div className='responsive-meni animate__animated animate__fadeInDown'>
 					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.HOME.url}>
 						{routeConfig.HOME.name}
 					</NavLink>
@@ -196,7 +211,7 @@ function Navigation() {
 		}
 
 		{
-			hambMeni && userDropdown && 
+			localStorage.getItem("user") && hambMeni && userDropdown && 
 			<div className='responsive-meni user-dropdown'>
 				{
 					currentUser?.isAdmin === 'true' ? 
@@ -218,7 +233,8 @@ function Navigation() {
 				}
 			</div>
 		}
-	</>
+
+	</div>
   )
 }
 

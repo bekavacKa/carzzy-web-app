@@ -1,223 +1,257 @@
 @import "../../assets/scss/vars.scss";
 @import "../../assets/scss/include-media.scss";
 
-
 .nav-wrapper{
-    background-color: $secondBackground;
-    padding: 25px 50px;
-    color: $secondFontColor;
-    font-weight: 500;
-    font-size: 1.3rem;
-    a{
+    border-bottom: 1px solid $firstFontColor;
+    &.sticky-nav{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        opacity: .95;
+    }
+    .nav-content{
+        background-color: $secondBackground;
+        padding: 20px 50px;
         color: $secondFontColor;
-        margin-right: 20px;
-        &:hover{
-            color: $iconColor;
-            transition: $transition;
-        }
-        &.active{
-            color: $iconColor;
-        }
-    }
-    p{
-        font-size: 0.9rem;
-    }
-
-    .main-nav{
-        @include bek-flex(space-between,row );
-        .main-nav-links{
-            @include bek-flex(flex-start, row );
-            // @include bek-flex(center, column );
-            align-items: center;
-            .logo{
-                font-size: 2rem;
+        font-weight: 500;
+        font-size: 1.2rem;
+        a{
+            color: $secondFontColor;
+            margin-right: 20px;
+            &:hover{
                 color: $iconColor;
-                @include bek-rotate(15s, infinite, linear);
+                transition: $transition;
+            }
+            &.active{
+                color: $iconColor;
             }
         }
-
-        .main-nav-user{
-            @include bek-flex(flex-start,row );
-            align-items: center;
-            .main-nav-user-cart{
+        p{
+            font-size: 0.9rem;
+        }
+    
+        .main-nav{
+            @include bek-flex(space-between,row );
+            .main-nav-links{
+                @include bek-flex(flex-start, row );
+                // @include bek-flex(center, column );
+                align-items: center;
+                .logo{
+                    font-size: 2rem;
+                    color: $iconColor;
+                    @include bek-rotate(15s, infinite, linear);
+                }
+            }
+    
+            .main-nav-user{
                 @include bek-flex(flex-start,row );
                 align-items: center;
-                margin-right: 20px;
-                .cart{
-                    color: $iconColor;
-                    font-size: 1.4rem;
-                }
-                .main-nav-user-wallet{
-                    font-size: 1rem;
-                    color: $secondFontColor;
-                    margin-left: 5px;
-                    span{
+                .main-nav-user-cart{
+                    @include bek-flex(flex-start,row );
+                    align-items: center;
+                    margin-right: 20px;
+                    .cart{
+                        color: $iconColor;
+                        font-size: 1.4rem;
+                    }
+                    .main-nav-user-wallet{
+                        font-size: 1rem;
                         color: $secondFontColor;
+                        margin-left: 5px;
+                        span{
+                            color: $secondFontColor;
+                        }
+                    }
+                    .positive{
+                        color: yellowgreen;
                     }
                 }
-                .positive{
-                    color: yellowgreen;
+                .main-nav-user-search{
+                    @include bek-flex(flex-start, row);
+                    align-items: center;
+                    border: 1px solid $secondFontColor;
+                    border-radius: 3px;
+                    color: $iconColor;
+                    padding-right: 5px;
+                    input[type=search]{
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        color: $iconColor;
+                        padding: 5px 0 5px 15px;
+                    }
+                    
+                    margin-right: 20px;
+                }
+                .main-nav-user-profile{
+                    @include bek-flex(flex-start, row);
+                    margin-right: 20px;
+                    .main-nav-user-profile-info{
+                        @include bek-flex(flex-start,row);
+                        align-items: center;
+                        cursor: pointer;
+    
+                        .user-icon{
+                            margin-right: 8px;
+                            color: $iconColor;
+                        }
+                        .user-icon-down{
+                            margin-left: 5px;  
+                        }
+                    }
+                    // .main-nav-user-profile-signin{
+                    //         background-color: red;
+                    // }
                 }
             }
-            .main-nav-user-search{
+        }
+        .responsive-nav{
+            // @include bek-flex(space-between, row);
+            display: none;
+            .responsive-nav-title{
                 @include bek-flex(flex-start, row);
                 align-items: center;
-                border: 1px solid $secondFontColor;
-                border-radius: 3px;
-                color: $iconColor;
-                padding-right: 5px;
-                input[type=search]{
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                    color: $iconColor;
-                    padding: 5px 0 5px 15px;
-                }
-                
-                margin-right: 20px;
-            }
-            .main-nav-user-profile{
-                @include bek-flex(flex-start, row);
-                margin-right: 20px;
-                .main-nav-user-profile-info{
-                    @include bek-flex(flex-start,row);
+                .logo{
+                    @include bek-flex(flex-start, row);
                     align-items: center;
-                    cursor: pointer;
-
-                    .user-icon{
-                        margin-right: 8px;
-                        color: $iconColor;
-                    }
-                    .user-icon-down{
-                        margin-left: 5px;  
-                    }
+                    font-size: 2rem;
+                    color: $iconColor;
+                    margin: 0;
+                    @include bek-rotate(15s, infinite, linear);
                 }
-                // .main-nav-user-profile-signin{
-                //         background-color: red;
-                // }
+                .title{
+                    font-size: 1rem;
+                    margin: 0 10px;
+                }
+            }
+            .responsive-nav-btn{
+                border: 1px solid $secondFontColor;
+                width: 50px;
+                border-radius: 5px;
+                @include bek-flex(center, column);
+                align-items: center;
+                font-size: 1.6rem;
             }
         }
     }
-    .responsive-nav{
-        // @include bek-flex(space-between, row);
+    
+    .responsive-meni{
+        // @include bek-flex(center, column);
+        // align-items: center;
         display: none;
-        .responsive-nav-title{
-            @include bek-flex(flex-start, row);
-            align-items: center;
-            .logo{
-                @include bek-flex(flex-start, row);
-                align-items: center;
-                font-size: 2rem;
-                color: $iconColor;
-                margin: 0;
-                @include bek-rotate(15s, infinite, linear);
-            }
-            .title{
-                font-size: 1rem;
-                margin: 0 10px;
-            }
-        }
-        .responsive-nav-btn{
-            border: 1px solid $secondFontColor;
-            width: 50px;
-            border-radius: 5px;
+        background-color: $secondFontColor;
+        // padding: 10px;
+        .responsive-meni-links{
             @include bek-flex(center, column);
             align-items: center;
-            font-size: 1.6rem;
-        }
-    }
-}
-
-.responsive-meni{
-    // @include bek-flex(center, column);
-    // align-items: center;
-    display: none;
-    background-color: $secondFontColor;
-    // padding: 10px;
-    .responsive-meni-links{
-        @include bek-flex(center, column);
-        align-items: center;
-        color: black;
-        font-weight: 500;
-        font-size: 1.1rem;
-        width: 100%;
-        padding: 10px 0;
-        &.active{
-            color: $iconColor;
-        }
-        &.user-profile{
-            background-color: $secondBackground;
-            padding: 20px 10px;
-            @include bek-flex (center, row);
-            align-items: center;
-            color: $secondFontColor;
-            .user-profile-name{
-                margin-left: 15px;
-                font-weight: 600;
-                @include bek-flex(center, row);
+            color: black;
+            font-weight: 500;
+            font-size: 1.1rem;
+            width: 100%;
+            padding: 10px 0;
+            &.active{
+                color: $iconColor;
+            }
+            &.user-profile{
+                background-color: $secondBackground;
+                padding: 20px 10px;
+                @include bek-flex (center, row);
                 align-items: center;
-                p{
-                    margin-right: 5px;
-                }
-                .user-profile-name-btn{
-                    font-size: 1.5rem;
+                color: $secondFontColor;
+                .user-profile-name{
+                    margin-left: 15px;
+                    font-weight: 600;
+                    @include bek-flex(center, row);
+                    align-items: center;
+                    p{
+                        margin-right: 5px;
+                    }
+                    .user-profile-name-btn{
+                        font-size: 1.5rem;
+                    }
                 }
             }
+            &.user-dropdown-links{
+                color: $secondFontColor;
+            }
         }
-        &.user-dropdown-links{
-            color: $secondFontColor;
+        &.user-dropdown{
+            text-transform: uppercase;
+            background-color: $secondBackground;
         }
     }
-    &.user-dropdown{
-        text-transform: uppercase;
-        background-color: $secondBackground;
-    }
+
 }
+
 
 @include media("<=phone"){
     .nav-wrapper{
-        padding: 15px 20px;
-        .main-nav{
-            display: none;
+        &.bg-disabled{
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 10000;
         }
-        .responsive-nav{
-            @include bek-flex(space-between, row);
+        .nav-content{
+            padding: 15px 20px;
+            .main-nav{
+                display: none;
+            }
+            .responsive-nav{
+                @include bek-flex(space-between, row);
+            }
         }
-    }
-    .responsive-meni{
-        @include bek-flex(center, column);
-        align-items: center;
+        .responsive-meni{
+            @include bek-flex(center, column);
+            align-items: center;
+        }
     }
 }
 
 @include media(">phone", "<=tablet"){
     .nav-wrapper{
-        padding: 15px 20px;
-        .main-nav{
-            display: none;
+        &.bg-disabled{
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 10000;
         }
-        .responsive-nav{
-            @include bek-flex(space-between, row);
+        .nav-content{
+            padding: 15px 20px;
+            .main-nav{
+                display: none;
+            }
+            .responsive-nav{
+                @include bek-flex(space-between, row);
+            }
         }
-    }
-    .responsive-meni{
-        @include bek-flex(center, column);
-        align-items: center;
+        .responsive-meni{
+            @include bek-flex(center, column);
+            align-items: center;
+        }
     }
 }
 
 @include media(">=tablet", "<desktop"){
     .nav-wrapper{
-        padding: 15px 20px;
-        .main-nav{
-            display: none;
+        .nav-content{
+            padding: 15px 20px;
+            .main-nav{
+                display: none;
+            }
+            .responsive-nav{
+                @include bek-flex(space-between, row);
+            }
         }
-        .responsive-nav{
-            @include bek-flex(space-between, row);
+        .responsive-meni{
+            @include bek-flex(center, column);
+            align-items: center;
         }
-    }
-    .responsive-meni{
-        @include bek-flex(center, column);
-        align-items: center;
     }
 }

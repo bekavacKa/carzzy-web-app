@@ -6,6 +6,7 @@ import Blog from '../../components/Blog/Blog';
 import CardSlider from '../../components/CardSlider/CardSlider';
 import Categories from '../../components/Categories/Categories';
 import ImpressionsUser from '../../components/ImpressionsUser/ImpressionsUser';
+import ShopCartBadge from '../../components/ShopCartBadge/ShopCartBadge';
 // import Header from '../../components/Header/Header';
 import Slider from '../../components/Slider/Slider';
 import SponsorsSlider from '../../components/SponsorsSlider/SponsorsSlider';
@@ -90,6 +91,8 @@ function Home() {
       <SubscribeMe />
       <Blog />
       <SponsorsSlider />
+
+      <ShopCartBadge />
 
     </div>
   )

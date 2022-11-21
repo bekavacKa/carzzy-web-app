@@ -47,82 +47,82 @@ function MyModal({showModal, selectedUser, updateDb}) {
         <Modal isOpen={true} ariaHideApp={false} style={ModalStyle}>
             <div className='modal-wrapper'>
 
-            <div className='modal-header'>
-                <h2 className='modal-header-title' >Edit</h2>
-            </div>
-            
-            <div className='edit-user-admin'>
-
-                <div className='edit-user-admin-data-locked'>
-                    <p className='edit-user-admin-data-locked-info'>Username</p>
-                    <p className='edit-user-admin-data-locked-name'>
-                        {selectedUser?.username}
-                    </p>
+                <div className='modal-header'>
+                    <h2 className='modal-header-title' >Edit</h2>
                 </div>
+                
+                <div className='edit-user-admin'>
 
-                <div className='edit-user-admin-data-locked'>
-                    <p className='edit-user-admin-data-locked-info'>E-mail</p>
-                    <p className='edit-user-admin-data-locked-name'>
-                        {selectedUser?.email}
-                    </p>
-                </div>
+                    <div className='edit-user-admin-data-locked'>
+                        <p className='edit-user-admin-data-locked-info'>Username</p>
+                        <p className='edit-user-admin-data-locked-name'>
+                            {selectedUser?.username}
+                        </p>
+                    </div>
 
-                <div className='edit-user-admin-data'>
-                <label htmlFor="firstName">First Name</label>
-                    <input id="firstName" 
-                            type ="text"
-                            name="firstName" 
+                    <div className='edit-user-admin-data-locked'>
+                        <p className='edit-user-admin-data-locked-info'>E-mail</p>
+                        <p className='edit-user-admin-data-locked-name'>
+                            {selectedUser?.email}
+                        </p>
+                    </div>
+
+                    <div className='edit-user-admin-data'>
+                    <label htmlFor="firstName">First Name</label>
+                        <input id="firstName" 
+                                type ="text"
+                                name="firstName" 
+                                className='edit-user-admin-input'
+                                defaultValue={selectedUser?.firstName}
+                                onChange={(e) => {handleInputChange(e)}} />
+                    </div>
+
+                    <div className='edit-user-admin-data'>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input id="lastName" 
+                            type ="text" 
+                            name="lastName" 
                             className='edit-user-admin-input'
-                            defaultValue={selectedUser?.firstName}
+                            defaultValue={selectedUser?.lastName}
                             onChange={(e) => {handleInputChange(e)}} />
+                    </div>
+
+                    <div className='edit-user-admin-data'>
+                    <label htmlFor="city">City</label>
+                    <input id="city" 
+                            type ="text"
+                            name="city"   
+                            className='edit-user-admin-input'
+                            defaultValue={selectedUser?.city}
+                            onChange={(e) => {handleInputChange(e)}}/>
+                    </div>
+
+                    <div className='edit-user-admin-data'>
+                    <label htmlFor="address">Address</label>
+                    <input id="address" 
+                            type ="text"
+                            name="address"   
+                            className='edit-user-admin-input'
+                            defaultValue={selectedUser?.address}
+                            onChange={(e) => {handleInputChange(e)}}/>
+                    </div>
+
+                    <div className='edit-user-admin-data'>
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <input id="phoneNumber" 
+                            type ="number"
+                            name="phoneNumber"   
+                            className='edit-user-admin-input'
+                            defaultValue={selectedUser?.phoneNumber}
+                            onChange={(e) => {handleInputChange(e)}}/>
+                    </div>
+
                 </div>
 
-                <div className='edit-user-admin-data'>
-                <label htmlFor="lastName">Last Name</label>
-                <input id="lastName" 
-                        type ="text" 
-                        name="lastName" 
-                        className='edit-user-admin-input'
-                        defaultValue={selectedUser?.lastName}
-                        onChange={(e) => {handleInputChange(e)}} />
+                <div className='modal-footer'>
+                    <button className='modal-footer-btn' onClick={cancelEdit}> cancel </button>
+                    <button className='modal-footer-btn confirm-btn' onClick={confirmEdit}> confirm </button>
                 </div>
-
-                <div className='edit-user-admin-data'>
-                <label htmlFor="city">City</label>
-                <input id="city" 
-                        type ="text"
-                        name="city"   
-                        className='edit-user-admin-input'
-                        defaultValue={selectedUser?.city}
-                        onChange={(e) => {handleInputChange(e)}}/>
-                </div>
-
-                <div className='edit-user-admin-data'>
-                <label htmlFor="address">Address</label>
-                <input id="address" 
-                        type ="text"
-                        name="address"   
-                        className='edit-user-admin-input'
-                        defaultValue={selectedUser?.address}
-                        onChange={(e) => {handleInputChange(e)}}/>
-                </div>
-
-                <div className='edit-user-admin-data'>
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" 
-                        type ="number"
-                        name="phoneNumber"   
-                        className='edit-user-admin-input'
-                        defaultValue={selectedUser?.phoneNumber}
-                        onChange={(e) => {handleInputChange(e)}}/>
-                </div>
-
-            </div>
-
-            <div className='modal-footer'>
-                <button className='modal-footer-btn' onClick={cancelEdit}> cancel </button>
-                <button className='modal-footer-btn confirm-btn' onClick={confirmEdit}> confirm </button>
-            </div>
 
             </div>
         </Modal> 
