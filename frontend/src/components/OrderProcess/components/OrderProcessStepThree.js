@@ -35,7 +35,7 @@ function OrderProcessStepThree(secretKey) {
         {
             secretKey &&
             <div>
-                <h2>Step 3</h2> 
+                {/* <h2>Step 3</h2>  */}
                 <PaymentElement />
                 <button className='btn-step-three' onClick={e => submitPayment()}>
                     submit

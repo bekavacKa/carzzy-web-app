@@ -58,7 +58,7 @@ function OrderProcessStepTwo() {
     {
         form &&
         <div className="order-process-step-two-wrapper">
-        <h2>STEP TWO</h2>
+        {/* <h2>STEP TWO</h2> */}
 
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className="order-two-input">

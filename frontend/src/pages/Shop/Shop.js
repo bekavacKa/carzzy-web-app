@@ -7,6 +7,7 @@ import SearchFilter from '../../components/SearchFilter/SearchFilter';
 import { useDispatch } from 'react-redux';
 import { setLoader } from '../../redux/loaderSlice';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import ShopCartBadge from '../../components/ShopCartBadge/ShopCartBadge';
 // import ProductSingle from '../../components/ProductSingle/ProductSingle';
 
 function Shop(props) {
@@ -164,6 +165,7 @@ function Shop(props) {
                 : null
             }
         </div>
+        <ShopCartBadge />
     </>
   )
 }

@@ -17,3 +17,48 @@
         }
     }
 }
+
+@include media("<=phone"){
+    .order-stepper-footer-wrapper{
+        &.space-gap{
+            @include bek-flex(space-between, row);
+        }
+        &.to-end{
+            @include bek-flex(flex-end, row);
+        }
+        .btn-steper-footer{
+            @include bek-btn-responsive;
+            margin: 15px 0 0;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .order-stepper-footer-wrapper{
+        &.space-gap{
+            @include bek-flex(space-between, row);
+        }
+        &.to-end{
+            @include bek-flex(flex-end, row);
+        }
+        .btn-steper-footer{
+            @include bek-btn-responsive;
+            margin: 15px 0 0;
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .order-stepper-footer-wrapper{
+        &.space-gap{
+            @include bek-flex(space-between, row);
+        }
+        &.to-end{
+            @include bek-flex(flex-end, row);
+        }
+        .btn-steper-footer{
+            @include bek-btn-responsive;
+            margin: 15px 0 0;
+        }
+    }
+}

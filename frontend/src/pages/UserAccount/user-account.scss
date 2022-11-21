@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import "../../assets/scss/include-media.scss";
 
 .user-account-wrapper{
     @include container;
@@ -41,5 +42,62 @@
         @include bek-btn;
         margin: 0;
         width: 150px;
+    }
+}
+
+@include media("<=phone"){
+    .user-account-wrapper{
+        width: 95%;
+        padding: 0;
+        font-size: .9rem;
+        .user-account-data{
+            min-width: 95%;
+            padding: 0px;
+            .user-account-data-details{
+                @include bek-flex(space-between, row);
+                padding: 10px 15px;
+            }
+        }
+        .user-account-edit-btn{
+            @include bek-btn-responsive;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .user-account-wrapper{
+        width: 95%;
+        padding: 0;
+        font-size: .9rem;
+        .user-account-data{
+            min-width: 95%;
+            padding: 0px;
+            .user-account-data-details{
+                @include bek-flex(space-between, row);
+                padding: 10px 15px;
+            }
+        }
+        .user-account-edit-btn{
+            @include bek-btn-responsive;
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .user-account-wrapper{
+        width: 85%;
+        padding: 0;
+        font-size: .9rem;
+        .user-account-data{
+            min-width: 85%;
+            padding: 0px;
+            .user-account-data-details{
+                @include bek-flex(space-between, row);
+                padding: 10px 15px;
+            }
+        }
+        .user-account-edit-btn{
+            @include bek-btn-responsive;
+        }
     }
 }

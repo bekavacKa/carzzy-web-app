@@ -112,6 +112,36 @@ $fontF: Orbitron;
     }
 }
 
+@mixin bek-table-responsive{
+    text-align: center;
+    border-collapse: collapse;
+    img{
+        width: 70px;
+        padding: 10px 0;
+    }
+    tr{
+        &:nth-child(odd){
+            background-color: $firstFontColor;
+        }
+        &:nth-child(even){
+            background-color: $secondFontColor;
+        }
+    }
+    thead{
+        color: $iconColor;
+        font-size: 1.2rem;
+        border-bottom: 1px solid $iconColor;
+        tr{
+            margin-bottom: 10px;
+            th{
+                padding: 15px 0;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
 @mixin bek-rotate($duration, $time, $type) {
     animation: rotation $duration $time $type;
 }

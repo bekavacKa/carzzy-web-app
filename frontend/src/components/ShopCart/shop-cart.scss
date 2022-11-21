@@ -1,9 +1,10 @@
 @import "../../assets/scss/vars.scss";
+@import "../../assets/scss/include-media.scss";
 
 .shop-cart-wrapper{
     position: relative;
     user-select: none;
-    z-index: 9;
+    z-index: 90;
     .shop-cart{
         // &.show-badge{
         //     display: block;
@@ -122,5 +123,74 @@
             }
         }
         
+    }
+}
+
+@include media("<=phone"){
+    .shop-cart-wrapper{
+        .shop-cart{
+            .shop-cart-badge{
+                font-size: 0.8rem;
+                right: -10px;
+                top: -10px;
+            }
+            .shop-cart-container{
+                width: 260px;
+                max-height: 200px;
+                top: 30px;
+                right: 2px;
+                .shop-cart-item{
+                    .shop-cart-item-trash{
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .shop-cart-wrapper{
+        .shop-cart{
+            .shop-cart-badge{
+                font-size: 0.8rem;
+                right: -10px;
+                top: -10px;
+            }
+            .shop-cart-container{
+                width: 300px;
+                max-height: 200px;
+                top: 30px;
+                right: 2px;
+                .shop-cart-item{
+                    .shop-cart-item-trash{
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .shop-cart-wrapper{
+        .shop-cart{
+            .shop-cart-badge{
+                font-size: 0.8rem;
+                right: -10px;
+                top: -10px;
+            }
+            .shop-cart-container{
+                width: 300px;
+                max-height: 200px;
+                top: 30px;
+                right: 2px;
+                .shop-cart-item{
+                    .shop-cart-item-trash{
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
     }
 }

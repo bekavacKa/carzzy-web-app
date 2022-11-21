@@ -1,9 +1,22 @@
 @import "../../assets/scss/vars.scss";
+@import "../../assets/scss/include-media.scss";
 
 .order-proces-wrapper{
     // background-color: $secondFontColor;
     @include container;
     img{
         width: 100px;
+    }
+}
+
+@include media("<=phone"){
+    .order-proces-wrapper{
+        width: 95%;
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .order-proces-wrapper{
+        width: 90%;
     }
 }

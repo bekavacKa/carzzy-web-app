@@ -82,7 +82,7 @@ function UserAccount() {
 
   return (
     <>
-        <Header pageTitle="Your Account" />
+        <Header pageTitle="Account" />
         <div className='user-account-wrapper'>
             {
                 userDetails &&
