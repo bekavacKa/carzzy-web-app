@@ -37,7 +37,7 @@ function Login({showLoginForm}){
                     .then((res) => {
                         // console.log(res.data);
                         if(res.status === 200){
-                            console.log("LOGIN SERVICE RESPONSE =>", res);
+                            // console.log("LOGIN SERVICE RESPONSE =>", res);
                             localStorage.setItem("user", JSON.stringify(res.data.userData));
                             localStorage.setItem("token", JSON.stringify(res.data.token));
                             // toast.success("Welcome! " + res.data.username);

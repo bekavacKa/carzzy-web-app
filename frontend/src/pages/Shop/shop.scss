@@ -20,7 +20,7 @@
             @include bek-flex(space-between, column);
             align-items: center;
             & > div {
-                max-width: 100%;
+                max-width: 300px;
             }
         }
     }
@@ -33,7 +33,7 @@
             @include bek-flex(space-between, column);
             align-items: center;
             & > div {
-                max-width: 100%;
+                max-width: 350px;
             }
         }
     }

@@ -12,7 +12,7 @@ The design of the application is not final and after a certain degree of applica
     *** 2.2 Using the terminal, enter the frontend folder and run the command "npm i" ***
 
 ### 3. After installation (npm i)
-    *** 3.1 Using the terminal, enter the backend folder and run the command "nodemon index" ***
+    *** 3.1 Using the terminal, enter the backend folder and run the command "nodemon index" or "node index.js" ***
 
     *** 3.2 Using the terminal enter the folder frontend and run the command "npm start" ***
 

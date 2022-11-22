@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
+import MyResume from '../../components/MyResume/MyResume';
 import routeConfig from '../../config/routeConfig';
 import './about-us.scss';
 
@@ -8,9 +9,7 @@ function AboutUs() {
     <>
       <Header pageTitle={routeConfig.ABOUT_US.name} />
       <div className='about-us-wrapper'>
-          <h2>
-            COMING SOON !
-          </h2>
+          <MyResume />
       </div>
     </>
   )

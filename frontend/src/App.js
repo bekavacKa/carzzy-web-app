@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate} from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,8 +35,8 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Cookie from './components/Cookie/Cookie';
 
 
-// axios.defaults.baseURL ='http://localhost:4000';
-axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
+axios.defaults.baseURL ='http://localhost:4000';
+// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
 
 axios.interceptors.request.use(function (config) {
     // console.log("inter =>", config);
