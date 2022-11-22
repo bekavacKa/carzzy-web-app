@@ -39,7 +39,7 @@
                 content: "";
                 width: 70%;
                 height: 2px;
-                margin-top: 3px;
+                margin: 3px 0 5px 0;
                 background: $secondFontColor;
             }
         }
@@ -161,6 +161,141 @@
                 }
                 .courses-content-info{
                     margin-left: 25px;
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=phone"){
+    .my-resume-wrapper{
+        width: 100%;
+        .my-resume-header{
+            text-align: center;
+            width: 100%;
+            padding: 20px 5px;
+            background-color: $secondBackground;
+            h2{
+                font-size: 1rem;
+                letter-spacing: normal;
+                margin-bottom: 10px;
+            }
+            h3{
+                letter-spacing: normal;
+                margin-bottom: 10px;
+            }
+            p{
+                letter-spacing: normal;
+            }
+        }
+        .my-resume-aside{
+            text-align: center;
+            padding: 25px 10px;
+            h2{
+                &::after{
+                    content: "";
+                    width: 100%;
+                }
+            }
+        }
+        .my-resume-main{
+            display: none;
+        }
+    }
+}
+
+
+@include media(">phone", "<=tablet"){
+    .my-resume-wrapper{
+        width: 100%;
+        .my-resume-header{
+            text-align: center;
+            width: 100%;
+            padding: 20px 10px;
+            background-color: $secondBackground;
+            h2{
+                font-size: 1.5rem;
+                letter-spacing: .1rem;
+                margin-bottom: 10px;
+            }
+            h3{
+                letter-spacing: normal;
+                margin-bottom: 10px;
+            }
+            p{
+                letter-spacing: normal;
+            }
+        }
+        .my-resume-aside{
+            text-align: center;
+            padding: 25px 15px;
+            h2{
+                &::after{
+                    content: "";
+                    width: 100%;
+                }
+            }
+        }
+        .my-resume-main{
+            display: none;
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .my-resume-wrapper{
+        width: 100%;
+        margin: 0 auto;
+        .my-resume-header{
+            width: 100%;
+            padding: 50px 30px;
+            text-transform: uppercase;
+            h2{
+                font-size: 2rem;
+            }
+        }
+        .my-resume-aside{
+            padding: 25px 15px;
+            h2{
+                &::after{
+                    width: 100%;
+                }
+            }
+            .aside-contact{
+                .aside-contact-items{
+                    .aside-contact-items-holder{
+                        p{
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+        .my-resume-main{
+            padding: 15px;
+            .main-profile{
+                .main-profile-contnet{
+                    padding: 15px 0;
+                    font-size: 1rem;
+                    line-height: 1.2rem;
+                    letter-spacing: normal;
+                }
+            }
+            .main-education{
+                .main-education-content{
+                    padding: 15px 0;
+                    font-size: 1rem;
+                    line-height: 1.2rem;
+                    letter-spacing: normal;
+                }
+            }
+            .main-courses{
+                .main-courses-content{
+                    padding: 15px 0;
+                    font-size: 1rem;
+                    line-height: 1.2rem;
+                    letter-spacing: normal;
                 }
             }
         }

@@ -1,6 +1,22 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .about-us-wrapper{
-    // background-color: darkslategray;
     @include container;
+}
+@include media("<=phone"){
+    .about-us-wrapper{
+        width: 95%;     
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .about-us-wrapper{
+        width: 95%;     
+    }
+}
+@include media(">=tablet", "<desktop"){
+    .about-us-wrapper{
+        width: 90%;     
+    }
 }
