@@ -238,20 +238,20 @@
     }
 }
 
-@include media(">=tablet", "<desktop"){
-    .nav-wrapper{
-        .nav-content{
-            padding: 15px 20px;
-            .main-nav{
-                display: none;
-            }
-            .responsive-nav{
-                @include bek-flex(space-between, row);
-            }
-        }
-        .responsive-meni{
-            @include bek-flex(center, column);
-            align-items: center;
-        }
-    }
-}
+// @include media(">=tablet", "<desktop"){
+//     .nav-wrapper{
+//         .nav-content{
+//             padding: 15px 20px;
+//             .main-nav{
+//                 display: none;
+//             }
+//             .responsive-nav{
+//                 @include bek-flex(space-between, row);
+//             }
+//         }
+//         .responsive-meni{
+//             @include bek-flex(center, column);
+//             align-items: center;
+//         }
+//     }
+// }
