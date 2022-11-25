@@ -37,10 +37,11 @@ function AddNewProduct({showModal,  updateDb}) {
   }
 
   const handleImgFile = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     setImgFile(e.target.files[0]);
   }
-  
+  // TODO validaciju za sliku sam obriso dok ne rijesim upload
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -61,12 +62,12 @@ function AddNewProduct({showModal,  updateDb}) {
     newProductData.append("product", JSON.stringify(newProduct));
     newProductData.append("file", imgFile);
     
-    console.log(newProductData.get("file"));
+    // console.log(newProductData.get("file"));
     
     dispatch(setLoader(true));
     AdminService.addNewProduct(newProductData)
                 .then(res => {
-                  console.log(res.data);
+                  // console.log(res.data);
                   showModal(false);
                   updateDb();
                   toast.success("product successfully added! ");

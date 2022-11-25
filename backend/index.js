@@ -87,7 +87,7 @@ app.get('/images/productImages/:imageName', (req,res) => {
         res.setHeader('Access-Control-Allow-Origin', '*'); 
         res.send(data);
     })
-})
+});
 
 app.get("/", (req, res) => {
     res.send("Test backend(NODEJS) for CARZZY WEB APP - Bekavac");
