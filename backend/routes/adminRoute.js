@@ -1,4 +1,6 @@
 const express = require('express');
+// const fileUpload = require('express-fileUpload');
+
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
 
@@ -9,6 +11,8 @@ const Products = require('../models/productModel');
 const { authValidation, validateUser } = require('../services/validationService');
 
 const routes = express.Router();
+// const app = express();
+// app.use(fileUpload());
 
 
 // admin del user
@@ -40,26 +44,36 @@ routes.put('/edit-selected-user', (req,res) => {
 
 // admin add product
 // * moze bolje ima bolja mongoosova metoda
-routes.post('/add-new-product', (req,res) => {
-    console.log(req.body);
-    const reqBody=req.body;
-	Products.findOne(reqBody, async (err, data) => {
-		// console.log(data);
-		if (err) {
-			const errorMsg = `Error on adding product: ${err}`;
-			console.log(errorMsg);
-			res.send(errorMsg);
-			return;
-		}
-		if (data) res.send(`Product already exist`);
-		else {
-			const newProduct = new Products(reqBody);
-			const saveNewProduct = await newProduct.save();
-			console.log("Saved product",saveNewProduct);
-			res.send(saveNewProduct || 'Product not saved');
-		}
-	});
-});
+
+// routes.post('/add-new-product', (req,res) => {
+//     console.log("product req body =>",req.body.product);
+//     console.log("product req files =>",req.files.file);
+//     const file = req.files.file;
+//     const path = `${__dirname}/files/`;
+
+//     file.mv(`${path}${file.name}`, err => {
+//         if (err) return res.send("err on uploda file");
+//         res.send("file upload sucess")
+//     })
+
+// 	// Products.findOne(reqBody, async (err, data) => {
+// 	// 	// console.log(data);
+// 	// 	if (err) {
+// 	// 		const errorMsg = `Error on adding product: ${err}`;
+// 	// 		console.log(errorMsg);
+// 	// 		res.send(errorMsg);
+// 	// 		return;
+// 	// 	}
+// 	// 	if (data) res.send(`Product already exist`);
+// 	// 	else {
+// 	// 		const newProduct = new Products(reqBody);
+// 	// 		const saveNewProduct = await newProduct.save();
+// 	// 		console.log("Saved product",saveNewProduct);
+// 	// 		res.send(saveNewProduct || 'Product not saved');
+// 	// 	}
+// 	// });
+
+// });
 
 // admin del product
 routes.delete('/delete-selected-product/:productId', (req,res) => {

@@ -16,9 +16,10 @@ function AddNewProduct({showModal,  updateDb}) {
     category: productCategory[0],
     description: "",
     price: "",
-    imageUrl: "",
+    // imageUrl: "",
 		rating: rand.toFixed(1),
 	});
+  const [imgFile, setImgFile] = useState(null);
 
   // const [isValid, setIsValid] = useState(true);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -34,22 +35,38 @@ function AddNewProduct({showModal,  updateDb}) {
     copyNewProduct[e.target.name] = e.target.value;
     setNewProduct(copyNewProduct);
   }
+
+  const handleImgFile = (e) => {
+    console.log(e.target.files[0]);
+    setImgFile(e.target.files[0]);
+  }
   
   const handleSubmitForm = (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    if(!newProduct.title || !newProduct.description || !newProduct.price || !newProduct.imageUrl){
+    if(!newProduct.title || !newProduct.description || !newProduct.price){
       // console.log("Nesto fali");
       return;
     }
-    if(!newProduct.imageUrl.includes('https://')){
-      // console.log('nema');
-      newProduct.imageUrl = 'https://content.myconnectsuite.com/api/documents/30b67cc6055e4da88c40802e6ed33bc4.jpeg';
-    }
+    // if(!newProduct.imageUrl.includes('https://')){
+    //   // console.log('nema');
+    //   newProduct.imageUrl = 'https://content.myconnectsuite.com/api/documents/30b67cc6055e4da88c40802e6ed33bc4.jpeg';
+    // }
+    addingNewProduct();
+    showModal(false);
+  }
+
+  const addingNewProduct = () => {
+    let newProductData = new FormData();
+    newProductData.append("product", JSON.stringify(newProduct));
+    newProductData.append("file", imgFile);
+    
+    console.log(newProductData.get("file"));
+    
     dispatch(setLoader(true));
-    AdminService.addNewProduct(newProduct)
+    AdminService.addNewProduct(newProductData)
                 .then(res => {
-                  // console.log(res.data);
+                  console.log(res.data);
                   showModal(false);
                   updateDb();
                   toast.success("product successfully added! ");
@@ -60,7 +77,6 @@ function AddNewProduct({showModal,  updateDb}) {
                 })
                 .finally(() => dispatch(setLoader(false)));
     // console.log("PROSA");
-    showModal(false);
   }
   
   const cancelAdd = () => {
@@ -107,9 +123,12 @@ function AddNewProduct({showModal,  updateDb}) {
               <label htmlFor='price' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.price)}`}>Price USD $</label>
               <input className='product-manage-add-fields-inputs' type="number" id='price' name='price' onChange={(e) => {handleInputChange(e)}} />
 
-              <label htmlFor='imageUrl' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.imageUrl)}`}>Image URL</label>
-              <input className='product-manage-add-fields-inputs' type="text" id='imageUrl' name='imageUrl' onChange={(e) => {handleInputChange(e)}} />
+              {/* <label htmlFor='imageUrl' className={`product-manage-add-fields ${requiredMsgLayout(newProduct?.imageUrl)}`}>Image URL</label>
+              <input className='product-manage-add-fields-inputs' type="text" id='imageUrl' name='imageUrl' onChange={(e) => {handleInputChange(e)}} /> */}
 
+
+              <label htmlFor='imageFile' className={`product-manage-add-fields`}>Image File</label>
+              <input className='product-manage-add-fields-inputs' type="file" id='imageFile' name='imageFile' onChange={(e) => {handleImgFile(e)}} />
 
             </div>
         </div>

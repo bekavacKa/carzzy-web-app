@@ -26,7 +26,7 @@ function ProductSingle(props, {cardInfo}) {
 
   return (
     <>
-    { product && product.hasOwnProperty('imageUrl') ? 
+    { product  ? 
         <div className='product-card'>
 
           <div className='product-card-img'>

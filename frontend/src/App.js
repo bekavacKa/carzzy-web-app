@@ -35,9 +35,9 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Cookie from './components/Cookie/Cookie';
 
 
-// axios.defaults.baseURL ='http://localhost:4000';
+axios.defaults.baseURL ='http://localhost:4000';
 // axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
-axios.defaults.baseURL ='https://carzzy-backend-bekavac-ka.onrender.com';
+// axios.defaults.baseURL ='https://carzzy-backend-bekavac-ka.onrender.com';
 
 
 axios.interceptors.request.use(function (config) {
