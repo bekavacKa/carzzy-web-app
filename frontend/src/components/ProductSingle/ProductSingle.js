@@ -13,7 +13,7 @@ function ProductSingle(props, {cardInfo}) {
     const[product, setProduct] = useState({});
 
     // const productImagePath = `http://localhost:4000/images/productImages/`;
-    const productImagePath = `https://carzzy-backend-bekavac-ka.onrender.com/`;
+    const productImagePath = `https://carzzy-backend-bekavac-ka.onrender.com/images/productImages/`;
 
     useEffect(() => {
         // console.log("propppp",props);
