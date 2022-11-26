@@ -33,7 +33,7 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
 
     const sliderCardLayout = () => {
         return (
-            sliderItems.length > 0 &&
+            sliderItems && sliderItems.length > 0 &&
                 <div className='card-slider-wrapper'>
                     
                     <div className='card-slider-header' >

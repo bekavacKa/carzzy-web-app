@@ -93,7 +93,6 @@ app.get("/", (req, res) => {
     res.send("Test backend(NODEJS) for CARZZY WEB APP - Bekavac");
 });
 
-
 app.listen(serverConfig.port, err => {
     if(err){
         console.log(err);

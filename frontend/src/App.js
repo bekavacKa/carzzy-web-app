@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./assets/scss/base.scss";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import Button from 'react-bootstrap/Button';
-
+import { BACKEND_URL_CONFIG } from './config/backendUrlConfig';
 import routeConfig from './config/routeConfig';
 import Navigation from './components/Navigation/Navigation';
 import Shop from './pages/Shop/Shop';
@@ -35,9 +35,7 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Cookie from './components/Cookie/Cookie';
 
 
-// axios.defaults.baseURL ='http://localhost:4000';
-// axios.defaults.baseURL ='https://carzzy-web-app-production.up.railway.app/';
-axios.defaults.baseURL ='https://carzzy-backend-bekavac-ka.onrender.com';
+axios.defaults.baseURL = BACKEND_URL_CONFIG.BACKEND_URL.url;
 
 
 axios.interceptors.request.use(function (config) {

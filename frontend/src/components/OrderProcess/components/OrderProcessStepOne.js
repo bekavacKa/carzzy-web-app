@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {FaPlusCircle, FaMinusCircle, FaTrash} from "react-icons/fa";
 import { deleteFromShopCart, handleItemCountShopCart } from '../../../redux/shopSlice';
+import { BACKEND_URL_CONFIG } from '../../../config/backendUrlConfig';
 
 import "../scss/order-process-step-one.scss";
 
@@ -31,7 +32,7 @@ function OrderProcessStepOne() {
             <tr key={index}>
                 <th >{index +1}</th>
                 <td>
-                    <img src={item.imageUrl} alt={item.title} />
+                    <img src={`${BACKEND_URL_CONFIG.PRODUCT_IMAGE_PATH.url}${item.imageFile}`} alt={item.title} />
                 </td>
                 <td>{item.title}</td>
                 <td className='order-table-counter'>

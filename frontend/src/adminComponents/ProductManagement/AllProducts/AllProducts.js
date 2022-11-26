@@ -8,6 +8,8 @@ import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import './all-products.scss';
 
+import { BACKEND_URL_CONFIG } from '../../../config/backendUrlConfig';
+
 function AllProducts() {
   
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function AllProducts() {
 
   const [selectedProduct, setSelectedProduct] = useState({});
 
+
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -28,7 +31,7 @@ function AllProducts() {
     dispatch(setLoader(true));
     ShopService.getProducts()
                 .then((res) => {
-                  // console.log(res);
+                  // console.log(res.data);
                   setProducts(res.data);
                 })
                 .catch((err) => {
@@ -57,12 +60,13 @@ function AllProducts() {
         <tr key={index}>
           <th scope="row">{index + 1}.</th>
           <td>
-            <img src={product.imageUrl} alt={product.title} />
+            <img src={`${BACKEND_URL_CONFIG.PRODUCT_IMAGE_PATH.url}${product.imageFile}`} alt={product.title} />
           </td>
           <td>{product.title}</td>
           <td>{product.category}</td>
           <td>{product.rating}</td>
           <td>{product.price}</td>
+          <td>{product.isVisible ? "enabled" : "disabled"}</td>
           <td className='all-products-btns'>
             <FaRegEdit className='all-products-edit' onClick={e => editProduct(product)} title='EDIT'/>
             <FaTrashAlt className='all-products-delete' title='DELETE' onClick={e => deleteProduct(product)} />
@@ -85,6 +89,7 @@ function AllProducts() {
             <th scope="col">category</th>
             <th scope="col">rating</th>
             <th scope="col">price</th>
+            <th scope="col">visibility</th>
             <th>
               <button className='all-products-table-add-btn animate__animated animate__rubberBand' onClick={e => addProduct()}> ADD NEW </button>
             </th>

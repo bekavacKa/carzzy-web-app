@@ -87,7 +87,7 @@ function EditProduct({showModal, selectedProduct, updateDb}) {
             </div>
           </div>
 
-          <div className='edit-product-admin'>
+          {/* <div className='edit-product-admin'>
             <div className='edit-product-admin-data'>
               <label htmlFor="imageUrl">image url</label>
                 <input id="imageUrl" 
@@ -97,7 +97,7 @@ function EditProduct({showModal, selectedProduct, updateDb}) {
                         defaultValue={selectedProduct?.imageUrl}
                         onChange={(e) => {handleInputChange(e)}} />
             </div>
-          </div>
+          </div> */}
 
           <div className='edit-product-admin'>
             <div className='edit-product-admin-data'>
@@ -111,6 +111,20 @@ function EditProduct({showModal, selectedProduct, updateDb}) {
                 <option value='exhaust'>exhaust</option>
                 <option value='tires'>tires</option>
                 <option value='rims'>rims</option>
+              </select>
+            </div>
+          </div>
+
+          <div className='edit-product-admin'>
+            <div className='edit-product-admin-data'>
+              <label htmlFor="visibility">visibility</label>
+              <select id="isVisible" 
+                      name="visibility" 
+                      className='edit-product-admin-input'
+                      defaultValue={selectedProduct?.isVisible}
+                      onChange={(e) => {handleInputChange(e)}} >
+                <option value='true' >enabled</option>
+                <option value='false' >disabled</option>
               </select>
             </div>
           </div>

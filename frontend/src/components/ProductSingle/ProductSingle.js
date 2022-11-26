@@ -8,12 +8,12 @@ import './product-single.scss';
 import routeConfig from '../../config/routeConfig';
 import RatingStars from '../RatingStars/RatingStars';
 
+import { BACKEND_URL_CONFIG } from '../../config/backendUrlConfig';
+
+
 function ProductSingle(props, {cardInfo}) {
   const dispatch = useDispatch();
     const[product, setProduct] = useState({});
-
-    // const productImagePath = `http://localhost:4000/images/productImages/`;
-    const productImagePath = `https://carzzy-backend-bekavac-ka.onrender.com/images/productImages/`;
 
     useEffect(() => {
         // console.log("propppp",props);
@@ -31,7 +31,7 @@ function ProductSingle(props, {cardInfo}) {
         <div className='product-card'>
 
           <div className='product-card-img'>
-              <img src={`${productImagePath}${product.imageFile}`} alt={product.title}  />
+              <img src={`${BACKEND_URL_CONFIG.PRODUCT_IMAGE_PATH.url}${product.imageFile}`} alt={product.title}  />
           </div>
 
           <RatingStars rating={product.rating} />

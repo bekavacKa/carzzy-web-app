@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import routeConfig from '../../config/routeConfig';
 import { deleteFromShopCart, handleItemCountShopCart } from '../../redux/shopSlice';
 
+import { BACKEND_URL_CONFIG } from '../../config/backendUrlConfig';
+
 import "./shop-cart.scss";
 
 function ShopCart() {
@@ -13,6 +15,7 @@ function ShopCart() {
     const {shopCart} = useSelector(state => state.shopCartStore);
     const shopCartRef = useRef();
     const [isActiveShopCart, setIsActiveShopCart] = useState(false);
+
 
     const dispatch = useDispatch();
 
@@ -53,7 +56,7 @@ function ShopCart() {
                     <div className='shop-cart-item' key={index} id={item._id} >
                         
                         <div className='shop-cart-item-img'>
-                            <img src={item.imageUrl} alt={item.title} />
+                            <img src={`${BACKEND_URL_CONFIG.PRODUCT_IMAGE_PATH.url}${item.imageFile}`} alt={item.title} />
                         </div>
                         
                         <div className='shop-cart-item-info' >

@@ -146,11 +146,9 @@ function Shop(props) {
     <>
         <Header pageTitle={"shop"} />
         <div className='shop-wrapper'>
-            {
-                allProducts && allProducts.length > 0 ?
-                <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm} setCheckedCategory={setCheckedCategory}/>
-                : null
-            }
+
+            <SearchFilter setSort={setSort} filterPrice={filterPrice} setFilterPrice={setFilterPrice} setSearchTerm={setSearchTerm} setCheckedCategory={setCheckedCategory}/>
+            
             {
                 allProducts && allProducts.length > 0 ?
                 <div className='shop-cards-holder' >

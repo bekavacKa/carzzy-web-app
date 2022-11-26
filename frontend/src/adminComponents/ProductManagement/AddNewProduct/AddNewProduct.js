@@ -45,7 +45,7 @@ function AddNewProduct({showModal,  updateDb}) {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    if(!newProduct.title || !newProduct.description || !newProduct.price){
+    if(!newProduct.title || !newProduct.description || !newProduct.price || !imgFile){
       // console.log("Nesto fali");
       return;
     }
@@ -128,7 +128,7 @@ function AddNewProduct({showModal,  updateDb}) {
               <input className='product-manage-add-fields-inputs' type="text" id='imageUrl' name='imageUrl' onChange={(e) => {handleInputChange(e)}} /> */}
 
 
-              <label htmlFor='imageFile' className={`product-manage-add-fields`}>Image File</label>
+              <label htmlFor='imageFile' className={`product-manage-add-fields ${requiredMsgLayout(imgFile)}`}>Image File</label>
               <input className='product-manage-add-fields-inputs' type="file" id='imageFile' name='imageFile' onChange={(e) => {handleImgFile(e)}} />
 
             </div>
