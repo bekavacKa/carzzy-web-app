@@ -7,8 +7,7 @@ const Sponsors = require('../models/sponsorModel');
 const routes = express.Router();
 
 routes.get('/all-products', async (req, res) => {
-
-    Products.find((err, data) => {
+    Products.find({isVisible: true},(err, data) => {
         if (err) {
             console.log(err);
             res.send("ERROR. TRY AGAIN.");
@@ -24,7 +23,7 @@ routes.get('/all-products', async (req, res) => {
 
 routes.get('/random-products/:num', (req, res) => {
     let productsNum = req.params.num;
-    Products.find((err, data) => {
+    Products.find({isVisible: true}, (err, data) => {
         if(err){
             console.log( "Random Products Err => ", err);
             res.send("error, try again later");

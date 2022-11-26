@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { setLoader } from '../../redux/loaderSlice';
+import AdminService from '../../services/AdminService';
 import AuthService from '../../services/AuthService';
-import ShopService from '../../services/ShopService'
 import './stats.scss';
 import StatsBox from './StatsBox';
 
@@ -23,7 +23,7 @@ function Stats() {
 
   const getProductsFromService = () => {
     dispatch(setLoader(true))
-    ShopService.getProducts()
+    AdminService.getAllDbProducts()
                 .then((res) => {
                   // console.log(res);
                   setProducts(res.data.length);

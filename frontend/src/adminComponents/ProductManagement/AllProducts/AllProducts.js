@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { setLoader } from '../../../redux/loaderSlice';
-import ShopService from '../../../services/ShopService';
 import AddNewProduct from '../AddNewProduct/AddNewProduct';
 import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import EditProduct from '../EditProduct/EditProduct';
 import './all-products.scss';
 
 import { BACKEND_URL_CONFIG } from '../../../config/backendUrlConfig';
+import AdminService from '../../../services/AdminService';
 
 function AllProducts() {
   
@@ -29,7 +29,7 @@ function AllProducts() {
 
   const getAllProducts = () => {
     dispatch(setLoader(true));
-    ShopService.getProducts()
+    AdminService.getAllDbProducts()
                 .then((res) => {
                   // console.log(res.data);
                   setProducts(res.data);

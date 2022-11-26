@@ -61,9 +61,9 @@ function CardSlider({sliderTitle, cardSliderItems, sliderTypeCard, sliderArrow, 
 
                     <div className='card-slider-holder' id={sliderId} >
                         {
-                            sliderItems.map(product => {
+                            sliderItems.map((product, index) => {
                                 return(
-                                    <ProductSingle productProps={product} cardInfo={cardInfo} key={product._id} />
+                                    <ProductSingle productProps={product} cardInfo={cardInfo} key={index} />
                                 )
                             })
                         }

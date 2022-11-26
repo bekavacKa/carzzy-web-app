@@ -16,7 +16,7 @@ const routes = express.Router();
 
 
 // admin del user
-routes.delete('/delete-selected-user/:userId', (req,res) => {
+routes.delete('/delete-selected-user/:userId', authValidation, (req,res) => {
     const userParamId = req.params.userId;
     Users.deleteOne({ _id: userParamId },  async  (error) => {
         if (error) throw error;
@@ -25,7 +25,7 @@ routes.delete('/delete-selected-user/:userId', (req,res) => {
 });
 
 // admin edit user
-routes.put('/edit-selected-user', (req,res) => {
+routes.put('/edit-selected-user', authValidation, (req,res) => {
     let id = req.body._id;
     let reqBody = req.body;
     Users.updateOne({ "_id": id }, {
@@ -75,8 +75,25 @@ routes.put('/edit-selected-user', (req,res) => {
 
 // });
 
+// admin get all products
+routes.get('/all-products', authValidation, async (req, res) => {
+
+    Products.find((err, data) => {
+        if (err) {
+            console.log(err);
+            res.send("ERROR. TRY AGAIN.");
+            return;
+        }
+        if (data) {
+            res.send(data)
+        } else {
+            res.send("Product dont found")
+        }
+    })
+});
+
 // admin del product
-routes.delete('/delete-selected-product/:productId', (req,res) => {
+routes.delete('/delete-selected-product/:productId', authValidation, (req,res) => {
     const productParamId = req.params.productId;
     Products.deleteOne({ _id: productParamId },  async  (error) => {
         if (error) throw error;
@@ -85,7 +102,7 @@ routes.delete('/delete-selected-product/:productId', (req,res) => {
 });
 
 // admin edit product
-routes.put('/edit-selected-product' ,(req,res) => {
+routes.put('/edit-selected-product', authValidation, (req,res) => {
     let id = req.body._id;
     let reqBody = req.body;
     Products.updateOne({ "_id": id }, {

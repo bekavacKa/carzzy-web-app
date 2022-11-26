@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaBimobject, FaFoursquare, FaSchlix, } from 'react-icons/fa';
+import { FaFoursquare, FaSchlix, } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import BannersCta from '../../components/BannersCta/BannersCta';
 import Blog from '../../components/Blog/Blog';
@@ -45,7 +45,7 @@ function Home() {
 
   const getRandProducts = () => {
     dispatch(setLoader(true));
-    ShopService.getRandomProducts(15)
+    ShopService.getRandomProducts(12)
                 .then(res => {
                     if(res.status === 200){
                         // console.log(res.data);
@@ -59,7 +59,7 @@ function Home() {
   // Todo zaminut sa featured products kad im dodam property
   const getFeaturedProducts = () => {
     dispatch(setLoader(true));
-    ShopService.getRandomProducts(10)
+    ShopService.getRandomProducts(8)
                 .then(res => {
                     if(res.status === 200){
                         // console.log(res.data);
