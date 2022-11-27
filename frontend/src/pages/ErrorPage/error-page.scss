@@ -1,5 +1,55 @@
 @import '../../assets/scss/vars.scss';
 
 .error-page-wrapper{
-    background-color: red;
+    height: 100vh;
+    // padding: 150px;
+    @include bek-flex(center, column);
+    align-items: center;
+    text-transform: uppercase;
+    h2{
+        color: $iconColor;
+        font-size: 5rem;
+        margin-bottom: 30px;
+    }
+    h3{
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    button{
+        @include bek-btn;
+    }
+}
+
+@include media("<=phone"){
+    .error-page-wrapper{
+        height: 90vh;
+        h2{
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        h3{
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        button{
+            @include bek-btn-responsive;
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .error-page-wrapper{
+        height: 90vh;
+        h2{
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        h3{
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        button{
+            @include bek-btn-responsive;
+        }
+    }
 }

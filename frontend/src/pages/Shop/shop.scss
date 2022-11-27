@@ -5,6 +5,7 @@
     @include container;
     .shop-cards-holder{
         @include bek-flex(space-between, row);
+        gap: 15px 0px;
         & > div {
             max-width: 300px;
         }

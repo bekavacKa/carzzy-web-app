@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .sidebar-wrapper{
     background-color: $secondBackground;
@@ -27,6 +28,49 @@
             }
             &.active{
                 color: $iconColor;
+            }
+        }
+    }
+}
+
+@include media("<=phone"){
+    .sidebar-wrapper{
+        width: 20%;
+        .sidebar-main-title{
+            display: none;
+        }
+        .sidebar-meni{
+            align-items: center;
+            .sidebar-meni-titles{
+                // font-size: 1.5rem;
+                padding: 10px;
+                color: $firstFontColor;
+                span{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .sidebar-wrapper{
+        width: 20%;
+        .sidebar-main-title{
+            display: none;
+        }
+        .sidebar-meni{
+            align-items: center;
+            .sidebar-meni-titles{
+                font-size: 1.5rem;
+                padding: 10px;
+                color: $firstFontColor;
+                span{
+                    display: none;
+                }
+                &:hover{
+                    background-color: transparent;
+                }
             }
         }
     }

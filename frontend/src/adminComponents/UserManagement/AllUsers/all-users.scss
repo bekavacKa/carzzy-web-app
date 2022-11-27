@@ -1,4 +1,5 @@
 @import '../../../assets/scss/vars.scss';
+@import '../../../assets/scss/include-media.scss';
 
 .all-users-wrapper{
     .all-users-table{
@@ -25,6 +26,52 @@
                 color: red;
             }
 
+        }
+    }
+}
+
+@include media("<=phone"){
+    .all-users-wrapper{
+        .all-users-table{
+            font-size: .9rem;
+            @include bek-table-responsive;
+            td{
+                padding: 0;
+            }
+            tr{
+                padding: 0;
+            }
+            .all-users-btns{
+                @include bek-flex(flex-start, row);
+                padding: 5px ;
+                .all-users-edit{
+                    font-size: .8rem;
+                    margin: 5px;
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .all-users-wrapper{
+        .all-users-table{
+            font-size: .9rem;
+            @include bek-table-responsive;
+            td{
+                padding: 0;
+            }
+            tr{
+                padding: 0;
+            }
+            .all-users-btns{
+                @include bek-flex(flex-start, row);
+                padding: 5px ;
+                .all-users-edit{
+                    font-size: .8rem;
+                    margin: 5px;
+                }
+            }
         }
     }
 }

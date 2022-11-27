@@ -17,7 +17,7 @@ function SideBar() {
       ADMIN_SIDEBAR_CONFIG.map((title, index) => {
         return (
           <NavLink className='sidebar-meni-titles' to={title.url} key={index} >
-            {title.icon} &nbsp; {title.name}
+            {title.icon} &nbsp; <span> {title.name} </span> 
           </NavLink>
         )
       })

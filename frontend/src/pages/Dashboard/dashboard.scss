@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .dashboard-wrapper{
     .dashboard-view{
@@ -12,6 +13,30 @@
             //     background-color: $secondBackground;
             //     height: 64px;
             // }
+        }
+    }
+}
+
+@include media("<=phone"){
+    .dashboard-wrapper{
+        .dashboard-view{
+            padding: 0 0px;
+            .dashboard-details{
+                width: 80%;
+                padding: 7px;
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .dashboard-wrapper{
+        .dashboard-view{
+            padding: 0 0px;
+            .dashboard-details{
+                width: 80%;
+                padding: 10px;
+            }
         }
     }
 }

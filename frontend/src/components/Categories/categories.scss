@@ -36,13 +36,14 @@
 @include media("<=phone"){
     .categories-wrapper{
         .categories-card{
-            padding: 10px 5px;
+            padding: 0px;
             font-weight: 500;
             background-color: $secondFontColor;
             .categories-card-img{
                 width: 100%;
+                padding: 10px 5px;
                 img{
-                    height: 80px;
+                    height: 70px;
                 }
             }
             .categories-card-title{
@@ -55,13 +56,14 @@
 @include media(">phone", "<=tablet"){
     .categories-wrapper{
         .categories-card{
-            padding: 10px 5px;
+            padding: 0px;
             font-weight: 500;
             background-color: $secondFontColor;
             .categories-card-img{
                 width: 100%;
+                padding: 10px 5px;
                 img{
-                    height: 80px;
+                    height: 70px;
                 }
             }
             .categories-card-title{

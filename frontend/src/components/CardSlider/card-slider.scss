@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .card-slider-wrapper{
     // background-color: chocolate;
@@ -43,7 +44,11 @@
     .card-slider-holder{
         flex: 1;
         @include bek-flex(space-between, row);
-        gap: 10px;
+        // box-shadow: 0 0 15px 5px rgba(228, 225, 17, 0.8);
+        box-shadow: -15px 0 8px -8px $secondBackground, 15px 0 8px -8px $secondBackground;
+        border-radius: 10px;
+        gap: 0px 20px;
+        padding: 7px 0;
         flex-wrap: nowrap;
         overflow-x: scroll;
         scroll-behavior: smooth;
@@ -189,7 +194,7 @@
 
 @include media("<=phone"){
     .card-slider-wrapper{
-        padding: 30px;
+        padding: 30px 15px;
         .card-slider-header{
             margin-bottom: 20px;
             @include bek-flex(space-between, row);
@@ -199,6 +204,7 @@
             }
         }
         .card-slider-holder{
+            gap: 0px 10px;
             & > div {
                 max-width: 155px;
                 min-width: 155px;
@@ -245,7 +251,7 @@
 
 @include media(">phone", "<=tablet"){
     .card-slider-wrapper{
-        padding: 30px;
+        padding: 30px 15px;
         .card-slider-header{
             margin-bottom: 20px;
             @include bek-flex(space-between, row);
@@ -255,6 +261,7 @@
             }
         }
         .card-slider-holder{
+            gap: 0px 10px;
             & > div {
                 max-width: 170px;
                 min-width: 170px;

@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .stats-wrapper{
     color: $iconColor;
@@ -6,4 +7,18 @@
     @include bek-flex(center, row);
     align-items: center;
     gap: 10px;
+}
+
+@include media("<=phone"){
+    .stats-wrapper{
+        padding: 0;
+        gap: 5px;
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .stats-wrapper{
+        padding: 0;
+        gap: 5px;
+    }
 }

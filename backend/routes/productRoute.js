@@ -149,7 +149,7 @@ routes.get('/products-category/:catName', async (req, res) => {
 
     const catName = req.params.catName;
 
-    Products.find({"category" : catName}, (err, data) => {
+    Products.find({"category" : catName, "isVisible" : true}, (err, data) => {
         // console.log("categggg =>",data);
         if (err) {
             console.log(err);

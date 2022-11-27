@@ -9,6 +9,16 @@
         @include bek-table;
         font-size: 1.2rem;
         color: $firstBackground;
+        .enabled{
+            font-weight: 700;
+            color: green;
+            // text-shadow: 0 0 2px black;
+        }
+        .disabled{
+            font-weight: 700;
+            color: $iconColor;
+            // text-shadow: 0 0 2px black;
+        }
         .all-products-table-add-btn{
             @include bek-btn;
             margin: 0;

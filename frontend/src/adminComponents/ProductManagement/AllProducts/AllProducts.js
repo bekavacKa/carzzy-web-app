@@ -66,7 +66,7 @@ function AllProducts() {
           <td>{product.category}</td>
           <td>{product.rating}</td>
           <td>{product.price}</td>
-          <td>{product.isVisible ? "enabled" : "disabled"}</td>
+          <td className={product.isVisible ? "enabled" : "disabled"}>{product.isVisible ? "enabled" : "disabled"}</td>
           <td className='all-products-btns'>
             <FaRegEdit className='all-products-edit' onClick={e => editProduct(product)} title='EDIT'/>
             <FaTrashAlt className='all-products-delete' title='DELETE' onClick={e => deleteProduct(product)} />
@@ -80,7 +80,7 @@ function AllProducts() {
     <div className='all-products-wrapper' >
       {
         products?.length && 
-        <table className="all-products-table">
+      <table className="all-products-table">
         <thead>
           <tr>
             <th scope="col">NO.</th>

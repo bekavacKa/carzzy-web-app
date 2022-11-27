@@ -4,10 +4,10 @@
 
 @include media("<=phone"){
     .modal-wrapper{
-        font-size: .8rem;
+        font-size: .7rem;
         width: 100%;
         padding: 0;
-        height: 100vh;
+        height: 95vh;
         .modal-footer{
             .modal-footer-btn{
                 @include bek-btn-responsive;
@@ -18,10 +18,10 @@
 
 @include media(">phone", "<=tablet"){
     .modal-wrapper{
-        font-size: .8rem;
+        font-size: .7rem;
         width: 100%;
         padding: 0;
-        height: 100vh;
+        height: 95vh;
         .modal-footer{
             .modal-footer-btn{
                 @include bek-btn-responsive;
