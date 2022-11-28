@@ -1,4 +1,5 @@
 @import '../../assets/scss/vars.scss';
+@import '../../assets/scss/include-media.scss';
 
 .contact-wrapper{
     // background-color: red;
@@ -10,7 +11,7 @@
     h2{
         text-align: center;
         letter-spacing: .3rem;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         font-style: italic;
         margin-bottom: 25px;
     }
@@ -74,6 +75,132 @@
                 color: $iconColor;
                 font-size: 2.5rem;
                 margin: 15px;
+            }
+        }
+    }
+}
+
+@include media("<=phone"){
+    .contact-wrapper{
+        width: 100%;
+        h2{
+            letter-spacing: .1rem;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .contact-header{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid $iconColor;
+            .contact-header-phone{
+                flex: 1;
+                padding: 10px;
+                @include bek-flex(center, column);
+                align-items: center;
+                &:not(:last-child){
+                    border: none;
+                }
+                .header-icon{
+                    font-size: 2rem
+                }
+                .header-title{
+                    padding: 10px 0;
+                    font-size: 1rem;
+                    letter-spacing: .1rem;
+                }
+                p{
+                    letter-spacing: .1rem;
+                    padding: 2px 0;
+                }
+            }
+        }
+        .contact-main{
+            margin-top: 15px;
+            p{
+                padding: 5px;
+            }
+            .contact-main-form{
+                padding:10px;
+                .contact-main-form-input{
+                    width: 90%;
+                    margin-bottom: 10px;
+                }
+                button{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+        .contact-footer{
+            padding: 10px;
+            .contact-footer-social{
+                svg{
+                    font-size: 2rem;
+                    margin: 10px;
+                }
+            }
+        }
+    }
+}
+
+@include media(">phone", "<=tablet"){
+    .contact-wrapper{
+        width: 100%;
+        h2{
+            letter-spacing: .1rem;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .contact-header{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid $iconColor;
+            .contact-header-phone{
+                flex: 1;
+                padding: 10px;
+                @include bek-flex(center, column);
+                align-items: center;
+                &:not(:last-child){
+                    border: none;
+                }
+                .header-icon{
+                    font-size: 2rem
+                }
+                .header-title{
+                    padding: 10px 0;
+                    font-size: 1rem;
+                    letter-spacing: .1rem;
+                }
+                p{
+                    letter-spacing: .1rem;
+                    padding: 2px 0;
+                }
+            }
+        }
+        .contact-main{
+            margin-top: 15px;
+            p{
+                padding: 5px;
+            }
+            .contact-main-form{
+                padding: 20px 10px;
+                .contact-main-form-input{
+                    width: 90%;
+                    margin-bottom: 10px;
+                }
+                button{
+                    @include bek-btn-responsive;
+                }
+            }
+        }
+        .contact-footer{
+            padding: 10px;
+            .contact-footer-social{
+                svg{
+                    font-size: 2rem;
+                    margin: 10px;
+                }
             }
         }
     }
