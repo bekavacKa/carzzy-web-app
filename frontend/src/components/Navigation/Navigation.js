@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link, NavLink, useNavigate} from "react-router-dom";
-import { FaCar, FaCaretDown, FaConnectdevelop, FaEquals, FaUser } from "react-icons/fa";
+import { FaCaretDown, FaConnectdevelop, FaUser } from "react-icons/fa";
 // import { MdSearch } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
@@ -136,9 +136,9 @@ function Navigation() {
 						{routeConfig.ABOUT_US.name}
 					</NavLink>
 
-					{/* <NavLink to={routeConfig.CONTACT.url}>
+					<NavLink to={routeConfig.CONTACT.url}>
 						{routeConfig.CONTACT.name}
-					</NavLink> */}
+					</NavLink>
 
 
 				</div>
@@ -204,6 +204,11 @@ function Navigation() {
 					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.ABOUT_US.url}>
 						{routeConfig.ABOUT_US.name}
 					</NavLink>
+
+					<NavLink className='responsive-meni-links' onClick={handleLinkClick} to={routeConfig.CONTACT.url}>
+						{routeConfig.CONTACT.name}
+					</NavLink>
+
 					{
 						userBtnResponsiveLayout()
 					}

@@ -1,0 +1,80 @@
+@import '../../assets/scss/vars.scss';
+
+.contact-wrapper{
+    // background-color: red;
+    // @include bek-flex(center, column);
+    // align-items: center;
+    margin: 0 auto;
+    @include container;
+    color: $secondFontColor;
+    h2{
+        text-align: center;
+        letter-spacing: .3rem;
+        font-size: 1.7rem;
+        font-style: italic;
+        margin-bottom: 25px;
+    }
+    .contact-header{
+        @include bek-flex(space-between, row);
+        align-items: center;
+        padding: 50px 20px;
+        .contact-header-phone{
+            flex: 1;
+            padding: 10px;
+            @include bek-flex(center, column);
+            align-items: center;
+            &:not(:last-child){
+                border-right: 3px solid $iconColor;
+            }
+            .header-icon{
+                color: $iconColor;
+                font-size: 2.5rem
+            }
+            .header-title{
+                padding: 20px 0;
+                font-size: 1.3rem;
+                font-weight: 600;
+                letter-spacing: .3rem;
+                text-transform: uppercase;
+                color: $iconColor;
+            }
+            p{
+                letter-spacing: .1rem;
+                padding: 5px;
+            }
+        }
+    }
+    .contact-main{
+        @include bek-flex(center, column);
+        text-align: center;
+        p{
+            text-transform: uppercase;
+            padding: 10px;
+            font-weight: 600;
+        }
+        .contact-main-form{
+            padding: 30px;
+            @include bek-flex(center, column);
+            align-items: center;
+            .contact-main-form-input{
+                @include input-style;
+                width: 50%;
+                margin-bottom: 20px;
+            }
+            button{
+                @include bek-btn;
+            }
+        }
+    }
+    .contact-footer{
+        text-align: center;
+        padding: 30px;
+        .contact-footer-social{
+            svg{
+                color: $iconColor;
+                font-size: 2.5rem;
+                margin: 15px;
+            }
+        }
+    }
+}
