@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './contact.scss';
 import Header from '../../components/Header/Header';
+import emailjs from '@emailjs/browser';
+import { toast, ToastContainer } from "react-toastify";
 import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaMailBulk, FaMapMarkerAlt, FaMobileAlt, FaPinterestSquare, FaTwitterSquare } from 'react-icons/fa';
 
 function Contact() {
+
+  const contactForm = useRef();
+  
+
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    if(!contactForm.current.clientName.value || !contactForm.current.clientEmail.value || !contactForm.current.clientMessage.value){
+      // console.log("nece moci");
+      toast.info("All fields are required !!")
+      return;
+    }
+
+    emailjs.sendForm('service_turjs7c', 'template_cwlutrg', contactForm.current, 'hdoAqwi8FJnl8V5O_')
+    .then((result) => {
+        // console.log(result.text);
+        toast.success("Message sent successfully !")
+        contactForm.current.reset();
+    }, (error) => {
+        // console.log(error.text);
+        toast.info("Something went wrong, please try again")
+    });
+
+  }
+
   return (
     <>
       <Header pageTitle={"contact"} />
@@ -35,7 +61,7 @@ function Contact() {
         <div className='contact-main'>
           <p> if you got any questions </p>
           <p> please do not hesitate to send us a message </p>
-          <form className='contact-main-form'>
+          <form className='contact-main-form' ref={contactForm} onSubmit={handleSubmitForm}>
             <label htmlFor="clientName">Your Name</label>
             <input  className="contact-main-form-input"
                     id="clientName" 
@@ -48,13 +74,6 @@ function Contact() {
                     id="clientEmail" 
                     type ="email"
                     name="clientEmail" 
-            />
-
-            <label htmlFor="clientSubject">Subject</label>
-            <input  className="contact-main-form-input"
-                    id="clientSubject" 
-                    type ="text"
-                    name="clientSubject" 
             />
 
             <label htmlFor="clientMessage">Message</label>
@@ -84,6 +103,7 @@ function Contact() {
         </div>
 
       </div>
+      <ToastContainer />
     </>
   )
 }

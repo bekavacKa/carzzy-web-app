@@ -61,6 +61,9 @@
                 @include input-style;
                 width: 50%;
                 margin-bottom: 20px;
+                &.require{
+                    border: 1px solid red;
+                }
             }
             button{
                 @include bek-btn;
@@ -201,6 +204,29 @@
                     font-size: 2rem;
                     margin: 10px;
                 }
+            }
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop"){
+    .contact-wrapper{
+        .contact-header{
+            @include bek-flex(space-between, column);
+            align-items: center;
+            .contact-header-phone{
+                &:not(:last-child){
+                    border: none;
+                }
+            }
+        }
+        .contact-main{
+            .contact-main-form{
+
+                .contact-main-form-input{
+                    width: 70%;
+                }
+
             }
         }
     }
