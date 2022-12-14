@@ -5,10 +5,12 @@
     text-transform: uppercase;
     font-weight: 700;
     height: 200px;
+    max-width: 550px;
     flex: 1;
     background-color: $secondBackground;
     @include bek-flex(center, column);
     align-items: center;
+    text-align: center;
     padding: 25px;
     h2{
         margin-bottom: 20px;
