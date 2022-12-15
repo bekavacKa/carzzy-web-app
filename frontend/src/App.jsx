@@ -33,6 +33,8 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import AllSubscriptions from './adminComponents/SubscriptionsManagment/AllSubscriptions/AllSubscriptions';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Cookie from './components/Cookie/Cookie';
+import AllBlogs from './adminComponents/BlogManagment/AllBlogs/AllBlogs';
+import AllImpressions from './adminComponents/ImpressionsManagment/AllImpressions/AllImpressions';
 
 
 axios.defaults.baseURL = BACKEND_URL_CONFIG.BACKEND_URL.url;
@@ -124,6 +126,8 @@ function App() {
               <Route path={routeConfig.ADMIN_USERS.url} element={<AllUsers />} />
               <Route path={routeConfig.ADMIN_PRODUCTS.url} element={<AllProducts />} />
               <Route path={routeConfig.ADMIN_SUBS.url} element={<AllSubscriptions />} />
+              <Route path={routeConfig.ADMIN_BLOGS.url} element={<AllBlogs />} />
+              <Route path={routeConfig.ADMIN_IMPRESSIONS.url} element={<AllImpressions />} />
               {/* <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} /> */}
             </Route>
             

@@ -1,5 +1,5 @@
 import React from "react";
-import {FaUserEdit, FaProductHunt, FaUsersCog, FaWater } from 'react-icons/fa';
+import {FaUserEdit, FaProductHunt, FaUsersCog, FaWater, FaBlogger, FaEnvelopeOpenText } from 'react-icons/fa';
 
 export const ADMIN_SIDEBAR_CONFIG = [
     {
@@ -21,6 +21,16 @@ export const ADMIN_SIDEBAR_CONFIG = [
         name : "subscriptions",
         url : "all-subs",
         icon : <FaUserEdit/>
+    },
+    {
+        name : "blogs",
+        url : "all-blogs",
+        icon : <FaBlogger/>
+    },
+    {
+        name : "impressions",
+        url : "all-impressions",
+        icon : <FaEnvelopeOpenText />
     },
     // {
     //     name : "emails",

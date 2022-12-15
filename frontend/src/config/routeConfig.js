@@ -61,6 +61,13 @@ const routeConfig ={
     ADMIN_STATS : {
         url: 'stats'
     },
+    ADMIN_BLOGS : {
+        url: 'all-blogs'
+    },
+    ADMIN_IMPRESSIONS : {
+        url: 'all-impressions'
+    },
+    
 }
 
 export default routeConfig;
