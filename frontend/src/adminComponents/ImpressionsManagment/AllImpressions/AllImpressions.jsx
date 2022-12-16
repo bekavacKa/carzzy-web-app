@@ -36,26 +36,26 @@ function AllImpressions() {
               </tr>
             )
           })
-      }
+    }
 
   return (
     <div className='all-impressions-wrapper' >
-    {
-    allImpressions?.length && 
-    <table className="all-impressions-table">
-    <thead>
-        <tr>
-        <th scope="col">NO.</th>
-        <th scope="col">name</th>
-        <th scope="col">impression</th>
-        </tr>
-    </thead>
-    <tbody>
-        {impressionsLayout()}
-    </tbody>
-    </table>
-    }
-</div>
+        {
+        allImpressions?.length && 
+        <table className="all-impressions-table">
+        <thead>
+            <tr>
+            <th scope="col">NO.</th>
+            <th scope="col">name</th>
+            <th scope="col">impression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {impressionsLayout()}
+        </tbody>
+        </table>
+        }
+    </div>
   )
 }
 

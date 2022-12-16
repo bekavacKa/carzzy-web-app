@@ -35,6 +35,8 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Cookie from './components/Cookie/Cookie';
 import AllBlogs from './adminComponents/BlogManagment/AllBlogs/AllBlogs';
 import AllImpressions from './adminComponents/ImpressionsManagment/AllImpressions/AllImpressions';
+import AllSponsors from './adminComponents/SponsorManagment/AllSponsors/AllSponsors';
+import AllBanners from './adminComponents/BannerManagment/AllBanners/AllBanners';
 
 
 axios.defaults.baseURL = BACKEND_URL_CONFIG.BACKEND_URL.url;
@@ -128,6 +130,8 @@ function App() {
               <Route path={routeConfig.ADMIN_SUBS.url} element={<AllSubscriptions />} />
               <Route path={routeConfig.ADMIN_BLOGS.url} element={<AllBlogs />} />
               <Route path={routeConfig.ADMIN_IMPRESSIONS.url} element={<AllImpressions />} />
+              <Route path={routeConfig.ADMIN_SPONSORS.url} element={<AllSponsors />} />
+              <Route path={routeConfig.ADMIN_BANNERS.url} element={<AllBanners />} />
               {/* <Route path={routeConfig.ADMIN_EMAILS.url} element={<AllEmails />} /> */}
             </Route>
             

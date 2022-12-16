@@ -1,5 +1,5 @@
 import React from "react";
-import {FaUserEdit, FaProductHunt, FaUsersCog, FaWater, FaBlogger, FaEnvelopeOpenText } from 'react-icons/fa';
+import {FaUserEdit, FaProductHunt, FaUsersCog, FaWater, FaBlogger, FaEnvelopeOpenText, FaSpeakap, FaRegImages } from 'react-icons/fa';
 
 export const ADMIN_SIDEBAR_CONFIG = [
     {
@@ -31,6 +31,16 @@ export const ADMIN_SIDEBAR_CONFIG = [
         name : "impressions",
         url : "all-impressions",
         icon : <FaEnvelopeOpenText />
+    },
+    {
+        name : "sponsors",
+        url : "all-sponsors",
+        icon : <FaSpeakap />
+    },
+    {
+        name : "banners",
+        url : "all-banners",
+        icon : <FaRegImages />
     },
     // {
     //     name : "emails",

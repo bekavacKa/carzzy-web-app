@@ -67,6 +67,12 @@ const routeConfig ={
     ADMIN_IMPRESSIONS : {
         url: 'all-impressions'
     },
+    ADMIN_SPONSORS : {
+        url: 'all-sponsors'
+    },
+    ADMIN_BANNERS : {
+        url: 'all-banners'
+    },
     
 }
 
