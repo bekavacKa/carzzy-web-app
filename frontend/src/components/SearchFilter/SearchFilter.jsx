@@ -3,6 +3,7 @@ import { MdSearch } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { setLoader } from '../../redux/loaderSlice';
 import ShopService from '../../services/ShopService';
+import  debounce  from "lodash.debounce";
 
 
 
@@ -32,6 +33,8 @@ function SearchFilter({setSort, filterPrice, setFilterPrice, setSearchTerm, sear
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   }
+
+  const debouncedSearch = debounce(handleSearch, 1000);
   
   // const handlePriceFilter = (e) => {
   //   setFilterPrice(parseInt(e.target.value)); 
@@ -44,7 +47,7 @@ function SearchFilter({setSort, filterPrice, setFilterPrice, setSearchTerm, sear
                   type="search" 
                   placeholder='Search' 
                   defaultValue={searchTerm}
-                  onChange={e => handleSearch(e)}/>
+                  onChange={e => debouncedSearch(e)}/>
             <MdSearch className='search-filter-icon' />
         </div>
 
