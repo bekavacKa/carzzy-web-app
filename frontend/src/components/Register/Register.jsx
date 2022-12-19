@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { setLoader } from "../../redux/loaderSlice";
 import AuthService from "../../services/AuthService";
 import MsgToUser from "../MsgToUser/MsgToUser";
+import PassVisibility from "../PassVisibility/PassVisibility";
 import "./register.scss";
 
 function Register(){
@@ -22,6 +23,7 @@ function Register(){
     const [isSubmited, setIsSubmited] = useState(false);
     const [isSuccesReg, setSuccesReg] = useState(false);
     const [userLinkAcctivate, setUserLinkAcctivate] = useState('');
+    const [showPass, setShowPass] = useState(false);
     
     const dispatch = useDispatch();
 
@@ -113,9 +115,10 @@ function Register(){
                             onChange={(e) => {handleInputChange(e)}} />
 
                     <label htmlFor="password">Password</label>
+                    <PassVisibility showPass={showPass} setShowPass={setShowPass} />
                     <input  className={`register-form-input ${!userData.password && isSubmited && 'required animate__animated animate__shakeX'} `}
                             id="password" 
-                            type ="password" 
+                            type ={showPass ? "text" : "password"} 
                             name="password" 
                             onChange={(e) => {handleInputChange(e)}} />
 

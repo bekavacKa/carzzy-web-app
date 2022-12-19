@@ -8,29 +8,31 @@
     .search-filter-view{
         @include bek-flex(flex-start, row);
         align-items: center;
+        margin-right: 10px;
         .search-filter-input{
             min-height: 40px;
             background-color: $secondBackground;
-            // border: 1px solid $secondFontColor;
             border: none;
-            border-radius: 3px;
+            border-radius: 3px 0 0 3px;
             outline: none;
             color: $firstFontColor;
             font-size: 1rem;
-            padding: 8px 0 8px 35px;
-            position: relative;
+            padding: 8px;
             &:focus{
                 outline: 1px solid $iconColor;
             }
         }
         .search-filter-icon{
-            color: $iconColor;
-            font-size: 1.3rem;
-            position: relative;
-            right: 222px;
+            color: $firstFontColor;
+            background-color: $secondBackground;
+            min-height: 40px;
+            min-width: 40px;
+            padding: 8px;
+            border-radius: 0 3px 3px 0;
+            transition: $transition;
             &:hover{
                 cursor: pointer;
-                transform: scale(1.1);
+                background-color: $iconColor;
             } 
         }
     }

@@ -1,0 +1,18 @@
+@import '../../assets/scss/vars.scss';
+
+.pass-visibility{
+    @include bek-flex(center, column);
+    align-items: center;
+    cursor: pointer;
+    transition: $transition;
+    font-size: 1.2rem;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid $firstFontColor;
+    margin: 5px;
+    &:hover{
+        border: 1px solid $iconColor;
+        color: $iconColor;
+    }
+}

@@ -3,13 +3,13 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import AuthService from "../../services/AuthService";
 import { setUser } from "../../redux/userSlice";
 
 import "./login.scss";
 import { setLoader } from "../../redux/loaderSlice";
 import routeConfig from "../../config/routeConfig";
+import PassVisibility from "../PassVisibility/PassVisibility";
 
 
 
@@ -17,6 +17,7 @@ function Login({showLoginForm}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isSubmited, setIsSubmited] = useState(false);
+    const [showPass, setShowPass] = useState(false);
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -57,7 +58,8 @@ function Login({showLoginForm}){
                         // setApiErr(true);
                     })
                     .finally(() => dispatch(setLoader(false)))
-    }
+    };
+
 
     return(
         <>
@@ -72,8 +74,8 @@ function Login({showLoginForm}){
                     <input className={`login-form-input ${!username && isSubmited && 'required animate__animated animate__shakeX'} `} id="username" type ="text" onChange={(e) => {setUsername(e.target.value)}} />
 
                     <label htmlFor="password" >Password</label>
-                    <input className={`login-form-input ${!password && isSubmited && 'required animate__animated animate__shakeX'} `} id="password" type ="password" onChange={(e) => {setPassword(e.target.value)}} />
-                    {/* {pass} */}
+                    <PassVisibility showPass={showPass} setShowPass={setShowPass} />
+                    <input className={`login-form-input ${!password && isSubmited && 'required animate__animated animate__shakeX'} `} id="password" type ={showPass ? "text" : "password"} onChange={(e) => {setPassword(e.target.value)}} />
                     <button className="form-btn" type="submit" > LOGIN </button>
 
                 </form> 

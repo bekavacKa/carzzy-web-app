@@ -43,12 +43,12 @@ function SearchFilter({setSort, filterPrice, setFilterPrice, setSearchTerm, sear
   return (
     <div className='search-filter-wrapper' >
         <div className='search-filter-view'>
-            <input className='search-filter-input' 
-                  type="search" 
-                  placeholder='Search' 
-                  defaultValue={searchTerm}
-                  onChange={e => debouncedSearch(e)}/>
-            <MdSearch className='search-filter-icon' />
+          <input className='search-filter-input' 
+                type="search" 
+                placeholder='Search' 
+                defaultValue={searchTerm}
+                onChange={e => debouncedSearch(e)}/>
+          <MdSearch className='search-filter-icon' />
         </div>
 
         <div className='search-filter-sort-select'>
